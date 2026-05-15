@@ -6,6 +6,7 @@ from typing import Any
 import httpx
 from dateutil import parser as date_parser
 
+from src.fetchers._http import USER_AGENT
 from src.models import Item
 
 
@@ -27,6 +28,7 @@ async def fetch_github(source: dict[str, Any], window_hours: int) -> list[Item]:
     headers = {
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": USER_AGENT,
     }
     token = os.environ.get("GITHUB_TOKEN")
     if token:

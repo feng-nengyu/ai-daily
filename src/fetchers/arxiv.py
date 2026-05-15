@@ -7,6 +7,7 @@ import feedparser
 import httpx
 from dateutil import parser as date_parser
 
+from src.fetchers._http import USER_AGENT
 from src.models import Item
 
 
@@ -33,7 +34,8 @@ async def fetch_arxiv(source: dict[str, Any], window_hours: int) -> list[Item]:
     }
     url = f"{_API_URL}?{urlencode(params)}"
 
-    async with httpx.AsyncClient(timeout=30.0) as client:
+    headers = {"User-Agent": USER_AGENT}
+    async with httpx.AsyncClient(timeout=30.0, headers=headers) as client:
         response = await client.get(url)
         response.raise_for_status()
         body = response.text

@@ -5,9 +5,9 @@ sources:
     categories: [cs.AI, cs.CL, cs.MA]
     max_results: 50
 
-  - name: huggingface-daily-papers
+  - name: huggingface-blog
     type: rss
-    url: https://jamesg.blog/hf-papers.xml
+    url: https://huggingface.co/blog/feed.xml
 
   - name: github-trending-agent
     type: github
@@ -30,15 +30,16 @@ sources:
 
   - name: anthropic-news
     type: rss
-    url: https://www.anthropic.com/news/rss.xml
+    url: https://anthropic.substack.com/feed
 
   - name: deepmind-blog
     type: rss
     url: https://deepmind.google/blog/rss.xml
 
-  - name: deepseek-news
-    type: rss
-    url: https://api-docs.deepseek.com/news/rss.xml
+  # DeepSeek 暂无公开 RSS feed（2026-05 验证），如官方上线再添加。
+  # - name: deepseek-news
+  #   type: rss
+  #   url: <TBD>
 
   - name: langchain-blog
     type: rss
@@ -46,7 +47,7 @@ sources:
 
   - name: llamaindex-blog
     type: rss
-    url: https://www.llamaindex.ai/blog/rss.xml
+    url: https://medium.com/feed/llamaindex-blog
 
   - name: hackernews-ai
     type: hackernews

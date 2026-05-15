@@ -4,6 +4,7 @@ from typing import Any
 
 import httpx
 
+from src.fetchers._http import USER_AGENT
 from src.models import Item
 
 
@@ -27,7 +28,8 @@ async def fetch_hackernews(source: dict[str, Any], window_hours: int) -> list[It
         "hitsPerPage": 50,
     }
 
-    async with httpx.AsyncClient(timeout=30.0) as client:
+    headers = {"User-Agent": USER_AGENT}
+    async with httpx.AsyncClient(timeout=30.0, headers=headers) as client:
         response = await client.get(_API_URL, params=params)
         response.raise_for_status()
         payload = response.json()

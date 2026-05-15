@@ -6,6 +6,7 @@ import feedparser
 import httpx
 from dateutil import parser as date_parser
 
+from src.fetchers._http import USER_AGENT
 from src.models import Item
 
 
@@ -30,7 +31,8 @@ def _parse_date(entry: dict) -> datetime | None:
 async def fetch_rss(source: dict[str, Any], window_hours: int) -> list[Item]:
     url = source["url"]
     name = source["name"]
-    async with httpx.AsyncClient(timeout=30.0, follow_redirects=True) as client:
+    headers = {"User-Agent": USER_AGENT}
+    async with httpx.AsyncClient(timeout=30.0, follow_redirects=True, headers=headers) as client:
         response = await client.get(url)
         response.raise_for_status()
         body = response.text
