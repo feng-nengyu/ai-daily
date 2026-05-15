@@ -50,6 +50,15 @@ def test_load_config_missing_source_field_raises(tmp_path: Path):
         load_config(sources_path=sources, preferences_path=prefs)
 
 
+def test_load_config_rejects_bool_fetch_window(tmp_path: Path):
+    sources = tmp_path / "sources.yaml"
+    prefs = tmp_path / "preferences.yaml"
+    sources.write_text("sources: []\n", encoding="utf-8")
+    prefs.write_text("keywords: []\nfetch_window_hours: true\n", encoding="utf-8")
+    with pytest.raises(ConfigError, match="positive integer"):
+        load_config(sources_path=sources, preferences_path=prefs)
+
+
 def test_real_default_config_loads():
     # The committed config/*.yaml should load without errors.
     config = load_config(

@@ -53,7 +53,7 @@ def load_config(
         raise ConfigError("`keywords` must be a list")
 
     fetch_window = prefs_doc.get("fetch_window_hours", 36)
-    if not isinstance(fetch_window, int) or fetch_window <= 0:
+    if isinstance(fetch_window, bool) or not isinstance(fetch_window, int) or fetch_window <= 0:
         raise ConfigError("`fetch_window_hours` must be a positive integer")
 
     return Config(
