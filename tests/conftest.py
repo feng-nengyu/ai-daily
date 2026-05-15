@@ -11,3 +11,8 @@ def fixtures_dir() -> Path:
 @pytest.fixture
 def rss_feed_xml(fixtures_dir: Path) -> str:
     return (fixtures_dir / "rss_feed.xml").read_text(encoding="utf-8")
+
+
+@pytest.fixture
+def arxiv_response_xml(fixtures_dir: Path) -> str:
+    return (fixtures_dir / "arxiv_response.xml").read_text(encoding="utf-8")

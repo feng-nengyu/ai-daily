@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <id>http://arxiv.org/abs/2405.00001v1</id>
+    <updated>2026-05-14T18:00:00Z</updated>
+    <published>2026-05-14T18:00:00Z</published>
+    <title>A New Agent Framework</title>
+    <summary>This paper introduces a novel agent framework.</summary>
+    <author>
+      <name>Alice</name>
+    </author>
+    <link href="http://arxiv.org/abs/2405.00001v1" rel="alternate" type="text/html"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2401.99999v1</id>
+    <updated>2024-01-15T12:00:00Z</updated>
+    <published>2024-01-15T12:00:00Z</published>
+    <title>Old Paper</title>
+    <summary>From early 2024.</summary>
+    <author>
+      <name>Bob</name>
+    </author>
+    <link href="http://arxiv.org/abs/2401.99999v1" rel="alternate" type="text/html"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>
