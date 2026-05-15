@@ -1,6 +1,4 @@
 httpx[http2]>=0.27
 feedparser>=6.0.11
-arxiv>=2.1.0
-PyGithub>=2.3.0
 pyyaml>=6.0
 python-dateutil>=2.9.0

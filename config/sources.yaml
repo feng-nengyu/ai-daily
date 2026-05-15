@@ -36,6 +36,10 @@ sources:
     type: rss
     url: https://deepmind.google/blog/rss.xml
 
+  - name: deepseek-news
+    type: rss
+    url: https://api-docs.deepseek.com/news/rss.xml
+
   - name: langchain-blog
     type: rss
     url: https://blog.langchain.dev/rss/
