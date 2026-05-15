@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Example AI Blog</title>
+    <link>https://example.com/blog</link>
+    <description>Test feed</description>
+    <item>
+      <title>Recent Post About Agents</title>
+      <link>https://example.com/blog/agents</link>
+      <description>This is about LLM agents.</description>
+      <pubDate>Wed, 14 May 2026 10:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Old Post</title>
+      <link>https://example.com/blog/old</link>
+      <description>From the past.</description>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
