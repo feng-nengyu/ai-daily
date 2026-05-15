@@ -1,0 +1,25 @@
+{
+  "hits": [
+    {
+      "objectID": "39000001",
+      "title": "Claude 4.7 release notes",
+      "url": "https://anthropic.com/news/claude-4-7",
+      "points": 320,
+      "author": "alice",
+      "created_at_i": 1778846400,
+      "story_text": null,
+      "num_comments": 84
+    },
+    {
+      "objectID": "39000002",
+      "title": "Low-effort post",
+      "url": "https://example.com/low",
+      "points": 12,
+      "author": "bob",
+      "created_at_i": 1778846400,
+      "story_text": null,
+      "num_comments": 1
+    }
+  ],
+  "nbHits": 2
+}

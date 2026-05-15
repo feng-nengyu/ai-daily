@@ -21,3 +21,8 @@ def arxiv_response_xml(fixtures_dir: Path) -> str:
 @pytest.fixture
 def github_search_json(fixtures_dir: Path) -> str:
     return (fixtures_dir / "github_search.json").read_text(encoding="utf-8")
+
+
+@pytest.fixture
+def hn_search_json(fixtures_dir: Path) -> str:
+    return (fixtures_dir / "hn_search.json").read_text(encoding="utf-8")
