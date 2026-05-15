@@ -1,0 +1,58 @@
+# 默认信息源。用户在 fork 中可改这个文件来增删源。
+sources:
+  - name: arxiv-cs-ai
+    type: arxiv
+    categories: [cs.AI, cs.CL, cs.MA]
+    max_results: 50
+
+  - name: huggingface-daily-papers
+    type: rss
+    url: https://jamesg.blog/hf-papers.xml
+
+  - name: github-trending-agent
+    type: github
+    topic: agent
+    min_stars: 10
+
+  - name: github-trending-llm
+    type: github
+    topic: llm
+    min_stars: 10
+
+  - name: github-trending-mcp
+    type: github
+    topic: mcp
+    min_stars: 5
+
+  - name: openai-blog
+    type: rss
+    url: https://openai.com/blog/rss.xml
+
+  - name: anthropic-news
+    type: rss
+    url: https://www.anthropic.com/news/rss.xml
+
+  - name: deepmind-blog
+    type: rss
+    url: https://deepmind.google/blog/rss.xml
+
+  - name: langchain-blog
+    type: rss
+    url: https://blog.langchain.dev/rss/
+
+  - name: llamaindex-blog
+    type: rss
+    url: https://www.llamaindex.ai/blog/rss.xml
+
+  - name: hackernews-ai
+    type: hackernews
+    query: "(AI OR LLM OR agent OR \"machine learning\")"
+    min_points: 100
+
+  - name: qbitai
+    type: rss
+    url: https://www.qbitai.com/feed
+
+  - name: jiqizhixin
+    type: rss
+    url: https://www.jiqizhixin.com/rss

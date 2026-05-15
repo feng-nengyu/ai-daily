@@ -1,0 +1,18 @@
+# 用户偏好。在 fork 中改这个文件。
+keywords:
+  - LLM agent
+  - MCP
+  - tool use
+  - RAG
+  - multi-agent
+  - reasoning models
+
+# 抓取窗口（小时）。默认抓最近 36 小时内容。
+fetch_window_hours: 36
+
+# 阶段 1 暂不使用以下字段，列出来留给后续阶段。
+# models:
+#   scorer:     "anthropic/claude-haiku-4-5"
+#   summarizer: "anthropic/claude-sonnet-4-6"
+# score_threshold: 7
+# top_n: 10
