@@ -1,0 +1,30 @@
+{
+  "total_count": 2,
+  "incomplete_results": false,
+  "items": [
+    {
+      "id": 1,
+      "name": "cool-agent",
+      "full_name": "alice/cool-agent",
+      "html_url": "https://github.com/alice/cool-agent",
+      "description": "A cool LLM agent framework",
+      "stargazers_count": 150,
+      "language": "Python",
+      "topics": ["agent", "llm"],
+      "pushed_at": "2026-05-14T15:00:00Z",
+      "created_at": "2026-05-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "old-agent",
+      "full_name": "bob/old-agent",
+      "html_url": "https://github.com/bob/old-agent",
+      "description": "An older agent project",
+      "stargazers_count": 5,
+      "language": "Python",
+      "topics": ["agent"],
+      "pushed_at": "2024-06-01T00:00:00Z",
+      "created_at": "2024-05-01T00:00:00Z"
+    }
+  ]
+}
