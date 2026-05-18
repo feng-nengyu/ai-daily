@@ -33,9 +33,12 @@ CREATE TABLE IF NOT EXISTS summaries (
     why_relevant TEXT,
     summarizer_model TEXT,
     summarizer_cost_usd REAL,
-    created_at TEXT NOT NULL
+    created_at TEXT NOT NULL,
+    surfaced_at TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_summaries_score ON summaries(score);
+-- idx_summaries_surfaced_at is created by _migrate_add_surfaced_at after the
+-- column is guaranteed to exist on both fresh and pre-feature DBs.
 """
 
 
@@ -60,7 +63,26 @@ class Storage:
         if legacy and not has_items:
             self._conn.executescript("DROP TABLE seen_urls;")
         self._conn.executescript(_SCHEMA)
+        # Stage 3-dedup migration: if summaries.surfaced_at is missing on a
+        # pre-existing table, add it and backfill from created_at so existing
+        # rows are treated as already archived (not "new today").
+        self._migrate_add_surfaced_at()
         self._conn.commit()
+
+    def _migrate_add_surfaced_at(self) -> None:
+        assert self._conn is not None
+        cols = self._conn.execute("PRAGMA table_info(summaries)").fetchall()
+        col_names = {c[1] for c in cols}
+        if "surfaced_at" not in col_names:
+            self._conn.executescript(
+                "ALTER TABLE summaries ADD COLUMN surfaced_at TEXT;"
+                "UPDATE summaries SET surfaced_at = created_at;"
+            )
+        # Always ensure the index exists (handles both fresh and migrated DBs).
+        self._conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_summaries_surfaced_at"
+            " ON summaries(surfaced_at)"
+        )
 
     def close(self) -> None:
         if self._conn is not None:
@@ -187,6 +209,58 @@ class Storage:
             (min_score, cutoff, limit),
         ).fetchall()
         return [self._row_to_analysis(r) for r in rows]
+
+    def get_today_summaries(self, min_score: int) -> list[Analysis]:
+        """Items with summary + score >= threshold that have NOT been surfaced yet."""
+        conn = self._conn_or_die()
+        rows = conn.execute(
+            "SELECT i.url, i.title, i.source, i.content, i.published_at,"
+            "       s.score, s.tags_json, s.scorer_model, s.scorer_cost_usd,"
+            "       s.innovation, s.approach, s.metrics, s.links, s.why_relevant,"
+            "       s.summarizer_model, s.summarizer_cost_usd"
+            " FROM items i JOIN summaries s ON s.url = i.url"
+            " WHERE s.score >= ? AND s.innovation IS NOT NULL"
+            "   AND s.surfaced_at IS NULL"
+            " ORDER BY s.score DESC, i.published_at DESC",
+            (min_score,),
+        ).fetchall()
+        return [self._row_to_analysis(r) for r in rows]
+
+    def get_archive_summaries(
+        self, min_score: int, within_days: int
+    ) -> list[Analysis]:
+        """Items with summary + score >= threshold that have been surfaced
+        already and are still within the archive window (filtered by surfaced_at)."""
+        conn = self._conn_or_die()
+        cutoff = (datetime.now(timezone.utc) - timedelta(days=within_days)).isoformat()
+        rows = conn.execute(
+            "SELECT i.url, i.title, i.source, i.content, i.published_at,"
+            "       s.score, s.tags_json, s.scorer_model, s.scorer_cost_usd,"
+            "       s.innovation, s.approach, s.metrics, s.links, s.why_relevant,"
+            "       s.summarizer_model, s.summarizer_cost_usd, s.surfaced_at"
+            " FROM items i JOIN summaries s ON s.url = i.url"
+            " WHERE s.score >= ? AND s.innovation IS NOT NULL"
+            "   AND s.surfaced_at IS NOT NULL AND s.surfaced_at >= ?"
+            " ORDER BY s.surfaced_at DESC, s.score DESC",
+            (min_score, cutoff),
+        ).fetchall()
+        return [self._row_to_analysis(r) for r in rows]
+
+    def mark_surfaced(self, urls: list[str]) -> int:
+        """Mark a batch of summaries as surfaced (NULL -> now). No-op for
+        already-surfaced rows. Returns the number of rows actually updated."""
+        if not urls:
+            return 0
+        conn = self._conn_or_die()
+        now = datetime.now(timezone.utc).isoformat()
+        placeholders = ",".join("?" * len(urls))
+        cur = conn.execute(
+            f"UPDATE summaries SET surfaced_at = ?"
+            f" WHERE url IN ({placeholders}) AND surfaced_at IS NULL",
+            [now, *urls],
+        )
+        conn.commit()
+        return cur.rowcount
 
     # --- helpers ---
 

@@ -15,17 +15,22 @@ def render_site(
     output_dir: Path = Path("site"),
     templates_dir: Path = Path("templates"),
 ) -> dict:
-    """Render top summarized items to a single self-contained HTML file.
+    """Render the daily digest page (今日新增 + 归档) to a single HTML file.
 
-    Only items that have BOTH a score >= min_score AND a summary attached
-    are rendered. Sort: score desc, then published_at desc.
+    Today's batch = summaries with surfaced_at IS NULL and score >= min_score.
+    Archive = surfaced summaries within the last `within_days`.
+
+    After the file is written, today's batch is marked surfaced so a re-run
+    in the same session yields an empty today section (strict batch semantics
+    — keeps the future email/wechat push aligned with the web view).
+
+    `top_n` is currently unused at the storage layer; kept in the signature
+    for forward-compat with a planned per-band cap.
     """
-    analyses = [
-        a for a in storage.get_top_summaries(
-            min_score=min_score, limit=top_n, within_days=within_days,
-        )
-        if a.summary is not None
-    ]
+    today = storage.get_today_summaries(min_score=min_score)
+    archive = storage.get_archive_summaries(
+        min_score=min_score, within_days=within_days,
+    )
 
     env = Environment(
         loader=FileSystemLoader(str(templates_dir)),
@@ -33,7 +38,8 @@ def render_site(
     )
     template = env.get_template("index.html.j2")
     html = template.render(
-        analyses=analyses,
+        today=today,
+        archive=archive,
         within_days=within_days,
         generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     )
@@ -43,4 +49,13 @@ def render_site(
     output_path = output_dir / "index.html"
     output_path.write_text(html, encoding="utf-8")
 
-    return {"rendered": len(analyses), "output": str(output_path)}
+    marked = storage.mark_surfaced([a.url for a in today])
+
+    return {
+        "today": len(today),
+        "archive": len(archive),
+        "marked_surfaced": marked,
+        "output": str(output_path),
+        # Back-compat key used by tests written against the Stage 3-lite shape.
+        "rendered": len(today) + len(archive),
+    }

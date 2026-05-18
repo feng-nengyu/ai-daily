@@ -37,7 +37,7 @@ def _seed(s: Storage):
                  Score(score=4, tags=[], model="m", cost_usd=0.001))
 
 
-def test_render_site_produces_self_contained_html(tmp_path: Path):
+def test_render_site_first_run_puts_summaries_in_today_band(tmp_path: Path):
     s = Storage(tmp_path / "t.db"); s.init()
     _seed(s)
     out_dir = tmp_path / "site"
@@ -55,42 +55,73 @@ def test_render_site_produces_self_contained_html(tmp_path: Path):
     # Both summarized items appear
     assert "Foo Paper" in html
     assert "Bar Repo" in html
-    # Their URLs are present as href
+    # Both bands are present. Use unique section markers so we don't match
+    # the header meta line, which mentions both 今日新增 / 归档 as counters.
+    today_band = html.index('class="band today"')
+    archive_band = html.index('class="band archive"')
+    assert today_band < archive_band
+    # Both items live in the today band (before the archive band marker)
+    assert today_band < html.index("Foo Paper") < archive_band
+    assert today_band < html.index("Bar Repo") < archive_band
+
     assert 'href="https://example.com/foo"' in html
     assert 'href="https://example.com/bar"' in html
-    # Their summary content rendered
     assert "核心创新 X" in html
     assert "Bar 创新" in html
-    # tags rendered
     assert "LLM" in html and "agent" in html and "MCP" in html
-    # source badges
     assert "arxiv:cs.AI" in html
     assert "github:agent" in html
-    # Foo's links is a real URL distinct from its item url → render as "补充" link
+    # Foo's links: real URL ≠ item url → render as 补充
     assert "补充：" in html
     assert 'href="https://example.com/code"' in html
-    # Bar's links is "无" → not a URL → no "补充" line for bar
-    # (we check via absence of a card-foot link to a non-existent path)
+    # Bar's links = "无" → suppressed
     assert "补充：无" not in html
-    # The old wording was changed
     assert "代码/项目：" not in html
 
-    # Below-threshold item not rendered
+    # Below-threshold (no summary) not rendered
     assert "Below Threshold" not in html
 
-    # Higher-score item appears BEFORE lower-score one in the HTML
+    # Score-desc within today
     assert html.index("Foo Paper") < html.index("Bar Repo")
 
-    # Returned summary
-    assert result["rendered"] == 2
+    assert result["today"] == 2
+    assert result["archive"] == 0
+    assert result["marked_surfaced"] == 2
+    assert result["rendered"] == 2  # back-compat key
     assert result["output"] == str(index)
 
 
-def test_render_site_empty_db_writes_empty_state(tmp_path: Path):
+def test_render_site_second_run_same_day_moves_to_archive(tmp_path: Path):
+    s = Storage(tmp_path / "t.db"); s.init()
+    _seed(s)
+    out_dir = tmp_path / "site"
+    # First run: items become surfaced.
+    r1 = render_site(s, min_score=7, within_days=30, top_n=100, output_dir=out_dir)
+    assert r1["today"] == 2 and r1["archive"] == 0
+
+    # Second run (no new items in between).
+    r2 = render_site(s, min_score=7, within_days=30, top_n=100, output_dir=out_dir)
+    s.close()
+    assert r2["today"] == 0
+    assert r2["archive"] == 2
+    assert r2["marked_surfaced"] == 0  # nothing new to mark
+
+    html = (out_dir / "index.html").read_text(encoding="utf-8")
+    # Today band is empty
+    assert "本批次无新条目" in html
+    # Items now appear in archive band (after the archive band marker)
+    archive_band = html.index('class="band archive"')
+    assert html.index("Foo Paper") > archive_band
+    assert html.index("Bar Repo") > archive_band
+
+
+def test_render_site_empty_db_writes_empty_states(tmp_path: Path):
     s = Storage(tmp_path / "t.db"); s.init()
     out_dir = tmp_path / "site"
     result = render_site(s, min_score=7, within_days=30, top_n=100, output_dir=out_dir)
     s.close()
-    assert result["rendered"] == 0
+    assert result["today"] == 0
+    assert result["archive"] == 0
     html = (out_dir / "index.html").read_text(encoding="utf-8")
-    assert "还没有可展示" in html
+    assert "本批次无新条目" in html
+    assert "归档暂时为空" in html

@@ -9,6 +9,7 @@
       --bg: #fafaf9; --fg: #1c1917; --muted: #78716c; --border: #e7e5e4;
       --card: #ffffff; --accent: #0369a1; --link: #0369a1;
       --score-high: #15803d; --score-mid: #ca8a04; --score-low: #6b7280;
+      --today-accent: #0369a1;
     }
     * { box-sizing: border-box; }
     body {
@@ -23,21 +24,29 @@
     }
     header.page h1 { margin: 0 0 8px; font-size: 28px; }
     header.page .meta { margin: 0; color: var(--muted); font-size: 14px; }
-    main {
-      max-width: 880px; margin: 0 auto; padding: 24px;
-      display: flex; flex-direction: column; gap: 20px;
+    main { max-width: 880px; margin: 0 auto; padding: 24px; }
+    section.band { margin-bottom: 40px; }
+    section.band > h2.band-title {
+      font-size: 14px; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--muted); margin: 0 0 12px; padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
     }
+    section.band.today > h2.band-title {
+      color: var(--today-accent); border-bottom-color: var(--today-accent);
+    }
+    section.band .cards { display: flex; flex-direction: column; gap: 16px; }
     article.card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 8px; padding: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    section.band.today article.card {
+      border-left: 3px solid var(--today-accent);
     }
     .card-head {
       display: flex; align-items: flex-start; gap: 16px;
       justify-content: space-between; margin-bottom: 12px;
     }
-    .card-head h2 {
-      margin: 0; font-size: 18px; line-height: 1.4; flex: 1;
-    }
+    .card-head h2 { margin: 0; font-size: 18px; line-height: 1.4; flex: 1; }
     .card-head h2 a { color: var(--fg); text-decoration: none; }
     .card-head h2 a:hover { color: var(--link); text-decoration: underline; }
     .badges { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
@@ -83,7 +92,8 @@
     }
     .cta:hover { background: #075985; }
     .empty {
-      text-align: center; padding: 64px 24px; color: var(--muted);
+      text-align: center; padding: 32px 24px; color: var(--muted);
+      background: var(--card); border: 1px dashed var(--border); border-radius: 8px;
     }
     @media (max-width: 600px) {
       .card-head { flex-direction: column; gap: 8px; }
@@ -95,48 +105,63 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      {{ analyses|length }} 条精选 · 时间窗口 {{ within_days }} 天 ·
+      今日新增 {{ today|length }} 条 · 归档 {{ archive|length }} 条 ·
       生成于 {{ generated_at }}
     </p>
   </header>
   <main>
-    {% if not analyses %}
-      <p class="empty">还没有可展示的总结条目。先跑 <code>python -m src.main summarize</code>。</p>
-    {% else %}
-      {% for a in analyses %}
-      <article class="card">
-        <div class="card-head">
-          <h2><a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title }}</a></h2>
-          <div class="badges">
-            <span class="score {{ 'high' if a.score.score >= 8 else 'mid' if a.score.score >= 6 else 'low' }}">{{ a.score.score }}</span>
-            <span class="source">{{ a.source }}</span>
-          </div>
+    {% macro card(a) -%}
+    <article class="card">
+      <div class="card-head">
+        <h2><a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title }}</a></h2>
+        <div class="badges">
+          <span class="score {{ 'high' if a.score.score >= 8 else 'mid' if a.score.score >= 6 else 'low' }}">{{ a.score.score }}</span>
+          <span class="source">{{ a.source }}</span>
         </div>
-        {% if a.score.tags %}
-        <div class="tags">
-          {% for t in a.score.tags %}<span class="tag">{{ t }}</span>{% endfor %}
-        </div>
+      </div>
+      {% if a.score.tags %}
+      <div class="tags">
+        {% for t in a.score.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+      </div>
+      {% endif %}
+      <p class="innovation">{{ a.summary.innovation }}</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>{{ a.summary.approach }}</dd>
+        <dt>关键数据</dt><dd>{{ a.summary.metrics }}</dd>
+        <dt>为什么值得关注</dt><dd>{{ a.summary.why_relevant }}</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">{{ a.published_at.strftime('%Y-%m-%d') }}</span>
+        {% set extra_link = a.summary.links or '' %}
+        {% if '://' in extra_link and extra_link != a.url %}
+        <span class="links">补充：<a href="{{ extra_link }}" target="_blank" rel="noopener">{{ extra_link }}</a></span>
         {% endif %}
-        <p class="innovation">{{ a.summary.innovation }}</p>
-        <dl class="details">
-          <dt>技术方案</dt><dd>{{ a.summary.approach }}</dd>
-          <dt>关键数据</dt><dd>{{ a.summary.metrics }}</dd>
-          <dt>为什么值得关注</dt><dd>{{ a.summary.why_relevant }}</dd>
-        </dl>
-        <footer class="card-foot">
-          <span class="date">{{ a.published_at.strftime('%Y-%m-%d') }}</span>
-          {# summary.links is unreliable: LLM sometimes echoes the source identifier or
-             duplicates the item url. Only show as a "补充" link if it's a real URL AND
-             differs from the item url. #}
-          {% set extra_link = a.summary.links or '' %}
-          {% if '://' in extra_link and extra_link != a.url %}
-          <span class="links">补充：<a href="{{ extra_link }}" target="_blank" rel="noopener">{{ extra_link }}</a></span>
-          {% endif %}
-          <a class="cta" href="{{ a.url }}" target="_blank" rel="noopener">阅读原文 →</a>
-        </footer>
-      </article>
-      {% endfor %}
-    {% endif %}
+        <a class="cta" href="{{ a.url }}" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    {%- endmacro %}
+
+    <section class="band today">
+      <h2 class="band-title">今日新增</h2>
+      {% if today %}
+        <div class="cards">
+          {% for a in today %}{{ card(a) }}{% endfor %}
+        </div>
+      {% else %}
+        <p class="empty">本批次无新条目（已运行过 render 或暂无 score ≥ 阈值 的新总结）。</p>
+      {% endif %}
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 {{ within_days }} 天）</h2>
+      {% if archive %}
+        <div class="cards">
+          {% for a in archive %}{{ card(a) }}{% endfor %}
+        </div>
+      {% else %}
+        <p class="empty">归档暂时为空。</p>
+      {% endif %}
+    </section>
   </main>
 </body>
 </html>
