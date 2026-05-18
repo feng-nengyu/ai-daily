@@ -34,7 +34,7 @@ def test_load_config_defaults_fetch_window(tmp_path: Path):
     sources.write_text("sources: []\n", encoding="utf-8")
     prefs.write_text("keywords: []\n", encoding="utf-8")
     config = load_config(sources_path=sources, preferences_path=prefs)
-    assert config.fetch_window_hours == 36  # default
+    assert config.fetch_window_hours == 168  # default (7d)
 
 
 def test_load_config_missing_source_field_raises(tmp_path: Path):

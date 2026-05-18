@@ -19,7 +19,7 @@ class Models:
 class Config:
     sources: list[dict[str, Any]]
     keywords: list[str]
-    fetch_window_hours: int = 36
+    fetch_window_hours: int = 168
     models: Models | None = None
     score_threshold: int = 7
     top_n: int = 10
@@ -83,7 +83,7 @@ def load_config(
     if not isinstance(keywords, list):
         raise ConfigError("`keywords` must be a list")
 
-    fetch_window = _parse_bounded_int(prefs_doc, "fetch_window_hours", 36, min_v=1, max_v=24 * 30)
+    fetch_window = _parse_bounded_int(prefs_doc, "fetch_window_hours", 168, min_v=1, max_v=24 * 30)
     score_threshold = _parse_bounded_int(prefs_doc, "score_threshold", 7, min_v=0, max_v=10)
     top_n = _parse_bounded_int(prefs_doc, "top_n", 10, min_v=1, max_v=100)
 

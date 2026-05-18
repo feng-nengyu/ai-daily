@@ -7,8 +7,10 @@ keywords:
   - multi-agent
   - reasoning models
 
-# 抓取窗口（小时）。默认抓最近 36 小时内容。
-fetch_window_hours: 36
+# 抓取窗口（小时）。默认抓最近 7 天的内容——
+# AI Lab 博客（OpenAI/DeepMind/HuggingFace）发布频率低，36h 窗口会系统性卡掉，
+# 7 天窗口配合 SQLite URL 去重，多抓的部分不会进新数据。
+fetch_window_hours: 168
 
 # LLM 选型。默认平衡预设（spec 第 6.3 节）。
 # 其他预设见 README:
