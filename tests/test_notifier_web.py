@@ -66,9 +66,14 @@ def test_render_site_produces_self_contained_html(tmp_path: Path):
     # source badges
     assert "arxiv:cs.AI" in html
     assert "github:agent" in html
-    # The "无" links case should NOT render the "代码/项目：" line for bar
-    assert "代码/项目：https://example.com/code" in html
-    assert "代码/项目：无" not in html
+    # Foo's links is a real URL distinct from its item url → render as "补充" link
+    assert "补充：" in html
+    assert 'href="https://example.com/code"' in html
+    # Bar's links is "无" → not a URL → no "补充" line for bar
+    # (we check via absence of a card-foot link to a non-existent path)
+    assert "补充：无" not in html
+    # The old wording was changed
+    assert "代码/项目：" not in html
 
     # Below-threshold item not rendered
     assert "Below Threshold" not in html

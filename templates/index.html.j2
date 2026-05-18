@@ -125,8 +125,12 @@
         </dl>
         <footer class="card-foot">
           <span class="date">{{ a.published_at.strftime('%Y-%m-%d') }}</span>
-          {% if a.summary.links and a.summary.links not in ('无', 'none', 'None', '') %}
-          <span class="links">代码/项目：{{ a.summary.links }}</span>
+          {# summary.links is unreliable: LLM sometimes echoes the source identifier or
+             duplicates the item url. Only show as a "补充" link if it's a real URL AND
+             differs from the item url. #}
+          {% set extra_link = a.summary.links or '' %}
+          {% if '://' in extra_link and extra_link != a.url %}
+          <span class="links">补充：<a href="{{ extra_link }}" target="_blank" rel="noopener">{{ extra_link }}</a></span>
           {% endif %}
           <a class="cta" href="{{ a.url }}" target="_blank" rel="noopener">阅读原文 →</a>
         </footer>
