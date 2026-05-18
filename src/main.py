@@ -10,6 +10,7 @@ from src.config import load_config
 from src.dedup import dedup_by_url
 from src.fetchers import fetch_all
 from src.logging_setup import setup_logging
+from src.notifier.web import render_site
 from src.storage import Storage
 from src.summarizer import run_summarize
 
@@ -55,6 +56,28 @@ async def run_summarize_cmd(
         storage.close()
 
 
+async def run_render_cmd(
+    sources_path: Path = Path("config/sources.yaml"),
+    preferences_path: Path = Path("config/preferences.yaml"),
+    db_path: Path = Path("data/ai_daily.db"),
+    output_dir: Path = Path("site"),
+    within_days: int = 30,
+) -> dict:
+    config = load_config(sources_path=sources_path, preferences_path=preferences_path)
+    storage = Storage(db_path)
+    storage.init()
+    try:
+        return render_site(
+            storage,
+            min_score=config.score_threshold,
+            within_days=within_days,
+            top_n=10_000,  # all summarized items; threshold/within_days do the filtering
+            output_dir=output_dir,
+        )
+    finally:
+        storage.close()
+
+
 def _parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(prog="ai-daily")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -62,11 +85,15 @@ def _parse_args(argv: list[str]) -> argparse.Namespace:
     for name, help_ in (
         ("fetch", "Fetch all sources and store items"),
         ("summarize", "Score unscored items and summarize the top-N"),
+        ("render", "Render summarized items to site/index.html"),
     ):
         p = sub.add_parser(name, help=help_)
         p.add_argument("--sources", default="config/sources.yaml")
         p.add_argument("--preferences", default="config/preferences.yaml")
         p.add_argument("--db", default="data/ai_daily.db")
+        if name == "render":
+            p.add_argument("--output-dir", default="site")
+            p.add_argument("--within-days", type=int, default=30)
 
     return parser.parse_args(argv)
 
@@ -88,6 +115,16 @@ def main(argv: list[str] | None = None) -> int:
             preferences_path=Path(args.preferences),
             db_path=Path(args.db),
         ))
+        return 0
+    if args.command == "render":
+        result = asyncio.run(run_render_cmd(
+            sources_path=Path(args.sources),
+            preferences_path=Path(args.preferences),
+            db_path=Path(args.db),
+            output_dir=Path(args.output_dir),
+            within_days=args.within_days,
+        ))
+        print(f"rendered={result['rendered']} output={result['output']}")
         return 0
     raise SystemExit(f"unknown command: {args.command}")
 
