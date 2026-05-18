@@ -10,9 +10,17 @@ keywords:
 # 抓取窗口（小时）。默认抓最近 36 小时内容。
 fetch_window_hours: 36
 
-# 阶段 1 暂不使用以下字段，列出来留给后续阶段。
-# models:
-#   scorer:     "anthropic/claude-haiku-4-5"
-#   summarizer: "anthropic/claude-sonnet-4-6"
-# score_threshold: 7
-# top_n: 10
+# LLM 选型。默认平衡预设（spec 第 6.3 节）。
+# 其他预设见 README:
+#   省钱党:   scorer=deepseek/deepseek-chat  summarizer=deepseek/deepseek-chat
+#   品质党:   scorer=anthropic/claude-sonnet-4-6 summarizer=anthropic/claude-opus-4-7
+#   中文混搭: scorer=deepseek/deepseek-chat  summarizer=anthropic/claude-sonnet-4-6
+models:
+  scorer:     anthropic/claude-haiku-4-5
+  summarizer: anthropic/claude-sonnet-4-6
+
+# 评分阈值：score >= score_threshold 的内容才进入总结阶段。
+score_threshold: 7
+
+# 推送 top N（Stage 3 用）。
+top_n: 10
