@@ -4,3 +4,4 @@ pyyaml>=6.0
 python-dateutil>=2.9.0
 litellm>=1.50
 python-dotenv>=1.0
+jinja2>=3.1

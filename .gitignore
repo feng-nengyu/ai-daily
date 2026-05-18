@@ -15,6 +15,7 @@ dist/
 
 # Project data
 data/
+site/
 *.db
 *.db-journal
 .env
