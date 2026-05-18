@@ -67,18 +67,50 @@ def test_save_score_and_summary_roundtrip(tmp_path: Path):
     s.close()
 
 
-def test_get_unscored_items_returns_only_recent_without_score(tmp_path: Path):
+def test_get_unscored_items_filters_by_first_seen_not_published_at(tmp_path: Path):
+    """An item with old published_at but fresh first_seen MUST appear;
+    an item with old first_seen MUST NOT appear, even if published_at is fresh.
+    """
     s = Storage(tmp_path / "t.db")
     s.init()
-    s.record_items([
-        _item("https://a", days_ago=0),
-        _item("https://b", days_ago=0),
-        _item("https://old", days_ago=30),
-    ])
-    s.save_score("https://a", Score(score=3, tags=[], model="m", cost_usd=0.0))
+
+    # Recently recorded item with old published_at - should appear
+    s.record_items([_item("https://recent-discovery", days_ago=30)])
+
+    # Insert directly to simulate old first_seen with fresh published_at
+    conn = s._conn_or_die()
+    old_first_seen = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat()
+    fresh_pub = datetime.now(timezone.utc).isoformat()
+    conn.execute(
+        "INSERT INTO items (url, title, content, source, published_at, raw_json, first_seen)"
+        " VALUES (?, ?, ?, ?, ?, ?, ?)",
+        ("https://stale-but-recently-published", "t", "c", "test",
+         fresh_pub, "{}", old_first_seen),
+    )
+    conn.commit()
+
     unscored = s.get_unscored_items(within_days=7)
     urls = {it.url for it in unscored}
-    assert urls == {"https://b"}  # old too old, a already scored
+    assert urls == {"https://recent-discovery"}
+    s.close()
+
+
+def test_get_unscored_items_excludes_already_scored(tmp_path: Path):
+    s = Storage(tmp_path / "t.db")
+    s.init()
+    s.record_items([_item("https://a"), _item("https://b")])
+    s.save_score("https://a", Score(score=5, tags=[], model="m", cost_usd=0.0))
+    unscored = s.get_unscored_items(within_days=7)
+    assert {it.url for it in unscored} == {"https://b"}
+    s.close()
+
+
+def test_save_score_for_unknown_url_raises_fk_violation(tmp_path: Path):
+    import sqlite3
+    s = Storage(tmp_path / "t.db")
+    s.init()
+    with pytest.raises(sqlite3.IntegrityError):
+        s.save_score("https://ghost", Score(score=5, tags=[], model="m", cost_usd=0.0))
     s.close()
 
 

@@ -47,6 +47,7 @@ class Storage:
     def init(self) -> None:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._conn = sqlite3.connect(self.db_path)
+        self._conn.execute("PRAGMA foreign_keys = ON")
         self._conn.row_factory = sqlite3.Row
         # If legacy Stage-1-only table is present and new `items` is not, drop it.
         # We don't migrate; data will be re-fetched. Documented in plan.
@@ -126,7 +127,7 @@ class Storage:
         cutoff = (datetime.now(timezone.utc) - timedelta(days=within_days)).isoformat()
         rows = conn.execute(
             "SELECT i.* FROM items i LEFT JOIN summaries s ON s.url = i.url"
-            " WHERE s.url IS NULL AND i.published_at >= ?"
+            " WHERE s.url IS NULL AND i.first_seen >= ?"
             " ORDER BY i.first_seen DESC",
             (cutoff,),
         ).fetchall()
@@ -180,7 +181,7 @@ class Storage:
             "       s.innovation, s.approach, s.metrics, s.links, s.why_relevant,"
             "       s.summarizer_model, s.summarizer_cost_usd"
             " FROM items i JOIN summaries s ON s.url = i.url"
-            " WHERE s.score >= ? AND s.created_at >= ?"
+            " WHERE s.score >= ? AND i.first_seen >= ?"
             " ORDER BY s.score DESC, i.published_at DESC"
             " LIMIT ?",
             (min_score, cutoff, limit),
