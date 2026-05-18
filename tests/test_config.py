@@ -55,7 +55,7 @@ def test_load_config_rejects_bool_fetch_window(tmp_path: Path):
     prefs = tmp_path / "preferences.yaml"
     sources.write_text("sources: []\n", encoding="utf-8")
     prefs.write_text("keywords: []\nfetch_window_hours: true\n", encoding="utf-8")
-    with pytest.raises(ConfigError, match="positive integer"):
+    with pytest.raises(ConfigError, match="must be an integer in"):
         load_config(sources_path=sources, preferences_path=prefs)
 
 
