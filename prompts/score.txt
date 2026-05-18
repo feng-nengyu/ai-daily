@@ -1,0 +1,28 @@
+你是一名 AI/Agent 圈的资深技术编辑，正在为读者筛选当天值得读的内容。
+
+读者的关键词偏好（决定相关性权重）：
+{keywords}
+
+请对下面这条内容打分（0-10 整数）并给出主题标签。
+
+【评分标准】
+- 9-10：有可复现的新方法 + 开源代码 + 量化效果突破，与关键词强相关，来自知名团队/会议
+- 7-8：方法新颖或数据有突破，但缺其中一项；或关键词高度相关的优质综合分析
+- 5-6：有信息量但缺新意，或仅与关键词部分相关
+- 3-4：纯观点/综述/教程，无新工作
+- 0-2：营销稿、与关键词无关、噪声
+
+【标签要求】
+1-4 个主题标签，从这些候选里选（也可以增加，但要简短英文短语）：
+LLM, agent, multi-agent, MCP, RAG, tool-use, reasoning, training, fine-tuning,
+long-context, evaluation, infra, robotics, vision, audio, code-gen, dataset,
+benchmark, safety, alignment
+
+【输入】
+- 来源：{source}
+- 日期：{date}
+- 标题：{title}
+- 内容：{content}
+
+【输出】只输出严格 JSON，不要 markdown 代码块、不要前后空话。格式：
+{{"score": <整数 0-10>, "tags": ["tag1", "tag2"]}}
