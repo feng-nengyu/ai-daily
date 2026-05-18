@@ -16,14 +16,6 @@ jobs:
       - name: Checkout main (code)
         uses: actions/checkout@v4
 
-      - name: Checkout data branch (state)
-        uses: actions/checkout@v4
-        with:
-          ref: data
-          path: data-branch
-          fetch-depth: 1
-        continue-on-error: true
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -33,6 +25,25 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Prepare data-branch workdir (fetch existing or start orphan)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          rm -rf data-branch
+          mkdir data-branch
+          cd data-branch
+          git init -q
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
+          if git fetch --depth=1 origin data 2>/dev/null; then
+            git checkout -q -b data origin/data
+            echo "Restored data branch."
+          else
+            git checkout -q --orphan data
+            git rm -rfq . 2>/dev/null || true
+            echo "data branch missing; will create on first push."
+          fi
 
       - name: Restore previous state from data branch
         run: |
@@ -55,26 +66,15 @@ jobs:
           python -m src.main render --output-dir docs
 
       - name: Commit & push to data branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
-          if [ ! -d data-branch/.git ]; then
-            # First-ever run: bootstrap an orphan `data` branch
-            rm -rf data-branch
-            mkdir -p data-branch
-            cd data-branch
-            git init -b data
-            git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
-          else
-            cd data-branch
-          fi
+          cd data-branch
           rm -rf data docs
           cp -r ../data ./data 2>/dev/null || true
           cp -r ../docs ./docs 2>/dev/null || true
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git add data docs
+          git add -A data docs
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
