@@ -1,3 +1,4 @@
+import asyncio
 import logging
 from datetime import datetime, timedelta, timezone
 from typing import Any
@@ -14,11 +15,22 @@ from src.models import Item
 logger = logging.getLogger(__name__)
 
 _API_URL = "https://export.arxiv.org/api/query"
+_TIMEOUT_SECONDS = 60.0  # arxiv export endpoint is sometimes slow
+_RETRY_DELAY_SECONDS = 5.0  # back off once on transient failures
 
 
 def _build_query(categories: list[str]) -> str:
     parts = [f"cat:{c}" for c in categories]
     return " OR ".join(parts)
+
+
+def _is_transient(exc: Exception) -> bool:
+    if isinstance(exc, httpx.TimeoutException):
+        return True
+    if isinstance(exc, httpx.HTTPStatusError):
+        sc = exc.response.status_code
+        return sc == 429 or sc >= 500
+    return False
 
 
 async def fetch_arxiv(source: dict[str, Any], window_hours: int) -> list[Item]:
@@ -35,11 +47,24 @@ async def fetch_arxiv(source: dict[str, Any], window_hours: int) -> list[Item]:
     url = f"{_API_URL}?{urlencode(params)}"
 
     headers = {"User-Agent": USER_AGENT}
-    async with httpx.AsyncClient(timeout=30.0, headers=headers) as client:
-        response = await client.get(url)
-        response.raise_for_status()
-        body = response.text
+    body: str | None = None
+    async with httpx.AsyncClient(timeout=_TIMEOUT_SECONDS, headers=headers) as client:
+        for attempt in range(2):
+            try:
+                response = await client.get(url)
+                response.raise_for_status()
+                body = response.text
+                break
+            except Exception as e:
+                if attempt == 1 or not _is_transient(e):
+                    raise
+                logger.warning(
+                    "arxiv attempt 1 transient failure (%s); retrying in %.1fs",
+                    type(e).__name__, _RETRY_DELAY_SECONDS,
+                )
+                await asyncio.sleep(_RETRY_DELAY_SECONDS)
 
+    assert body is not None
     feed = feedparser.parse(body)
     cutoff = datetime.now(timezone.utc) - timedelta(hours=window_hours)
     items: list[Item] = []
