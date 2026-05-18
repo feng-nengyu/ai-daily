@@ -1,5 +1,6 @@
 # 默认信息源。用户在 fork 中可改这个文件来增删源。
 sources:
+  # ── 论文 / 学术 ──
   - name: arxiv-cs-ai
     type: arxiv
     categories: [cs.AI, cs.CL, cs.MA]
@@ -9,6 +10,7 @@ sources:
     type: rss
     url: https://huggingface.co/blog/feed.xml
 
+  # ── GitHub Topic 趋势 ──
   - name: github-trending-agent
     type: github
     topic: agent
@@ -24,35 +26,72 @@ sources:
     topic: mcp
     min_stars: 5
 
+  # ── 主要厂商 / 实验室 博客 ──
   - name: openai-blog
     type: rss
     url: https://openai.com/blog/rss.xml
-
-  # Anthropic 暂无可用的公开 RSS（2026-05 验证：substack 弃用、官网 /news/rss.xml /feed 全 404）。
-  # - name: anthropic-news
-  #   type: rss
-  #   url: <TBD>
 
   - name: deepmind-blog
     type: rss
     url: https://deepmind.google/blog/rss.xml
 
-  # DeepSeek 暂无公开 RSS feed（2026-05 验证），如官方上线再添加。
-  # - name: deepseek-news
-  #   type: rss
-  #   url: <TBD>
+  - name: google-research
+    type: rss
+    url: https://research.google/blog/rss/
 
+  - name: nvidia-dev-blog
+    type: rss
+    url: https://developer.nvidia.com/blog/feed/
+
+  - name: microsoft-research
+    type: rss
+    url: https://www.microsoft.com/en-us/research/feed/
+
+  - name: together-ai-blog
+    type: rss
+    url: https://www.together.ai/blog/rss.xml
+
+  # 以下厂商 2026-05 验证暂无可用公开 RSS feed；如官方上线再添加：
+  # - Anthropic（substack 弃用、官网 /news/rss.xml /research/rss.xml /index.xml 全 404）
+  # - Mistral（/news/feed.xml /feed.xml /rss.xml 全 404）
+  # - Meta AI（ai.meta.com/blog/rss/ 等返回 400）
+  # - Cohere（/blog/rss.xml 200 但不是 feed）
+  # - xAI（/news/rss 403）
+  # - Stability AI（404）
+  # - DeepSeek（无公开 RSS）
+
+  # ── 框架方 ──
   - name: langchain-blog
     type: rss
     url: https://blog.langchain.dev/rss.xml
 
-  # LlamaIndex 暂无可用的公开 RSS（2026-05 验证：medium feed 死、官网 feed.xml/index.xml 全 404）。
+  # LlamaIndex 暂无可用公开 RSS（medium feed 死、官网各种 feed 路径 404）。
   # - name: llamaindex-blog
   #   type: rss
   #   url: <TBD>
 
-  # HN Algolia 的 query 参数不支持 OR/括号语法（会被当字面 token 搜），
-  # 只能用单个或空格分隔的关键词。这里用 "AI" 作为最宽口径，配合 min_points 过滤。
+  # ── 行业评论 / 专家个人博客 / 通讯 ──
+  - name: lilian-weng
+    type: rss
+    url: https://lilianweng.github.io/index.xml
+
+  - name: simon-willison
+    type: rss
+    url: https://simonwillison.net/atom/everything/
+
+  - name: sebastian-raschka
+    type: rss
+    url: https://magazine.sebastianraschka.com/feed
+
+  - name: andrej-karpathy
+    type: rss
+    url: https://karpathy.github.io/feed.xml
+
+  - name: import-ai
+    type: rss
+    url: https://importai.substack.com/feed
+
+  # ── 社区聚合 ──
   - name: hackernews-ai
     type: hackernews
     query: "AI"
@@ -62,7 +101,7 @@ sources:
     type: rss
     url: https://www.qbitai.com/feed
 
-  # 机器之心暂无可用的公开 RSS（2026-05 验证：/rss /feed 返回非 feed 页面）。
+  # 机器之心暂无可用公开 RSS（/rss /feed 返回非 feed 页面）。
   # - name: jiqizhixin
   #   type: rss
   #   url: <TBD>
