@@ -4,11 +4,14 @@ import logging
 import sys
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from src.config import load_config
 from src.dedup import dedup_by_url
 from src.fetchers import fetch_all
 from src.logging_setup import setup_logging
 from src.storage import Storage
+from src.summarizer import run_summarize
 
 
 logger = logging.getLogger(__name__)
@@ -38,29 +41,53 @@ async def run_fetch(
         storage.close()
 
 
+async def run_summarize_cmd(
+    sources_path: Path = Path("config/sources.yaml"),
+    preferences_path: Path = Path("config/preferences.yaml"),
+    db_path: Path = Path("data/ai_daily.db"),
+) -> dict:
+    config = load_config(sources_path=sources_path, preferences_path=preferences_path)
+    storage = Storage(db_path)
+    storage.init()
+    try:
+        return await run_summarize(storage, config)
+    finally:
+        storage.close()
+
+
 def _parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(prog="ai-daily")
     sub = parser.add_subparsers(dest="command", required=True)
 
-    fetch_p = sub.add_parser("fetch", help="Fetch all sources and store new URLs")
-    fetch_p.add_argument("--sources", default="config/sources.yaml")
-    fetch_p.add_argument("--preferences", default="config/preferences.yaml")
-    fetch_p.add_argument("--db", default="data/ai_daily.db")
+    for name, help_ in (
+        ("fetch", "Fetch all sources and store items"),
+        ("summarize", "Score unscored items and summarize the top-N"),
+    ):
+        p = sub.add_parser(name, help=help_)
+        p.add_argument("--sources", default="config/sources.yaml")
+        p.add_argument("--preferences", default="config/preferences.yaml")
+        p.add_argument("--db", default="data/ai_daily.db")
 
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
+    load_dotenv()  # local dev convenience; no-op in GitHub Actions
     setup_logging()
     args = _parse_args(argv if argv is not None else sys.argv[1:])
     if args.command == "fetch":
-        asyncio.run(
-            run_fetch(
-                sources_path=Path(args.sources),
-                preferences_path=Path(args.preferences),
-                db_path=Path(args.db),
-            )
-        )
+        asyncio.run(run_fetch(
+            sources_path=Path(args.sources),
+            preferences_path=Path(args.preferences),
+            db_path=Path(args.db),
+        ))
+        return 0
+    if args.command == "summarize":
+        asyncio.run(run_summarize_cmd(
+            sources_path=Path(args.sources),
+            preferences_path=Path(args.preferences),
+            db_path=Path(args.db),
+        ))
         return 0
     raise SystemExit(f"unknown command: {args.command}")
 
