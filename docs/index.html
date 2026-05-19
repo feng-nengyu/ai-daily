@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>0</strong> 条（0 天）·
-      生成于 2026-05-19 05:05 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>10</strong> 条（1 天）·
+      生成于 2026-05-19 10:52 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        
+          <a href="#archive-2026-05-19" onclick="openArchive('2026-05-19')">2026-05-19 <span class="n">10</span></a>
         
       </div>
     </nav>
@@ -229,37 +231,20 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
-    <article class="card" data-url="https://github.com/deepset-ai/haystack">
-      <button class="star" aria-label="收藏" data-url="https://github.com/deepset-ai/haystack" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://github.com/deepset-ai/haystack" target="_blank" rel="noopener">deepset-ai/haystack</a></h2>
-        <div class="badges">
-          <span class="score high">9</span>
-          <span class="source cat-github" title="github:github-trending-agent">GitHub · agent</span>
-        </div>
-      </div>
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
       
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">RAG</span><span class="tag">tool-use</span>
-      </div>
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
       
-      <p class="innovation">Haystack 把“做 RAG/Agent 应用”从零散脚本变成可组合的编排框架：用模块化流水线明确控制检索、路由、记忆与生成，方便上生产与扩展。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>核心是把 LLM 应用拆成可插拔组件（如检索器、路由器、记忆、生成器），再用“管道/工作流”把它们串起来，形成可复用的 RAG 与 Agent 流程。它强调显式控制：你可以指定何时检索、检索哪些源、如何路由到不同模型/工具、以及对话记忆如何读写，而不是把逻辑藏在提示词里。面向生产场景提供可扩展的编排方式，适配语义搜索、对话系统与多模态（图文等）应用。相对很多“单一链式调用”的框架，它更偏工程化的流程编排与组件边界清晰，便于调试、替换与治理。</dd>
-        <dt>关键数据</dt><dd>未披露。该项目的价值主要体现在工程可控性与可维护性（组件化、显式路由/检索/记忆），而非单一 benchmark 分数或推理速度数字。</dd>
-        <dt>为什么值得关注</dt><dd>对关心 RAG、LLM agent、tool use（工具调用）的人来说，它提供了“可控的检索+路由+记忆+生成”编排骨架，适合把实验性 Agent 流程落到可维护的生产系统。也便于做多 Agent/多模型路由与上下文工程（context engineering）的系统化实现。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
         
-        
-        <a class="cta" href="https://github.com/deepset-ai/haystack" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
+          <details class="date-group" id="archive-2026-05-19" open>
+            <summary>2026-05-19 <span class="n">10 条</span></summary>
+            <div class="cards">
+              
     <article class="card" data-url="https://arxiv.org/abs/2605.16233v1">
       <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.16233v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -289,197 +274,31 @@
         <a class="cta" href="https://arxiv.org/abs/2605.16233v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://www.langchain.com/blog/tuning-deep-agents-different-models">
-      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/tuning-deep-agents-different-models" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://github.com/deepset-ai/haystack">
+      <button class="star" aria-label="收藏" data-url="https://github.com/deepset-ai/haystack" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://www.langchain.com/blog/tuning-deep-agents-different-models" target="_blank" rel="noopener">Tuning Deep Agents to Work Well with Different Models</a></h2>
+        <h2><a href="https://github.com/deepset-ai/haystack" target="_blank" rel="noopener">deepset-ai/haystack</a></h2>
         <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
+          <span class="score high">9</span>
+          <span class="source cat-github" title="github:github-trending-agent">GitHub · agent</span>
         </div>
       </div>
       
       <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">RAG</span>
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">RAG</span><span class="tag">tool-use</span>
       </div>
       
-      <p class="innovation">LangChain 的 Deep Agents 新增“按模型定制”的 profile：同一套 Agent 能针对不同大模型调 prompt、工具和中间件，跑分在 tau2-bench 子集上直接多 10–20 分。</p>
+      <p class="innovation">Haystack 把“做 RAG/Agent 应用”从零散脚本变成可组合的编排框架：用模块化流水线明确控制检索、路由、记忆与生成，方便上生产与扩展。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>过去 Deep Agents 走“通用配置”，尽量兼容不同模型家族，但容易在某些模型上不够贴合。现在引入 model-specific profiles（模型专属配置），把提示词模板、可用工具集合、以及 middleware（中间层：负责路由/格式化/调用约束）按模型分别调参。官方开箱即用提供 OpenAI、Anthropic、Google 三套 profile。核心变化是把“Agent 行为策略”从一套默认 harness（评测/运行框架配置）拆成可替换的模型适配层，减少跨模型迁移时的隐性失配。</dd>
-        <dt>关键数据</dt><dd>在 tau2-bench 的一个子集上，相比默认 harness，分数提升 10–20 点；具体是哪些任务子集、样本量、以及是否为平均分/成功率未披露。未给出成本（token/延迟）变化数据，但定性上说明“同一 Agent 框架”通过适配层就能获得可观增益。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use（工具调用）/ reasoning models（推理模型）来说，模型差异往往体现在工具调用格式、系统提示词约束、以及中间层策略上；profile 化提供了一种更工程化的“多模型可移植”做法。也为多模型、多 Agent 编排时的统一接口（类似 MCP 的适配思路）提供参考：把差异收敛到可配置层，而不是改业务逻辑。</dd>
+        <dt>技术方案</dt><dd>核心是把 LLM 应用拆成可插拔组件（如检索器、路由器、记忆、生成器），再用“管道/工作流”把它们串起来，形成可复用的 RAG 与 Agent 流程。它强调显式控制：你可以指定何时检索、检索哪些源、如何路由到不同模型/工具、以及对话记忆如何读写，而不是把逻辑藏在提示词里。面向生产场景提供可扩展的编排方式，适配语义搜索、对话系统与多模态（图文等）应用。相对很多“单一链式调用”的框架，它更偏工程化的流程编排与组件边界清晰，便于调试、替换与治理。</dd>
+        <dt>关键数据</dt><dd>未披露。该项目的价值主要体现在工程可控性与可维护性（组件化、显式路由/检索/记忆），而非单一 benchmark 分数或推理速度数字。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 RAG、LLM agent、tool use（工具调用）的人来说，它提供了“可控的检索+路由+记忆+生成”编排骨架，适合把实验性 Agent 流程落到可维护的生产系统。也便于做多 Agent/多模型路由与上下文工程（context engineering）的系统化实现。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-05-18</span>
         
         
-        <a class="cta" href="https://www.langchain.com/blog/tuning-deep-agents-different-models" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://huggingface.co/blog/ibm-research/open-agent-leaderboard">
-      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" target="_blank" rel="noopener">The Open Agent Leaderboard</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">evaluation</span>
-      </div>
-      
-      <p class="innovation">Hugging Face 推出「Open Agent Leaderboard」，把“会用工具做任务”的 Agent 统一到一个可复现的公开榜单里，方便横向比较不同 LLM 的真实执行能力而不只看对话分数。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>核心思路是用一套标准化的 Agent 评测流程：给模型同样的任务、同样的工具接口（tool use，指调用外部函数/API）、同样的运行约束，然后统计是否完成目标。榜单强调“开放”：评测脚本、任务集与提交流程尽量可复现，减少只报结果不报细节的情况。与传统 LLM 榜单主要测问答/推理不同，这里更关注多步行动（planning）与工具调用的稳定性。它也更贴近 MCP（模型上下文协议）/工具生态的实际落地场景：模型不仅要会说，还要会做。</dd>
-        <dt>关键数据</dt><dd>具体包含哪些任务集、评分口径（如成功率/平均步数/成本）、以及当前各模型的排名与分数：未披露。定性意义在于它把“Agent 能否完成端到端任务”从零散 demo 变成可对照的量化评测入口，便于跟踪模型迭代与工具链改动带来的变化。</dd>
-        <dt>为什么值得关注</dt><dd>如果你关注 LLM agent、tool use、multi-agent 或 MCP，这类榜单能直接回答“哪个模型更会调用工具、按步骤完成任务”。对做 RAG（检索增强生成）/工作流编排的人也有用：可以用同一评测框架对比不同模型在真实执行链路中的可靠性与失败模式。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <a class="cta" href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18176v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18176v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18176v1" target="_blank" rel="noopener">MARS: Technical Report for the CASTLE Challenge at EgoVis 2026</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">RAG</span>
-      </div>
-      
-      <p class="innovation">把 CASTLE 的多天多视角多模态问答，明确建模成“Agent 选证据源”的问题：模型先决定要看哪种模态再作答，而不是只做文本 RAG。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>系统 MARS 先按官方目录把证据整理成“记忆库”，分两类主源（视频、转写）和四类辅源（注视、心率、照片、热成像）。由于视频太长无法每题都塞进上下文，先把长视频转成字幕/描述并用 DeepSeek 做摘要，用时间压缩来保留关键信息，同时保留照片等媒体作为可被点名调用的证据。推理时用 GPT-5.4 作为决策 Agent（代理）：循环判断是继续推理、请求缺失模态、直接输出答案，还是在证据不足时随机猜一个选项。与以往单视频、偏文本流水线不同，它把“选哪种证据”作为显式决策步骤，并支持跨 4 天、15 个同步视角与多种传感器信号的组合取证。</dd>
-        <dt>关键数据</dt><dd>任务为 CASTLE 2024 数据集上的 185 道封闭式（多选/定式）问题；系统在 CASTLE Challenge 最终榜单获得第 2 名。具体准确率/得分、推理耗时、上下文长度与摘要压缩比例未披露；但名次说明其证据选择与多模态调度策略在该赛题中具备竞争力。</dd>
-        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use（按需调用不同模态“工具/证据源”）范式：把多模态 RAG 从“检索文本”扩展到“选择模态并取证”。对关注 multi-agent/推理型模型的人也有参考价值：它把“继续推理 vs 请求更多证据 vs 直接回答”的控制流做成可复用的决策循环。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <span class="links">补充：<a href="https://github.com/Hyu-Zhang/MARS" target="_blank" rel="noopener">https://github.com/Hyu-Zhang/MARS</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.18176v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18077v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18077v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18077v1" target="_blank" rel="noopener">LLM-Guided Communication for Cooperative Multi-Agent Reinforcement Learning</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">用大模型当“通信协议设计师”，让多智能体在部分可观测环境下通过更少但更有信息量的消息，尽量一致地还原全局状态，从而提升协作强化学习表现。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者提出 LMAC（LLM-driven Multi-Agent Communication），核心是让 LLM（大语言模型）利用推理能力生成/改写智能体之间的通信协议，而不是手工设定消息格式或只学一个黑盒通信网络。训练/迭代时引入显式的“状态感知”准则：衡量每个智能体能把潜在真实状态还原得多准，以及不同智能体之间知识差距有多大。LMAC 通过反复优化协议，使“状态恢复更准确”与“各智能体认知更一致”同时变好。与以往方法相比，它强调协议可被推理地改进，并把通信目标从“提高回报”前置为“提高可恢复的状态信息”。</dd>
-        <dt>关键数据</dt><dd>论文摘要未披露具体数值（如状态重建误差下降百分比、回报提升幅度、通信开销变化等）。定性结论是在“多种 MARL 基准”上：各智能体的状态重建更好、智能体间差异更小，并且在协作任务回报上优于既有通信基线；但缺少数字使得难以判断提升来自协议本身还是额外计算/训练成本。</dd>
-        <dt>为什么值得关注</dt><dd>这条把 LLM 的 reasoning（推理）用于 multi-agent 的“通信/协议”层，属于典型的 LLM agent + multi-agent 协作方向。若你关注 tool use/MCP 式的“协议化交互”，LMAC 提供了一个把通信目标显式化（状态可恢复、认知一致）的设计思路，可迁移到更广的代理协作与信息共享场景。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.18077v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18073v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18073v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18073v1" target="_blank" rel="noopener">A-ProS: Towards Reliable Autonomous Programming Through Multi-Model Feedback</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">把“写解法”和“找 bug”拆成不同模型协作，并用可持续上下文的多轮执行反馈来改代码，在竞赛题上量化展示了更可靠的自动编程闭环。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>A-ProS 是一个自动解题 agent：先由 ChatGPT 系列生成器（GPT-4 或 GPT-5）产出初版算法与代码，再交给 3 个“调试批评者”模型（Codestral-2508、Llama-3.3-70B、DeepSeek-R1）基于运行/评测反馈提出修改建议。整体采用 2×3 因子设计（2 个生成器 × 3 个批评者）形成 6 种工作流，并固定进行 3 轮迭代精修。关键区别在于“stateful refinement（有状态精修）”：每一轮保留历史尝试、失败原因与修改轨迹，而不是每轮从零开始（stateless）。作者还用对照实验把这种持久上下文与多模型反馈的贡献单独拆出来验证。</dd>
-        <dt>关键数据</dt><dd>在 367 道题（ICPC World Finals 2011-2024 + Codeforces 1200-1800）上：GPT-5 工作流从初始 39 个 AC 提升到 85-90 个 AC（3 轮后，净增 46-51）；GPT-4 从 15 提升到 31-38（净增 16-23）。在 47 题消融中：有状态精修比无状态高 8.5-10.6 个百分点，并将“重复失败”最多降低 3.5 倍。与常见 baseline agent loop 相比，A-ProS 的增益幅度超过 2×。训练成本、推理时延、token 消耗未披露。</dd>
-        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use（运行/评测反馈）+ multi-model（多模型分工）范式，直接回答“如何用多轮反馈让代码生成更可靠”。对关注 reasoning models、multi-agent 协作与可复用上下文（类似 MCP 场景中的持久状态）的人，提供了可量化的设计取舍与收益。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.18073v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18071v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18071v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18071v1" target="_blank" rel="noopener">KVDrive: A Holistic Multi-Tier KV Cache Management System for Long-Context LLM Inference</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">long-context</span>
-      </div>
-      
-      <p class="innovation">把长上下文推理的 KV cache 从“只在 GPU/内存里挪”扩展到 GPU+DRAM+SSD 三层统一调度，用系统级编排而不是更激进稀疏化来压低搬运开销，吞吐最高提升 1.74 倍且不掉精度。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>现有 KV offload 多把完整 KV 放在主机内存（DRAM），解码时按需抓取“关键 KV”，但稀疏度再提高会伤准确率，且上下文/批量一大就被 KV 传输拖慢。KVDrive 走系统路线：在 GPU 显存、主机 DRAM、SSD 之间做多层缓存放置与迁移决策，尽量让常用 KV 留在更快的层级以提高复用、减少重复搬运。它根据注意力（attention）访问行为自适应管理缓存，避免“抓了又不用/反复抓同一段”的无效传输。同时重构解码流水线，把 I/O 阶段与 CPU/GPU 计算阶段重叠执行，减少因等待数据导致的停顿。最后做跨层协同的数据移动与调度，让长上下文推理在 GPU/DRAM 预算很紧时仍能扩展到更大上下文与更大 batch。</dd>
-        <dt>关键数据</dt><dd>在长上下文基准与常见 LLM 上评测：吞吐最高达到相对 SOTA（当前最强同类系统）1.74x；准确率“保持不变/不下降”（未披露具体任务分数与误差范围）。未披露：具体支持的最大上下文长度、GPU/DRAM/SSD 配置、KV 传输量下降比例与端到端延迟分解，但定性结论是“KV 传输成为解码主瓶颈”时仍能维持更高吞吐。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 这类需要长上下文与更大并发的在线推理，KV cache 往往是成本与延迟的核心瓶颈；这篇提供了可落地的“三层内存+流水线”系统解法。也适合关注多 agent 并发推理的人：batch 变大时 KV 搬运会爆炸，KVDrive 的跨层调度思路直接对症。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.18071v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18067v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18067v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18067v1" target="_blank" rel="noopener">PPAI: Enabling Personalized LLM Agent Interoperability for Collaborative Edge Intelligence</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">把“每个人手机/边缘设备上的个性化 LLM agent”连成可互相调用的 P2P 网络：按专长把查询转给更合适的远端 agent，同时在节点频繁上下线时还能做负载均衡。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>系统目标是让本地个性化 agent 在能力不足时，把任务委派给网络里更擅长的远端 agent（类似“agent 互操作/互通”）。为解决 P2P 网络里 agent 池不断变化（churn，上下线频繁）导致的“找谁做”和“谁太忙”问题，作者提出基于 prototype（原型向量/代表性特征）的可扩展“查询-代理配对打分”机制，用来快速筛出合适的候选 agent。随后用一个多 agent 的互操作 Bayesian game（贝叶斯博弈：在信息不完全下做策略选择）来在本地需求与全局效率之间做决策，尤其针对远端负载变化快、来不及被准确观测的场景。最后实现了 PPAI 原型系统，并用多任务实验对比基线，验证在扩大可完成任务范围的同时维持负载平衡。</dd>
-        <dt>关键数据</dt><dd>平均准确率最高提升 7.96%（跨多个任务）；端到端延迟降低 16.34%（相对基线）。实验任务集合、网络规模、agent 数量/模型大小、负载均衡指标（如尾延迟、吞吐、失败率）等细节未披露；但给出的两项数字表明它同时在“效果”和“响应时间”上有可量化收益。</dd>
-        <dt>为什么值得关注</dt><dd>这篇直接命中 LLM agent / multi-agent / tool use 的“互操作”问题：在动态 P2P 环境里做任务路由与负载均衡。prototype 打分 + 贝叶斯博弈的组合也为后续做 MCP 类跨 agent 调用、以及更稳健的 agent 调度策略提供了可借鉴的设计思路。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.18067v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://github.com/deepset-ai/haystack" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2605.18032v1">
@@ -511,14 +330,202 @@
         <a class="cta" href="https://arxiv.org/abs/2605.18032v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18067v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18067v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.18067v1" target="_blank" rel="noopener">PPAI: Enabling Personalized LLM Agent Interoperability for Collaborative Edge Intelligence</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
+      </div>
       
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
       
-        <p class="empty">归档暂时为空。</p>
+      <p class="innovation">把“每个人手机/边缘设备上的个性化 LLM agent”连成可互相调用的 P2P 网络：按专长把查询转给更合适的远端 agent，同时在节点频繁上下线时还能做负载均衡。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>系统目标是让本地个性化 agent 在能力不足时，把任务委派给网络里更擅长的远端 agent（类似“agent 互操作/互通”）。为解决 P2P 网络里 agent 池不断变化（churn，上下线频繁）导致的“找谁做”和“谁太忙”问题，作者提出基于 prototype（原型向量/代表性特征）的可扩展“查询-代理配对打分”机制，用来快速筛出合适的候选 agent。随后用一个多 agent 的互操作 Bayesian game（贝叶斯博弈：在信息不完全下做策略选择）来在本地需求与全局效率之间做决策，尤其针对远端负载变化快、来不及被准确观测的场景。最后实现了 PPAI 原型系统，并用多任务实验对比基线，验证在扩大可完成任务范围的同时维持负载平衡。</dd>
+        <dt>关键数据</dt><dd>平均准确率最高提升 7.96%（跨多个任务）；端到端延迟降低 16.34%（相对基线）。实验任务集合、网络规模、agent 数量/模型大小、负载均衡指标（如尾延迟、吞吐、失败率）等细节未披露；但给出的两项数字表明它同时在“效果”和“响应时间”上有可量化收益。</dd>
+        <dt>为什么值得关注</dt><dd>这篇直接命中 LLM agent / multi-agent / tool use 的“互操作”问题：在动态 P2P 环境里做任务路由与负载均衡。prototype 打分 + 贝叶斯博弈的组合也为后续做 MCP 类跨 agent 调用、以及更稳健的 agent 调度策略提供了可借鉴的设计思路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.18067v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18071v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18071v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.18071v1" target="_blank" rel="noopener">KVDrive: A Holistic Multi-Tier KV Cache Management System for Long-Context LLM Inference</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">long-context</span>
+      </div>
+      
+      <p class="innovation">把长上下文推理的 KV cache 从“只在 GPU/内存里挪”扩展到 GPU+DRAM+SSD 三层统一调度，用系统级编排而不是更激进稀疏化来压低搬运开销，吞吐最高提升 1.74 倍且不掉精度。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>现有 KV offload 多把完整 KV 放在主机内存（DRAM），解码时按需抓取“关键 KV”，但稀疏度再提高会伤准确率，且上下文/批量一大就被 KV 传输拖慢。KVDrive 走系统路线：在 GPU 显存、主机 DRAM、SSD 之间做多层缓存放置与迁移决策，尽量让常用 KV 留在更快的层级以提高复用、减少重复搬运。它根据注意力（attention）访问行为自适应管理缓存，避免“抓了又不用/反复抓同一段”的无效传输。同时重构解码流水线，把 I/O 阶段与 CPU/GPU 计算阶段重叠执行，减少因等待数据导致的停顿。最后做跨层协同的数据移动与调度，让长上下文推理在 GPU/DRAM 预算很紧时仍能扩展到更大上下文与更大 batch。</dd>
+        <dt>关键数据</dt><dd>在长上下文基准与常见 LLM 上评测：吞吐最高达到相对 SOTA（当前最强同类系统）1.74x；准确率“保持不变/不下降”（未披露具体任务分数与误差范围）。未披露：具体支持的最大上下文长度、GPU/DRAM/SSD 配置、KV 传输量下降比例与端到端延迟分解，但定性结论是“KV 传输成为解码主瓶颈”时仍能维持更高吞吐。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 这类需要长上下文与更大并发的在线推理，KV cache 往往是成本与延迟的核心瓶颈；这篇提供了可落地的“三层内存+流水线”系统解法。也适合关注多 agent 并发推理的人：batch 变大时 KV 搬运会爆炸，KVDrive 的跨层调度思路直接对症。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.18071v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18073v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18073v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.18073v1" target="_blank" rel="noopener">A-ProS: Towards Reliable Autonomous Programming Through Multi-Model Feedback</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“写解法”和“找 bug”拆成不同模型协作，并用可持续上下文的多轮执行反馈来改代码，在竞赛题上量化展示了更可靠的自动编程闭环。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>A-ProS 是一个自动解题 agent：先由 ChatGPT 系列生成器（GPT-4 或 GPT-5）产出初版算法与代码，再交给 3 个“调试批评者”模型（Codestral-2508、Llama-3.3-70B、DeepSeek-R1）基于运行/评测反馈提出修改建议。整体采用 2×3 因子设计（2 个生成器 × 3 个批评者）形成 6 种工作流，并固定进行 3 轮迭代精修。关键区别在于“stateful refinement（有状态精修）”：每一轮保留历史尝试、失败原因与修改轨迹，而不是每轮从零开始（stateless）。作者还用对照实验把这种持久上下文与多模型反馈的贡献单独拆出来验证。</dd>
+        <dt>关键数据</dt><dd>在 367 道题（ICPC World Finals 2011-2024 + Codeforces 1200-1800）上：GPT-5 工作流从初始 39 个 AC 提升到 85-90 个 AC（3 轮后，净增 46-51）；GPT-4 从 15 提升到 31-38（净增 16-23）。在 47 题消融中：有状态精修比无状态高 8.5-10.6 个百分点，并将“重复失败”最多降低 3.5 倍。与常见 baseline agent loop 相比，A-ProS 的增益幅度超过 2×。训练成本、推理时延、token 消耗未披露。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use（运行/评测反馈）+ multi-model（多模型分工）范式，直接回答“如何用多轮反馈让代码生成更可靠”。对关注 reasoning models、multi-agent 协作与可复用上下文（类似 MCP 场景中的持久状态）的人，提供了可量化的设计取舍与收益。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.18073v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18077v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18077v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.18077v1" target="_blank" rel="noopener">LLM-Guided Communication for Cooperative Multi-Agent Reinforcement Learning</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">用大模型当“通信协议设计师”，让多智能体在部分可观测环境下通过更少但更有信息量的消息，尽量一致地还原全局状态，从而提升协作强化学习表现。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者提出 LMAC（LLM-driven Multi-Agent Communication），核心是让 LLM（大语言模型）利用推理能力生成/改写智能体之间的通信协议，而不是手工设定消息格式或只学一个黑盒通信网络。训练/迭代时引入显式的“状态感知”准则：衡量每个智能体能把潜在真实状态还原得多准，以及不同智能体之间知识差距有多大。LMAC 通过反复优化协议，使“状态恢复更准确”与“各智能体认知更一致”同时变好。与以往方法相比，它强调协议可被推理地改进，并把通信目标从“提高回报”前置为“提高可恢复的状态信息”。</dd>
+        <dt>关键数据</dt><dd>论文摘要未披露具体数值（如状态重建误差下降百分比、回报提升幅度、通信开销变化等）。定性结论是在“多种 MARL 基准”上：各智能体的状态重建更好、智能体间差异更小，并且在协作任务回报上优于既有通信基线；但缺少数字使得难以判断提升来自协议本身还是额外计算/训练成本。</dd>
+        <dt>为什么值得关注</dt><dd>这条把 LLM 的 reasoning（推理）用于 multi-agent 的“通信/协议”层，属于典型的 LLM agent + multi-agent 协作方向。若你关注 tool use/MCP 式的“协议化交互”，LMAC 提供了一个把通信目标显式化（状态可恢复、认知一致）的设计思路，可迁移到更广的代理协作与信息共享场景。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.18077v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18176v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18176v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.18176v1" target="_blank" rel="noopener">MARS: Technical Report for the CASTLE Challenge at EgoVis 2026</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">把 CASTLE 的多天多视角多模态问答，明确建模成“Agent 选证据源”的问题：模型先决定要看哪种模态再作答，而不是只做文本 RAG。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>系统 MARS 先按官方目录把证据整理成“记忆库”，分两类主源（视频、转写）和四类辅源（注视、心率、照片、热成像）。由于视频太长无法每题都塞进上下文，先把长视频转成字幕/描述并用 DeepSeek 做摘要，用时间压缩来保留关键信息，同时保留照片等媒体作为可被点名调用的证据。推理时用 GPT-5.4 作为决策 Agent（代理）：循环判断是继续推理、请求缺失模态、直接输出答案，还是在证据不足时随机猜一个选项。与以往单视频、偏文本流水线不同，它把“选哪种证据”作为显式决策步骤，并支持跨 4 天、15 个同步视角与多种传感器信号的组合取证。</dd>
+        <dt>关键数据</dt><dd>任务为 CASTLE 2024 数据集上的 185 道封闭式（多选/定式）问题；系统在 CASTLE Challenge 最终榜单获得第 2 名。具体准确率/得分、推理耗时、上下文长度与摘要压缩比例未披露；但名次说明其证据选择与多模态调度策略在该赛题中具备竞争力。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use（按需调用不同模态“工具/证据源”）范式：把多模态 RAG 从“检索文本”扩展到“选择模态并取证”。对关注 multi-agent/推理型模型的人也有参考价值：它把“继续推理 vs 请求更多证据 vs 直接回答”的控制流做成可复用的决策循环。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/Hyu-Zhang/MARS" target="_blank" rel="noopener">https://github.com/Hyu-Zhang/MARS</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.18176v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://huggingface.co/blog/ibm-research/open-agent-leaderboard">
+      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" target="_blank" rel="noopener">The Open Agent Leaderboard</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">Hugging Face 推出「Open Agent Leaderboard」，把“会用工具做任务”的 Agent 统一到一个可复现的公开榜单里，方便横向比较不同 LLM 的真实执行能力而不只看对话分数。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是用一套标准化的 Agent 评测流程：给模型同样的任务、同样的工具接口（tool use，指调用外部函数/API）、同样的运行约束，然后统计是否完成目标。榜单强调“开放”：评测脚本、任务集与提交流程尽量可复现，减少只报结果不报细节的情况。与传统 LLM 榜单主要测问答/推理不同，这里更关注多步行动（planning）与工具调用的稳定性。它也更贴近 MCP（模型上下文协议）/工具生态的实际落地场景：模型不仅要会说，还要会做。</dd>
+        <dt>关键数据</dt><dd>具体包含哪些任务集、评分口径（如成功率/平均步数/成本）、以及当前各模型的排名与分数：未披露。定性意义在于它把“Agent 能否完成端到端任务”从零散 demo 变成可对照的量化评测入口，便于跟踪模型迭代与工具链改动带来的变化。</dd>
+        <dt>为什么值得关注</dt><dd>如果你关注 LLM agent、tool use、multi-agent 或 MCP，这类榜单能直接回答“哪个模型更会调用工具、按步骤完成任务”。对做 RAG（检索增强生成）/工作流编排的人也有用：可以用同一评测框架对比不同模型在真实执行链路中的可靠性与失败模式。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://www.langchain.com/blog/tuning-deep-agents-different-models">
+      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/tuning-deep-agents-different-models" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.langchain.com/blog/tuning-deep-agents-different-models" target="_blank" rel="noopener">Tuning Deep Agents to Work Well with Different Models</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">LangChain 的 Deep Agents 新增“按模型定制”的 profile：同一套 Agent 能针对不同大模型调 prompt、工具和中间件，跑分在 tau2-bench 子集上直接多 10–20 分。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>过去 Deep Agents 走“通用配置”，尽量兼容不同模型家族，但容易在某些模型上不够贴合。现在引入 model-specific profiles（模型专属配置），把提示词模板、可用工具集合、以及 middleware（中间层：负责路由/格式化/调用约束）按模型分别调参。官方开箱即用提供 OpenAI、Anthropic、Google 三套 profile。核心变化是把“Agent 行为策略”从一套默认 harness（评测/运行框架配置）拆成可替换的模型适配层，减少跨模型迁移时的隐性失配。</dd>
+        <dt>关键数据</dt><dd>在 tau2-bench 的一个子集上，相比默认 harness，分数提升 10–20 点；具体是哪些任务子集、样本量、以及是否为平均分/成功率未披露。未给出成本（token/延迟）变化数据，但定性上说明“同一 Agent 框架”通过适配层就能获得可观增益。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use（工具调用）/ reasoning models（推理模型）来说，模型差异往往体现在工具调用格式、系统提示词约束、以及中间层策略上；profile 化提供了一种更工程化的“多模型可移植”做法。也为多模型、多 Agent 编排时的统一接口（类似 MCP 的适配思路）提供参考：把差异收敛到可配置层，而不是改业务逻辑。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://www.langchain.com/blog/tuning-deep-agents-different-models" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+            </div>
+          </details>
+        
       
     </section>
   </main>
