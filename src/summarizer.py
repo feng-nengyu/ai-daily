@@ -61,7 +61,7 @@ async def _summarize_one(item: Item, cfg: Config) -> tuple[Item, Summary | None,
         data, cost = await complete_json(
             model=cfg.models.summarizer,
             prompt=_render_summary_prompt(item, cfg.keywords),
-            max_tokens=800,
+            max_tokens=1500,
         )
         required = ("innovation", "approach", "metrics", "links", "why_relevant")
         missing = [k for k in required if k not in data]
