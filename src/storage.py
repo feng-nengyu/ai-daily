@@ -201,7 +201,7 @@ class Storage:
             "SELECT i.url, i.title, i.source, i.content, i.published_at,"
             "       s.score, s.tags_json, s.scorer_model, s.scorer_cost_usd,"
             "       s.innovation, s.approach, s.metrics, s.links, s.why_relevant,"
-            "       s.summarizer_model, s.summarizer_cost_usd"
+            "       s.summarizer_model, s.summarizer_cost_usd, s.surfaced_at"
             " FROM items i JOIN summaries s ON s.url = i.url"
             " WHERE s.score >= ? AND i.first_seen >= ?"
             " ORDER BY s.score DESC, i.published_at DESC"
@@ -217,7 +217,7 @@ class Storage:
             "SELECT i.url, i.title, i.source, i.content, i.published_at,"
             "       s.score, s.tags_json, s.scorer_model, s.scorer_cost_usd,"
             "       s.innovation, s.approach, s.metrics, s.links, s.why_relevant,"
-            "       s.summarizer_model, s.summarizer_cost_usd"
+            "       s.summarizer_model, s.summarizer_cost_usd, s.surfaced_at"
             " FROM items i JOIN summaries s ON s.url = i.url"
             " WHERE s.score >= ? AND s.innovation IS NOT NULL"
             "   AND s.surfaced_at IS NULL"
@@ -294,6 +294,11 @@ class Storage:
                 model=row["summarizer_model"] or "",
                 cost_usd=row["summarizer_cost_usd"] or 0.0,
             )
+        # surfaced_at is present in all three SELECTs that hit this helper.
+        # Use sqlite3.Row.keys() to stay safe if a future SELECT drops it.
+        surfaced_at = None
+        if "surfaced_at" in row.keys() and row["surfaced_at"]:
+            surfaced_at = datetime.fromisoformat(row["surfaced_at"])
         return Analysis(
             url=row["url"],
             title=row["title"],
@@ -302,4 +307,5 @@ class Storage:
             published_at=datetime.fromisoformat(row["published_at"]),
             score=score,
             summary=summary,
+            surfaced_at=surfaced_at,
         )

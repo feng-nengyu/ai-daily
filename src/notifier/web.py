@@ -1,9 +1,30 @@
+from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+from src.notifier.labels import label_for
 from src.storage import Storage
+
+
+def _group_archive_by_date(archive: list) -> list[tuple[str, list]]:
+    """Group archive Analysis items by date(surfaced_at), most recent first.
+
+    Returns a list of (date_str "YYYY-MM-DD", [analyses]) tuples. Items
+    inside each group keep their score-desc order.
+    """
+    by_date: dict[str, list] = defaultdict(list)
+    for a in archive:
+        if a.surfaced_at is None:
+            # Shouldn't happen — archive is defined as surfaced_at NOT NULL.
+            continue
+        by_date[a.surfaced_at.date().isoformat()].append(a)
+    # Sort each bucket by score desc (storage already does, but be defensive).
+    for items in by_date.values():
+        items.sort(key=lambda x: (-x.score.score, x.url))
+    # Sort dates descending.
+    return sorted(by_date.items(), key=lambda kv: kv[0], reverse=True)
 
 
 def render_site(
@@ -15,31 +36,24 @@ def render_site(
     output_dir: Path = Path("site"),
     templates_dir: Path = Path("templates"),
 ) -> dict:
-    """Render the daily digest page (今日新增 + 归档) to a single HTML file.
-
-    Today's batch = summaries with surfaced_at IS NULL and score >= min_score.
-    Archive = surfaced summaries within the last `within_days`.
-
-    After the file is written, today's batch is marked surfaced so a re-run
-    in the same session yields an empty today section (strict batch semantics
-    — keeps the future email/wechat push aligned with the web view).
-
-    `top_n` is currently unused at the storage layer; kept in the signature
-    for forward-compat with a planned per-band cap.
-    """
+    """Render the daily digest page (today + archive grouped by date) to a
+    single self-contained HTML file. After write, mark today's batch surfaced."""
     today = storage.get_today_summaries(min_score=min_score)
     archive = storage.get_archive_summaries(
         min_score=min_score, within_days=within_days,
     )
+    archive_groups = _group_archive_by_date(archive)
 
     env = Environment(
         loader=FileSystemLoader(str(templates_dir)),
         autoescape=select_autoescape(["html"]),
     )
+    env.filters["label"] = label_for
     template = env.get_template("index.html.j2")
     html = template.render(
         today=today,
-        archive=archive,
+        archive_groups=archive_groups,
+        archive_total=len(archive),
         within_days=within_days,
         generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     )
@@ -54,8 +68,9 @@ def render_site(
     return {
         "today": len(today),
         "archive": len(archive),
+        "archive_dates": len(archive_groups),
         "marked_surfaced": marked,
         "output": str(output_path),
-        # Back-compat key used by tests written against the Stage 3-lite shape.
+        # Back-compat key kept for older tests / callers.
         "rendered": len(today) + len(archive),
     }

@@ -2,8 +2,11 @@ name: daily
 
 on:
   schedule:
-    # 23:00 UTC = 07:00 北京时间
-    - cron: "0 23 * * *"
+    # GitHub Actions schedule 是 best-effort，高峰期可能延迟数小时甚至跳过。
+    # 给三个时间点，任一触发即跑；同一天重跑是幂等的（fetched=N stored=0 summarize=noop）。
+    - cron: "0 23 * * *"   # UTC 23:00 = 北京 07:00
+    - cron: "30 0 * * *"   # UTC 00:30 = 北京 08:30  (兜底 1)
+    - cron: "0 2 * * *"    # UTC 02:00 = 北京 10:00  (兜底 2)
   workflow_dispatch:
 
 permissions:

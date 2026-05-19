@@ -48,9 +48,11 @@ def test_render_site_first_run_puts_summaries_in_today_band(tmp_path: Path):
     assert index.exists()
     html = index.read_text(encoding="utf-8")
 
-    # Self-contained — inline style, no external scripts
+    # Self-contained — inline style + inline favorites script, no external assets.
     assert "<style>" in html
-    assert "<script" not in html
+    assert '<link rel="stylesheet"' not in html
+    assert "<script src=" not in html  # no external scripts
+    assert 'href="http' in html  # but article links must be present
 
     # Both summarized items appear
     assert "Foo Paper" in html
@@ -125,3 +127,83 @@ def test_render_site_empty_db_writes_empty_states(tmp_path: Path):
     html = (out_dir / "index.html").read_text(encoding="utf-8")
     assert "本批次无新条目" in html
     assert "归档暂时为空" in html
+
+
+def test_render_site_source_badge_uses_friendly_label_and_category(tmp_path: Path):
+    """The rendered HTML must show the friendly label (not the raw source id)
+    and tag the badge with a `cat-<category>` class for color-coding."""
+    from datetime import datetime, timezone
+    from src.models import Item, Score, Summary
+    s = Storage(tmp_path / "t.db"); s.init()
+    s.record_items([Item(url="https://example/x", title="X", content="...",
+                         published_at=datetime.now(timezone.utc),
+                         source="rss:openai-blog")])
+    s.save_score("https://example/x", Score(score=9, tags=["LLM"], model="m", cost_usd=0.001))
+    s.save_summary("https://example/x", Summary(innovation="i", approach="a",
+                                                metrics="m", links="l",
+                                                why_relevant="w", model="m",
+                                                cost_usd=0.01))
+    out_dir = tmp_path / "site"
+    render_site(s, min_score=7, within_days=30, top_n=100, output_dir=out_dir)
+    s.close()
+    html = (out_dir / "index.html").read_text(encoding="utf-8")
+    assert "cat-lab" in html         # OpenAI -> lab category
+    assert ">OpenAI<" in html        # friendly label rendered
+    # raw id not in visible badge (only in the title= attribute for hover/debug)
+    assert ">rss:openai-blog<" not in html
+
+
+def test_render_site_archive_groups_by_surfaced_date(tmp_path: Path):
+    """Archive items get grouped by their surfaced_at date, most recent first,
+    each inside its own <details> block with the date as summary."""
+    from datetime import datetime, timezone, timedelta
+    from src.models import Item, Score, Summary
+    s = Storage(tmp_path / "t.db"); s.init()
+    now = datetime.now(timezone.utc)
+    s.record_items([
+        Item(url="https://x/a", title="ALPHA", content="c",
+             published_at=now, source="rss:openai-blog"),
+        Item(url="https://x/b", title="BETA", content="c",
+             published_at=now, source="rss:openai-blog"),
+    ])
+    for u in ("https://x/a", "https://x/b"):
+        s.save_score(u, Score(score=9, tags=[], model="m", cost_usd=0.001))
+        s.save_summary(u, Summary(innovation="i", approach="a", metrics="m",
+                                  links="l", why_relevant="w",
+                                  model="m", cost_usd=0.01))
+    # Backdate surfaced_at to two different dates.
+    conn = s._conn_or_die()
+    conn.execute("UPDATE summaries SET surfaced_at=? WHERE url=?",
+                 ((now - timedelta(days=1)).isoformat(), "https://x/a"))
+    conn.execute("UPDATE summaries SET surfaced_at=? WHERE url=?",
+                 ((now - timedelta(days=2)).isoformat(), "https://x/b"))
+    conn.commit()
+
+    out_dir = tmp_path / "site"
+    result = render_site(s, min_score=7, within_days=30, top_n=100, output_dir=out_dir)
+    s.close()
+
+    assert result["archive_dates"] == 2
+    html = (out_dir / "index.html").read_text(encoding="utf-8")
+
+    # Two <details> blocks, one per date.
+    yesterday = (now - timedelta(days=1)).date().isoformat()
+    day_before = (now - timedelta(days=2)).date().isoformat()
+    assert f'id="archive-{yesterday}"' in html
+    assert f'id="archive-{day_before}"' in html
+    # The more recent date comes first.
+    assert html.index(f'archive-{yesterday}') < html.index(f'archive-{day_before}')
+
+
+def test_render_site_includes_favorites_machinery(tmp_path: Path):
+    """Favorites section + toggleStar JS + STAR_PREFIX localStorage key are
+    all present in the rendered HTML (no test of the JS itself, just markers)."""
+    s = Storage(tmp_path / "t.db"); s.init()
+    out_dir = tmp_path / "site"
+    render_site(s, min_score=7, within_days=30, top_n=100, output_dir=out_dir)
+    s.close()
+    html = (out_dir / "index.html").read_text(encoding="utf-8")
+    assert 'id="favorites"' in html
+    assert "toggleStar" in html
+    assert "STAR_PREFIX" in html
+    assert "ai-daily:star:" in html

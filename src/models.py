@@ -42,6 +42,7 @@ class Analysis:
     published_at: datetime
     score: Score
     summary: Summary | None
+    surfaced_at: datetime | None = None  # When item was first part of any digest
 
     @property
     def total_cost_usd(self) -> float:
