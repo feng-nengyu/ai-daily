@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>20</strong> 条（1 天）·
-      生成于 2026-05-19 02:20 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>30</strong> 条（2 天）·
+      生成于 2026-05-19 03:03 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        
+          <a href="#archive-2026-05-19" onclick="openArchive('2026-05-19')">2026-05-19 <span class="n">10</span></a>
         
           <a href="#archive-2026-05-18" onclick="openArchive('2026-05-18')">2026-05-18 <span class="n">20</span></a>
         
@@ -231,68 +233,24 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
-    <article class="card" data-url="https://www.langchain.com/blog/tuning-deep-agents-different-models">
-      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/tuning-deep-agents-different-models" onclick="toggleStar(this)">☆</button>
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-05-19" open>
+            <summary>2026-05-19 <span class="n">10 条</span></summary>
+            <div class="cards">
+              
+    <article class="card" data-url="https://arxiv.org/abs/2605.18032v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18032v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://www.langchain.com/blog/tuning-deep-agents-different-models" target="_blank" rel="noopener">Tuning Deep Agents to Work Well with Different Models</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">evaluation</span>
-      </div>
-      
-      <p class="innovation">为 Deep Agents 添加模型特定配置文件以优化性能。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>通过为 OpenAI、Anthropic 和 Google 模型提供特定配置文件，调整提示、工具和中间件，以提高兼容性和性能。</dd>
-        <dt>关键数据</dt><dd>在 tau2-bench 的子集上性能提升 10-20 分。</dd>
-        <dt>为什么值得关注</dt><dd>这项更新展示了如何通过模型特定优化提升 LLM agent 的工具使用和推理能力。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <a class="cta" href="https://www.langchain.com/blog/tuning-deep-agents-different-models" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://huggingface.co/blog/ibm-research/open-agent-leaderboard">
-      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" target="_blank" rel="noopener">The Open Agent Leaderboard</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">evaluation</span>
-      </div>
-      
-      <p class="innovation">推出开放代理排行榜，促进多代理系统的透明性和竞争。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>该排行榜通过收集和展示不同代理系统在标准化任务上的表现，提供一个公开的平台以便开发者比较和改进其代理技术。参与者可以提交他们的代理系统进行评估，排行榜会根据多项指标对其进行排名。</dd>
-        <dt>关键数据</dt><dd>未披露</dd>
-        <dt>为什么值得关注</dt><dd>排行榜为 LLM agent 和 multi-agent 系统的性能评估提供了一个重要参考。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <a class="cta" href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18194v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18194v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18194v1" target="_blank" rel="noopener">Beyond the Cartesian Illusion: Testing Two-Stage Multi-Modal Theory of Mind under Perceptual Bottlenecks</a></h2>
+        <h2><a href="https://arxiv.org/abs/2605.18032v1" target="_blank" rel="noopener">PROTEA: Offline Evaluation and Iterative Refinement for Multi-Agent LLM Workflows</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -300,20 +258,155 @@
       </div>
       
       <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+        <span class="tag">multi-agent</span><span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">引入感知瓶颈的锚定空间推理链以提升 MLLM 的空间智能。</p>
+      <p class="innovation">PROTEA 提供多代理 LLM 工作流的离线评估与迭代优化。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>提出一种两阶段空间推理方法，通过锚定的空间分解链引导 MLLM 实现几何到语义的投影，动态权衡视觉和听觉模态。</dd>
-        <dt>关键数据</dt><dd>在零样本基准测试中达到 42% 准确率，显著优于自我中心和他人中心基线。</dd>
-        <dt>为什么值得关注</dt><dd>该研究探讨了多模态推理模型在多智能体环境中的应用，涉及 LLM agent 和推理模型。</dd>
+        <dt>技术方案</dt><dd>PROTEA 通过可配置评分标准评估中间节点输出，并在工作流图上标注节点状态和理由，定位瓶颈。它还进行反向节点评估，生成节点期望并与实际输出对比，支持节点提示修订和自动重评估。</dd>
+        <dt>关键数据</dt><dd>文档检查准确率从64.3%提升至83.9%，推荐命中率Hit@5从0.30提升至0.38。</dd>
+        <dt>为什么值得关注</dt><dd>PROTEA 提升了多代理 LLM 系统的调试与优化效率，适合关注多代理和推理模型的读者。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-05-18</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2605.18194v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2605.18032v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18048v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18048v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.18048v1" target="_blank" rel="noopener">DocOS: Towards Proactive Document-Guided Actions in GUI Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">引入主动文档引导动作以提升 GUI 代理的任务解决能力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 DocOS 基准，评估代理在动态环境中自主搜索和执行文档指令的能力。实验揭示了信息定位和指令执行的双重瓶颈。</dd>
+        <dt>关键数据</dt><dd>未披露</dd>
+        <dt>为什么值得关注</dt><dd>该研究结合了 LLM agent 和工具使用，探索多代理系统在动态环境中的推理能力。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.18048v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18067v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18067v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.18067v1" target="_blank" rel="noopener">PPAI: Enabling Personalized LLM Agent Interoperability for Collaborative Edge Intelligence</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">首个实现个性化LLM代理互操作性的系统PPAI。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>PPAI通过基于原型的可扩展查询-代理配对机制识别合适代理，并使用多代理互操作性贝叶斯游戏平衡本地需求与全球效率。</dd>
+        <dt>关键数据</dt><dd>任务准确性提高7.96%，延迟减少16.34%。</dd>
+        <dt>为什么值得关注</dt><dd>PPAI在多代理和工具使用场景中提升了个性化LLM代理的协作能力。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.18067v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18071v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18071v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.18071v1" target="_blank" rel="noopener">KVDrive: A Holistic Multi-Tier KV Cache Management System for Long-Context LLM Inference</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">long-context</span>
+      </div>
+      
+      <p class="innovation">KVDrive 提供多层次 KV 缓存管理以支持长上下文 LLM 推理。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>KVDrive 通过协调 GPU 内存、主机 DRAM 和 SSD 的缓存放置与调度，优化注意力行为以最大化重用，重组解码流水线以重叠 I/O 和计算阶段，协调跨层数据移动以实现可扩展的长上下文推理。</dd>
+        <dt>关键数据</dt><dd>系统在长上下文基准测试中实现了高达 1.74 倍的吞吐量提升，同时保持准确性。</dd>
+        <dt>为什么值得关注</dt><dd>KVDrive 提升了 LLM agent 的推理效率，适合关注工具使用和推理模型的读者。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.18071v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18073v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18073v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.18073v1" target="_blank" rel="noopener">A-ProS: Towards Reliable Autonomous Programming Through Multi-Model Feedback</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">A-ProS 通过多模型反馈实现可靠的自主编程。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>A-ProS 使用 ChatGPT 生成器与三种调试模型结合，采用 2 x 3 因子设计，分离生成与调试过程。</dd>
+        <dt>关键数据</dt><dd>GPT-5 从 39 提升至 85-90，GPT-4 从 15 提升至 31-38，状态化精炼提升 8.5-10.6 个百分点。</dd>
+        <dt>为什么值得关注</dt><dd>A-ProS 展示了 LLM agent 在多模型反馈下的工具使用与推理能力提升。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.18073v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18077v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18077v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.18077v1" target="_blank" rel="noopener">LLM-Guided Communication for Cooperative Multi-Agent Reinforcement Learning</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">提出 LLM 驱动的多智能体通信协议 LMAC。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>LMAC 利用 LLM 的推理能力设计通信协议，使所有智能体尽可能准确地重建底层状态。该协议通过显式的状态感知标准进行迭代优化，改善状态恢复并缩小智能体知识差异。</dd>
+        <dt>关键数据</dt><dd>实验表明，LMAC 在多智能体基准测试中提高了状态重建能力，并显著优于现有通信基线。</dd>
+        <dt>为什么值得关注</dt><dd>LMAC 结合 LLM 和多智能体通信，提升了智能体间的状态共享和推理能力。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.18077v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2605.18176v1">
@@ -345,10 +438,10 @@
         <a class="cta" href="https://arxiv.org/abs/2605.18176v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18077v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18077v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2605.18194v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18194v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18077v1" target="_blank" rel="noopener">LLM-Guided Communication for Cooperative Multi-Agent Reinforcement Learning</a></h2>
+        <h2><a href="https://arxiv.org/abs/2605.18194v1" target="_blank" rel="noopener">Beyond the Cartesian Illusion: Testing Two-Stage Multi-Modal Theory of Mind under Perceptual Bottlenecks</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -356,166 +449,80 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
       </div>
       
-      <p class="innovation">提出 LLM 驱动的多智能体通信协议 LMAC。</p>
+      <p class="innovation">引入感知瓶颈的锚定空间推理链以提升 MLLM 的空间智能。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>LMAC 利用 LLM 的推理能力设计通信协议，使所有智能体尽可能准确地重建底层状态。该协议通过显式的状态感知标准进行迭代优化，改善状态恢复并缩小智能体知识差异。</dd>
-        <dt>关键数据</dt><dd>实验表明，LMAC 在多智能体基准测试中提高了状态重建能力，并显著优于现有通信基线。</dd>
-        <dt>为什么值得关注</dt><dd>LMAC 结合 LLM 和多智能体通信，提升了智能体间的状态共享和推理能力。</dd>
+        <dt>技术方案</dt><dd>提出一种两阶段空间推理方法，通过锚定的空间分解链引导 MLLM 实现几何到语义的投影，动态权衡视觉和听觉模态。</dd>
+        <dt>关键数据</dt><dd>在零样本基准测试中达到 42% 准确率，显著优于自我中心和他人中心基线。</dd>
+        <dt>为什么值得关注</dt><dd>该研究探讨了多模态推理模型在多智能体环境中的应用，涉及 LLM agent 和推理模型。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-05-18</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2605.18077v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2605.18194v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18073v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18073v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://huggingface.co/blog/ibm-research/open-agent-leaderboard">
+      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18073v1" target="_blank" rel="noopener">A-ProS: Towards Reliable Autonomous Programming Through Multi-Model Feedback</a></h2>
+        <h2><a href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" target="_blank" rel="noopener">The Open Agent Leaderboard</a></h2>
         <div class="badges">
           <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
         </div>
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">evaluation</span>
       </div>
       
-      <p class="innovation">A-ProS 通过多模型反馈实现可靠的自主编程。</p>
+      <p class="innovation">推出开放代理排行榜，促进多代理系统的透明性和竞争。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>A-ProS 使用 ChatGPT 生成器与三种调试模型结合，采用 2 x 3 因子设计，分离生成与调试过程。</dd>
-        <dt>关键数据</dt><dd>GPT-5 从 39 提升至 85-90，GPT-4 从 15 提升至 31-38，状态化精炼提升 8.5-10.6 个百分点。</dd>
-        <dt>为什么值得关注</dt><dd>A-ProS 展示了 LLM agent 在多模型反馈下的工具使用与推理能力提升。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.18073v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18071v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18071v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18071v1" target="_blank" rel="noopener">KVDrive: A Holistic Multi-Tier KV Cache Management System for Long-Context LLM Inference</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">long-context</span>
-      </div>
-      
-      <p class="innovation">KVDrive 提供多层次 KV 缓存管理以支持长上下文 LLM 推理。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>KVDrive 通过协调 GPU 内存、主机 DRAM 和 SSD 的缓存放置与调度，优化注意力行为以最大化重用，重组解码流水线以重叠 I/O 和计算阶段，协调跨层数据移动以实现可扩展的长上下文推理。</dd>
-        <dt>关键数据</dt><dd>系统在长上下文基准测试中实现了高达 1.74 倍的吞吐量提升，同时保持准确性。</dd>
-        <dt>为什么值得关注</dt><dd>KVDrive 提升了 LLM agent 的推理效率，适合关注工具使用和推理模型的读者。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.18071v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18067v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18067v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18067v1" target="_blank" rel="noopener">PPAI: Enabling Personalized LLM Agent Interoperability for Collaborative Edge Intelligence</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">首个实现个性化LLM代理互操作性的系统PPAI。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>PPAI通过基于原型的可扩展查询-代理配对机制识别合适代理，并使用多代理互操作性贝叶斯游戏平衡本地需求与全球效率。</dd>
-        <dt>关键数据</dt><dd>任务准确性提高7.96%，延迟减少16.34%。</dd>
-        <dt>为什么值得关注</dt><dd>PPAI在多代理和工具使用场景中提升了个性化LLM代理的协作能力。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-18</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.18067v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18048v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18048v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18048v1" target="_blank" rel="noopener">DocOS: Towards Proactive Document-Guided Actions in GUI Agents</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span>
-      </div>
-      
-      <p class="innovation">引入主动文档引导动作以提升 GUI 代理的任务解决能力。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>提出 DocOS 基准，评估代理在动态环境中自主搜索和执行文档指令的能力。实验揭示了信息定位和指令执行的双重瓶颈。</dd>
+        <dt>技术方案</dt><dd>该排行榜通过收集和展示不同代理系统在标准化任务上的表现，提供一个公开的平台以便开发者比较和改进其代理技术。参与者可以提交他们的代理系统进行评估，排行榜会根据多项指标对其进行排名。</dd>
         <dt>关键数据</dt><dd>未披露</dd>
-        <dt>为什么值得关注</dt><dd>该研究结合了 LLM agent 和工具使用，探索多代理系统在动态环境中的推理能力。</dd>
+        <dt>为什么值得关注</dt><dd>排行榜为 LLM agent 和 multi-agent 系统的性能评估提供了一个重要参考。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-05-18</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2605.18048v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.18032v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.18032v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://www.langchain.com/blog/tuning-deep-agents-different-models">
+      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/tuning-deep-agents-different-models" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.18032v1" target="_blank" rel="noopener">PROTEA: Offline Evaluation and Iterative Refinement for Multi-Agent LLM Workflows</a></h2>
+        <h2><a href="https://www.langchain.com/blog/tuning-deep-agents-different-models" target="_blank" rel="noopener">Tuning Deep Agents to Work Well with Different Models</a></h2>
         <div class="badges">
           <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
         </div>
       </div>
       
       <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">evaluation</span>
       </div>
       
-      <p class="innovation">PROTEA 提供多代理 LLM 工作流的离线评估与迭代优化。</p>
+      <p class="innovation">为 Deep Agents 添加模型特定配置文件以优化性能。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>PROTEA 通过可配置评分标准评估中间节点输出，并在工作流图上标注节点状态和理由，定位瓶颈。它还进行反向节点评估，生成节点期望并与实际输出对比，支持节点提示修订和自动重评估。</dd>
-        <dt>关键数据</dt><dd>文档检查准确率从64.3%提升至83.9%，推荐命中率Hit@5从0.30提升至0.38。</dd>
-        <dt>为什么值得关注</dt><dd>PROTEA 提升了多代理 LLM 系统的调试与优化效率，适合关注多代理和推理模型的读者。</dd>
+        <dt>技术方案</dt><dd>通过为 OpenAI、Anthropic 和 Google 模型提供特定配置文件，调整提示、工具和中间件，以提高兼容性和性能。</dd>
+        <dt>关键数据</dt><dd>在 tau2-bench 的子集上性能提升 10-20 分。</dd>
+        <dt>为什么值得关注</dt><dd>这项更新展示了如何通过模型特定优化提升 LLM agent 的工具使用和推理能力。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-05-18</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2605.18032v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://www.langchain.com/blog/tuning-deep-agents-different-models" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-        </div>
-      
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
-      
+            </div>
+          </details>
         
-          <details class="date-group" id="archive-2026-05-18" open>
+          <details class="date-group" id="archive-2026-05-18">
             <summary>2026-05-18 <span class="n">20 条</span></summary>
             <div class="cards">
               
