@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>10</strong> 条 ·
       归档 <strong>10</strong> 条（1 天）·
-      生成于 2026-05-19 10:52 UTC
+      生成于 2026-05-20 10:37 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
         
           <a href="#archive-2026-05-19" onclick="openArchive('2026-05-19')">2026-05-19 <span class="n">10</span></a>
         
@@ -231,9 +231,295 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://github.com/antoinezambelli/forge">
+      <button class="star" aria-label="收藏" data-url="https://github.com/antoinezambelli/forge" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://github.com/antoinezambelli/forge" target="_blank" rel="noopener">Show HN: Forge – Guardrails take an 8B model from 53% to 99% on agentic tasks</a></h2>
+        <div class="badges">
+          <span class="score high">9</span>
+          <span class="source cat-community" title="hackernews:hackernews-ai">Hacker News</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">Forge 给自托管 LLM 的「工具调用」加了一层可复现的可靠性护栏，不改模型就把 8B 本地模型在多步 agent 任务上从约 53% 拉到约 99%。核心价值是解决“多步流程误差连乘”导致的机械性失败。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它把问题定位为编排层（orchestration）缺失，而不是模型能力不足：通过通用护栏让模型在每一步更像“可恢复的程序”。护栏栈共 5 层且可单独开关：重试提示（retry nudges）、步骤约束（step enforcement）、错误恢复（error recovery）、救援解析（rescue parsing）、上下文压缩（context compaction）。关键设计之一是把“工具成功但没找到结果”单独定义为 ToolResolutionError（类似 HTTP 404），让模型能重试而不是把空/错数据继续传下去。另一个工程点是 VRAM 感知的上下文管理：启动时查询 nvidia-smi 计算 token 预算，避免后端因超显存静默回退到 CPU 导致 10-100 倍变慢。与常见框架偏向云端大模型不同，它强调在消费级硬件+本地小模型上把工具调用做成可控、可恢复、可评测的系统。</dd>
+        <dt>关键数据</dt><dd>论文评测覆盖 97 种模型/后端组合、18 个场景、每种 50 次运行。Ministral 8B：无 Forge 约 53%，加 Forge 99.3%；Claude Sonnet：加 Forge 100%。同一 8B 本地模型+Forge（99.3%）高于 Claude Sonnet 无护栏（87.2%）。消融实验（McNemar 检验）：关闭重试提示会掉 24-49 个百分点；关闭错误恢复约掉 10 个百分点且对所有模型都显著。没有重试机制时，“错误恢复”得分对所有模型（本地/前沿）都是 0%，说明是架构缺口而非能力差。服务后端差异巨大：同一 Mistral-Nemo 12B 权重在 llama-server 原生函数调用仅 7%，在 Llamafile 的 prompt 模式达 83%，相差 75 个百分点。成本方面仅提到可在约 600 美元 GPU 上跑 8B，本地与前沿 API 差距 <1 个点；具体算力/时延未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 工作流来说，真正的瓶颈常在“多步可靠性”和“失败可恢复性”，Forge 提供了可开关、可消融、可复现的护栏实现与评测框架。它还揭示了工具调用在不同 serving backend 上可能出现几十点的准确率漂移，直接影响你用 MCP/工具编排/RAG 组装系统时的工程选型。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-19</span>
+        
+        
+        <span class="links">补充：<a href="https://youtu.be/MzRgJoJAXGc" target="_blank" rel="noopener">https://youtu.be/MzRgJoJAXGc</a></span>
+        
+        <a class="cta" href="https://github.com/antoinezambelli/forge" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.20075v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.20075v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.20075v1" target="_blank" rel="noopener">CopT: Contrastive On-Policy Thinking with Continuous Spaces for General and Agentic Reasoning</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“先想再答”的 CoT（思维链）倒过来：先给草稿答案，再按需反思纠错，并用对比式可靠性打分决定要不要继续想，省 token 还提准确率。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>CopT 的流程是先让模型直接生成一个“草稿答案”，不强制先输出长推理，避免“表演式推理”（明明已知道答案还硬想）。随后进行 on-policy thinking（按当前生成轨迹继续思考），但思考是以草稿答案为条件来反省与修正。它用连续向量嵌入（把离散词换成连续表示）做推理时的对比验证器：比较同一输出 token 在“离散 token 输入”和“连续嵌入输入”下模型支持度的差异，得到序列级 reverse KL（反向 KL 散度）估计，用来衡量答案可靠性。若可靠性不足，再触发更深的 on-policy 思考，并用第二个 KL 估计器动态控制草稿答案的可见性：保留有用片段信息，同时降低被不可靠草稿带偏的风险。全程不需要额外训练，属于纯推理时策略改造。</dd>
+        <dt>关键数据</dt><dd>在数学、代码与 agentic reasoning（代理式推理）任务上：峰值准确率最高提升 23%；在相近或更高准确率下，token 使用量最高减少 57%。未披露具体使用的模型规模、各基准名称与绝对分数，但强调“无需额外训练”即可获得上述增益。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景很直接：用“先答后想+可靠性门控”减少不必要的长推理，降低调用成本与延迟。对 reasoning models 也有启发：用对比式不确定性估计来决定是否继续推理，可作为 agent 的自检/反思模块。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-19</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/sdc17/CopT" target="_blank" rel="noopener">https://github.com/sdc17/CopT</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.20075v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.20072v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.20072v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.20072v1" target="_blank" rel="noopener">Probing Embodied LLMs: When Higher Observation Fidelity Hurts Problem Solving</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">在具身（机器人）LLM agent 里，作者发现“看得更清楚”反而更差：原始 RGB 输入最好，完美的符号真值观测最差；适度感知噪声还能把成功率拉高到 2.85 倍。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者用“行为探针”思路：只改 agent 能看到的信息量与形式，观察策略与成功率如何变化。任务选用 Lockbox 机械解谜（步骤串联、存在隐藏依赖），在真实机器人闭环中分别给 RGB、RGB-D（带深度）、以及 ground-truth 符号观测（完美状态描述）。为解释反直觉结果，又在可控仿真里人为注入感知错误：随机翻转“动作结果是否成功”的判断，系统扫描不同噪声强度。最后分析失败模式，重点看是否出现重复动作循环（卡住反复试同一招）。</dd>
+        <dt>关键数据</dt><dd>真实机器人：RGB 表现最好、ground-truth 符号观测最差（具体成功率数值未披露）。仿真：随机翻转动作结果的概率为 40% 时成功率最高，相比 0% 噪声基线提升 2.85 倍；作者将提升与“重复动作循环减少”相关联（循环次数/比例未披露）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / reasoning models 很关键：它提示评测分数可能被“感知误差 + 推理缺陷”的耦合掩盖，单看成功率会误判模型能力。对多模态/具身 RAG 或 MCP 工具链也有启发：更高保真观测不一定更稳，适度不确定性可能反而抑制策略陷入死循环。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-19</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.20072v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.20061v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.20061v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.20061v1" target="_blank" rel="noopener">Rewarding Beliefs, Not Actions: Consistency-Guided Credit Assignment for Long-Horizon Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把长任务里的“奖励归因”从动作转向“信念状态（对环境的内部判断）”，用信念一致性把稀疏延迟奖励变成密集训练信号，缓解部分可观测下的漂移问题。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者提出 ReBel（Reward Belief），在交互过程中显式维护结构化信念状态，用它来压缩历史并指导后续决策学习。核心是“信念一致性监督”：当模型预测的信念与后续观测/反馈不一致时，把差异转成自监督（不需要逐步标注或外部验证器）的密集学习信号。相比只在整局末尾用奖励更新的 episode-level 方法（如 GRPO），ReBel在过程层面提供更细粒度的学习驱动。另一个设计是“信念感知分组”：把信念相近的轨迹放在一起比较，计算优势（advantage）时方差更低、估计更稳，从而更好做时间上的信用分配。</dd>
+        <dt>关键数据</dt><dd>在长时程基准 ALFWorld、WebShop 上，任务成功率相对 episode-level 基线 GRPO 最高提升 20.4 个百分点；样本效率提升 2.1×（达到同等效果所需交互/样本更少）。其余训练成本、模型规模等未披露，但结果指向：在部分可观测+延迟奖励场景下，过程级密集信号能更快学到可执行策略。</dd>
+        <dt>为什么值得关注</dt><dd>面向 LLM agent 的长链路工具使用/网页交互任务，常见痛点是观测不全导致“状态理解”漂移、奖励又很晚才来；这篇用“信念建模+自监督一致性”给出一种不依赖额外标注的 RLVR 训练思路，和多步推理/多轮交互的 agent 训练高度相关。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-19</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/Fateyetian/Rebel.git" target="_blank" rel="noopener">https://github.com/Fateyetian/Rebel.git</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.20061v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.20025v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.20025v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.20025v1" target="_blank" rel="noopener">AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">把“自动科研”从一次性流水线改成可迭代的多智能体闭环：失败会被转成信息、跨次运行会积累经验，并提供可控的人类介入方式。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>系统由多智能体协作驱动：先用结构化辩论生成假设、再用辩论复盘结果，避免单一代理一条路走到黑。执行阶段加入自愈执行器，遇到失败不直接停机，而是在 Pivot（换方向）/Refine（细化修复）之间决策，把报错和失败实验变成下一步线索。输出端做“可验证报告”，强调可核对的结果与引用，减少编造数字和幻觉引用。人机协作提供 7 种介入模式，从全自动到逐步监督，并通过消融比较不同介入强度的效果。最后加入跨运行演化机制，把过去的错误总结成后续运行的防护规则与检查点，实现经验迁移。</dd>
+        <dt>关键数据</dt><dd>在 ARC-Bench（25 个主题、聚焦实验阶段）上，相比 AI Scientist v2 提升 54.7%（具体评分口径/绝对分未披露）。人类在环消融覆盖 7 种介入模式：结论是“在高杠杆决策点做精准介入”稳定优于全自动与逐步监督（各模式的具体数值未披露）。</dd>
+        <dt>为什么值得关注</dt><dd>典型的 LLM agent / multi-agent 设计案例：包含辩论式推理、tool use 式执行与失败自愈循环，并把“跨次运行记忆/演化”做成机制化组件。对关注 MCP/工具编排、RAG/可验证输出与人机协作边界的人，提供了可复用的系统设计与对照实验思路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-19</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/aiming-lab/AutoResearchClaw" target="_blank" rel="noopener">https://github.com/aiming-lab/AutoResearchClaw</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.20025v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.19988v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.19988v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.19988v1" target="_blank" rel="noopener">A Case for Agentic Tuning: From Documentation to Action in PostgreSQL</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">把“数据库调参文档”变成可执行的 Agent 技能：让 LLM 不只照抄建议，而是复现专家推理流程，能随版本/负载变化动态调参。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者指出传统文档式调参只保留结论、不保留推理过程，导致三类问题：版本更新后过时、不同负载下失效、忽略参数间联动。PerfEvolve 将专家调参方法论拆成可执行的“技能”，交给基于 LLM 的 agent 调用。它包含三步能力：先做版本一致性验证（确认参数含义/默认值是否随版本变化），再做面向具体工作负载的 profiling（画像/测量），最后做多参数联合优化（同时调整一组互相影响的参数，而不是逐个调）。整体从“静态文档推荐”转为“基于测量与验证的行动闭环”。</dd>
+        <dt>关键数据</dt><dd>在 PostgreSQL 上用 TPC-C（偏事务）与 TPC-H（偏分析）基准测试评估，相比当前最强的“文档驱动调参”基线，最高提升 35.2%。未披露：具体提升发生在哪些指标（吞吐/延迟/查询时间）、不同基准各自提升幅度、调参迭代次数与时间成本。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use（工具调用）落地：把“专家经验”编译成可执行技能，让 agent 在真实系统里验证-测量-联合优化。对关注 agentic workflow、multi-step reasoning（多步推理）与自动化运维/调参的读者，是从“RAG 读文档”走向“执行与闭环”的具体案例。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-19</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/ISCAS-OSLab/PerfEvolve" target="_blank" rel="noopener">https://github.com/ISCAS-OSLab/PerfEvolve</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.19988v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.19952v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.19952v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.19952v1" target="_blank" rel="noopener">Rethinking How to Remember: Beyond Atomic Facts in Lifelong LLM Agent Memory</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">memory</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把 Agent 记忆从“只存原子事实”升级为“三层并存”：原始对话片段+事实+人物/偏好画像，既保真又能做更深的跨事实推理。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者提出 TriMem：1）存储层保留带来源标识的原始对话片段，避免压缩丢细节；2）检索层抽取原子事实，用于快速匹配与召回；3）推理层把分散事实合成为“画像/档案”，让模型能基于整体语义做推断而不是拼碎片。与以往用静态提示词把对话压成事实不同，TriMem 允许不同粒度同时存在，按任务需要取用。为解决不同对话风格下抽取粒度不一致的问题，作者用 TextGrad（基于文本反馈的提示词优化）迭代改写“抽取/画像”提示词，用回答质量做反馈，不更新模型参数即可让记忆策略随时间演化。</dd>
+        <dt>关键数据</dt><dd>在 LoCoMo 与 PerLTQA 两个长期记忆/问答基准、多个 LLM 主干上“持续优于强基线”，但摘要未披露具体提升幅度（如准确率/EM/F1、检索开销、延迟等）。定性意义：同时兼顾“细节保真、检索效率、深层推理”三类目标，并展示无需微调参数也能让记忆提示词持续改进。</dd>
+        <dt>为什么值得关注</dt><dd>面向 LLM agent 的长期对话记忆与 tool use/RAG 场景，TriMem 提供了更贴近真实交互的“多粒度记忆”范式：既能像 RAG 一样高效检索，又能通过画像支持跨回合推理与个性化。TextGrad 式的提示词自优化也与 MCP/Agent 系统里“可迭代的记忆与策略组件”思路契合。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-19</span>
+        
+        
+        <span class="links">补充：<a href="https://TMLR-TriMem.github.io" target="_blank" rel="noopener">https://TMLR-TriMem.github.io</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.19952v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.19944v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.19944v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.19944v1" target="_blank" rel="noopener">A Measure-Theoretic Analysis of Reasoning: Structural Generalization and Approximation Limits</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">reasoning</span><span class="tag">LLM</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">把“推理泛化”用最优传输（把离散轨迹映射到连续度量空间）形式化，用Wasserstein-1距离量化域偏移，并给出注意力位置编码与网络深度的可证明泛化上限。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者将模型推理过程视为离散“轨迹”，投影到连续的度量空间后，用Wasserstein-1（衡量两分布搬运成本）来刻画训练域与测试域的差异。再用Kantorovich对偶（最优传输的对偶形式）把OOD风险上界与架构的Lipschitz连续性（输入扰动放大倍数）和函数逼近能力联系起来。结论一：依赖绝对位置的注意力（如绝对位置编码）不具备平移等变性，导致Lipschitz常数与期望风险出现Ω(1)的下界；而具备平移等变的机制（如RoPE旋转位置编码）可把误差界控制住。结论二：把“回溯式搜索”映射为Dyck-k语言（括号匹配类形式语言），证明TC^0级别的Transformer存在严格的电路深度下界：必须增加物理层深度才能避免表示坍塌，单纯加宽（宽度/通道数）无法绕过Barron空间（特定函数类）的不可约逼近下界。最后在组合搜索任务上用54种Transformer配置做实验，验证泛化风险会随Wasserstein域偏移单调变差。</dd>
+        <dt>关键数据</dt><dd>实验覆盖54个Transformer配置；其余关键数值（具体误差/准确率曲线、Wasserstein-1阈值、不同位置编码的量化差距、深度下界的常数项）未披露。定性结果：泛化风险随Wasserstein域偏移“单调”恶化；绝对位置编码对应Ω(1)的Lipschitz与风险下界，RoPE类平移等变机制可获得更可控的误差界；仅扩宽无法替代加深以避免表示坍塌。</dd>
+        <dt>为什么值得关注</dt><dd>对reasoning models与LLM agent很关键：它把“域偏移导致推理掉线”用可计算的Wasserstein距离量化，并指出位置编码与深度是影响OOD推理稳定性的结构性因素。对tool use/RAG/multi-agent这类跨域组合任务，也提供了一个用“域偏移距离→风险上界”来做系统设计与评估的理论框架。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-19</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.19944v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://www.together.ai/blog/coding-agent-benchmarks">
+      <button class="star" aria-label="收藏" data-url="https://www.together.ai/blog/coding-agent-benchmarks" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.together.ai/blog/coding-agent-benchmarks" target="_blank" rel="noopener">Benchmarking inference at scale: coding agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:together-ai-blog">Together AI</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">benchmark</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">给“写代码的 LLM agent”做了更贴近真实业务的规模化推理基准，并给出可量化对比：吞吐、首 token 延迟和成本三项同时拉开差距。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>把评测对象从“单次对话推理”扩展到“编码 agent 的多轮工具调用/生成”场景，更接近真实开发流（例如长上下文、并发请求、持续生成）。重点测在高并发“打满”时的表现，而不是低负载下的理想值。用 TPS（每秒 token 数）衡量吞吐，用 TTFT（首 token 时间）衡量交互延迟，并在饱和点比较系统是否还能稳定输出。对照基线包含 TensorRT-LLM（常见推理加速框架）以及商用模型 Claude Opus 4.6 的成本侧对比。</dd>
+        <dt>关键数据</dt><dd>吞吐：比 TensorRT-LLM 高 31% TPS；交互延迟：在饱和负载下 TTFT 好 2×（首 token 更快一倍）；成本：比 Claude Opus 4.6 低 76%（同类任务推理成本对比）。具体硬件配置、模型版本、并发数、上下文长度、agent 任务集细节：未披露（但结论指向“高并发真实负载下”的系统级优势）。</dd>
+        <dt>为什么值得关注</dt><dd>LLM agent 往往要多轮生成+工具调用，真正卡的是“并发下的吞吐/首 token 延迟/成本”。这条把评测焦点放在 agent 推理的规模化落地指标上，能帮助你判断做 tool use、MCP 或多 agent 系统时该优先优化哪类推理瓶颈。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-19</span>
+        
+        
+        <a class="cta" href="https://www.together.ai/blog/coding-agent-benchmarks" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://deepmind.google/blog/introducing-gemini-omni/">
+      <button class="star" aria-label="收藏" data-url="https://deepmind.google/blog/introducing-gemini-omni/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://deepmind.google/blog/introducing-gemini-omni/" target="_blank" rel="noopener">Introducing Gemini Omni</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:deepmind-blog">DeepMind</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">DeepMind 发布 Gemini Omni，主打“全模态一体化”：同一个模型同时理解/生成文本、图像、音频与视频，并面向实时对话与工具调用场景做了产品化整合。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是把多种输入输出模态放进同一套模型与训练流程里，而不是分别训练再拼接。它强调端到端的实时交互：语音可直接进模型、模型可直接回语音，减少传统“语音识别→文本模型→语音合成”的多段流水线延迟。为适配 Agent（能自主调用工具的系统）使用，模型被设计成能在对话中进行结构化输出（例如函数/工具参数），便于接入外部工具与工作流。与过去多模态方案相比，重点从“能看能听”转向“能边看边听边说、还能执行任务”的统一体验与工程落地。</dd>
+        <dt>关键数据</dt><dd>未披露：参数规模、训练数据量、训练成本、推理延迟、吞吐、以及在主流基准（如多模态理解/视频理解/语音对话）上的具体分数均未给出。定性意义在于把多模态与实时语音对话、工具调用打包成同一模型能力，可能降低构建多模态 Agent 的系统复杂度与端到端延迟。</dd>
+        <dt>为什么值得关注</dt><dd>对关注 LLM agent / tool use 的读者，这类“可实时语音对话+结构化工具调用”的全模态模型更接近可用的 Agent 底座。对 RAG、多 Agent 来说，统一处理文本/图像/音频/视频输入意味着检索与协作的上下文可以更丰富，系统集成链路也更短。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-17</span>
+        
+        
+        <a class="cta" href="https://deepmind.google/blog/introducing-gemini-omni/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
