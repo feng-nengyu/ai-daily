@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>20</strong> 条（2 天）·
-      生成于 2026-05-21 10:56 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>30</strong> 条（3 天）·
+      生成于 2026-05-21 12:29 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        
+          <a href="#archive-2026-05-21" onclick="openArchive('2026-05-21')">2026-05-21 <span class="n">10</span></a>
         
           <a href="#archive-2026-05-20" onclick="openArchive('2026-05-20')">2026-05-20 <span class="n">10</span></a>
         
@@ -233,10 +235,20 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-05-21" open>
+            <summary>2026-05-21 <span class="n">10 条</span></summary>
+            <div class="cards">
+              
     <article class="card" data-url="https://arxiv.org/abs/2605.21463v1">
       <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21463v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -262,201 +274,6 @@
         
         
         <a class="cta" href="https://arxiv.org/abs/2605.21463v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.21482v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21482v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.21482v1" target="_blank" rel="noopener">DeepWeb-Bench: A Deep Research Benchmark Demanding Massive Cross-Source Evidence and Long-Horizon Derivation</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">RAG</span><span class="tag">reasoning</span><span class="tag">benchmark</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">DeepWeb-Bench 把“上网搜证据+跨来源对齐+长链推导”的深度研究做成更难的基准，并用可审计的来源记录把评分和证据绑定，专门拉开前沿模型差距。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>基准任务要求 agent 在开放网页中大量检索证据、对不同来源的冲突信息做对账（跨源校验），再进行长跨度多步推导得到最终答案。作者把难点拆成四类能力：Retrieval（检索）、Derivation（推导链完整性）、Reasoning（推理）、Calibration（校准：不确定性/置信度与表述匹配），并按能力切片报告结果。每个参考答案都附带“来源-证据链”记录，提供 4 个披露等级，并在可行时做跨来源一致性检查，方便复核模型是否真用到了证据。对 9 个前沿模型进行统一评测，用错误归因来区分“找不到资料”与“资料有了但推不出来/说不准”的失败模式。</dd>
-        <dt>关键数据</dt><dd>在 9 个前沿模型上：检索失败只占全部错误的 12–14%，说明“能不能搜到”不是主要瓶颈；推导（Derivation）与校准（Calibration）相关失败合计超过 70%，主要卡在“证据到结论的长链推演”和“把不确定性说对”。强模型与弱模型错误类型不同：强模型更多是推导不完整，弱模型更多是“幻觉式精确”（把不确定内容说得很确定）。模型间存在领域专长差异：跨模型一致性仅 rho=0.61（相关系数），单个案例的模型间分歧最高可达 18.8 个百分点。总体分数/任务规模等未披露，但这些切片数据表明该基准更能区分前沿系统的真实深研能力。</dd>
-        <dt>为什么值得关注</dt><dd>如果你在做 LLM agent / tool use（工具调用）/ RAG（检索增强生成）类“深度研究”产品，这个基准直接告诉你瓶颈往往不在检索，而在长链推导与校准。它的按能力切片与可审计证据链设计，也更贴近多步推理与多来源对齐的真实评测需求。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-20</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.21482v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.21470v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21470v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.21470v1" target="_blank" rel="noopener">Agent JIT Compilation for Latency-Optimizing Web Agent Planning and Scheduling</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">multi-agent</span>
-      </div>
-      
-      <p class="innovation">把“网页操作 Agent”从逐步截图-调用模型-执行的慢循环，改成先把任务编译成可执行代码，再做并行调度，直接用编译与调度来降延迟并减少误用工具。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>提出 Agent 的 JIT（即时）编译：把自然语言任务生成成一段可执行“代码计划”，代码里可以包含工具调用、必要的 LLM 调用，以及并行执行结构。JIT-Planner 会生成多个候选代码计划，逐个用工具规格（输入/输出约束）做校验，再按“成本最小”（主要是延迟/调用代价）选一个。JIT-Scheduler 用学习到的延迟分布做蒙特卡洛（随机采样估计）成本评估，搜索哪些步骤能并行、如何排程以最小化总耗时。另设计了带不变量（必须始终满足的条件）的工具协议，用前置条件/后置条件约束状态，减少生成“工具用错/顺序错”的计划；区别于传统每一步都要截图并让 LLM 决策的串行循环。</dd>
-        <dt>关键数据</dt><dd>覆盖 5 个 Web 应用：对比 Browser-Use，JIT-Planner 速度提升 10.4×，准确率 +28%。对比 OpenAI CUA，JIT-Scheduler 速度提升 2.4×，准确率 +9%。未披露绝对延迟（秒级）与任务数量细节，但给出了明确的相对加速与成功率增益。</dd>
-        <dt>为什么值得关注</dt><dd>这篇把 LLM agent 的“规划+工具使用”做成类似编译器/调度器问题：先产出可执行计划，再用并行与约束协议降低延迟和工具误用，直接对应 tool use、agent planning/scheduling、多步推理与执行可靠性。对关注 MCP/工具协议、以及多工具/多步骤 Agent 的工程化落地（尤其是延迟优化）有参考价值。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-20</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.21470v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.21468v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21468v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.21468v1" target="_blank" rel="noopener">You Only Need Minimal RLVR Training: Extrapolating LLMs via Rank-1 Trajectories</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">MCP</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">发现 RLVR（可验证奖励强化学习）的权重更新轨迹几乎是“秩1”（一个主方向）且随步数近线性，可用少量训练观测直接外推出后续高质量 checkpoint。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者先分析 RLVR 训练中参数增量（delta）的几何结构，发现大部分性能收益可由“秩1近似”捕获，即把更新投影到一个主方向上。进一步观察到该投影的幅度随训练步数近似线性增长。基于此提出 RELEX：只用一小段前缀训练（观测窗口）收集若干 checkpoint，估计秩1子空间后，用线性回归外推未来的参数增量，直接“合成”后续 checkpoint，不再继续训练。消融显示：提高秩（用更多方向）或改用非线性拟合都不带来更好外推，核心收益来自秩1投影的“去噪”（过滤随机优化噪声）。</dd>
-        <dt>关键数据</dt><dd>覆盖 3 个模型：Qwen2.5-Math-1.5B、Qwen3-4B-Base、Qwen3-8B-Base。RELEX 只需完整 RLVR 训练步数的约 15% 就能在域内/域外基准上达到或超过完整 RLVR 的效果（具体各基准分数未披露）。可在几乎零额外训练成本下做远距离外推：例如只观察前 50 步，就外推到 1000 步（约 20×），并报告仍能持续改进；论文称可预测到观测前缀的 10–20× 之外。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM reasoning models 和 agent 场景常用的 RLVR/RL 类后训练，这提供了一个“少训+外推”的新思路：用极少步数就逼近长程强化学习效果。对 tool use / multi-agent 需要频繁迭代对齐的团队，也意味着可能用更低算力更快产出可用 checkpoint。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-20</span>
-        
-        
-        <span class="links">补充：<a href="https://github.com/weizhepei/RELEX" target="_blank" rel="noopener">https://github.com/weizhepei/RELEX</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.21468v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.21427v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21427v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.21427v1" target="_blank" rel="noopener">PALS: Power-Aware LLM Serving for Mixture-of-Experts Models</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">evaluation</span>
-      </div>
-      
-      <p class="innovation">把“GPU 功耗上限”当成可调参数，和 batch size 等软件参数一起联动优化，在不改模型/接口的前提下让 LLM（含 MoE）推理更省电且更稳。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>PALS 是一个面向 LLM serving 的运行时（runtime），核心思路是把 GPU power cap（功耗封顶）从“固定约束”变成“控制旋钮”。它先用轻量的离线功耗-性能模型，粗略预测不同配置（功耗上限、batch size 等）下的吞吐与能耗表现。在线阶段再用反馈控制器根据实时负载与目标吞吐（throughput target）动态选配置，既满足吞吐目标又尽量提高能效。与以往主要靠 batching/调度/并行来追吞吐和延迟不同，它把硬件功耗控制直接纳入推理调度决策。实现上集成进 vLLM，强调无需模型重训、无需改 API。</dd>
-        <dt>关键数据</dt><dd>能效（energy efficiency）最高提升 26.3%（覆盖多 GPU、dense 与 MoE）。在功耗受限场景下，QoS（服务质量，如延迟/吞吐达标）违约次数降低 4x–7x。支持跟踪动态功耗预算（dynamic power budgets）；具体跟踪误差/响应时间未披露，但定性表明可随电力预算变化自适应调整推理配置。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 这类在线服务，稳定的吞吐与延迟是“能不能用”的底线；PALS 提供一种在电力受限或电价波动下维持 QoS 的系统层手段。对 MoE（混合专家）推理尤其相关：MoE 的负载与路由更不均匀，把功耗控制纳入 runtime 有助于更可控地做资源与能耗管理。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-20</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.21427v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.21347v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21347v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.21347v1" target="_blank" rel="noopener">Insights Generator: Systematic Corpus-Level Trace Diagnostics for LLM Agents</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">把“看几条 trace 猜问题”的手工排障，升级为“全量 trace 语料级诊断”：自动产出带证据的自然语言洞察报告，直接指导改 agent scaffold。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者把问题形式化为“语料级 trace 诊断”：输入一批执行轨迹（trace，含工具调用/中间思考/输出等日志），输出能概括系统性行为模式的洞察，并为每条洞察附上可追溯证据。系统 Insights Generator（IG）采用多智能体架构：scout 负责在大规模 trace 中扫描异常/聚类线索，investigator 针对诊断问题提出假设并在全语料上验证。它不是只抽样看少量轨迹，而是跨 trace 群组找共性模式，避免“偶然样本”误导。最终生成结构化的 insights report，用于指导人类或编码 agent 修改提示词、工具使用策略、错误处理等 scaffold 组件。</dd>
-        <dt>关键数据</dt><dd>人类专家依据 IG 报告改 scaffold 后，相比未修改基线提升 30.4 个百分点（pp）。编码类 agents 使用 IG 洞察也获得“稳定一致”的增益（具体数值未披露）。在多个基准上，IG 的 scout-investigator 架构在“检测覆盖率”上与竞品方法相当；领域专家主观评分认为 IG 报告在“深度”和“证据质量”上领先（量化评分细节未披露）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这篇提供了一套可落地的“生产级 trace 诊断”思路：用多智能体做假设-验证，把零散失败案例变成可执行的改进清单。对做 MCP/RAG/复杂工作流的人，语料级洞察能更快定位系统性错误（如工具选择偏差、检索失败模式、长 trace 退化），减少靠经验盲调。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-20</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.21347v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.21312v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21312v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.21312v1" target="_blank" rel="noopener">Frontier: Towards Comprehensive and Accurate LLM Inference Simulation</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">Frontier 用离散事件模拟把“现代 LLM 推理服务”拆成可组合部件，能在含推理/Agent/RL 回放等有状态负载下，给出接近真实集群的吞吐与延迟预测。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>它不是把服务系统当成单体黑盒复刻，而是用“解耦式（disaggregated）”抽象建模：既支持同机混部（co-location），也支持 Prefill-Decode 解耦（PDD：提示阶段/生成阶段分开跑）和 Attention-FFN 解耦（AFD：注意力/前馈网络分开跑）。模拟器为不同角色的集群 worker 建模，并把 CUDA Graphs（图执行减少调度开销）、speculative decoding（投机解码：先猜再验证）等运行时优化放进 scheduler-batch-engine 的闭环里。它还能表示推理链、Agent 工具调用、RL rollout（强化学习采样回放）这类“请求会持续携带状态”的工作负载，从而更像真实线上。与只用平均值公式估算的分析模型相比，它显式模拟计算/通信/显存占用的动态变化，避免 SLA（服务等级协议）预测被“平均化”误导。</dd>
-        <dt>关键数据</dt><dd>16×H800 GPU 实机对照：吞吐预测平均误差 <4%。端到端延迟误差：在同机混部场景从 44.9% 降到 6.4%；在解耦部署场景从 51.7% 降到 2.6%（对比“现有最强模拟器”）。可在普通 CPU 上扩展到 >1K GPU 规模的模拟（具体 CPU 配置与仿真速度未披露）。</dd>
-        <dt>为什么值得关注</dt><dd>做 LLM agent / tool use / reasoning 的线上系统往往是有状态、长尾延迟敏感，且常用 Prefill/Decode 解耦与多种并行优化；Frontier 这种“决策级”模拟能更可靠地评估调度、资源切分与 SLA 取舍。对做 RL 后训练（rollout）或多 Agent 并发的团队，也能用它在不烧大量 GPU 的情况下验证服务与训练/采样的协同配置。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-20</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.21312v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.21299v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21299v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.21299v1" target="_blank" rel="noopener">Tracing the ongoing emergence of human-like reasoning in Large Language Models</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">multi-agent</span>
-      </div>
-      
-      <p class="innovation">用“人群匹配”实验把 25 个 LLM 与 4 种语言的人类对照，专门测条件句推理里“语用推断（看语境补含义）”，指出模型多会语义但常缺人类式语用。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者围绕条件句（if…then…）设计推理题，区分两类信息：语义真值表（按逻辑真假计算）与语用推断（例如“只有…才…”这类隐含条件）。在四种语言中，每种语言招募与模型数量相同的人类被试，与 25 个 LLM 做同一套条件推理任务。分析重点不是总体正确率，而是模型是否像人类一样在不同语境下“补全”隐含前提。进一步比较模型差异来源：开源/闭源、训练取向、架构类型是否能预测或提升这种语用能力。</dd>
-        <dt>关键数据</dt><dd>模型数量：25；语言数：4；人类对照：每种语言与模型数量相同（即每种语言 25 人，总计 100 人）。结论层面：部分 LLM 能“完美遵循”条件句真值表但忽略语用；另一些系统性偏离真值表、固定采用单一解释。未披露各模型的具体准确率/分数表，但给出定性对照：LLM 更像“语义算子”，而人类会跨语言一致地加入语用增强。另：开源/闭源、训练取向、架构类型对准确率“既不预测也不提升”（未给出统计量）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 来说，很多指令与环境反馈都包含“隐含条件”和语境默认值；这篇把失败点定位在语用推断而非纯逻辑，有助于判断何时需要用 RAG、规则/约束或外部验证来补齐。对 reasoning models 也提供了一个更贴近真实交互的评测视角：不仅看逻辑题对不对，还看是否能随语境改变解释。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-20</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.21299v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2605.21295v1">
@@ -488,6 +305,201 @@
         <a class="cta" href="https://arxiv.org/abs/2605.21295v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.21299v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21299v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.21299v1" target="_blank" rel="noopener">Tracing the ongoing emergence of human-like reasoning in Large Language Models</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">用“人群匹配”实验把 25 个 LLM 与 4 种语言的人类对照，专门测条件句推理里“语用推断（看语境补含义）”，指出模型多会语义但常缺人类式语用。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者围绕条件句（if…then…）设计推理题，区分两类信息：语义真值表（按逻辑真假计算）与语用推断（例如“只有…才…”这类隐含条件）。在四种语言中，每种语言招募与模型数量相同的人类被试，与 25 个 LLM 做同一套条件推理任务。分析重点不是总体正确率，而是模型是否像人类一样在不同语境下“补全”隐含前提。进一步比较模型差异来源：开源/闭源、训练取向、架构类型是否能预测或提升这种语用能力。</dd>
+        <dt>关键数据</dt><dd>模型数量：25；语言数：4；人类对照：每种语言与模型数量相同（即每种语言 25 人，总计 100 人）。结论层面：部分 LLM 能“完美遵循”条件句真值表但忽略语用；另一些系统性偏离真值表、固定采用单一解释。未披露各模型的具体准确率/分数表，但给出定性对照：LLM 更像“语义算子”，而人类会跨语言一致地加入语用增强。另：开源/闭源、训练取向、架构类型对准确率“既不预测也不提升”（未给出统计量）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 来说，很多指令与环境反馈都包含“隐含条件”和语境默认值；这篇把失败点定位在语用推断而非纯逻辑，有助于判断何时需要用 RAG、规则/约束或外部验证来补齐。对 reasoning models 也提供了一个更贴近真实交互的评测视角：不仅看逻辑题对不对，还看是否能随语境改变解释。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-20</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.21299v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.21312v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21312v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.21312v1" target="_blank" rel="noopener">Frontier: Towards Comprehensive and Accurate LLM Inference Simulation</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">Frontier 用离散事件模拟把“现代 LLM 推理服务”拆成可组合部件，能在含推理/Agent/RL 回放等有状态负载下，给出接近真实集群的吞吐与延迟预测。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它不是把服务系统当成单体黑盒复刻，而是用“解耦式（disaggregated）”抽象建模：既支持同机混部（co-location），也支持 Prefill-Decode 解耦（PDD：提示阶段/生成阶段分开跑）和 Attention-FFN 解耦（AFD：注意力/前馈网络分开跑）。模拟器为不同角色的集群 worker 建模，并把 CUDA Graphs（图执行减少调度开销）、speculative decoding（投机解码：先猜再验证）等运行时优化放进 scheduler-batch-engine 的闭环里。它还能表示推理链、Agent 工具调用、RL rollout（强化学习采样回放）这类“请求会持续携带状态”的工作负载，从而更像真实线上。与只用平均值公式估算的分析模型相比，它显式模拟计算/通信/显存占用的动态变化，避免 SLA（服务等级协议）预测被“平均化”误导。</dd>
+        <dt>关键数据</dt><dd>16×H800 GPU 实机对照：吞吐预测平均误差 <4%。端到端延迟误差：在同机混部场景从 44.9% 降到 6.4%；在解耦部署场景从 51.7% 降到 2.6%（对比“现有最强模拟器”）。可在普通 CPU 上扩展到 >1K GPU 规模的模拟（具体 CPU 配置与仿真速度未披露）。</dd>
+        <dt>为什么值得关注</dt><dd>做 LLM agent / tool use / reasoning 的线上系统往往是有状态、长尾延迟敏感，且常用 Prefill/Decode 解耦与多种并行优化；Frontier 这种“决策级”模拟能更可靠地评估调度、资源切分与 SLA 取舍。对做 RL 后训练（rollout）或多 Agent 并发的团队，也能用它在不烧大量 GPU 的情况下验证服务与训练/采样的协同配置。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-20</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.21312v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.21347v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21347v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.21347v1" target="_blank" rel="noopener">Insights Generator: Systematic Corpus-Level Trace Diagnostics for LLM Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“看几条 trace 猜问题”的手工排障，升级为“全量 trace 语料级诊断”：自动产出带证据的自然语言洞察报告，直接指导改 agent scaffold。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把问题形式化为“语料级 trace 诊断”：输入一批执行轨迹（trace，含工具调用/中间思考/输出等日志），输出能概括系统性行为模式的洞察，并为每条洞察附上可追溯证据。系统 Insights Generator（IG）采用多智能体架构：scout 负责在大规模 trace 中扫描异常/聚类线索，investigator 针对诊断问题提出假设并在全语料上验证。它不是只抽样看少量轨迹，而是跨 trace 群组找共性模式，避免“偶然样本”误导。最终生成结构化的 insights report，用于指导人类或编码 agent 修改提示词、工具使用策略、错误处理等 scaffold 组件。</dd>
+        <dt>关键数据</dt><dd>人类专家依据 IG 报告改 scaffold 后，相比未修改基线提升 30.4 个百分点（pp）。编码类 agents 使用 IG 洞察也获得“稳定一致”的增益（具体数值未披露）。在多个基准上，IG 的 scout-investigator 架构在“检测覆盖率”上与竞品方法相当；领域专家主观评分认为 IG 报告在“深度”和“证据质量”上领先（量化评分细节未披露）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这篇提供了一套可落地的“生产级 trace 诊断”思路：用多智能体做假设-验证，把零散失败案例变成可执行的改进清单。对做 MCP/RAG/复杂工作流的人，语料级洞察能更快定位系统性错误（如工具选择偏差、检索失败模式、长 trace 退化），减少靠经验盲调。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-20</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.21347v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.21427v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21427v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.21427v1" target="_blank" rel="noopener">PALS: Power-Aware LLM Serving for Mixture-of-Experts Models</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">把“GPU 功耗上限”当成可调参数，和 batch size 等软件参数一起联动优化，在不改模型/接口的前提下让 LLM（含 MoE）推理更省电且更稳。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>PALS 是一个面向 LLM serving 的运行时（runtime），核心思路是把 GPU power cap（功耗封顶）从“固定约束”变成“控制旋钮”。它先用轻量的离线功耗-性能模型，粗略预测不同配置（功耗上限、batch size 等）下的吞吐与能耗表现。在线阶段再用反馈控制器根据实时负载与目标吞吐（throughput target）动态选配置，既满足吞吐目标又尽量提高能效。与以往主要靠 batching/调度/并行来追吞吐和延迟不同，它把硬件功耗控制直接纳入推理调度决策。实现上集成进 vLLM，强调无需模型重训、无需改 API。</dd>
+        <dt>关键数据</dt><dd>能效（energy efficiency）最高提升 26.3%（覆盖多 GPU、dense 与 MoE）。在功耗受限场景下，QoS（服务质量，如延迟/吞吐达标）违约次数降低 4x–7x。支持跟踪动态功耗预算（dynamic power budgets）；具体跟踪误差/响应时间未披露，但定性表明可随电力预算变化自适应调整推理配置。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 这类在线服务，稳定的吞吐与延迟是“能不能用”的底线；PALS 提供一种在电力受限或电价波动下维持 QoS 的系统层手段。对 MoE（混合专家）推理尤其相关：MoE 的负载与路由更不均匀，把功耗控制纳入 runtime 有助于更可控地做资源与能耗管理。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-20</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.21427v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.21468v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21468v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.21468v1" target="_blank" rel="noopener">You Only Need Minimal RLVR Training: Extrapolating LLMs via Rank-1 Trajectories</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">MCP</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">发现 RLVR（可验证奖励强化学习）的权重更新轨迹几乎是“秩1”（一个主方向）且随步数近线性，可用少量训练观测直接外推出后续高质量 checkpoint。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者先分析 RLVR 训练中参数增量（delta）的几何结构，发现大部分性能收益可由“秩1近似”捕获，即把更新投影到一个主方向上。进一步观察到该投影的幅度随训练步数近似线性增长。基于此提出 RELEX：只用一小段前缀训练（观测窗口）收集若干 checkpoint，估计秩1子空间后，用线性回归外推未来的参数增量，直接“合成”后续 checkpoint，不再继续训练。消融显示：提高秩（用更多方向）或改用非线性拟合都不带来更好外推，核心收益来自秩1投影的“去噪”（过滤随机优化噪声）。</dd>
+        <dt>关键数据</dt><dd>覆盖 3 个模型：Qwen2.5-Math-1.5B、Qwen3-4B-Base、Qwen3-8B-Base。RELEX 只需完整 RLVR 训练步数的约 15% 就能在域内/域外基准上达到或超过完整 RLVR 的效果（具体各基准分数未披露）。可在几乎零额外训练成本下做远距离外推：例如只观察前 50 步，就外推到 1000 步（约 20×），并报告仍能持续改进；论文称可预测到观测前缀的 10–20× 之外。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM reasoning models 和 agent 场景常用的 RLVR/RL 类后训练，这提供了一个“少训+外推”的新思路：用极少步数就逼近长程强化学习效果。对 tool use / multi-agent 需要频繁迭代对齐的团队，也意味着可能用更低算力更快产出可用 checkpoint。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-20</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/weizhepei/RELEX" target="_blank" rel="noopener">https://github.com/weizhepei/RELEX</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.21468v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.21470v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21470v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.21470v1" target="_blank" rel="noopener">Agent JIT Compilation for Latency-Optimizing Web Agent Planning and Scheduling</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">把“网页操作 Agent”从逐步截图-调用模型-执行的慢循环，改成先把任务编译成可执行代码，再做并行调度，直接用编译与调度来降延迟并减少误用工具。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 Agent 的 JIT（即时）编译：把自然语言任务生成成一段可执行“代码计划”，代码里可以包含工具调用、必要的 LLM 调用，以及并行执行结构。JIT-Planner 会生成多个候选代码计划，逐个用工具规格（输入/输出约束）做校验，再按“成本最小”（主要是延迟/调用代价）选一个。JIT-Scheduler 用学习到的延迟分布做蒙特卡洛（随机采样估计）成本评估，搜索哪些步骤能并行、如何排程以最小化总耗时。另设计了带不变量（必须始终满足的条件）的工具协议，用前置条件/后置条件约束状态，减少生成“工具用错/顺序错”的计划；区别于传统每一步都要截图并让 LLM 决策的串行循环。</dd>
+        <dt>关键数据</dt><dd>覆盖 5 个 Web 应用：对比 Browser-Use，JIT-Planner 速度提升 10.4×，准确率 +28%。对比 OpenAI CUA，JIT-Scheduler 速度提升 2.4×，准确率 +9%。未披露绝对延迟（秒级）与任务数量细节，但给出了明确的相对加速与成功率增益。</dd>
+        <dt>为什么值得关注</dt><dd>这篇把 LLM agent 的“规划+工具使用”做成类似编译器/调度器问题：先产出可执行计划，再用并行与约束协议降低延迟和工具误用，直接对应 tool use、agent planning/scheduling、多步推理与执行可靠性。对关注 MCP/工具协议、以及多工具/多步骤 Agent 的工程化落地（尤其是延迟优化）有参考价值。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-20</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.21470v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.21482v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.21482v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.21482v1" target="_blank" rel="noopener">DeepWeb-Bench: A Deep Research Benchmark Demanding Massive Cross-Source Evidence and Long-Horizon Derivation</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">RAG</span><span class="tag">reasoning</span><span class="tag">benchmark</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">DeepWeb-Bench 把“上网搜证据+跨来源对齐+长链推导”的深度研究做成更难的基准，并用可审计的来源记录把评分和证据绑定，专门拉开前沿模型差距。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>基准任务要求 agent 在开放网页中大量检索证据、对不同来源的冲突信息做对账（跨源校验），再进行长跨度多步推导得到最终答案。作者把难点拆成四类能力：Retrieval（检索）、Derivation（推导链完整性）、Reasoning（推理）、Calibration（校准：不确定性/置信度与表述匹配），并按能力切片报告结果。每个参考答案都附带“来源-证据链”记录，提供 4 个披露等级，并在可行时做跨来源一致性检查，方便复核模型是否真用到了证据。对 9 个前沿模型进行统一评测，用错误归因来区分“找不到资料”与“资料有了但推不出来/说不准”的失败模式。</dd>
+        <dt>关键数据</dt><dd>在 9 个前沿模型上：检索失败只占全部错误的 12–14%，说明“能不能搜到”不是主要瓶颈；推导（Derivation）与校准（Calibration）相关失败合计超过 70%，主要卡在“证据到结论的长链推演”和“把不确定性说对”。强模型与弱模型错误类型不同：强模型更多是推导不完整，弱模型更多是“幻觉式精确”（把不确定内容说得很确定）。模型间存在领域专长差异：跨模型一致性仅 rho=0.61（相关系数），单个案例的模型间分歧最高可达 18.8 个百分点。总体分数/任务规模等未披露，但这些切片数据表明该基准更能区分前沿系统的真实深研能力。</dd>
+        <dt>为什么值得关注</dt><dd>如果你在做 LLM agent / tool use（工具调用）/ RAG（检索增强生成）类“深度研究”产品，这个基准直接告诉你瓶颈往往不在检索，而在长链推导与校准。它的按能力切片与可审计证据链设计，也更贴近多步推理与多来源对齐的真实评测需求。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-20</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.21482v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
     <article class="card" data-url="https://qwen.ai/blog?id=qwen3.7">
       <button class="star" aria-label="收藏" data-url="https://qwen.ai/blog?id=qwen3.7" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -515,15 +527,10 @@
         <a class="cta" href="https://qwen.ai/blog?id=qwen3.7" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-        </div>
-      
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
-      
+            </div>
+          </details>
         
-          <details class="date-group" id="archive-2026-05-20" open>
+          <details class="date-group" id="archive-2026-05-20">
             <summary>2026-05-20 <span class="n">10 条</span></summary>
             <div class="cards">
               
