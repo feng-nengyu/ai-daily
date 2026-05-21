@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>4</strong> 条 ·
       归档 <strong>30</strong> 条（3 天）·
-      生成于 2026-05-21 12:36 UTC
+      生成于 2026-05-21 23:46 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">4</span></a>
         
           <a href="#archive-2026-05-21" onclick="openArchive('2026-05-21')">2026-05-21 <span class="n">10</span></a>
         
@@ -235,9 +235,121 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(4)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://www.langchain.com/blog/token-streams-to-agent-streams">
+      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/token-streams-to-agent-streams" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.langchain.com/blog/token-streams-to-agent-streams" target="_blank" rel="noopener">From Token Streams to Agent Streams</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“只流式输出 token（字串）”升级为“流式输出 agent 事件”。前端可按类型订阅、看见子代理过程，并支持多模态与更稳的交互体验。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心是引入更高层的 streaming primitives（流式原语）：不再只推送文本片段，而是推送“带类型的事件”（typed events，结构化消息）。事件支持作用域订阅（scoped subscriptions，只看某个步骤/工具/子代理的流）与子代理可见性（subagent visibility，能观察分工与中间产物）。同时把工具调用、状态变更、错误/重试等都作为事件流的一部分，便于前端做进度条、分段渲染与失败恢复。覆盖 Deep Agents、LangChain、LangGraph 的实现，目标是让生产级 agent 应用的 UI/监控更可控，而不是靠解析纯文本猜发生了什么。</dd>
+        <dt>关键数据</dt><dd>未披露。相对意义：从“token 级别的文本流”转为“事件级别的结构化流”，主要提升的是可观测性、可交互性与前端容错，而非直接给出模型效果或速度数字。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use（工具调用）应用来说，结构化事件流能更清晰地呈现“计划-调用-结果-重试”的全过程，并让多 agent（multi-agent）与子代理协作在 UI 与监控层面可见、可订阅。对 MCP、RAG 等需要频繁工具/检索回传的场景，也更容易做稳定的实时体验与调试。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <a class="cta" href="https://www.langchain.com/blog/token-streams-to-agent-streams" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://simonwillison.net/2026/May/21/datasette-agent/#atom-everything">
+      <button class="star" aria-label="收藏" data-url="https://simonwillison.net/2026/May/21/datasette-agent/#atom-everything" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://simonwillison.net/2026/May/21/datasette-agent/#atom-everything" target="_blank" rel="noopener">Datasette Agent</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-expert" title="rss:simon-willison">Simon Willison</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">Datasette Agent 把对话式 AI 助手直接嵌进 Datasette，让你用聊天方式问数据库问题，并可扩展成“会写 SQL、会画图、还能加工具”的数据分析 Agent。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它在 Datasette 上提供一个对话界面：用户提问后，模型会把问题转成可执行的 SQLite 查询（SQL），跑出结果再用自然语言解释。官方提供在线 demo（agent.datasette.io），示例库包含 global-power-plants 和作者博客备份，展示从语义问题到 SQL 再到答案的完整链路。系统基于作者维护 3 年多的 LLM Python 库与 Datasette 结合，重点不是做新模型，而是把“工具调用（执行 SQL）”做成可落地产品。与传统 BI/SQL 编辑器相比，它把“写查询”这一步交给模型，并把能力做成插件化扩展。</dd>
+        <dt>关键数据</dt><dd>披露了一个可复现示例：问题“Simon 最近一次看到 pelican 是何时？”自动生成带 LIKE 过滤、按 created 倒序、LIMIT 5 的 SQL，并回答日期为 2026-05-20。在线 demo 使用 Gemini 3.1 Flash-Lite（强调便宜、快、能稳定写 SQLite 查询），但未披露准确成本、延迟、成功率或评测分数；相对意义是展示了“自然语言→SQL→结果解释”的端到端可用性与可审计性（SQL 可查看）。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 LLM agent / tool use 的读者，这是一个“模型调用数据库工具（SQL）”的真实产品化案例，而且输出 SQL 可检查，适合做可控的 RAG（检索增强）/数据问答。插件机制也接近 MCP（模型上下文协议）式的“可插拔工具生态”，便于扩展成多工具 Agent 工作流。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <span class="links">补充：<a href="https://datasette.io/blog/2026/datasette-agent/, https://agent.datasette.io/, https://github.com/datasette/datasette-agent-charts, https://github.com/datasette/datasette-agent-openai-imagegen, https://llm.datasette.io/" target="_blank" rel="noopener">https://datasette.io/blog/2026/datasette-agent/, https://agent.datasette.io/, https://github.com/datasette/datasette-agent-charts, https://github.com/datasette/datasette-agent-openai-imagegen, https://llm.datasette.io/</a></span>
+        
+        <a class="cta" href="https://simonwillison.net/2026/May/21/datasette-agent/#atom-everything" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://developer.nvidia.com/blog/automating-and-optimizing-financial-signal-discovery-with-multi-agent-systems/">
+      <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/automating-and-optimizing-financial-signal-discovery-with-multi-agent-systems/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://developer.nvidia.com/blog/automating-and-optimizing-financial-signal-discovery-with-multi-agent-systems/" target="_blank" rel="noopener">Automating and Optimizing Financial Signal Discovery with Multi-Agent Systems</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-lab" title="rss:nvidia-dev-blog">NVIDIA</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">用多智能体把“找金融交易信号”做成可自动化的流水线：从提出假设、写特征、回测到筛选组合，减少人工反复试错。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>文章把量化研究拆成多个角色型 Agent（智能体）：例如研究员负责提出可检验的信号假设，数据/特征 Agent 负责拉取数据并生成因子（特征），回测 Agent 负责跑历史回测并产出指标，评审/协调 Agent 负责根据结果迭代下一轮。核心是让 Agent 通过工具调用（如数据查询、回测引擎、报告生成）形成闭环，而不是单次问答。与传统“研究员手工写脚本+反复调参”相比，它强调任务分解、并行探索与自动记录可复现的实验轨迹。整体更像一个面向量化研究的 multi-agent 工作流，而非单一模型直接给交易建议。</dd>
+        <dt>关键数据</dt><dd>未披露：文中未给出明确的收益率提升、夏普比率（风险调整收益）变化、回测速度或成本等量化对比。定性意义在于把信号发现从“人驱动的脚本工程”转为“Agent 驱动的可迭代实验”，更利于规模化探索与审计复现。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 multi-agent + tool use（工具调用）场景：把复杂研究流程拆成可协作的子任务并自动迭代。对关注 LLM agent、MCP/工具协议、RAG（检索增强）在行业工作流落地的人，有参考价值：如何设计角色、工具边界与评审回路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <a class="cta" href="https://developer.nvidia.com/blog/automating-and-optimizing-financial-signal-discovery-with-multi-agent-systems/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://www.microsoft.com/en-us/research/blog/magenticlite-magenticbrain-fara1-5-an-agentic-experience-optimized-for-small-models/">
+      <button class="star" aria-label="收藏" data-url="https://www.microsoft.com/en-us/research/blog/magenticlite-magenticbrain-fara1-5-an-agentic-experience-optimized-for-small-models/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.microsoft.com/en-us/research/blog/magenticlite-magenticbrain-fara1-5-an-agentic-experience-optimized-for-small-models/" target="_blank" rel="noopener">MagenticLite, MagenticBrain, Fara1.5: An agentic experience optimized for small models</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-lab" title="rss:microsoft-research">MS Research</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">把“小模型也能好用的 Agent”做成一套跨浏览器+本地文件的统一工作流：用专用小模型组合与调度，让日常任务的工具调用更高效。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>系统名为 MagenticLite，定位是面向小参数模型的 agentic（可自主分解任务并调用工具）体验。它在同一流程里同时覆盖浏览器操作与本地文件系统操作，减少在不同工具/环境间来回切换的成本。核心做法是“多专用模型+编排器（orchestration，负责分工与调度）”：不同子模型各自擅长不同环节，由上层统一协调完成任务。与常见“单一大模型一把梭”的方式相比，它更强调用更小的模型通过分工协作来完成端到端任务。标题同时提到 MagenticBrain 与 Fara1.5，暗示还有更上层的“大脑/调度”与配套模型，但摘要未给出细节。</dd>
+        <dt>关键数据</dt><dd>未披露：未给出模型参数规模、任务成功率、成本/延迟、与大模型或既有 agent 框架的对比数据。定性意义是把“agent 能力”从依赖大模型转向可在小模型上通过编排实现，但效果强弱需看原文是否提供评测。</dd>
+        <dt>为什么值得关注</dt><dd>与 LLM agent、tool use（工具调用）、multi-agent（多模型分工协作）高度相关：它讨论如何用小模型+编排器实现跨浏览器与本地文件的端到端执行。若你在做 MCP/工具协议或轻量化 agent，这类“专用模型组合”的设计思路可直接借鉴。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <a class="cta" href="https://www.microsoft.com/en-us/research/blog/magenticlite-magenticbrain-fara1-5-an-agentic-experience-optimized-for-small-models/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
