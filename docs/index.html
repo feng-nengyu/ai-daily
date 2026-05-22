@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>34</strong> 条（3 天）·
-      生成于 2026-05-22 04:42 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>44</strong> 条（4 天）·
+      生成于 2026-05-22 06:02 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        
+          <a href="#archive-2026-05-22" onclick="openArchive('2026-05-22')">2026-05-22 <span class="n">10</span></a>
         
           <a href="#archive-2026-05-21" onclick="openArchive('2026-05-21')">2026-05-21 <span class="n">14</span></a>
         
@@ -235,10 +237,20 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-05-22" open>
+            <summary>2026-05-22 <span class="n">10 条</span></summary>
+            <div class="cards">
+              
     <article class="card" data-url="https://arxiv.org/abs/2605.22721v1">
       <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22721v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -266,232 +278,6 @@
         <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
         
         <a class="cta" href="https://arxiv.org/abs/2605.22721v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.22748v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22748v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.22748v1" target="_blank" rel="noopener">Superhuman Safe and Agile Racing through Multi-Agent Reinforcement Learning</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">reinforcement</span><span class="tag">tool-use</span><span class="tag">safety</span>
-      </div>
-      
-      <p class="innovation">把“安全”从单机约束转向多智能体对抗/协作训练：在高速四旋翼多人竞速中，既跑赢冠军人类，又把碰撞率相对单智能体基线降了一半。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者认为物理世界的脆弱性来自“单智能体范式”：把其他参与者当噪声，学不到协调与博弈。于是用多智能体强化学习（通过奖励学习策略）在四旋翼竞速场景训练，赛道上同时存在可变数量的对手。训练采用 league-based self-play（联赛式自我对弈）：让不同水平/风格的代理持续互相对抗，形成课程式难度与多样对手分布。策略不仅学路线，还显式学多人交互：提前预判、主动避撞、超车，以及处理下洗气流（downwash，螺旋桨气流干扰）等物理耦合。作者强调：用多样化人工对手训练后，对“与人同场”能零样本（不再训练）迁移到更安全的交互。</dd>
-        <dt>关键数据</dt><dd>多人竞速速度超过 22 m/s；在多人赛中表现优于“冠军级”人类飞手（具体胜率/圈速未披露）；相对当时最强单智能体基线，碰撞率降低 50%；“零样本泛化到更安全的人类交互”给出定性结论，量化指标未披露。</dd>
-        <dt>为什么值得关注</dt><dd>对关心 multi-agent 的读者，这是一个把“多智能体训练=安全脚手架”落到真实物理交互（含气动耦合）的案例。对 agent/tool use/RAG 等方向也有启发：与其只做单体能力堆叠，不如用“多主体对抗+多样对手分布”来逼出更稳健的策略与泛化。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-21</span>
-        
-        
-        <span class="links">补充：<a href="https://rpg.ifi.uzh.ch/marl" target="_blank" rel="noopener">https://rpg.ifi.uzh.ch/marl</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.22748v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.22733v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22733v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.22733v1" target="_blank" rel="noopener">HarnessAPI: A Skill-First Framework for Unified Streaming APIs and MCP Tools</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">agent</span>
-      </div>
-      
-      <p class="innovation">把“HTTP 接口 + MCP 工具”两套重复工程合并：只写一个带类型的 skill（技能）文件夹，就能同时生成可流式输出的 API 和零配置 MCP 工具，减少维护漂移。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>HarnessAPI 以“typed skill folder（带类型的技能目录）”作为单一事实来源：核心只需要一个 handler.py 和 Pydantic（数据校验/类型声明）schema。框架自动派生三样东西：支持 SSE（服务器推送事件）的流式 HTTP endpoint、可交互的 OpenAPI/Swagger 文档页、以及可被 Claude/Cursor 等 agent 运行时调用的 MCP 工具，并且同一进程内提供服务。它用“双模式内容协商”让同一个 handler 同时服务流式 SSE 客户端和普通 JSON 客户端，无需改业务代码。为解决 FastMCP 检查层对类型注解传播的限制，它引入动态代码生成，把 Pydantic 的类型信息正确传到工具注册层，避免“闭包式注册”导致的类型丢失。整体上它是 FastAPI 的子类，因此直接继承中间件、依赖注入和部署生态，而不是另起一套 Web 框架。</dd>
-        <dt>关键数据</dt><dd>作者在 6 个代表性 skills 上用 cloc（代码行统计）对比“手工双栈：FastAPI server + FastMCP server”，HarnessAPI 将面向框架的样板代码减少 74%。除代码量外的性能（吞吐/延迟）与稳定性指标未披露；其主要收益是减少重复实现与 schema 漂移风险。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / MCP / tool use 场景，最大痛点之一是“同一工具要维护 HTTP 与 MCP 两套定义”，HarnessAPI 试图把工具定义、校验、流式输出和注册统一到一处。若你在做带 streaming 的工具调用、或希望 RAG/多工具链路更易部署与迭代，这类“单源生成 MCP + API”的工程化方案很直接可用。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-21</span>
-        
-        
-        <span class="links">补充：<a href="https://github.com/edwinjosechittilappilly/harnessapi, https://pypi.org/project/harnessapi" target="_blank" rel="noopener">https://github.com/edwinjosechittilappilly/harnessapi, https://pypi.org/project/harnessapi</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.22733v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.22714v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22714v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.22714v1" target="_blank" rel="noopener">AMEL: Accumulated Message Effects on LLM Judgments</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">evaluation</span>
-      </div>
-      
-      <p class="innovation">证明“把 LLM 当裁判”会被对话历史的正负情绪带偏：同一条待评内容，放在一串偏正/偏负的历史后，模型判断会向历史极性漂移，且负面历史影响更强。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者把 LLM 作为自动评审器（打分/审核/评代码）的常见用法抽象成“同一会话里连续评很多条”。他们对 11 个模型做大规模对照实验：同一测试条目要么单独评（新上下文），要么放在“前面多轮几乎全是正评/负评”的历史之后再评。通过比较两种条件下的评分/判定分布，量化“累积消息效应（AMEL）”的偏移量，并进一步用不确定性（高熵=模型拿不准）分组、不同历史长度/位置、以及 token 概率分布变化来定位机制。与以往只讨论提示词偏置不同，这里强调的是“批处理评测/审核流水线”里历史累积造成的系统性偏差。</dd>
-        <dt>关键数据</dt><dd>总计 75,898 次 API 调用，覆盖 4 家提供商（OpenAI、Anthropic、Google + 4 个开源模型），11 个模型。整体判断向历史极性漂移：效应量 d=-0.17，p<1e-46；在模型本来更不确定的条目上更强：高熵条目 d=-0.34，而基线更确定时 d=-0.15。偏差不随上下文长度增长：5 轮 vs 50 轮几乎一样（Spearman |r|<0.01；OLS 斜率 p=0.80）。负面历史更“带偏”：逐条配对比较，负面诱导的偏差是正面的 1.62 倍（t=13.46，p<1e-39，n=2,481）。更大模型能减轻但不能消除：Anthropic Haiku -0.22 到 Opus -0.17；OpenAI Nano -0.34 到 GPT-5.2 -0.17。机制侧：token 概率分布是连续漂移而非阈值跳变；5 条带偏消息放在 50 轮历史的任何位置效果相同。</dd>
-        <dt>为什么值得关注</dt><dd>做 LLM agent / tool use / RAG 时常把模型当“评审器/路由器/打分器”来做自检、重排、内容审核；这篇量化了“同一会话批量评测”会引入可观偏差，直接影响多代理协作与自动评测的可靠性。它也给出工程上最简单的规避策略：每条评测用新上下文；不得不批处理时尽量让历史正负平衡。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-21</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.22714v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.22675v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22675v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.22675v1" target="_blank" rel="noopener">Self-Policy Distillation via Capability-Selective Subspace Projection</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">提出 SPD：不靠外部打分/执行反馈，只用模型自身梯度提取“能力子空间”，在自生成时过滤掉风格与格式噪声，做更可泛化的自蒸馏。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>传统自蒸馏要么用正确性过滤、执行反馈、奖励搜索等外部信号挑样本（成本高、前沿模型未必可用），要么直接用全部原始输出训练（容易学到风格/格式/错误模式）。SPD 的核心是“能力选择”：先在模型对少量“定义正确性”的 token 上计算梯度，用这些梯度提取一个低秩（低维）能力子空间。随后在自生成阶段，把注意力的 KV（key-value，注意力缓存）激活投影到该子空间，相当于只让与目标能力相关的方向参与生成。最后对投影后生成的原始输出，用标准 next-token prediction（下一个词预测）损失微调，不需要额外标注或奖励模型。</dd>
-        <dt>关键数据</dt><dd>覆盖代码生成、数学推理、多选 QA 三类任务；相对“无外部信号”的 SOTA 自蒸馏方法最高提升 13%；相对预训练基线最高提升 16%；在跨域（out-of-domain）泛化设置下性能高 15%。具体使用的模型规模、子空间秩大小、训练/推理额外开销未披露（但方法在生成时引入 KV 投影，理论上会带来一定计算开销）。</dd>
-        <dt>为什么值得关注</dt><dd>这条直接解决 LLM agent / tool use 场景常见的“自训练会学到格式与坏习惯、能力提升不稳定”的问题：用内部表示做能力选择，比靠外部奖励或执行器更通用。对关注 reasoning models、多任务/跨域泛化的读者，它提供了一种不依赖环境反馈的“能力定向自蒸馏”思路。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-21</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.22675v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.22672v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22672v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.22672v1" target="_blank" rel="noopener">Is Capability a Liability? More Capable Language Models Make Worse Forecasts When It Matters Most</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">evaluation</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">论文发现“能力越强预测越差”的反向缩放：在带超线性增长与尾部风险（极端转折）的时间序列上，更强 LLM 的分布预测反而更不准，且主要错在上尾（高风险区）。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者聚焦金融/流行病常见的“快速增长+可能换挡（制度切换）”结构，评估 LLM 做概率预测（分位数/分布而非单点）。他们发布无污染的模拟基准 ForecastBench-Sim（FBSim），并在合成 SIR（传染病模型）与匹配的线性对照任务上对比，随后在真实数据（COVID-19、麻疹、房市、恶性通胀）复现。通过“按分位数拆解”定位误差来源：更强模型把上尾整体抬高去追逐激进外推，而下尾几乎不动，导致校准（概率与真实频率一致性）变差。进一步在 Llama-3.1 家族内做控制实验，区分模型规模与后训练（如指令/偏好对齐）对该现象的独立贡献，并测试加入领域知识也无法稳定修复校准。</dd>
-        <dt>关键数据</dt><dd>未披露具体分数/误差数值与模型规模区间的量化幅度；但给出定性结论：在“尾部纳入”的连续评分下，能力—准确率关系会从正相关翻转为负相关；而常见单阈值（二分类/命中率）指标在相同输出上看不出该问题，因其忽略上尾成本。误差集中在上尾分位数（高增长/高风险区），下尾基本不变。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use、RAG 等要把模型用于“决策/风控/预警”的场景很关键：更强的推理模型可能在最重要的极端风险预测上更不可靠。也提醒做评测与对齐时，别只用单阈值指标；需要覆盖尾部的连续分布评分，否则会误判模型能力。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-21</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.22672v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.22664v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22664v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.22664v1" target="_blank" rel="noopener">WorkstreamBench: Evaluating LLM Agents on End-to-End Spreadsheet Tasks in Finance</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">evaluation</span>
-      </div>
-      
-      <p class="innovation">提出 WorkstreamBench，用“从零生成整张财务表格”的端到端任务评测 LLM agent，而不是只测问答或改单个公式，直指企业财务建模/情景分析的真实交付物质量。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>基准聚焦金融里常见且经济价值高的工作流：财务建模、预测、情景分析等，要求 agent 根据高层指令产出完整电子表格（含结构、公式与排版）。为贴近企业审阅流程，引入多维度评估分类法（taxonomy）：Accuracy（结果是否对）、Formula（公式是否正确/可维护）、Format（可读性、布局、易修改等）。与以往“回答表格问题/编辑单个单元格公式”的基准不同，它把“交付物是否像专业分析师做的”作为核心目标。论文还做了定性对比，强调随着任务链条变长（多步计算串联）模型表现会明显变差。</dd>
-        <dt>关键数据</dt><dd>未披露具体分数/通过率等量化结果；仅给出相对结论：Claude 系列在该基准上整体领先，输出在“专业观感/可读性”上最好，但即便最强 agent 也经常达不到专业财务标准；当难度超过“少量串联计算”后性能会急剧下降（未给出下降幅度）。意义在于：把 agent 的短板从“会不会算”扩展到“能否交付可审阅、可维护的表格成品”。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use（工具调用）类系统，这是更接近真实办公自动化的端到端评测：不仅看答案，还看产物的结构化质量与可维护性。对 multi-agent、reasoning models 读者，它揭示了长链推理与多步骤构建在“可交付工件（artifact）”场景下的失效方式与评测维度。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-21</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.22664v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.22662v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22662v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.22662v1" target="_blank" rel="noopener">Claw AI Lab: An Autonomous Multi-Agent Research Team</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">RAG</span>
-      </div>
-      
-      <p class="innovation">把“隐藏的提示词到论文”自动写作链路，改成可交互的多智能体研究实验室：一条提示词就能拉起研究团队，并在仪表盘里监控、检查产物、回滚/续跑。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>系统不再围绕单一 Agent 或固定串行流程，而是允许用户从一个任务提示实例化“研究团队”，为不同成员配置角色与协作工作流。提供三种研究模式：探索、多人讨论、复现，让自动研究更可控（steerable）而不是黑箱跑完。核心工程组件是 Claw-Code Harness：把本地代码库、数据集、模型 checkpoint（训练中间权重）接到可运行实验，并把日志、结果文件等执行产物回流到研究循环中。通过统一仪表盘支持实时监控、产物检查（artifact inspection）以及回滚/恢复，减少半跑、结果写错等常见失败模式，并更容易把实验结果“忠实搬运”进论文。</dd>
-        <dt>关键数据</dt><dd>内部评测：5 个 AI 研究案例；以 AutoResearchClaw 为基线，AI 专家评委在“想法新颖性、实验完整性、论文呈现质量”三项上更偏好 Claw AI Lab。偏好比例/打分细节未披露；定性意义是把改进点落在“实验跑通与结果可信”而非仅文本质量。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / multi-agent 读者：它把多智能体协作从“对话编排”推进到“可运行实验+可回滚”的研究基础设施。对 tool use / RAG/MCP 关注者：Claw-Code Harness 本质是在做更可靠的工具/执行集成与产物回流，解决 Agent 做实验时最常见的执行与结果一致性问题。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-21</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.22662v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.22643v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22643v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.22643v1" target="_blank" rel="noopener">Boiling the Frog: A Multi-Turn Benchmark for Agentic Safety</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">safety</span>
-      </div>
-      
-      <p class="innovation">把“安全”从看模型说什么，转到看代理（会用工具的模型）在多轮办公任务里最终做了什么，专测“温水煮青蛙式”渐进攻击。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>提出 Boiling the Frog 多轮基准：每个场景先让模型做看似无害的办公/协作编辑，随后在后续轮次插入带风险的请求。评测是有状态的（stateful）：给模型一个持续存在的工作区（文档/表格/代码等），并把“风险载荷”放在不同轮次位置，观察最终产物状态是否变得不安全。评分不只看当轮回复，而是看工具操作后的工件（artifact）是否越界，例如是否引入违规内容、危险配置或失控行为。场景按三层运营风险分类组织，参考 Boiling the Frog 风险、欧盟 AI 法案高风险场景（Annex I/III）以及 GPAI 行为准则中的失控类要求，强调企业/办公室落地环境。</dd>
-        <dt>关键数据</dt><dd>9 个模型总体“严格攻击成功率”（ASR）为 44.4%。单模型 ASR 从 Claude Haiku 4.5 的 20.5% 到 Gemini 3.1 Flash Lite 的 92.9%；Seed 2.0 Lite 也超过 80%。在“行为准则-失控（loss-of-control）”类场景中，平均链路/类别级 ASR 高达 93.3%，说明多轮渐进诱导下，很多代理在最终工件层面更容易出问题。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这类“有状态多轮+看最终工件”的评测更贴近真实代理系统（含工具调用、工作区记忆）的安全风险。对做 MCP、RAG 或工作流编排的人，它提供了可量化的“渐进攻击”失败率指标，能用来对比不同代理框架与防护策略在多轮任务中的稳健性。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-21</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.22643v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2605.22642v1">
@@ -523,15 +309,236 @@
         <a class="cta" href="https://arxiv.org/abs/2605.22642v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.22643v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22643v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.22643v1" target="_blank" rel="noopener">Boiling the Frog: A Multi-Turn Benchmark for Agentic Safety</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
+      </div>
       
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">safety</span>
+      </div>
       
+      <p class="innovation">把“安全”从看模型说什么，转到看代理（会用工具的模型）在多轮办公任务里最终做了什么，专测“温水煮青蛙式”渐进攻击。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 Boiling the Frog 多轮基准：每个场景先让模型做看似无害的办公/协作编辑，随后在后续轮次插入带风险的请求。评测是有状态的（stateful）：给模型一个持续存在的工作区（文档/表格/代码等），并把“风险载荷”放在不同轮次位置，观察最终产物状态是否变得不安全。评分不只看当轮回复，而是看工具操作后的工件（artifact）是否越界，例如是否引入违规内容、危险配置或失控行为。场景按三层运营风险分类组织，参考 Boiling the Frog 风险、欧盟 AI 法案高风险场景（Annex I/III）以及 GPAI 行为准则中的失控类要求，强调企业/办公室落地环境。</dd>
+        <dt>关键数据</dt><dd>9 个模型总体“严格攻击成功率”（ASR）为 44.4%。单模型 ASR 从 Claude Haiku 4.5 的 20.5% 到 Gemini 3.1 Flash Lite 的 92.9%；Seed 2.0 Lite 也超过 80%。在“行为准则-失控（loss-of-control）”类场景中，平均链路/类别级 ASR 高达 93.3%，说明多轮渐进诱导下，很多代理在最终工件层面更容易出问题。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这类“有状态多轮+看最终工件”的评测更贴近真实代理系统（含工具调用、工作区记忆）的安全风险。对做 MCP、RAG 或工作流编排的人，它提供了可量化的“渐进攻击”失败率指标，能用来对比不同代理框架与防护策略在多轮任务中的稳健性。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
         
-          <details class="date-group" id="archive-2026-05-21" open>
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.22643v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.22662v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22662v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.22662v1" target="_blank" rel="noopener">Claw AI Lab: An Autonomous Multi-Agent Research Team</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">把“隐藏的提示词到论文”自动写作链路，改成可交互的多智能体研究实验室：一条提示词就能拉起研究团队，并在仪表盘里监控、检查产物、回滚/续跑。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>系统不再围绕单一 Agent 或固定串行流程，而是允许用户从一个任务提示实例化“研究团队”，为不同成员配置角色与协作工作流。提供三种研究模式：探索、多人讨论、复现，让自动研究更可控（steerable）而不是黑箱跑完。核心工程组件是 Claw-Code Harness：把本地代码库、数据集、模型 checkpoint（训练中间权重）接到可运行实验，并把日志、结果文件等执行产物回流到研究循环中。通过统一仪表盘支持实时监控、产物检查（artifact inspection）以及回滚/恢复，减少半跑、结果写错等常见失败模式，并更容易把实验结果“忠实搬运”进论文。</dd>
+        <dt>关键数据</dt><dd>内部评测：5 个 AI 研究案例；以 AutoResearchClaw 为基线，AI 专家评委在“想法新颖性、实验完整性、论文呈现质量”三项上更偏好 Claw AI Lab。偏好比例/打分细节未披露；定性意义是把改进点落在“实验跑通与结果可信”而非仅文本质量。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / multi-agent 读者：它把多智能体协作从“对话编排”推进到“可运行实验+可回滚”的研究基础设施。对 tool use / RAG/MCP 关注者：Claw-Code Harness 本质是在做更可靠的工具/执行集成与产物回流，解决 Agent 做实验时最常见的执行与结果一致性问题。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.22662v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.22664v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22664v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.22664v1" target="_blank" rel="noopener">WorkstreamBench: Evaluating LLM Agents on End-to-End Spreadsheet Tasks in Finance</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">提出 WorkstreamBench，用“从零生成整张财务表格”的端到端任务评测 LLM agent，而不是只测问答或改单个公式，直指企业财务建模/情景分析的真实交付物质量。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>基准聚焦金融里常见且经济价值高的工作流：财务建模、预测、情景分析等，要求 agent 根据高层指令产出完整电子表格（含结构、公式与排版）。为贴近企业审阅流程，引入多维度评估分类法（taxonomy）：Accuracy（结果是否对）、Formula（公式是否正确/可维护）、Format（可读性、布局、易修改等）。与以往“回答表格问题/编辑单个单元格公式”的基准不同，它把“交付物是否像专业分析师做的”作为核心目标。论文还做了定性对比，强调随着任务链条变长（多步计算串联）模型表现会明显变差。</dd>
+        <dt>关键数据</dt><dd>未披露具体分数/通过率等量化结果；仅给出相对结论：Claude 系列在该基准上整体领先，输出在“专业观感/可读性”上最好，但即便最强 agent 也经常达不到专业财务标准；当难度超过“少量串联计算”后性能会急剧下降（未给出下降幅度）。意义在于：把 agent 的短板从“会不会算”扩展到“能否交付可审阅、可维护的表格成品”。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use（工具调用）类系统，这是更接近真实办公自动化的端到端评测：不仅看答案，还看产物的结构化质量与可维护性。对 multi-agent、reasoning models 读者，它揭示了长链推理与多步骤构建在“可交付工件（artifact）”场景下的失效方式与评测维度。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.22664v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.22672v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22672v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.22672v1" target="_blank" rel="noopener">Is Capability a Liability? More Capable Language Models Make Worse Forecasts When It Matters Most</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">evaluation</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">论文发现“能力越强预测越差”的反向缩放：在带超线性增长与尾部风险（极端转折）的时间序列上，更强 LLM 的分布预测反而更不准，且主要错在上尾（高风险区）。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者聚焦金融/流行病常见的“快速增长+可能换挡（制度切换）”结构，评估 LLM 做概率预测（分位数/分布而非单点）。他们发布无污染的模拟基准 ForecastBench-Sim（FBSim），并在合成 SIR（传染病模型）与匹配的线性对照任务上对比，随后在真实数据（COVID-19、麻疹、房市、恶性通胀）复现。通过“按分位数拆解”定位误差来源：更强模型把上尾整体抬高去追逐激进外推，而下尾几乎不动，导致校准（概率与真实频率一致性）变差。进一步在 Llama-3.1 家族内做控制实验，区分模型规模与后训练（如指令/偏好对齐）对该现象的独立贡献，并测试加入领域知识也无法稳定修复校准。</dd>
+        <dt>关键数据</dt><dd>未披露具体分数/误差数值与模型规模区间的量化幅度；但给出定性结论：在“尾部纳入”的连续评分下，能力—准确率关系会从正相关翻转为负相关；而常见单阈值（二分类/命中率）指标在相同输出上看不出该问题，因其忽略上尾成本。误差集中在上尾分位数（高增长/高风险区），下尾基本不变。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use、RAG 等要把模型用于“决策/风控/预警”的场景很关键：更强的推理模型可能在最重要的极端风险预测上更不可靠。也提醒做评测与对齐时，别只用单阈值指标；需要覆盖尾部的连续分布评分，否则会误判模型能力。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.22672v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.22675v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22675v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.22675v1" target="_blank" rel="noopener">Self-Policy Distillation via Capability-Selective Subspace Projection</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">提出 SPD：不靠外部打分/执行反馈，只用模型自身梯度提取“能力子空间”，在自生成时过滤掉风格与格式噪声，做更可泛化的自蒸馏。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>传统自蒸馏要么用正确性过滤、执行反馈、奖励搜索等外部信号挑样本（成本高、前沿模型未必可用），要么直接用全部原始输出训练（容易学到风格/格式/错误模式）。SPD 的核心是“能力选择”：先在模型对少量“定义正确性”的 token 上计算梯度，用这些梯度提取一个低秩（低维）能力子空间。随后在自生成阶段，把注意力的 KV（key-value，注意力缓存）激活投影到该子空间，相当于只让与目标能力相关的方向参与生成。最后对投影后生成的原始输出，用标准 next-token prediction（下一个词预测）损失微调，不需要额外标注或奖励模型。</dd>
+        <dt>关键数据</dt><dd>覆盖代码生成、数学推理、多选 QA 三类任务；相对“无外部信号”的 SOTA 自蒸馏方法最高提升 13%；相对预训练基线最高提升 16%；在跨域（out-of-domain）泛化设置下性能高 15%。具体使用的模型规模、子空间秩大小、训练/推理额外开销未披露（但方法在生成时引入 KV 投影，理论上会带来一定计算开销）。</dd>
+        <dt>为什么值得关注</dt><dd>这条直接解决 LLM agent / tool use 场景常见的“自训练会学到格式与坏习惯、能力提升不稳定”的问题：用内部表示做能力选择，比靠外部奖励或执行器更通用。对关注 reasoning models、多任务/跨域泛化的读者，它提供了一种不依赖环境反馈的“能力定向自蒸馏”思路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.22675v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.22714v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22714v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.22714v1" target="_blank" rel="noopener">AMEL: Accumulated Message Effects on LLM Judgments</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">证明“把 LLM 当裁判”会被对话历史的正负情绪带偏：同一条待评内容，放在一串偏正/偏负的历史后，模型判断会向历史极性漂移，且负面历史影响更强。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把 LLM 作为自动评审器（打分/审核/评代码）的常见用法抽象成“同一会话里连续评很多条”。他们对 11 个模型做大规模对照实验：同一测试条目要么单独评（新上下文），要么放在“前面多轮几乎全是正评/负评”的历史之后再评。通过比较两种条件下的评分/判定分布，量化“累积消息效应（AMEL）”的偏移量，并进一步用不确定性（高熵=模型拿不准）分组、不同历史长度/位置、以及 token 概率分布变化来定位机制。与以往只讨论提示词偏置不同，这里强调的是“批处理评测/审核流水线”里历史累积造成的系统性偏差。</dd>
+        <dt>关键数据</dt><dd>总计 75,898 次 API 调用，覆盖 4 家提供商（OpenAI、Anthropic、Google + 4 个开源模型），11 个模型。整体判断向历史极性漂移：效应量 d=-0.17，p<1e-46；在模型本来更不确定的条目上更强：高熵条目 d=-0.34，而基线更确定时 d=-0.15。偏差不随上下文长度增长：5 轮 vs 50 轮几乎一样（Spearman |r|<0.01；OLS 斜率 p=0.80）。负面历史更“带偏”：逐条配对比较，负面诱导的偏差是正面的 1.62 倍（t=13.46，p<1e-39，n=2,481）。更大模型能减轻但不能消除：Anthropic Haiku -0.22 到 Opus -0.17；OpenAI Nano -0.34 到 GPT-5.2 -0.17。机制侧：token 概率分布是连续漂移而非阈值跳变；5 条带偏消息放在 50 轮历史的任何位置效果相同。</dd>
+        <dt>为什么值得关注</dt><dd>做 LLM agent / tool use / RAG 时常把模型当“评审器/路由器/打分器”来做自检、重排、内容审核；这篇量化了“同一会话批量评测”会引入可观偏差，直接影响多代理协作与自动评测的可靠性。它也给出工程上最简单的规避策略：每条评测用新上下文；不得不批处理时尽量让历史正负平衡。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.22714v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.22733v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22733v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.22733v1" target="_blank" rel="noopener">HarnessAPI: A Skill-First Framework for Unified Streaming APIs and MCP Tools</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">agent</span>
+      </div>
+      
+      <p class="innovation">把“HTTP 接口 + MCP 工具”两套重复工程合并：只写一个带类型的 skill（技能）文件夹，就能同时生成可流式输出的 API 和零配置 MCP 工具，减少维护漂移。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>HarnessAPI 以“typed skill folder（带类型的技能目录）”作为单一事实来源：核心只需要一个 handler.py 和 Pydantic（数据校验/类型声明）schema。框架自动派生三样东西：支持 SSE（服务器推送事件）的流式 HTTP endpoint、可交互的 OpenAPI/Swagger 文档页、以及可被 Claude/Cursor 等 agent 运行时调用的 MCP 工具，并且同一进程内提供服务。它用“双模式内容协商”让同一个 handler 同时服务流式 SSE 客户端和普通 JSON 客户端，无需改业务代码。为解决 FastMCP 检查层对类型注解传播的限制，它引入动态代码生成，把 Pydantic 的类型信息正确传到工具注册层，避免“闭包式注册”导致的类型丢失。整体上它是 FastAPI 的子类，因此直接继承中间件、依赖注入和部署生态，而不是另起一套 Web 框架。</dd>
+        <dt>关键数据</dt><dd>作者在 6 个代表性 skills 上用 cloc（代码行统计）对比“手工双栈：FastAPI server + FastMCP server”，HarnessAPI 将面向框架的样板代码减少 74%。除代码量外的性能（吞吐/延迟）与稳定性指标未披露；其主要收益是减少重复实现与 schema 漂移风险。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / MCP / tool use 场景，最大痛点之一是“同一工具要维护 HTTP 与 MCP 两套定义”，HarnessAPI 试图把工具定义、校验、流式输出和注册统一到一处。若你在做带 streaming 的工具调用、或希望 RAG/多工具链路更易部署与迭代，这类“单源生成 MCP + API”的工程化方案很直接可用。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/edwinjosechittilappilly/harnessapi, https://pypi.org/project/harnessapi" target="_blank" rel="noopener">https://github.com/edwinjosechittilappilly/harnessapi, https://pypi.org/project/harnessapi</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.22733v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.22748v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.22748v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.22748v1" target="_blank" rel="noopener">Superhuman Safe and Agile Racing through Multi-Agent Reinforcement Learning</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">reinforcement</span><span class="tag">tool-use</span><span class="tag">safety</span>
+      </div>
+      
+      <p class="innovation">把“安全”从单机约束转向多智能体对抗/协作训练：在高速四旋翼多人竞速中，既跑赢冠军人类，又把碰撞率相对单智能体基线降了一半。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者认为物理世界的脆弱性来自“单智能体范式”：把其他参与者当噪声，学不到协调与博弈。于是用多智能体强化学习（通过奖励学习策略）在四旋翼竞速场景训练，赛道上同时存在可变数量的对手。训练采用 league-based self-play（联赛式自我对弈）：让不同水平/风格的代理持续互相对抗，形成课程式难度与多样对手分布。策略不仅学路线，还显式学多人交互：提前预判、主动避撞、超车，以及处理下洗气流（downwash，螺旋桨气流干扰）等物理耦合。作者强调：用多样化人工对手训练后，对“与人同场”能零样本（不再训练）迁移到更安全的交互。</dd>
+        <dt>关键数据</dt><dd>多人竞速速度超过 22 m/s；在多人赛中表现优于“冠军级”人类飞手（具体胜率/圈速未披露）；相对当时最强单智能体基线，碰撞率降低 50%；“零样本泛化到更安全的人类交互”给出定性结论，量化指标未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 multi-agent 的读者，这是一个把“多智能体训练=安全脚手架”落到真实物理交互（含气动耦合）的案例。对 agent/tool use/RAG 等方向也有启发：与其只做单体能力堆叠，不如用“多主体对抗+多样对手分布”来逼出更稳健的策略与泛化。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-21</span>
+        
+        
+        <span class="links">补充：<a href="https://rpg.ifi.uzh.ch/marl" target="_blank" rel="noopener">https://rpg.ifi.uzh.ch/marl</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.22748v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+            </div>
+          </details>
+        
+          <details class="date-group" id="archive-2026-05-21">
             <summary>2026-05-21 <span class="n">14 条</span></summary>
             <div class="cards">
               
