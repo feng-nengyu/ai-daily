@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>1</strong> 条 ·
       归档 <strong>44</strong> 条（4 天）·
-      生成于 2026-05-24 05:57 UTC
+      生成于 2026-05-24 23:46 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
           <a href="#archive-2026-05-22" onclick="openArchive('2026-05-22')">2026-05-22 <span class="n">10</span></a>
         
@@ -237,9 +237,38 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://github.com/google/adk-python">
+      <button class="star" aria-label="收藏" data-url="https://github.com/google/adk-python" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://github.com/google/adk-python" target="_blank" rel="noopener">google/adk-python</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-github" title="github:github-trending-agent">GitHub · agent</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">Google 开源的“代码优先”Python 工具包，用更工程化的方式搭建、评测并部署 AI Agent，强调可控性与可扩展的生产落地流程。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它把 Agent 的构建流程做成以代码为中心的开发范式：用 Python 直接定义角色、状态、工具调用（tool use，调用外部函数/服务）与执行链路，而不是主要依赖可视化编排。工具包覆盖从开发到上线的完整链条：构建、评估、部署一体化，便于把同一套 Agent 逻辑在不同环境复用。重点在“灵活与控制”：开发者可以更细粒度地插入自定义逻辑（如检索、路由、记忆、权限），并对运行时行为做约束与观测。相较常见的“提示词+编排平台”路线，它更偏向可测试、可版本化、可持续集成的工程实践，适合复杂 Agent 的迭代。</dd>
+        <dt>关键数据</dt><dd>未披露。当前信息没有给出基准成绩、延迟/吞吐、成本或对比实验；其价值更多在工程化能力（可维护性、可评测性、可部署性）而非单点模型指标。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 方向的读者，这类“代码优先”的 Agent SDK 往往决定了能否把 RAG（检索增强生成）与工具链稳定接入并做系统化评测。若你在关注 MCP（模型上下文协议）或更标准化的工具接口，这个项目也可能提供可对接的工程落点与参考实现。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-23</span>
+        
+        
+        <a class="cta" href="https://github.com/google/adk-python" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
