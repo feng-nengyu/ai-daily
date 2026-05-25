@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>1</strong> 条 ·
-      归档 <strong>44</strong> 条（4 天）·
-      生成于 2026-05-24 23:46 UTC
+      今日新增 <strong>10</strong> 条 ·
+      归档 <strong>45</strong> 条（5 天）·
+      生成于 2026-05-25 05:00 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        
+          <a href="#archive-2026-05-24" onclick="openArchive('2026-05-24')">2026-05-24 <span class="n">1</span></a>
         
           <a href="#archive-2026-05-22" onclick="openArchive('2026-05-22')">2026-05-22 <span class="n">10</span></a>
         
@@ -237,10 +239,302 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
       
         <div class="cards">
           
+    <article class="card" data-url="https://arxiv.org/abs/2605.23826v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.23826v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.23826v1" target="_blank" rel="noopener">Decomposing Queries into Tool Calls for Long-Video Keyframe Retrieval</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">把长视频检索从“单次打分”变成“像 Agent 一样拆任务+调工具”：LLM 先把问题拆成多次工具调用，再用布尔逻辑合并各工具的帧排名，提升可控性与可解释性。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>方法叫 ToolMerge：先用 LLM 规划器（planner，负责拆解与决策）把自然语言问题分解成一组“工具调用”（tool call，例如不同视觉检索/匹配器各自负责找某类线索）。每个工具对候选关键帧给出自己的排序结果。LLM 同时生成一个合并规则，用 AND/OR/NOT 等布尔算子把多路排序融合成最终关键帧列表。对比以往做法：不是“每帧对同一个查询打一次分”，也不是“按固定模板拆解但只用单一视觉工具”，而是按问题动态选择多工具并显式规定如何合并证据。</dd>
+        <dt>关键数据</dt><dd>新建基准 Molmo-2 Moments（M2M）：每个问题在构造时就绑定到一个明确时间区间，用于直接评估关键帧/时刻检索（具体规模与指标细节未披露）。在 QA、问题检索、字幕（caption）检索三项任务上与既有关键帧选择器总体“有竞争力”；其中字幕检索相对其他方法提升 5%（未说明是绝对百分点还是相对提升，也未给出具体分数）。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent/tool use 思路在视频 RAG/检索里的落地：用“规划→多工具调用→规则合并”替代单模型打分，适合关注 MCP/工具编排、多工具推理与可验证证据检索的读者参考其设计范式。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-22</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/michalsr/ToolMerge" target="_blank" rel="noopener">https://github.com/michalsr/ToolMerge</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.23826v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.23772v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.23772v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.23772v1" target="_blank" rel="noopener">Agentic Proving for Program Verification</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">program verification</span><span class="tag">tool-use</span><span class="tag">benchmark</span>
+      </div>
+      
+      <p class="innovation">把“Agent 式定理证明”搬到程序验证上做量化评测：用 Claude Code 在 Lean 4 的 CLEVER 基准上跑端到端生成+验证，结果显示现有验证基准可能已跟不上 agent 能力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者将 Claude Code 放进一个 agentic proving（代理式证明）框架：模型不只写代码，还要生成规格说明（spec，程序应满足的形式化性质）并在 Lean 4 里完成证明。评测基于 CLEVER（Lean 4 的可验证代码生成基准），分阶段测：规格生成是否合理、实现能否对齐“真值规格”（ground-truth spec）、以及端到端从前提到可验证程序的成功率。系统采用 compiler-in-the-loop（编译器/证明器在环）范式：每次尝试都由 Lean 4 反馈错误，agent 迭代修正，而不是一次性输出。作者还检查了模型的自我反馈（对失败原因的诊断），并指出 CLEVER 的同构评分（isomorphism-based scoring，用结构同构判断规格“等价”）可能会误判，需要更抗 bug 的评测方式。</dd>
+        <dt>关键数据</dt><dd>规格说明生成：98.8% 题目给出“可认为有效”的规格；其中 81.3% 还能被 CLEVER 的同构评分在“基准正确部分”判为接受。对齐真值规格的实现认证：87.5% 题目能证明实现满足正确 ground-truth 规格。端到端（生成+验证）成功率：在“前提自洽”的条目上达到 98.1%。作者称人工复核确认模型能给出高质量失败分析，并发现数据集残留 bug；但未披露运行成本、推理步数/时间等效率指标。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者，这是一份“证明器/编译器在环”的强案例：把模型当成会迭代修正的代理，而非一次性生成器。对 reasoning models 与评测方法关注者，它直接指出同构打分与基准质量可能成为瓶颈，提示需要更严格、抗数据集 bug 的验证评测。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-22</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.23772v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.23723v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.23723v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.23723v1" target="_blank" rel="noopener">MemAudit: Post-hoc Auditing of Poisoned Agent Memory via Causal Attribution and Structural Anomaly Detection</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">MemAudit 解决“事后追责”难题：当带记忆的 LLM agent 已被记忆投毒并产生有害行为时，能定位到底是哪几条历史记忆在因果上导致了坏输出。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它把记忆审计拆成两条互补信号：一是反事实影响分数（用“去掉/替换某条记忆会不会改变输出”来估计因果贡献），给每条记忆打“责任分”。二是记忆一致性图（把记忆之间的关系建成图），用结构异常检测找出在整体记忆库里“格格不入”的可疑记录。与以往主要做在线防御（如提示词过滤、输出拦截）不同，MemAudit 面向已发生的事故做离线/事后定位与清理。评测时针对 MINJA（只靠正常对话把恶意内容写进记忆、无需直接改内存库）的注入方式，验证其在 QA 与推理型 agent 场景都能把可疑记忆揪出来并降低后续被带偏的概率。</dd>
+        <dt>关键数据</dt><dd>在“现实的事后审计”设定下：QA 场景攻击成功率从 70% 降到 0%；RAP（推理型 agent 任务）攻击成功率从 83.3% 降到 0%。除上述成功率外，审计开销、需要审计的记忆条数/比例等未披露；但结果表明其对 query-only 记忆投毒可做到近乎完全清除后效。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / 长程任务依赖的“持久记忆”来说，记忆投毒是现实安全面；这篇提供了可落地的事后审计思路（因果归因 + 结构异常），可直接启发你在 RAG/记忆模块里做“定位-清理-复盘”的安全闭环。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-22</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.23723v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.23657v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.23657v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.23657v1" target="_blank" rel="noopener">OpenSkillEval: Automatically Auditing the Open Skill Ecosystem for LLM Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">提出 OpenSkillEval：用“动态生成的真实任务”自动审计开源 Skill（可复用工作流指令）生态，直接回答“技能是否真能被 agent 用好、值不值”。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>框架不依赖固定题库，而是从不断变化的真实世界产物中自动构造任务实例，覆盖 5 类下游应用（演示稿、前端网页、海报、数据可视化、报告）。它把社区贡献的开源 skills 统一收集与整理，在同一任务设置下做可控对比，避免“各测各的”导致不可比。然后在 600+ 动态任务与 30 个开源 skill 上，系统评测多种主流模型与 agent 框架的“加 skill 前后”表现。核心差异在于：评测对象不仅是模型/agent，也把“skill 本身质量与可迁移性”纳入审计，并强调随现实任务演化的动态评测。</dd>
+        <dt>关键数据</dt><dd>评测规模：600+ 动态生成任务实例、30 个开源 skills、5 类应用场景。结论型结果：skill 的“可用”不等于“会用”；增益强依赖底座模型与 agent 框架；不少社区热门 skill 并不能稳定超过不带 skill 的基础 agent。具体提升幅度/成功率等量化分数：摘要未披露（但给出了跨模型/框架/skill 的系统对照，主要价值在揭示不稳定性与选择风险）。</dd>
+        <dt>为什么值得关注</dt><dd>如果你在做 LLM agent 的 tool use（工具调用）/workflow（工作流）/multi-agent 组合，开源 skills 往往像“插件市场”，但质量与适配性难判断；这篇给出可自动化、可扩展的审计方法与证据。对 MCP/技能库/RAG 这类“外部能力注入”路线也有参考：它强调必须在动态、贴近真实产物的任务上评估，否则容易高估技能收益。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-22</span>
+        
+        
+        <span class="links">补充：<a href="https://yingjiahao14.github.io/OpenSkillEval-Web/，https://arxiv.org/abs/（未在摘要中提供具体编号）" target="_blank" rel="noopener">https://yingjiahao14.github.io/OpenSkillEval-Web/，https://arxiv.org/abs/（未在摘要中提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.23657v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.23652v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.23652v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.23652v1" target="_blank" rel="noopener">One Policy, Infinite NPCs: Persona-Traceable Shared RL Policies for Scalable Game Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">LLM</span>
+      </div>
+      
+      <p class="innovation">用“一个共享强化学习策略”驱动无限 NPC：只靠一次性人格文本编码，就能在实时推理下稳定呈现不同人格，并可追溯地识别 NPC 的人格来源。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 pcsp（Persona Conditioned Shared Policy）：训练时只有一个 RL（强化学习）策略网络，但输入额外接入“人格描述”的冻结 LLM（大模型）向量。每个 NPC 只在创建时做一次人格编码，后续用低秩投影把人格向量压到可控维度，再通过神经条件化把人格信息注入策略。训练目标用 PPO（策略梯度 RL）为主，同时加 InfoNCE（对比学习）做“轨迹一致性”约束，外加 KL（分布距离）鼓励不同人格之间保持多样性。与“LLM 直接当策略（每步生成动作）”不同，它把语言理解前置并冻结，在线只跑轻量策略网络以满足游戏实时性。</dd>
+        <dt>关键数据</dt><dd>在 300-persona 生活模拟基准上：组合式零样本（compositional zero-shot）人格识别最高达随机水平的 17x；语义-行为对齐 Spearman ρ≈0.73；推理速度比“LLM-as-policy”基线快 22x。消融实验显示 InfoNCE 轨迹一致性是关键：移除后零样本人格识别直接跌到随机水平（chance）。外部验证：在 Melting Pot 2.4.0 多智能体环境中观察到随人格条件产生的行为分化（未给出具体分数）。UE5 部署：在引擎内复现人格条件化消融，64 个 agent 运行且失败率低，并保持亚帧级（sub-frame）推理特性（具体延迟未披露）。</dd>
+        <dt>为什么值得关注</dt><dd>这条把“LLM 负责理解人格文本 + RL 负责实时决策”的 tool use/agent 组合落到可部署的游戏场景，解决多 agent 扩展与实时推理的硬约束。对关注 LLM agent、multi-agent、reasoning/行为可控的人来说，它提供了比纯 LLM 控制更工程化的路线，并用可量化的“人格可识别性/一致性”指标来评估。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-22</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.23652v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.23618v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.23618v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.23618v1" target="_blank" rel="noopener">Benchmarking Google Embeddings 2 against Open-Source Models for Multilingual Dense Retrieval and RAG Systems</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">RAG</span><span class="tag">benchmark</span><span class="tag">tool-use</span><span class="tag">multilingual</span>
+      </div>
+      
+      <p class="innovation">把 Google Embeddings 2 和 5 个开源多语种向量模型放在同一套检索/RAG评测里对比：效果第一但延迟高达 14 倍，给出“效果-时延-切分策略”可落地取舍。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者评测的是用于密集检索（把文本变成向量做相似度搜索）的双编码器（query/文档分别编码）Google Embeddings 2（GE2），其特点是支持 2,048 token 上下文并带任务类型条件（显式告诉模型是检索/相似度等任务）。对照组包含 BGE-M3、E5-large、Multilingual-E5-large（mE5-L）、LaBSE、Paraphrase-Multilingual-MPNet（mMPNet）等 5 个开源模型。评测覆盖 4 个 BEIR 子集（通用检索基准）、一个合成意大利语 RAG 语料（检索增强生成场景），并做了 chunking（分块）消融：5 种块大小、3 种切分策略（含语义切分）。另外在普通 CPU 上测每条 query 的延迟，直接对比“云托管 vs 本地模型”的可用性差异。</dd>
+        <dt>关键数据</dt><dd>效果：GE2 在所有任务排名第 1；BEIR 平均 nDCG@10=0.638，意大利语 IT-RAG-Bench nDCG@10=0.282。时延：GE2 中位延迟 231.6 ms；约为最快本地模型的 14x。性价比对照：mE5-L 在意大利语上与 GE2 只差 0.003 nDCG，但延迟 31 ms（更适合 <100 ms SLA）。意外点：LaBSE 在 BEIR 平均 nDCG@10 仅 0.188，低于所有专用检索模型（包括 mMPNet），提示“常用多语种句向量”不等于“强检索”。分块结论：6 个模型在该语料上 32-token chunk 基本饱和；语义切分只有在 16-token 时带来可测增益。</dd>
+        <dt>为什么值得关注</dt><dd>对 RAG/工具使用里的检索模块选型很直接：同样是 embedding，GE2 更准但更慢，mE5-L 在多语种场景能用更低延迟逼近效果。对做 agent/RAG 系统的人也有参考价值：chunk 大小与语义切分并非越复杂越好，32-token 可能已足够。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-22</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.23618v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.23590v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.23590v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.23590v1" target="_blank" rel="noopener">Co-ReAct: Rubrics as Step-Level Collaborators for ReAct Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“评分量表（rubric，检查清单式标准）”从事后打分变成推理时的逐步协作者：每一步都用量表指导 ReAct 该搜什么、怎么想、何时停。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者提出 Co-ReAct：在 ReAct 代理每次要做“Reason 还是 Act”决策前，把一段针对当前步骤的 rubric 注入上下文，明确本步证据检索/搜索/推理/自检的目标与注意点。与以往把 rubric 当训练奖励或最终报告评审不同，它在推理时提供 step-level（逐步）行动指引。为避免 rubric 只是“听起来合理但不区分好坏”，他们训练了一个专门的 rubric 生成器，用 GRPO（强化学习的一种策略优化）来对齐专家偏好。训练目标不是二选一偏好，而是用 list-wise（列表式）Spearman 等级相关奖励去拟合多评审专家的一致排序，让 rubric 更“有区分度”。此外，该 rubric 生成器还能作为即插即用组件，给现有测试时算力增强基线加指导，而不改其底层决策机制。</dd>
+        <dt>关键数据</dt><dd>在 DeepResearchBench 与 SQA-CS-V2 上，相比原始 ReAct 以及代表性的 test-time compute（测试时加算力）基线“持续提升”；具体提升幅度、分数、成本与推理开销未披露。覆盖 8B/14B 开源模型与前沿闭源模型的搜索型 agent，说明方法对不同底座有一定通用性（但缺少量化细节）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / 多步检索推理（RAG、deep research）很直接：它解决了 ReAct 轨迹浅、重复、搜不准的问题，把“外部标准”变成每一步的行动约束。对关注 reasoning models 和多代理协作的人也有启发：用可训练的 rubric 生成器当“过程监督/过程教练”，而不是只做最终评测。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-22</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/ZBWpro/Co-ReAct" target="_blank" rel="noopener">https://github.com/ZBWpro/Co-ReAct</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.23590v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.23562v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.23562v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.23562v1" target="_blank" rel="noopener">ARMS: Automatic Reward Shaping for Sparse-Reward Multi-Agent Reinforcement Learning</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">reinforcement</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把「稀疏奖励」下的多智能体强化学习奖励塑形自动化，并用博弈论证明尽量不改策略博弈结构（保留纳什均衡集合），而不是只追求短期更快学会。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>ARMS 是一个自监督（不用人工标注）的奖励塑形框架：从环境给的稀疏奖励出发，通过对轨迹（一次完整交互序列）做排序/排名来学习更稠密的塑形信号。由于单智能体的轨迹排序理论在多智能体里会因「对手也在学」导致非平稳而失效，作者改用“条件最优回应”（在固定对手策略下的最佳反应）来重新表述“策略不变性”。在满足一定条件时，加入塑形奖励不会改变每个智能体在固定对手下的最佳反应集合，从而保留纳什均衡集合。训练上交替进行策略学习与奖励学习，并在多个智能体间共享塑形参数以提高样本与计算效率。论文还分析了多智能体特有失败模式：探索不足 + 策略与奖励耦合会引发振荡，增加探索可缓解并稳定训练。</dd>
+        <dt>关键数据</dt><dd>未披露具体数值（如样本量减少百分比、成功率提升幅度、训练步数/时间）。定性结果：在部分可观测的多智能体路径规划任务中，随着奖励更稀疏、智能体数量增加，ARMS 的采样效率更好；可泛化到未见环境；并观察到振荡失败模式且可通过增强探索缓解。缺少量化表格使得与现有 MARL 奖励塑形/内在奖励方法的强弱对比仍需读原文确认。</dd>
+        <dt>为什么值得关注</dt><dd>对 multi-agent/agent 系统很相关：它解决了多智能体里“奖励怎么设计/怎么自动变稠密”这一常见痛点，并强调塑形不能破坏博弈结构（纳什均衡）。做 LLM agent 的读者也可借鉴其“自动奖励塑形 + 交替优化 + 失败模式诊断”的思路，用于多智能体协作与工具使用任务的训练/评估设计。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-22</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.23562v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.23551v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.23551v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.23551v1" target="_blank" rel="noopener">Goal-Conditioned Agents that Learn Everything All at Once</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“每一步只为当前目标学习”的浪费改成“一次前向同时为所有目标更新”，让全目标学习从算不动变成可规模化，且比朴素重标注快 250 倍以上。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>传统全目标学习（all-goals）要把同一条轨迹反复“重标注”成不同目标来做离策略更新，计算量随目标数线性爆炸。LEO 的做法是让网络在一次前向里并行输出“对所有目标的价值估计和动作”，从而对每个 transition 同时做全目标更新，不再需要逐目标重跑网络。核心设计是把“目标维度”并行化到模型输出端，实现单次网络 pass 覆盖全部目标。作者还提出把 LEO 作为 teacher（教师网络）来教一个更轻量/更直接的 actor（执行策略），而不是让 LEO 直接当行为策略，以进一步增强效果与可用性。</dd>
+        <dt>关键数据</dt><dd>计算效率：相对朴素 all-goals 重标注（naive relabelling）实现 >250x 加速。效果：在目标条件 Craftax 上“优于其他方法”（具体分数/提升幅度未披露）；在连续控制环境上与现有基线“有竞争力”（具体任务与数值未披露）。开源：是。</dd>
+        <dt>为什么值得关注</dt><dd>对做 Agent 的人来说，这相当于把“同一段交互数据能学到多少目标/技能”的利用率拉满，属于更高效的离策略学习与数据复用思路。虽然不是 LLM agent/MCP/tool use 方向，但对多目标/多任务 agent、规划与长期目标设定（goal-conditioned）很相关，可借鉴到更复杂的 agent 训练管线里。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-22</span>
+        
+        
+        <span class="links">补充：<a href="论文：https://arxiv.org/abs/（未提供具体编号）, 代码：未提供具体仓库链接（文中称已开源）" target="_blank" rel="noopener">论文：https://arxiv.org/abs/（未提供具体编号）, 代码：未提供具体仓库链接（文中称已开源）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.23551v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://github.com/SWE-agent/SWE-agent">
+      <button class="star" aria-label="收藏" data-url="https://github.com/SWE-agent/SWE-agent" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://github.com/SWE-agent/SWE-agent" target="_blank" rel="noopener">SWE-agent/SWE-agent</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-github" title="github:github-trending-agent">GitHub · agent</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">把“GitHub issue→自动改代码并提交修复”做成可复用的 Agent 流程，支持自选大模型驱动，直接面向真实软件工程任务（SWE）。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>输入是一条 GitHub issue（问题描述、复现信息、期望行为等），Agent 会在仓库里检索相关文件、阅读代码并定位可能的 bug 点。随后它像人类开发者一样迭代：提出修改方案→编辑代码→运行测试/脚本验证→根据报错继续修补，直到通过或达到停止条件。核心是“工具使用（tool use）+多轮反馈回路”，把大模型的文本推理落到可执行的代码变更上。与只做代码补全不同，它强调端到端闭环：从需求理解到验证结果都在同一条自动化链路里完成。</dd>
+        <dt>关键数据</dt><dd>未披露（此条简介未给出成功率、基准分数、成本或速度）。定性意义：它对标的是“真实仓库里的 issue 修复”而非单题代码生成，评价通常更接近工程可用性（能否跑通测试、是否引入回归）。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use 场景：围绕代码库检索、编辑、执行测试形成闭环，和 RAG（检索增强生成）/多步推理模型的落地方式高度相关。也可作为 MCP（模型上下文协议）式工具接入的参考对象：把“仓库操作、测试运行、补丁提交”封装成可调用工具链。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-18</span>
+        
+        
+        <a class="cta" href="https://github.com/SWE-agent/SWE-agent" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-05-24" open>
+            <summary>2026-05-24 <span class="n">1 条</span></summary>
+            <div class="cards">
+              
     <article class="card" data-url="https://github.com/google/adk-python">
       <button class="star" aria-label="收藏" data-url="https://github.com/google/adk-python" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -268,15 +562,10 @@
         <a class="cta" href="https://github.com/google/adk-python" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-        </div>
-      
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
-      
+            </div>
+          </details>
         
-          <details class="date-group" id="archive-2026-05-22" open>
+          <details class="date-group" id="archive-2026-05-22">
             <summary>2026-05-22 <span class="n">10 条</span></summary>
             <div class="cards">
               
