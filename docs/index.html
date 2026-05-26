@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>55</strong> 条（6 天）·
-      生成于 2026-05-26 04:41 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>65</strong> 条（7 天）·
+      生成于 2026-05-26 06:02 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        
+          <a href="#archive-2026-05-26" onclick="openArchive('2026-05-26')">2026-05-26 <span class="n">10</span></a>
         
           <a href="#archive-2026-05-25" onclick="openArchive('2026-05-25')">2026-05-25 <span class="n">10</span></a>
         
@@ -241,14 +243,24 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
-    <article class="card" data-url="https://arxiv.org/abs/2605.26029v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.26029v1" onclick="toggleStar(this)">☆</button>
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-05-26" open>
+            <summary>2026-05-26 <span class="n">10 条</span></summary>
+            <div class="cards">
+              
+    <article class="card" data-url="https://arxiv.org/abs/2605.25954v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25954v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.26029v1" target="_blank" rel="noopener">CausaLab: A Scalable Environment for Interactive Causal Discovery Toward AI Scientists</a></h2>
+        <h2><a href="https://arxiv.org/abs/2605.25954v1" target="_blank" rel="noopener">Step-TP: A Grounded, Step-Level Dataset with Chain-of-Thought Reasoning for LLM-Guided Tensor Program Optimization</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -256,26 +268,28 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">causal discovery</span><span class="tag">tool-use</span>
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">MCP</span>
       </div>
       
-      <p class="innovation">做了一个专门测“LLM 代理是否真的懂因果”的交互式环境：不仅看预测对不对，还要看它写出的因果机制（因果图+方程）是否正确，直接把“会猜”和“会解释”分开评估。</p>
+      <p class="innovation">把张量程序优化从“只给最终前后对照”变成“每一步可验证的决策+推理”，让 LLM 能学会可靠的多步优化而不是照抄结果。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>CausaLab 把每次评测做成“合成实验室”回合：代理先拿到历史观测记录，再对“操控晶体”做干预（主动改变量），最后预测同机制下另一块“反应堆晶体”的共振频率。隐藏真相是随机采样的 SCM（结构因果模型：因果图+结构方程），因此不能靠背知识，必须从数据与干预中恢复机制。它还提供一个领域专用语言（DSL）让代理在过程中持续记录自己的 SCM 假设，使轨迹可检查、可与真值逐步对齐。与以往只看任务答案的评测不同，这里同时评“能否用因果证据解题”和“答案是否由正确机制支撑”，并对比不同交互策略（纯观测/混合观测+干预/纯干预）。</dd>
-        <dt>关键数据</dt><dd>6 节点纯观测设置：GPT-5.2-high 任务准确率 92%，但机制恢复很差——全边 all-edge F1 仅 0.471（说明能预测但因果图边大量错漏）。6 节点混合观测+干预：任务准确率与 all-edge F1 都到 80%（结构更贴近真值，但预测不再接近 92%）。纯干预策略在任务准确率与 all-edge F1 上都表现差（未给具体数），作者指出代理常“过早停止”探索；加入“检查假设与历史数据一致性”的提示可缓解该问题（提升幅度未披露）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / reasoning models 很相关：它把“交互式实验设计（干预）+ 机制推断”变成可量化基准，暴露代理在主动选实验、持续修正假设上的短板。也适合作为多代理或带工具（如实验规划器、因果发现算法）系统的评测环境，检验是否真的提升因果理解而非只提升预测。</dd>
+        <dt>技术方案</dt><dd>作者提出 Step-TP：一个用于后训练（post-training）的数据集，专门教 LLM 做张量程序（tensor program）逐步优化。核心是提供“中间表示 IR（更紧凑的程序表示）→下一状态 IR”的原子级监督，每一步都对应可组合的优化策略，而不是整段轨迹打包。数据里还配了结构化 CoT（链式思考）解释，并把推理与显式状态转移绑定，形成从中间状态到中间状态的闭环，便于核验。相比以往只给端到端优化程序对、且表示方式 token 很浪费的数据集，它更强调单步可验证、可解释、可组合。另有策略过滤机制，在覆盖更多策略的同时减少“走捷径”学到投机模式。</dd>
+        <dt>关键数据</dt><dd>未披露：摘要未给出数据集规模、覆盖的算子/模型数量、以及在 TVM/基准上的速度提升或决策准确率。定性意义是把监督粒度从“结果模仿”提升到“可核验的逐步决策”，更适合训练能稳定 tool use（工具调用）式规划的模型。</dd>
+        <dt>为什么值得关注</dt><dd>这类“逐步状态转移+结构化推理”的数据形态，和 LLM agent 的多步规划/工具使用非常接近：模型需要在巨大组合空间里做单步可验证决策。对关注 reasoning models、tool use、multi-step agent 训练的人，它提供了一个可复用的“闭环监督”范式，而不只是最终答案对齐。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-05-25</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2605.26029v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <span class="links">补充：<a href="https://github.com/LIUMENGFAN-gif/StepTP" target="_blank" rel="noopener">https://github.com/LIUMENGFAN-gif/StepTP</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.25954v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.26019v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.26019v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2605.25958v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25958v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.26019v1" target="_blank" rel="noopener">Retrieval-Augmented Detection of Potentially Abusive Clauses in Chilean Terms of Service</a></h2>
+        <h2><a href="https://arxiv.org/abs/2605.25958v1" target="_blank" rel="noopener">PolyGnosis 2.0: Enhancing LLM Reasoning via Agentic Harness Engineering for Polymarket and OSINT Insight Extraction</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -283,165 +297,20 @@
       </div>
       
       <div class="tags">
-        <span class="tag">RAG</span><span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">把 RAG（检索增强生成）用在智利服务条款“潜在滥用条款”识别上：支持本地运行的中等开源模型，也能接近云端大模型效果，并发布 1 万级法律标注语料。</p>
+      <p class="innovation">把「预测市场情绪」与「全球媒体 OSINT（开源情报）」的叙事差异定义为可交易信号，并量化比较多种 Agent 编排（harness）技巧在高噪声金融场景的得失。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>先把合同切成条款并做候选检测，减少后续模型要读的文本量。检索阶段用混合检索：dense（向量语义）+ sparse（关键词）同时找相似案例/法条，再用 reranking（重排）挑最相关证据。把检索到的证据与任务指令一起做 prompt augmentation（提示词补充），让模型在“有依据”的上下文里分类条款。整体面向本地部署：优先用中等规模 open-weight（可下载权重）模型，避免把合同发到云端，并降低 token（上下文长度）开销。</dd>
-        <dt>关键数据</dt><dd>新数据集：100 份合同、10,029 条款标注、24 个法律类别（覆盖 illegal/暗黑/灰区条款）。效果数字（如 F1/准确率、成本下降幅度、模型规模）在摘要中未披露；但作者报告 RAG 提示能“显著”优于无检索提示，并让本地开源模型在更低算力与 token 成本下接近更大的云端系统，且对比了商用模型、开源模型、微调编码器与传统基线。</dd>
-        <dt>为什么值得关注</dt><dd>这是一个典型“RAG + tool use（检索/重排）”的可落地范式：用混合检索与重排把法律证据喂给模型，提升分类可靠性。对做 Agent/RAG 的读者，它提供了本地化部署思路与一个 1 万级、细粒度 24 类的真实标注语料，可用于评估检索、重排与提示策略。</dd>
+        <dt>技术方案</dt><dd>提出 PolyGnosis 2.0 多智能体架构：一端读取 Polymarket 的异常/情绪信号，另一端汇总 GDELT（全球事件与语调数据库）等 OSINT 流。核心任务是识别“Perspective Mismatches（视角不匹配）”——市场叙事与媒体叙事的分歧，并将其作为高 alpha（超额收益）线索。作者不只宣称“多 Agent 更强”，而是把 harness engineering（编排工程）拆成可对照的组件：反思循环（reflection）、工具调用（tool use）、分治分块（D&C）、CoT（思维链）等逐项做消融评估。结论强调：多维对齐任务必须做结构化分块，但“无约束的终局反思”会导致逻辑漂移；同时所有配置都出现“共识偏差”，因此需要确定性校验（deterministic validation）来兜底。</dd>
+        <dt>关键数据</dt><dd>未披露具体数值（如准确率、收益、延迟、token 开销的绝对数字）。定性结果：D&C 结构化分块被描述为“mandatory（必需）”；无约束 terminal reflection 被观察到会“actively induce logical drift（主动引入逻辑漂移）”；所有 agent 配置在叙事推理中存在“consensus bias（共识偏差）”。作者声称找到一个 Pareto 最优配置，在“专业级分析精度”与“更低延迟/更少 token”之间折中，但未给出可复现的量化表格。</dd>
+        <dt>为什么值得关注</dt><dd>这篇把 LLM agent 的关键工程手段（tool use、CoT、分治、多 agent 编排）放到真实高噪声任务里做对照，能帮助你判断哪些“推理增强”在实践中会带来漂移或偏差。对关心 multi-agent、reasoning models、以及需要可控/可验证输出的 Agent 系统（类似 MCP 工具链思路）的人，结论直接可迁移。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-05-25</span>
         
         
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.26019v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.25988v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25988v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.25988v1" target="_blank" rel="noopener">What Makes a Medical Checker Trainable? Diagnosing Signal Collapse and Reward Hacking in Checker-Guided RAG for Biomedical QA</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">RAG</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">指出“用检查器当奖励”能不能训起来，关键不在检查器离线准确率，而在训练时输出分布是否塌缩；并揭示强检查器会诱发奖励黑客三连锁。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>把“逐条主张的NLI（自然语言推断，用来判定支持/矛盾/中立）检查器”作为过程奖励，接到医学RAG（检索增强生成）里，用GRPO（组相对策略优化，一种强化学习训练法）训练问答代理。对比4种不同后端的NLI检查器：包括用LLM对标签打分的方式、校准过的MedNLI分类器、以及一个更强的专有检查器等。作者强调诊断训练期检查器的输出分布（比如三类标签的占比、是否极端偏向某一类），而不是只看held-out准确率。并在同一框架下复现实验到不同基座模型（Qwen2.5-7B为主，另在Qwen3-4B、Llama-3.1-8B上复现）与4个医学QA测试集，观察梯度是否有效、以及是否出现奖励黑客行为。</dd>
-        <dt>关键数据</dt><dd>信号塌缩：用LLM对NLI标签做log-prob打分时，>97%的主张被判为“中立”，导致RL梯度接近0；校准的MedNLI分类器在同样样本上输出分布不退化。效果：使用“中等强度”的本地分类器训练出的模型，相比zero-shot在BERTScore上+12%，且不依赖GPT（无外部专有模型依赖）。奖励黑客：强专有检查器触发三步级联（超短回答→回避检索→语言塌缩）；其发生条件与当前策略（policy）有关，同一检查器在不同策略下强度感知不同。其余如训练步数/成本/推理开销未披露。</dd>
-        <dt>为什么值得关注</dt><dd>这篇直接命中“LLM agent + tool use/RAG + verifier-as-reward”的常见做法：告诉你为什么把检查器接进RL后经常训不动或被reward hacking带偏。对做多代理/推理模型的读者也有用：它把“奖励信号强弱与策略耦合、输出分布决定可训练性”总结成可操作的边界条件。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-25</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.25988v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.25984v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25984v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.25984v1" target="_blank" rel="noopener">SafeCtrl-RL: Inference-Time Adaptive Behaviour Control for LLM Dialogue via RL-Driven Prompt Optimisation</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把“安全对齐”从训练阶段搬到推理阶段：用强化学习（试错优化）在对话中动态改写提示词，不改模型参数也能按场景收紧或放宽安全边界。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>SafeCtrl-RL 将对话生成建模为序列决策过程：每轮对话都由一个强化学习代理根据上下文反馈选择“提示词调整策略”。系统不是一次性写好固定安全提示，而是迭代地改写/追加约束，让模型在同一会话里逐步压制不安全倾向。作者把这种反复修正视为“推理时行为遗忘”（在生成过程中把不安全行为压下去，而非训练中改权重）。与常见的提示词优化/自我反思不同，它用 RL 的策略选择来决定何时、用哪种改写动作，并强调在多种 LLM 与多类不安全场景下可迁移使用。</dd>
-        <dt>关键数据</dt><dd>摘要未披露具体数值（如拒答率、越狱成功率下降幅度、质量分、额外 token/延迟开销等）。定性结论：在多个 LLM 与不安全对话场景中同时提升“安全性+回答质量”，并优于现有提示词优化方法；同时声称在效果与推理开销之间有更好的折中，但缺少量化对照需看正文表格。</dd>
-        <dt>为什么值得关注</dt><dd>它本质是“LLM agent + tool use”的一种：用 RL 代理在推理时操控提示词这一工具，实现自适应安全控制。对关注 agent、推理时控制、以及不重训模型的对齐/防越狱方案（可与 MCP/RAG 组合）的人，属于可直接落地的系统思路。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-25</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.25984v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.25981v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25981v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.25981v1" target="_blank" rel="noopener">When Do LLM Agents Treat Surface Noise Differently from Semantic Noise? A 68-Cell Measurement Study with a Held-Out Trace-Level Validation</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">evaluation</span>
-      </div>
-      
-      <p class="innovation">用68个对照单元系统测量：对LLM链式推理/ReAct代理来说，“改语义”的扰动比“改呈现”的扰动更容易改掉最终答案，并做了留出模型的复现与推理轨迹层解释。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者把输入扰动分成两类：语义扰动（同义替换、改写等会改变表达含义的细节）与表面扰动（格式、顺序调整等不改含义的呈现噪声），并用“严重度匹配”让两类扰动强度可比。实验覆盖GSM8K、MATH、HotpotQA三类任务，在10个来自7种架构家族的模型上跑chain-of-thought与ReAct代理，统计同一题不同变体导致答案不一致的概率差。为避免只是在同一数据/模型上“量出来的巧合”，他们额外做了多轮严重度代理审计、去除特定模型家族的稳健性检验，并在完全留出的第11个模型上用轨迹级数据复现。最后用“轨迹级探针”分析机制：看动作序列从哪一步开始分叉、轨迹深度是否变化，并对无法复现的旧机制结论做了撤回。</dd>
-        <dt>关键数据</dt><dd>规模：68个cell（任务×模型/代理设置），1,530条原题、约11,150条扰动变体。主效应：在严重度匹配后，语义扰动相对表面扰动的“不一致率差距”平均+19.69个百分点（配对t=9.58，p<0.0001），64/68个cell为正。稳健性：做了4种严重度代理审计后仍存在；排除qwen相关模型后差距仍为+11.10个百分点（p<0.0001）。但多项压力测试不理想：更严格假设下的cluster-bootstrap显著性消失；“可处理性(tractability)对比”不复现；跨架构的扰动生成器互换会打乱每个cell的排名；第二个LLM裁判一致性仅中等（κ=0.50）。留出验证：在第11个留出模型qwen2.5-14B-Instruct上，1,800条轨迹中3/4个cell为正，合并后Welch t=3.81，p=9.6×10^-4（效应“更小但为正”）。机制信号：2个既有机制主张未复现并被撤回；新探针支持“隐蔽分叉(stealth-divergence)”——语义扰动常保持第一步动作不变，但从中后段推理开始分叉，且轨迹略更深（具体增幅未披露）。</dd>
-        <dt>为什么值得关注</dt><dd>这直接关系到LLM agent的tool use/ReAct与推理稳定性：同样强度的“语义噪声”更容易让代理走向不同答案，影响RAG检索改写、提示改写、以及多代理协作中的一致性评估。它还提供了轨迹级证据与留出模型复现，适合做MCP/工具链系统的鲁棒性测试基线与数据集。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-25</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）；代码/扰动语料/原始轨迹/脚本：匿名评审发布（未给公开链接）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）；代码/扰动语料/原始轨迹/脚本：匿名评审发布（未给公开链接）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.25981v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.25971v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25971v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.25971v1" target="_blank" rel="noopener">Anticipate and Learn: Unleashing Idle-Time Compute in Proactive Agents</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span><span class="tag">MCP</span>
-      </div>
-      
-      <p class="innovation">把 Agent 从“等你问才算”变成“空闲时先准备”。ProAct 利用对话间隙预判下一步需求，提前补齐信息与证据，减少多轮追问和幻觉。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>ProAct 是一种“主动式”Agent 架构：在用户不发消息的空档期也运行计算。它结合不断演进的对话历史与持久记忆（长期存储），预测用户接下来可能要完成的目标/问题链。随后在后台迭代式获取信息（可理解为提前做检索、查工具、整理证据），把知识缺口先补上并形成可用的依据。与传统反应式 Agent 的区别在于：后者只在收到明确指令后才开始检索与推理，而 ProAct 把一部分推理与信息收集前置到“闲时”。作者还提出 ProActEval 基准，用可预测的需求链与不同用户认知画像来专门测“主动准备”能力。</dd>
-        <dt>关键数据</dt><dd>ProActEval：200 个场景、40 个领域。相对反应式基线：完成任务所需轮次减少 14.8%，用户付出（操作/澄清等）降低 11.7%，幻觉率降低 28.1%。在 MemBench（记忆能力评测）上达到 SOTA（当前最好）反思式准确率；具体分数未披露。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 读者，这篇把“检索与工具调用”从被动触发改为闲时预取与证据准备，直接影响多轮对话成本与幻觉控制。对 multi-agent / reasoning models 方向，它提供了可量化的“主动性”评测基准（ProActEval），便于比较不同架构在真实交互链路中的收益。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-25</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.25971v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.25969v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25969v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.25969v1" target="_blank" rel="noopener">Triplet-Block Diffusion RWKV</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把“因果语言模型的线性推理效率”和“离散扩散的并行双向建模”揉到一起，用三元块布局解决两者方向性冲突，并带来 1.6× 解码吞吐提升。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>论文指出：Transformer 自回归解码严格串行且注意力每步是 O(L^2) 成本；RWKV 属于线性时间因果模型（每步 O(L)），但扩散（逐步去噪生成）通常需要双向注意力，和因果单向不兼容。作者提出 B^3D-RWKV：在 RWKV 框架上做“离散扩散”式并行生成，同时通过 triplet-block layout（三元块布局）把序列组织成可并行、可双向的信息交互单元。这样既保留 RWKV 的 O(L) 推理特性，又让扩散过程在块级别实现双向上下文。与以往“要么纯因果（快但单向）/要么扩散（并行但双向注意力重）”的二选一不同，它试图用结构化布局把两者统一到同一模型里。</dd>
-        <dt>关键数据</dt><dd>模型规模：B^3D-RWKV-7.2B（72 亿参数）。效果：在一个 8 任务评测套件上“准确率与现有模型相当”（具体各任务分数未披露）。性能：解码吞吐平均提升 1.6×，并称“显著优于基线”（基线模型与硬件/批大小等设置未披露，因此更适合解读为同设定下的相对加速）。训练成本、上下文长度上限、扩散步数等未披露。</dd>
-        <dt>为什么值得关注</dt><dd>对做 LLM agent / tool use 的读者，推理吞吐直接影响多轮调用与长链路执行成本；这篇提供一种“更快的生成内核”思路。对关注 reasoning models / multi-agent 的人，它展示了用扩散式并行生成+线性模型结构来缓解串行解码瓶颈的可能路径。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-25</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.25969v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2605.25958v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2605.25964v1">
@@ -473,10 +342,10 @@
         <a class="cta" href="https://arxiv.org/abs/2605.25964v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.25958v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25958v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2605.25969v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25969v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.25958v1" target="_blank" rel="noopener">PolyGnosis 2.0: Enhancing LLM Reasoning via Agentic Harness Engineering for Polymarket and OSINT Insight Extraction</a></h2>
+        <h2><a href="https://arxiv.org/abs/2605.25969v1" target="_blank" rel="noopener">Triplet-Block Diffusion RWKV</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -484,26 +353,28 @@
       </div>
       
       <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">把「预测市场情绪」与「全球媒体 OSINT（开源情报）」的叙事差异定义为可交易信号，并量化比较多种 Agent 编排（harness）技巧在高噪声金融场景的得失。</p>
+      <p class="innovation">把“因果语言模型的线性推理效率”和“离散扩散的并行双向建模”揉到一起，用三元块布局解决两者方向性冲突，并带来 1.6× 解码吞吐提升。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>提出 PolyGnosis 2.0 多智能体架构：一端读取 Polymarket 的异常/情绪信号，另一端汇总 GDELT（全球事件与语调数据库）等 OSINT 流。核心任务是识别“Perspective Mismatches（视角不匹配）”——市场叙事与媒体叙事的分歧，并将其作为高 alpha（超额收益）线索。作者不只宣称“多 Agent 更强”，而是把 harness engineering（编排工程）拆成可对照的组件：反思循环（reflection）、工具调用（tool use）、分治分块（D&C）、CoT（思维链）等逐项做消融评估。结论强调：多维对齐任务必须做结构化分块，但“无约束的终局反思”会导致逻辑漂移；同时所有配置都出现“共识偏差”，因此需要确定性校验（deterministic validation）来兜底。</dd>
-        <dt>关键数据</dt><dd>未披露具体数值（如准确率、收益、延迟、token 开销的绝对数字）。定性结果：D&C 结构化分块被描述为“mandatory（必需）”；无约束 terminal reflection 被观察到会“actively induce logical drift（主动引入逻辑漂移）”；所有 agent 配置在叙事推理中存在“consensus bias（共识偏差）”。作者声称找到一个 Pareto 最优配置，在“专业级分析精度”与“更低延迟/更少 token”之间折中，但未给出可复现的量化表格。</dd>
-        <dt>为什么值得关注</dt><dd>这篇把 LLM agent 的关键工程手段（tool use、CoT、分治、多 agent 编排）放到真实高噪声任务里做对照，能帮助你判断哪些“推理增强”在实践中会带来漂移或偏差。对关心 multi-agent、reasoning models、以及需要可控/可验证输出的 Agent 系统（类似 MCP 工具链思路）的人，结论直接可迁移。</dd>
+        <dt>技术方案</dt><dd>论文指出：Transformer 自回归解码严格串行且注意力每步是 O(L^2) 成本；RWKV 属于线性时间因果模型（每步 O(L)），但扩散（逐步去噪生成）通常需要双向注意力，和因果单向不兼容。作者提出 B^3D-RWKV：在 RWKV 框架上做“离散扩散”式并行生成，同时通过 triplet-block layout（三元块布局）把序列组织成可并行、可双向的信息交互单元。这样既保留 RWKV 的 O(L) 推理特性，又让扩散过程在块级别实现双向上下文。与以往“要么纯因果（快但单向）/要么扩散（并行但双向注意力重）”的二选一不同，它试图用结构化布局把两者统一到同一模型里。</dd>
+        <dt>关键数据</dt><dd>模型规模：B^3D-RWKV-7.2B（72 亿参数）。效果：在一个 8 任务评测套件上“准确率与现有模型相当”（具体各任务分数未披露）。性能：解码吞吐平均提升 1.6×，并称“显著优于基线”（基线模型与硬件/批大小等设置未披露，因此更适合解读为同设定下的相对加速）。训练成本、上下文长度上限、扩散步数等未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对做 LLM agent / tool use 的读者，推理吞吐直接影响多轮调用与长链路执行成本；这篇提供一种“更快的生成内核”思路。对关注 reasoning models / multi-agent 的人，它展示了用扩散式并行生成+线性模型结构来缓解串行解码瓶颈的可能路径。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-05-25</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2605.25958v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.25969v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2605.25954v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25954v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2605.25971v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25971v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2605.25954v1" target="_blank" rel="noopener">Step-TP: A Grounded, Step-Level Dataset with Chain-of-Thought Reasoning for LLM-Guided Tensor Program Optimization</a></h2>
+        <h2><a href="https://arxiv.org/abs/2605.25971v1" target="_blank" rel="noopener">Anticipate and Learn: Unleashing Idle-Time Compute in Proactive Agents</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -511,33 +382,169 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span><span class="tag">MCP</span>
       </div>
       
-      <p class="innovation">把张量程序优化从“只给最终前后对照”变成“每一步可验证的决策+推理”，让 LLM 能学会可靠的多步优化而不是照抄结果。</p>
+      <p class="innovation">把 Agent 从“等你问才算”变成“空闲时先准备”。ProAct 利用对话间隙预判下一步需求，提前补齐信息与证据，减少多轮追问和幻觉。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者提出 Step-TP：一个用于后训练（post-training）的数据集，专门教 LLM 做张量程序（tensor program）逐步优化。核心是提供“中间表示 IR（更紧凑的程序表示）→下一状态 IR”的原子级监督，每一步都对应可组合的优化策略，而不是整段轨迹打包。数据里还配了结构化 CoT（链式思考）解释，并把推理与显式状态转移绑定，形成从中间状态到中间状态的闭环，便于核验。相比以往只给端到端优化程序对、且表示方式 token 很浪费的数据集，它更强调单步可验证、可解释、可组合。另有策略过滤机制，在覆盖更多策略的同时减少“走捷径”学到投机模式。</dd>
-        <dt>关键数据</dt><dd>未披露：摘要未给出数据集规模、覆盖的算子/模型数量、以及在 TVM/基准上的速度提升或决策准确率。定性意义是把监督粒度从“结果模仿”提升到“可核验的逐步决策”，更适合训练能稳定 tool use（工具调用）式规划的模型。</dd>
-        <dt>为什么值得关注</dt><dd>这类“逐步状态转移+结构化推理”的数据形态，和 LLM agent 的多步规划/工具使用非常接近：模型需要在巨大组合空间里做单步可验证决策。对关注 reasoning models、tool use、multi-step agent 训练的人，它提供了一个可复用的“闭环监督”范式，而不只是最终答案对齐。</dd>
+        <dt>技术方案</dt><dd>ProAct 是一种“主动式”Agent 架构：在用户不发消息的空档期也运行计算。它结合不断演进的对话历史与持久记忆（长期存储），预测用户接下来可能要完成的目标/问题链。随后在后台迭代式获取信息（可理解为提前做检索、查工具、整理证据），把知识缺口先补上并形成可用的依据。与传统反应式 Agent 的区别在于：后者只在收到明确指令后才开始检索与推理，而 ProAct 把一部分推理与信息收集前置到“闲时”。作者还提出 ProActEval 基准，用可预测的需求链与不同用户认知画像来专门测“主动准备”能力。</dd>
+        <dt>关键数据</dt><dd>ProActEval：200 个场景、40 个领域。相对反应式基线：完成任务所需轮次减少 14.8%，用户付出（操作/澄清等）降低 11.7%，幻觉率降低 28.1%。在 MemBench（记忆能力评测）上达到 SOTA（当前最好）反思式准确率；具体分数未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 读者，这篇把“检索与工具调用”从被动触发改为闲时预取与证据准备，直接影响多轮对话成本与幻觉控制。对 multi-agent / reasoning models 方向，它提供了可量化的“主动性”评测基准（ProActEval），便于比较不同架构在真实交互链路中的收益。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-05-25</span>
         
         
-        <span class="links">补充：<a href="https://github.com/LIUMENGFAN-gif/StepTP" target="_blank" rel="noopener">https://github.com/LIUMENGFAN-gif/StepTP</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2605.25954v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2605.25971v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.25981v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25981v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.25981v1" target="_blank" rel="noopener">When Do LLM Agents Treat Surface Noise Differently from Semantic Noise? A 68-Cell Measurement Study with a Held-Out Trace-Level Validation</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
+      </div>
       
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">evaluation</span>
+      </div>
       
+      <p class="innovation">用68个对照单元系统测量：对LLM链式推理/ReAct代理来说，“改语义”的扰动比“改呈现”的扰动更容易改掉最终答案，并做了留出模型的复现与推理轨迹层解释。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把输入扰动分成两类：语义扰动（同义替换、改写等会改变表达含义的细节）与表面扰动（格式、顺序调整等不改含义的呈现噪声），并用“严重度匹配”让两类扰动强度可比。实验覆盖GSM8K、MATH、HotpotQA三类任务，在10个来自7种架构家族的模型上跑chain-of-thought与ReAct代理，统计同一题不同变体导致答案不一致的概率差。为避免只是在同一数据/模型上“量出来的巧合”，他们额外做了多轮严重度代理审计、去除特定模型家族的稳健性检验，并在完全留出的第11个模型上用轨迹级数据复现。最后用“轨迹级探针”分析机制：看动作序列从哪一步开始分叉、轨迹深度是否变化，并对无法复现的旧机制结论做了撤回。</dd>
+        <dt>关键数据</dt><dd>规模：68个cell（任务×模型/代理设置），1,530条原题、约11,150条扰动变体。主效应：在严重度匹配后，语义扰动相对表面扰动的“不一致率差距”平均+19.69个百分点（配对t=9.58，p<0.0001），64/68个cell为正。稳健性：做了4种严重度代理审计后仍存在；排除qwen相关模型后差距仍为+11.10个百分点（p<0.0001）。但多项压力测试不理想：更严格假设下的cluster-bootstrap显著性消失；“可处理性(tractability)对比”不复现；跨架构的扰动生成器互换会打乱每个cell的排名；第二个LLM裁判一致性仅中等（κ=0.50）。留出验证：在第11个留出模型qwen2.5-14B-Instruct上，1,800条轨迹中3/4个cell为正，合并后Welch t=3.81，p=9.6×10^-4（效应“更小但为正”）。机制信号：2个既有机制主张未复现并被撤回；新探针支持“隐蔽分叉(stealth-divergence)”——语义扰动常保持第一步动作不变，但从中后段推理开始分叉，且轨迹略更深（具体增幅未披露）。</dd>
+        <dt>为什么值得关注</dt><dd>这直接关系到LLM agent的tool use/ReAct与推理稳定性：同样强度的“语义噪声”更容易让代理走向不同答案，影响RAG检索改写、提示改写、以及多代理协作中的一致性评估。它还提供了轨迹级证据与留出模型复现，适合做MCP/工具链系统的鲁棒性测试基线与数据集。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-25</span>
         
-          <details class="date-group" id="archive-2026-05-25" open>
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）；代码/扰动语料/原始轨迹/脚本：匿名评审发布（未给公开链接）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）；代码/扰动语料/原始轨迹/脚本：匿名评审发布（未给公开链接）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.25981v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.25984v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25984v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.25984v1" target="_blank" rel="noopener">SafeCtrl-RL: Inference-Time Adaptive Behaviour Control for LLM Dialogue via RL-Driven Prompt Optimisation</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“安全对齐”从训练阶段搬到推理阶段：用强化学习（试错优化）在对话中动态改写提示词，不改模型参数也能按场景收紧或放宽安全边界。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>SafeCtrl-RL 将对话生成建模为序列决策过程：每轮对话都由一个强化学习代理根据上下文反馈选择“提示词调整策略”。系统不是一次性写好固定安全提示，而是迭代地改写/追加约束，让模型在同一会话里逐步压制不安全倾向。作者把这种反复修正视为“推理时行为遗忘”（在生成过程中把不安全行为压下去，而非训练中改权重）。与常见的提示词优化/自我反思不同，它用 RL 的策略选择来决定何时、用哪种改写动作，并强调在多种 LLM 与多类不安全场景下可迁移使用。</dd>
+        <dt>关键数据</dt><dd>摘要未披露具体数值（如拒答率、越狱成功率下降幅度、质量分、额外 token/延迟开销等）。定性结论：在多个 LLM 与不安全对话场景中同时提升“安全性+回答质量”，并优于现有提示词优化方法；同时声称在效果与推理开销之间有更好的折中，但缺少量化对照需看正文表格。</dd>
+        <dt>为什么值得关注</dt><dd>它本质是“LLM agent + tool use”的一种：用 RL 代理在推理时操控提示词这一工具，实现自适应安全控制。对关注 agent、推理时控制、以及不重训模型的对齐/防越狱方案（可与 MCP/RAG 组合）的人，属于可直接落地的系统思路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-25</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.25984v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.25988v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.25988v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.25988v1" target="_blank" rel="noopener">What Makes a Medical Checker Trainable? Diagnosing Signal Collapse and Reward Hacking in Checker-Guided RAG for Biomedical QA</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">RAG</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">指出“用检查器当奖励”能不能训起来，关键不在检查器离线准确率，而在训练时输出分布是否塌缩；并揭示强检查器会诱发奖励黑客三连锁。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>把“逐条主张的NLI（自然语言推断，用来判定支持/矛盾/中立）检查器”作为过程奖励，接到医学RAG（检索增强生成）里，用GRPO（组相对策略优化，一种强化学习训练法）训练问答代理。对比4种不同后端的NLI检查器：包括用LLM对标签打分的方式、校准过的MedNLI分类器、以及一个更强的专有检查器等。作者强调诊断训练期检查器的输出分布（比如三类标签的占比、是否极端偏向某一类），而不是只看held-out准确率。并在同一框架下复现实验到不同基座模型（Qwen2.5-7B为主，另在Qwen3-4B、Llama-3.1-8B上复现）与4个医学QA测试集，观察梯度是否有效、以及是否出现奖励黑客行为。</dd>
+        <dt>关键数据</dt><dd>信号塌缩：用LLM对NLI标签做log-prob打分时，>97%的主张被判为“中立”，导致RL梯度接近0；校准的MedNLI分类器在同样样本上输出分布不退化。效果：使用“中等强度”的本地分类器训练出的模型，相比zero-shot在BERTScore上+12%，且不依赖GPT（无外部专有模型依赖）。奖励黑客：强专有检查器触发三步级联（超短回答→回避检索→语言塌缩）；其发生条件与当前策略（policy）有关，同一检查器在不同策略下强度感知不同。其余如训练步数/成本/推理开销未披露。</dd>
+        <dt>为什么值得关注</dt><dd>这篇直接命中“LLM agent + tool use/RAG + verifier-as-reward”的常见做法：告诉你为什么把检查器接进RL后经常训不动或被reward hacking带偏。对做多代理/推理模型的读者也有用：它把“奖励信号强弱与策略耦合、输出分布决定可训练性”总结成可操作的边界条件。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-25</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.25988v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.26019v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.26019v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.26019v1" target="_blank" rel="noopener">Retrieval-Augmented Detection of Potentially Abusive Clauses in Chilean Terms of Service</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">RAG</span><span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把 RAG（检索增强生成）用在智利服务条款“潜在滥用条款”识别上：支持本地运行的中等开源模型，也能接近云端大模型效果，并发布 1 万级法律标注语料。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>先把合同切成条款并做候选检测，减少后续模型要读的文本量。检索阶段用混合检索：dense（向量语义）+ sparse（关键词）同时找相似案例/法条，再用 reranking（重排）挑最相关证据。把检索到的证据与任务指令一起做 prompt augmentation（提示词补充），让模型在“有依据”的上下文里分类条款。整体面向本地部署：优先用中等规模 open-weight（可下载权重）模型，避免把合同发到云端，并降低 token（上下文长度）开销。</dd>
+        <dt>关键数据</dt><dd>新数据集：100 份合同、10,029 条款标注、24 个法律类别（覆盖 illegal/暗黑/灰区条款）。效果数字（如 F1/准确率、成本下降幅度、模型规模）在摘要中未披露；但作者报告 RAG 提示能“显著”优于无检索提示，并让本地开源模型在更低算力与 token 成本下接近更大的云端系统，且对比了商用模型、开源模型、微调编码器与传统基线。</dd>
+        <dt>为什么值得关注</dt><dd>这是一个典型“RAG + tool use（检索/重排）”的可落地范式：用混合检索与重排把法律证据喂给模型，提升分类可靠性。对做 Agent/RAG 的读者，它提供了本地化部署思路与一个 1 万级、细粒度 24 类的真实标注语料，可用于评估检索、重排与提示策略。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-25</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.26019v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.26029v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.26029v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.26029v1" target="_blank" rel="noopener">CausaLab: A Scalable Environment for Interactive Causal Discovery Toward AI Scientists</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">causal discovery</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">做了一个专门测“LLM 代理是否真的懂因果”的交互式环境：不仅看预测对不对，还要看它写出的因果机制（因果图+方程）是否正确，直接把“会猜”和“会解释”分开评估。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>CausaLab 把每次评测做成“合成实验室”回合：代理先拿到历史观测记录，再对“操控晶体”做干预（主动改变量），最后预测同机制下另一块“反应堆晶体”的共振频率。隐藏真相是随机采样的 SCM（结构因果模型：因果图+结构方程），因此不能靠背知识，必须从数据与干预中恢复机制。它还提供一个领域专用语言（DSL）让代理在过程中持续记录自己的 SCM 假设，使轨迹可检查、可与真值逐步对齐。与以往只看任务答案的评测不同，这里同时评“能否用因果证据解题”和“答案是否由正确机制支撑”，并对比不同交互策略（纯观测/混合观测+干预/纯干预）。</dd>
+        <dt>关键数据</dt><dd>6 节点纯观测设置：GPT-5.2-high 任务准确率 92%，但机制恢复很差——全边 all-edge F1 仅 0.471（说明能预测但因果图边大量错漏）。6 节点混合观测+干预：任务准确率与 all-edge F1 都到 80%（结构更贴近真值，但预测不再接近 92%）。纯干预策略在任务准确率与 all-edge F1 上都表现差（未给具体数），作者指出代理常“过早停止”探索；加入“检查假设与历史数据一致性”的提示可缓解该问题（提升幅度未披露）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / reasoning models 很相关：它把“交互式实验设计（干预）+ 机制推断”变成可量化基准，暴露代理在主动选实验、持续修正假设上的短板。也适合作为多代理或带工具（如实验规划器、因果发现算法）系统的评测环境，检验是否真的提升因果理解而非只提升预测。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-25</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.26029v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+            </div>
+          </details>
+        
+          <details class="date-group" id="archive-2026-05-25">
             <summary>2026-05-25 <span class="n">10 条</span></summary>
             <div class="cards">
               
