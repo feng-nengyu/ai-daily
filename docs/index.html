@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>1</strong> 条 ·
       归档 <strong>75</strong> 条（8 天）·
-      生成于 2026-05-27 06:15 UTC
+      生成于 2026-05-27 23:53 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
           <a href="#archive-2026-05-27" onclick="openArchive('2026-05-27')">2026-05-27 <span class="n">10</span></a>
         
@@ -245,9 +245,38 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/">
+      <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/" target="_blank" rel="noopener">NVIDIA Blackwell Sets STAC-AI Record for LLM Inference in Finance</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:nvidia-dev-blog">NVIDIA</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">NVIDIA 宣布 Blackwell 在金融场景的 STAC-AI 基准上刷新 LLM 推理纪录，主打“更快、更省”的线上推理能力，面向交易与风控等低延迟需求。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>文章聚焦“推理（inference）”而非训练：用 Blackwell GPU 平台在 STAC-AI（金融行业常用的 AI 性能评测）上跑 LLM 推理工作负载。核心思路是把金融文本/交易相关的非结构化数据分析，落到可复现的行业基准测试中对比。与以往只看通用 NLP 或离线吞吐不同，它强调金融业务更在意的延迟、吞吐与成本约束。具体采用了哪些模型、量化（低比特压缩）或 KV cache（注意力缓存）等推理优化手段，当前摘录未披露。</dd>
+        <dt>关键数据</dt><dd>刷新 STAC-AI 纪录（具体分数、吞吐 tokens/s、延迟 ms、功耗/成本等数字：未披露）。定性意义：STAC-AI 属于金融行业认可度较高的第三方基准，能作为“在金融推理负载上是否真更快”的对照，而不只是厂商自测。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 LLM agent / tool use / RAG 的读者，这条提供了“把模型接入真实业务前，推理侧算力与延迟怎么量化评估”的行业基准视角。若你在做多步骤推理或多工具调用，推理成本往往是瓶颈，STAC-AI 这类结果能帮助判断硬件与部署路线。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <a class="cta" href="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
