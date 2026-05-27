@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>10</strong> 条 ·
       归档 <strong>65</strong> 条（7 天）·
-      生成于 2026-05-26 23:55 UTC
+      生成于 2026-05-27 04:54 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
         
           <a href="#archive-2026-05-26" onclick="openArchive('2026-05-26')">2026-05-26 <span class="n">10</span></a>
         
@@ -243,9 +243,291 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://arxiv.org/abs/2605.27333v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.27333v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.27333v1" target="_blank" rel="noopener">FinHarness: An Inline Lifecycle Safety Harness for Finance LLM Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">把“安全审计”从事后改成逐步内联：在金融 Agent 每一步工具调用前就评估风险并回灌证据，让模型能当场拒绝/改计划，避免不可逆操作。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>FinHarness 以“端到端包裹”方式接在金融 LLM agent 外层，贯穿对话与工具使用全流程。它包含 Query Monitor：把单轮意图与跨轮“漂移”（用户逐步诱导偏离）融合判断；Tool Monitor：对每一次即将发生的工具调用逐条评估风险；以及 Cascade：把每步风险汇总后，自适应选择轻量或高级 LLM judge（裁判模型）做验证。与只做边界过滤（容易漏掉中途危险工具调用）或事后审计（结束后才发现、无法干预且成本随轨迹长度线性增长）不同，它把触发的风险因子作为“事前证据”重新注入 agent 输入，让 agent 自己决定拒绝、重规划或继续批准。</dd>
+        <dt>关键数据</dt><dd>在 FinVault 上：攻击成功率 ASR 从 38.3% 降到 15.0%（下降 23.3 个百分点，约 60.8% 相对下降）。对正常业务的批准率基本保持：41.1%→39.3%（下降 1.8 个百分点）。与“每步都用高级 judge”的对照相比，高级 judge 调用次数减少 4.7×（意味着更低推理成本/延迟）。其余如模型规模、总体 token 成本未披露。</dd>
+        <dt>为什么值得关注</dt><dd>这是一套面向 LLM agent 的“工具使用安全”方案：逐步监控+按风险路由验证，直接对应 tool use、multi-step workflow 与 agent 安全治理。对关注 MCP/多工具编排的读者，它提供了可落地的“每步拦截+证据回灌”设计范式与量化权衡（安全 vs 通过率 vs 成本）。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-26</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.27333v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.27331v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.27331v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.27331v1" target="_blank" rel="noopener">Maat: The Agentic Legal Research Assistant for Competition Protection</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">RAG</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">把“竞争法检索”做成可落地的 ReAct（边想边做）工具编排 Agent：用 RAG（检索增强生成）强制对齐官方来源、内联引用，并在库不全时自动转网页搜索，减少编造案例。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>Maat 采用 ReAct 代理框架，将法律研究流程拆成多个子任务并分别调用对应工具（如案例库检索、证据摘录、引用生成等）。核心是用 RAG 从官方/权威数据库取回原文片段，再基于片段生成结论并给出丰富的行内引用，降低“幻觉（编造内容）”。当内部数据库覆盖不足时，系统会回退到网页搜索补齐材料来源。遇到用户问题表述含糊时，Maat 会主动追问澄清，避免在不确定前提下硬答。整体是与竞争法专家迭代共创的工作流设计，而不是单纯换一个更大的模型。</dd>
+        <dt>关键数据</dt><dd>论文只给出定性与相对结论：在“案例相关（case-specific）任务”上显著优于所有对比助手（含通用助手 Claude/ChatGPT 与法律助手 SaulLM-7B、LegalGPT），但未披露具体分数/提升百分比；在“理论性问题”任务上表现处于最强基线的同一水平区间（within range），同样未披露具体数值。意义在于：对竞争法这种强依赖可核验引用的场景，可靠性与可追溯性被作为主要优化目标而非只看回答流畅度。</dd>
+        <dt>为什么值得关注</dt><dd>这是一个典型的 LLM agent + tool use（工具调用）+ RAG 的“可引用、可追溯”落地案例：展示了 ReAct 如何编排检索/引用/搜索/澄清等工具来压制幻觉。对关注 MCP/多工具协议、multi-agent 或推理型工作流的人，它提供了可复用的任务分解与回退策略（库内检索→网页搜索→追问澄清）的设计范式。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-26</span>
+        
+        
+        <span class="links">补充：<a href="论文：https://arxiv.org/abs/（未在输入中给出具体编号）, 数据集（GitHub）：未披露具体链接（文中称已开源）" target="_blank" rel="noopener">论文：https://arxiv.org/abs/（未在输入中给出具体编号）, 数据集（GitHub）：未披露具体链接（文中称已开源）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.27331v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.27328v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.27328v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.27328v1" target="_blank" rel="noopener">Governed Evolution of Agent Runtimes through Executable Operational Cognition</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“Agent 生成的代码/工具”当作可长期运行的能力来治理：可验证、可追溯、可评估、可回滚地演化运行时，而不是放任自我修改。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>论文将 Agent 产出的代码/配置等“工件”形式化为持久化的运行时能力（类似可复用工具），会进入系统的操作底座而非一次性输出。提出 HarnessMutation：一种受治理的运行时变更机制，要求每次变更都经过显式验证（检查是否可用/安全）、全链路追踪（记录来源与依赖）、评估（对比变更前后效果）与回滚（失败可撤回）。与以往“自我修改代码”式的开放演化不同，它把演化限定为可观察、可审计的有界过程，发生在持久的操作记忆之上。并讨论如何落到现代 agent runtime 与偏治理的编排系统中，作为长期运行多智能体的基础设施模式。</dd>
+        <dt>关键数据</dt><dd>未披露具体实验指标/benchmark/成本数据。相对意义在于提供一套可操作的治理约束（验证、追踪、评估、回滚）来降低长期运行 Agent 的“漂移”和不可控变更风险，但效果需要后续实证对照。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use、multi-agent 很相关：它讨论“工具/代码如何在运行时持续进化并被治理”，直接对应长期任务中的能力沉淀与安全可控。对 MCP/RAG 生态也有启发：把新增工具、检索管道或策略更新纳入可审计的生命周期管理，便于团队协作与上线运维。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-26</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.27328v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.27294v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.27294v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.27294v1" target="_blank" rel="noopener">Separating Semantic Competition from Context Length in RAG Reading</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">RAG</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">提出“匹配对照”协议，把 RAG 读错的原因从“上下文太长”里剥离出来，量化证明更关键的是“语义竞争”（相似但不含答案的段落干扰）。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者聚焦 RAG 的 reader（负责读检索到的多段文本并选出含答案的那段）。他们设计 matched-control：保持段落数量与每段长度不变，只把“强竞争”的干扰段落替换成“弱竞争”的真实段落（仍像检索结果，但更不容易误导）。这样就能在不改变上下文长度的前提下，单独测出“竞争强度”对读者的影响。实验在 SQuAD 上、两种小型开源模型（Phi-2 与 Qwen2.5-1.5B）进行，并用随竞争段落累积的 retention curves（保留曲线）观察性能衰减，还用 right-censored half-life（右删失半衰期）在曲线没跌到一半时做汇总。</dd>
+        <dt>关键数据</dt><dd>在 SQuAD 上，用弱竞争段落替换强竞争段落后（长度与段数不变）性能部分恢复：Phi-2：+6.0 EM（精确匹配）点、+7.0 answer-inclusion（答案包含率）点、F1 +0.057；Qwen2.5-1.5B：+4.5 EM 点、+9.0 答案包含率点、F1 +0.068。作者指出竞争效应在 F1 与答案包含率上更清晰，EM 上更不稳定；且效应随 snippet（片段）长度变化。训练/推理成本与具体上下文长度设置未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对 RAG、tool use/agent 的“读检索结果”环节很关键：它把失败原因从“塞太多 token”转向“相似证据的竞争与干扰”，直接影响你该优化检索排序、去冗余/去近邻，还是扩上下文。matched-control 与 retention/half-life 的评估方式也可复用到多段证据、多工具返回结果的 agent 评测中。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-26</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.27294v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.27255v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.27255v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.27255v1" target="_blank" rel="noopener">Pair-In, Pair-Out: Latent Multi-Token Prediction for Efficient LLMs</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">把“输入压缩”和“多 token 预测”合成一套镜像结构，并用轻量置信头替代昂贵 verifier 校验，在不降可靠性的前提下加速长推理解码。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>PIPO（Pair-In, Pair-Out）把两条以往独立的路线统一起来：输入侧用“压缩器”把 2 个输入 token 折叠成 1 个潜表示（latent，隐空间表示），输出侧用 MTP（multi-token prediction，多 token 预测）头把 1 个隐藏状态展开为额外的 1 个输出 token。传统输出侧加速（如 speculative decoding，投机解码）需要再跑一遍 verifier（校验模型/校验前向）来确认草稿 token 是否可信，成本高。PIPO 训练一个轻量“置信头”直接判断草稿 token 是否接受，从而省掉 verifier pass。作者指出 OPD（On-Policy Distillation，在当前策略上蒸馏）与投机解码的拒绝采样标准天然一致，因此置信头可与 OPD 同步训练，额外开销很小。</dd>
+        <dt>关键数据</dt><dd>在 Qwen3.5-4B 与 9B 骨干上，覆盖 AIME 2025、GPQA-Diamond、LiveCodeBench v6、LongBench v2：相对常规解码，pass@4 最高提升 +7.15 个点；首 token 延迟最高加速 2.64×；逐 token 延迟最高加速 2.07×。置信头/训练总成本的具体数值未披露，仅称“可忽略额外成本”。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent 的 tool use / RAG / 多步推理来说，推理时延常被长链路解码拖累；PIPO 提供一种不依赖额外 verifier 的解码加速思路。它把输入侧压缩与输出侧多 token 预测打通，也更利于在多 agent 或长上下文场景里做端到端的推理成本优化。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-26</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.27255v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.27240v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.27240v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.27240v1" target="_blank" rel="noopener">ENPMR-Bench: Benchmarking Proactive Memory Retrieval for Emotional Support Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">RAG</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">提出 ENPMR-Bench，把“记忆检索”从找事实扩展到“按情绪需求主动找回忆”，专门评测情感支持 Agent 是否能推断隐性需求并选对记忆。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者定义能力目标为 ENPMR（情绪需求感知的主动记忆检索）：先从对话中推断用户潜在情绪需求，再主动检索能起到支持作用的记忆片段。基准以马斯洛需求层次为框架，把“需求类型”与“支持性记忆类型”做成结构化映射，避免只用开放式主观打分。数据集包含 1800+ 条“带记忆的对话”，并设置对照条件：当前检索范式（向量检索/embedding、LLM 驱动检索） vs. golden memory（理想记忆）。实验还测试了 chain-of-thought（思维链）提示，观察其对“需求推断—记忆匹配”的帮助幅度。</dd>
+        <dt>关键数据</dt><dd>数据规模：1800+ memory-augmented dialogues。结果：embedding 检索与 LLM 驱动检索在同理心（empathy）评分上明显落后于 golden memory 条件；思维链提示能在一定程度上提升“推断的需求”与“检索到的记忆”对齐度，但仍存在显著差距。具体分数/提升幅度：未披露（但结论指向：现有检索范式在情感支持场景的“选对记忆”能力不足，而非仅仅语言生成问题）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 读者，这篇把“检索”从事实问答扩展到“情绪需求驱动的记忆选择”，提供可复现的评测靶子。对 multi-agent 或 reasoning models 读者，结果显示仅靠思维链推理也难弥补检索缺口，提示需要更强的“需求建模+记忆路由”机制。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-26</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.27240v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.27220v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.27220v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.27220v1" target="_blank" rel="noopener">The Coverage Illusion: From Pre-retrieval Routing Failure to Post-retrieval Cascades in a Production RAG System</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">RAG</span><span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">指出生产 RAG 里“覆盖率幻觉”：合成评测看似 90% 查询都要 LLM 扩写，但真实流量仅 27.8% 需要；用检索后级联按成本递进，省钱降延迟还提质。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者在丹麦国家百科的生产 RAG 系统做案例研究，对 2 万个“查询-工作流”组合评估 5 种检索流程。发现仅凭查询做“检索前路由”（决定要不要用 HyDE 等 LLM 扩写）不可靠，因为是否需要扩写只有在检索后看见“是否返回文档”才暴露；他们用 4 类机器学习范式验证了这一点。于是改为“检索后级联”：先跑最便宜的检索/改写步骤，若返回 0 文档再升级到更贵的步骤，最后才调用 LLM 扩写（如 HyDE：让模型先写一段假想答案再去检索）。整个方案不需要额外训练，也不需要第二套线上服务基础设施，主要靠工作流编排实现。</dd>
+        <dt>关键数据</dt><dd>数据规模：20,000 个查询-工作流对（含生产流量与合成条件）。覆盖率幻觉：合成查询显示 >90% 需要 LLM 扩写才能高覆盖，但真实用户在生产“延后策略”下仅 27.8% 需要；即 72.2% 真实查询可完全不调用 LLM 扩写。效果对比 Always-HyDE：质量（Composite Overall）+0.140 分；端到端延迟降低 31.8%。检索前路由：作者称对该差距无解（并用 4 种 ML 范式验证），但未给出各范式的具体数值。</dd>
+        <dt>为什么值得关注</dt><dd>对 RAG、tool use/agent 工作流很直接：把“是否调用 LLM 工具”从检索前决策改成检索后基于结果的级联，可显著减少不必要的 LLM 推理成本与延迟。也提醒做 RAG 评测的人：合成查询分布可能系统性高估 HyDE/扩写的必要性，影响路由与预算策略。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-26</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.27220v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.27209v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.27209v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.27209v1" target="_blank" rel="noopener">Learning to Act under Noise: Enhancing Agent Robustness via Noisy Environments</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">LLM</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">NoisyAgent把“真实世界的脏输入/工具故障”当成训练必备条件：在训练时主动注入用户噪声与工具噪声，让LLM agent学会在不确定交互下仍能稳定行动。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者认为现有agent训练多在“干净指令+稳定工具”的理想环境里，导致上线后遇到随机性就掉性能。NoisyAgent在训练环境中显式建模两类噪声：用户噪声（含糊、变体、非标准表达）和工具噪声（调用失败、异常返回、结果偏差）。实现上通过改写用户交互模式、以及模拟工具执行结果来制造扰动。为避免训练发散，噪声只加在部分rollout（一次任务轨迹）上，并采用课程学习（逐步加难）随模型适应而提高噪声强度。与过去主要做“更好提示词/更强规划器”不同，它把鲁棒性当作训练目标，通过受控噪声暴露来逼出更稳的决策与纠错行为。</dd>
+        <dt>关键数据</dt><dd>论文宣称在“有噪声、动态环境”下鲁棒性一致提升，并且在理想化benchmark上也有增益；但摘要未披露具体提升幅度、使用的基准名称、噪声比例/强度曲线、训练成本等数字。定性意义：不仅抗噪，还可能带来更可泛化的推理与决策策略（类似数据增强对泛化的作用）。</dd>
+        <dt>为什么值得关注</dt><dd>对LLM agent / tool use读者，这篇直接针对真实部署常见的“用户表达不稳定、工具偶发失败”两大痛点，提供可落地的训练范式。对multi-agent、RAG、MCP等依赖外部系统的场景也有启发：把外部依赖的不确定性纳入训练，可能比单纯优化提示或规划更有效。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-26</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.27209v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.27204v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.27204v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.27204v1" target="_blank" rel="noopener">GraphReview: Scientific Paper Evaluation via LLM-Based Graph Message Passing</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">RAG</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把论文评审从“只看单篇”变成“在论文图里传递证据”：用 LLM 生成两两对比证据，再用 PageRank 式消息传递统一做排序、录用预测和评语生成。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>GraphReview 先构建“语义论文图”：节点是论文，边同时包含同一时期的相关工作（同步链接）和引用/前作关系（历时链接），并把“论文自身质量”也作为节点信号。LLM 负责两件事：给每篇论文估一个质量先验（节点分数），以及通过成对论文比较生成“谁更强、强在哪”的边证据。随后用 Personalized PageRank（个性化 PageRank，一种图上随机游走加权传播）把节点与边的评审信号在图中传播与聚合，输出质量排名、录用/拒稿决策预测，并据此生成评审文本。为让边证据更可靠，作者用 reward-induced maximum likelihood（用奖励信号引导的最大似然训练）来训练/微调 LLM 骨干，使其更倾向产生对最终评审任务有用的比较证据；区别于以往把“论文内容评分”和“相关工作对比”分开建模、缺少统一证据传播机制的做法。</dd>
+        <dt>关键数据</dt><dd>相对最强基线：决策与排序指标平均提升 29.7%；其中 Accuracy（决策准确率）+23.7%，Spearman ρ（排序相关系数）+57.6%。评审文本质量“更高”但未给出具体自动指标/人工打分数值；宣称可跨时间段与不同会议场景泛化，但未披露具体跨域设置与分项结果。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM tool use/agent 思路：让模型先产出可复用的“比较证据”，再用图算法做全局推理与聚合，属于多步推理与结构化证据传播。对关注 multi-agent/推理模型/RAG 的读者，它提供了“图上消息传递 + LLM 生成证据”的可迁移范式，可类比到检索到的多文档证据整合与排序。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-26</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/ECNU-Text-Computing/GraphReview" target="_blank" rel="noopener">https://github.com/ECNU-Text-Computing/GraphReview</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.27204v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.27186v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.27186v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.27186v1" target="_blank" rel="noopener">MAIGO: Mitigating Lost-in-Conversation with History-Cleaned On-Policy Self-Distillation</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">针对多轮对话里“越聊越跑偏”的 LiC（对话中迷失）问题，MAIGO 用“清理历史”的自蒸馏训练，直接减少模型把自己早期错误带进后续上下文的自污染。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把 LiC 退化归因于“自污染”：中间轮次的助手回复进入后续上下文，会把早期偏差持续放大。MAIGO 是一种 on-policy（用当前模型策略采样）自蒸馏：在训练中间轮次时，删除先前助手回复，只保留用户可见的分片前缀（sharded prefix），用“干净视角”生成参考答案来监督。到最终作答轮次，则用成对的 full-view 参考（基于完整用户侧对话条件）进行蒸馏，保证最终答案不因清理历史而丢信息。另加一个可靠性权重：若中间轮样本与干净参考不一致就降权，避免把污染样本学回去。全程不需要 verifier reward（验证器奖励）、状态标注或推理时额外脚手架。</dd>
+        <dt>关键数据</dt><dd>在 LiC paired-view 协议 + 确定性验证器下，Qwen2.5-7B-Instruct 的 SHARDED 准确率从 52.8 提升到 66.1（+13.3 个点）；SHARDED/FULL 比例从 66.5% 提升到 84.1%（+17.6 个点），说明多轮退化显著收敛。FULL 准确率基本不掉：变化控制在 2.3 个点以内。训练成本、数据规模、额外算力未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对做 LLM agent / tool use 的人，多轮对话稳定性直接决定任务能否持续按约束执行；MAIGO 提供一种纯训练侧的“抗跑偏”手段，不依赖 RAG、外部评审器或推理时多代理脚手架。其“清理历史再蒸馏”的思路也可迁移到多代理协作中减少互相污染的上下文累积误差。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-26</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.27186v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
