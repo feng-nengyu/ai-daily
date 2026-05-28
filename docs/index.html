@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>1</strong> 条 ·
-      归档 <strong>75</strong> 条（8 天）·
-      生成于 2026-05-27 23:53 UTC
+      今日新增 <strong>10</strong> 条 ·
+      归档 <strong>76</strong> 条（8 天）·
+      生成于 2026-05-28 04:48 UTC
     </p>
   </header>
   <main>
@@ -214,9 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
         
-          <a href="#archive-2026-05-27" onclick="openArchive('2026-05-27')">2026-05-27 <span class="n">10</span></a>
+          <a href="#archive-2026-05-27" onclick="openArchive('2026-05-27')">2026-05-27 <span class="n">11</span></a>
         
           <a href="#archive-2026-05-26" onclick="openArchive('2026-05-26')">2026-05-26 <span class="n">10</span></a>
         
@@ -245,35 +245,288 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
       
         <div class="cards">
           
-    <article class="card" data-url="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/">
-      <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2605.28742v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.28742v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/" target="_blank" rel="noopener">NVIDIA Blackwell Sets STAC-AI Record for LLM Inference in Finance</a></h2>
+        <h2><a href="https://arxiv.org/abs/2605.28742v1" target="_blank" rel="noopener">CORE: Contrastive Reflection Enables Rapid Improvements in Reasoning</a></h2>
         <div class="badges">
           <span class="score high">8</span>
-          <span class="source cat-lab" title="rss:nvidia-dev-blog">NVIDIA</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">reasoning</span>
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">MCP</span>
       </div>
       
-      <p class="innovation">NVIDIA 宣布 Blackwell 在金融场景的 STAC-AI 基准上刷新 LLM 推理纪录，主打“更快、更省”的线上推理能力，面向交易与风控等低延迟需求。</p>
+      <p class="innovation">CORE 用“对比反思”把成功/失败的推理轨迹差异提炼成短文本“洞见”，在极少样本和更少 rollouts 下也能快速提升推理能力，比改权重或存整段轨迹更省成本、更可解释。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>文章聚焦“推理（inference）”而非训练：用 Blackwell GPU 平台在 STAC-AI（金融行业常用的 AI 性能评测）上跑 LLM 推理工作负载。核心思路是把金融文本/交易相关的非结构化数据分析，落到可复现的行业基准测试中对比。与以往只看通用 NLP 或离线吞吐不同，它强调金融业务更在意的延迟、吞吐与成本约束。具体采用了哪些模型、量化（低比特压缩）或 KV cache（注意力缓存）等推理优化手段，当前摘录未披露。</dd>
-        <dt>关键数据</dt><dd>刷新 STAC-AI 纪录（具体分数、吞吐 tokens/s、延迟 ms、功耗/成本等数字：未披露）。定性意义：STAC-AI 属于金融行业认可度较高的第三方基准，能作为“在金融推理负载上是否真更快”的对照，而不只是厂商自测。</dd>
-        <dt>为什么值得关注</dt><dd>对关心 LLM agent / tool use / RAG 的读者，这条提供了“把模型接入真实业务前，推理侧算力与延迟怎么量化评估”的行业基准视角。若你在做多步骤推理或多工具调用，推理成本往往是瓶颈，STAC-AI 这类结果能帮助判断硬件与部署路线。</dd>
+        <dt>技术方案</dt><dd>它是非参数学习（不更新模型权重）：先让模型在任务上产生多次推理轨迹，并用可验证奖励（能自动判对错的反馈）区分成功与失败。CORE 将历史成功/失败轨迹做对比，自动生成“洞见”——用自然语言总结有效策略与约束（例如哪些步骤容易错、哪些条件必须先检查）。这些洞见以紧凑文本形式存储，并在后续解题时注入到提示词中指导推理。与 episodic RAG/记忆方法直接检索旧轨迹不同，CORE 存的是抽象规则；与 RLVR/GRPO 这类参数法不同，它不需要大量训练样本来更新权重。</dd>
+        <dt>关键数据</dt><dd>覆盖 4 个推理任务；在“更少 rollouts”条件下，提升速度快于参数基线 GRPO 与非参数基线 GEPA、episodic RAG、MemRL。固定 rollout 预算且训练样本低至 5 条时，CORE 的性能增益与各基线相当或更高。具体提升幅度（如准确率/分数提升多少、rollouts/token 节省比例）摘要未披露；定性结论是：同预算下更快学到有效策略，且提示词更省 token（上下文更高效）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent 的 tool use / reasoning 来说，CORE 提供了一种“用可验证反馈做自我改进”的轻量路线：不训练、不大规模采样，也能把经验压缩成可读的策略记忆。它也可视为一种更结构化的 RAG/记忆替代：检索的不再是长轨迹，而是可复用的抽象规则，利于多轮任务与多 agent 共享。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-05-27</span>
         
         
-        <a class="cta" href="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2605.28742v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.28732v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.28732v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.28732v1" target="_blank" rel="noopener">MemTrace: Tracing and Attributing Errors in Large Language Model Memory Systems</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">memory</span><span class="tag">RAG</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“记忆系统”拆成可执行的演化图来逐步追踪信息流，并自动定位失败根因，还能用归因信号反向优化提示词形成闭环修复。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把长上下文、RAG（检索增强生成）、Mem0、EverMemOS 等记忆管线统一表示为“可执行的记忆演化图”，把每一步操作（写入、压缩、检索、融合等）都变成可追踪节点。运行任务时记录信息如何被合成、传播或被污染，从而在操作级别复盘错误是在哪一步引入的。基于这些系统收集并构建 MemTraceBench，用来系统化覆盖常见记忆失效模式。随后提出自动归因方法：迭代地回溯并裁剪相关的操作子图，逐步缩小范围，最终指向导致失败的根因操作。最后把这些细粒度归因信号用于下游的提示词优化，形成“发现问题→定位根因→自动修复→再评估”的闭环。</dd>
+        <dt>关键数据</dt><dd>端到端任务性能最高提升 7.62%（通过归因信号指导的自动提示词优化得到）。MemTraceBench 覆盖 Long-Context、RAG、Mem0、EverMemOS 等代表性记忆系统，但具体规模（样本数/任务数/模型列表）未披露；定性结论指出失败多为系统性问题，集中在操作级信息丢失与检索对齐错误。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景里常见的“长程记忆不稳定、难复现难调试”问题，提供了可落地的追踪与归因框架。对 RAG、多记忆模块与多代理系统的工程调优尤其有用：能把失败从“模型不行”细化到“哪一步检索/融合/压缩出了问题”。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/zjunlp/MemTrace" target="_blank" rel="noopener">https://github.com/zjunlp/MemTrace</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.28732v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.28722v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.28722v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.28722v1" target="_blank" rel="noopener">Multi-Adapter Representation Interventions via Energy Calibration</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“表示干预（不改权重的对齐）”从一刀切变成按样本自适应：用多适配器竞争选方向/强度，并用能量校准门控只在该干预时才出手，减少对正常能力的副作用。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者观察到：不同输入需要的干预方向与强度差异很大，固定干预会让无害输入的通用能力变差。MARI引入“多适配器（多个小专家模块）”竞争机制，让不同专家学习非线性纠偏模式，并为每个样本动态决定干预向量与力度。与此同时加入“能量（energy）门控”：利用模型内部传播动态计算能量分数，用来判断该输入是否适合被干预，避免对不需要对齐的样本动手。整体仍属于表示层面的插入式干预，不需要微调主模型权重，和以往统一施加同一干预向量的方法不同。</dd>
+        <dt>关键数据</dt><dd>具体分数/提升幅度未披露（摘要未给出TruthfulQA、BBQ、安全基准、MMLU、ARC的绝对值或增量）。定性结果：在TruthfulQA、BBQ与多项安全评测上对齐效果更强，同时在MMLU、ARC等通用能力任务上“保持甚至提升”，主打解决“对齐提升但通用能力掉点”的常见权衡。</dd>
+        <dt>为什么值得关注</dt><dd>对做LLM agent与tool use的人来说，系统常遇到“只在高风险输入上更严格、其他时候别误伤”的需求；MARI的能量门控+按样本自适应干预，提供了一种可插拔的对齐/安全控制思路，也便于在多模型、多场景的agent管线里复用。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/V1centNevwake/MARI" target="_blank" rel="noopener">https://github.com/V1centNevwake/MARI</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.28722v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.28721v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.28721v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.28721v1" target="_blank" rel="noopener">LiveBrowseComp: Are Search Agents Searching, or Just Verifying What They Already Know?</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">指出“会搜的 Agent”可能只是用网页来验证自己早就记得的答案，并给出一个更难被“记忆”刷分的新基准 LiveBrowseComp 来测真实检索能力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者在 BrowseComp 上做了 3 类诊断，检验搜索型 LLM agent 是否真的依赖外部证据。核心发现是 IKD（内在知识依赖）：即使能用工具，模型仍倾向用参数里记住的知识先猜答案，再用搜索做确认。诊断包括：无工具也能答对的比例、搜索查询是否来自“内部假设”而非检索线索、以及移除支持答案的证据后性能变化。为避免静态基准被“记忆+验证”混淆，作者构建 LiveBrowseComp：问题答案依赖基准构建前 90 天内发布的新事实，并过滤掉全球性大事件以降低模型预训练覆盖。</dd>
+        <dt>关键数据</dt><dd>在 BrowseComp：Agent 最多可在不使用工具时答对 44.5% 的问题；超过一半的搜索查询来自模型内部生成的假设而非检索到的线索；当移除支持答案的证据时，Agent 表现甚至差于闭卷（不检索）基线。LiveBrowseComp：共 335 道人工题，来自 6 个持续更新来源，答案依赖近 90 天新信息；所有评测 Agent 的闭卷准确率都低于 2%；相较 BrowseComp，带搜索的分数下降 25–40 分；以往模型在 BrowseComp 的排名不再能可靠预测新基准表现。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 很关键：它把“会用搜索工具”拆成“发现新证据”与“验证已知答案”，提醒现有基准可能高估检索与推理能力。LiveBrowseComp 提供更贴近真实场景的评测，适合用来检验多步检索、深度搜索与多代理协作是否真的带来增益。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <span class="links">补充：<a href="https://huggingface.co/datasets/Forival/LiveBrowseComp, 无（论文链接未在输入中给出）" target="_blank" rel="noopener">https://huggingface.co/datasets/Forival/LiveBrowseComp, 无（论文链接未在输入中给出）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.28721v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.28713v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.28713v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.28713v1" target="_blank" rel="noopener">Thinking as Compression: Your Reasoning Model is Secretly a Context Compressor</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">把“推理过程”当成天然的长上下文压缩器：不另训压缩模型，直接让推理模型产出可用的压缩上下文，并在高压缩比下仍保持更高 QA 准确率。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>论文观察到：推理模型在“思考”时会自动筛选并重组与任务相关的信息，本质上是在做上下文压缩。提出 TaC（Thinking as Compression）：用提示词让模型生成思考轨迹，把这段轨迹当作缩短后的上下文再用于回答问题，替代传统的专用压缩模块或压缩专训。针对原始思考输出难以控制长度、容易走“捷径”（只给结论或遗漏关键信息）的问题，提出 TaC-C：用简单的奖励驱动优化，让思考轨迹更短、更可控，同时尽量保留解题所需信息。整体思路与以往“先压缩再推理”的外置压缩器不同，强调挖掘推理模型自身的内在压缩能力。</dd>
+        <dt>关键数据</dt><dd>在 4 个长上下文问答（Long-context QA）基准上评测。TaC（不加专用压缩器）已“超过多数代表性压缩方法”（具体对比名单与绝对分数未在摘要披露）。TaC-C 在 4x 与 8x 压缩比下，平均 F1 分别比最强对手高 17.4% 与 23.4%；平均 EM（Exact Match，完全匹配）分别高 15.7% 与 21.7%。推理加速幅度、token 成本、训练/优化开销等未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 很关键的痛点是“上下文太长、成本太高”：这篇把推理模型的 reasoning traces（思考轨迹）直接当作可用的压缩上下文，提供一种不依赖额外压缩器的长上下文处理路径。对关注 reasoning models 的读者，它也提示：推理不仅是解题步骤，还是一种可控的信息组织与压缩机制，可用于多步任务的记忆与检索前处理。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.28713v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.28699v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.28699v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.28699v1" target="_blank" rel="noopener">TRACER: Turn-level Regret Matching with Inner Reinforcement Credit for Cooperative Multi-LLM Reasoning</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把多智能体提示（辩论/投票）和强化学习真正揉在一起：用“每回合是否发言”的二元决策+逐句归因奖励，学出可收敛的协作策略并降低训练开销。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>TRACER把多轮多LLM协作拆成两层：上层“控制器-后悔值（regret）”层决定本轮每个角色是发言还是跳过，用后悔匹配（博弈论里的策略更新法）学习何时参与，避免固定协作协议。下层“生成-归因”层对具体话术做强化学习优化：区分 proposer（提出解法）和 reviewer（审阅纠错）的角色，用各自的GSPO奖励（论文中的角色特定策略优化信号）给到句子级信用分配。这样同时在“动作模式（说/不说）”和“生成内容（说什么）”两处做credit assignment（贡献归因），缓解稀疏奖励与角色搭便车。训练时主要扩展控制器的选择空间（而不是让所有agent在巨大动作空间里全量RL），以减少计算成本，并声称二元动作设计让有限动作博弈的收敛理论可迁移到深度学习协作中。</dd>
+        <dt>关键数据</dt><dd>在GSM8K训练集上训练，评测覆盖GSM8K（域内）、MATH500与GPQA-Diamond（跨基准泛化），并报告推理成本与“纠错-保留”行为（修正错误同时不破坏原本正确部分）。具体准确率提升幅度、推理token/轮数节省比例、训练算力/时长等数字：未披露；但其对照目标明确指向固定辩论/投票协议与直接多智能体RL的高成本、易振荡问题。</dd>
+        <dt>为什么值得关注</dt><dd>面向multi-agent与LLM agent协作：它不再用固定的debate/vote流程，而是让系统学会“何时用工具式发言、何时沉默”这类协作策略。对关注reasoning models与tool use/RAG编排的人，这种可学习的回合级控制器很像可训练的调度层，可能更省推理成本且更可复现。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/Shark-Forest/TRACER" target="_blank" rel="noopener">https://github.com/Shark-Forest/TRACER</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.28699v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.28683v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.28683v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.28683v1" target="_blank" rel="noopener">VeriTrip: A Verifiable Benchmark for Travel Planning Agents over Unstructured Web Corpora</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">RAG</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把旅行规划 Agent 的评测从“调 API 做任务”推进到“在开放网页里检索+核证+规划”，并用可逐格验证机制量化事实可靠性与幻觉来源。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 VeriTrip：面向非结构化、多模态（图文）网页语料的旅行规划基准，要求 Agent 自主检索证据并据此生成行程。构建 Multimodal Retrieval Base（MRB，图文检索库）来自真实世界异构来源，迫使模型自己编排查询与信息整合，而不是直接调用干净的结构化 API。同步建立 Verifiable Knowledge Base（VKB，可验证知识库），用“cell-wise（逐单元格）验证协议”对输出中的每个事实单元做对齐核验。该协议还能区分两类错误：系统性推理失败（证据在但没用对）与参数性幻觉（模型凭空编造）。在多款主流多模态大模型（MLLM）上评测，观察到“检索-推理权衡”：自主检索带来的认知负担会削弱指令保持与规划一致性。</dd>
+        <dt>关键数据</dt><dd>未披露具体分数/提升幅度/模型列表等数字结果；但明确给出新的量化维度：通过逐单元格核验精确统计事实可靠性，并能将错误归因到“检索/推理/幻觉”不同环节，用于诊断 Agent 失败模式而不只是算任务成功率。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use、RAG（检索增强生成）和 multi-agent 读者，这个基准把“开放网页检索+证据落地+规划”作为核心能力来测，并提供可归因的核证协议，适合用来评估/改进具备自主检索与推理的规划型 Agent。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.28683v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.28678v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.28678v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.28678v1" target="_blank" rel="noopener">DREAM-R: Multimodal Speculative Reasoning with RL-Based Refined Drafting, Precise Verification, and Fully Parallel Execution</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“投机推理”做成更稳的三件套：用强化学习对齐草稿推理、用阈值验证防错扩散、再把多步推理全并行跑，主打加速但不掉准确率。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>DREAM-R先用SAPO（投机对齐策略优化，一种强化学习目标）训练草稿模型：生成的推理步骤既贴近目标模型的推理轨迹，又尽量简短，减少“草稿写偏了”导致的返工。然后用TBVM（阈值验证机制）做逐步验收：用“正向证据占比”的比值阈值来决定是否接受草稿步骤，只有当支持证据明显占优才通过，从机制上抑制错误传播。最后用FPSR（全并行投机推理）把草稿生成、目标侧推理与验证在多步链路上并行化，支持早停（能确认就提前结束）和干净回退（不通过就回到目标模型继续）。相较以往投机推理多依赖启发式对齐与串行验证，这里把“草稿质量”和“验收规则”都显式优化，并把执行流程并行化。</dd>
+        <dt>关键数据</dt><dd>文中称在“推理密集”基准上实现“最高可达的加速（up to speedup）且保持目标模型准确率”，但具体加速倍数、基准名称与准确率差值未在摘要披露。定性意义：强调在不牺牲目标模型正确性的前提下提升吞吐/降低延迟，且通过阈值验收降低误差累积风险。</dd>
+        <dt>为什么值得关注</dt><dd>对LLM agent / tool use常见的“多步推理+验证”链路很相关：它提供了更可控的逐步验收与回退机制，适合做可靠的推理加速。对reasoning models与multi-agent/RAG场景也有借鉴价值：并行化与阈值验证可用于降低长链推理的延迟与错误传播。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.28678v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.28669v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.28669v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.28669v1" target="_blank" rel="noopener">Sense Representations Are Inducible Interfaces</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“词义/语义分解（每个 token 的显式含义变量）”当成可插拔接口：无需重新预训练，只在冻结的解码器语言模型里诱导出一条“sense 通道”，还能一套变量同时做消歧、可控用词和跨语种对齐。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 ACROS：在不改动原模型参数（冻结预训练 decoder LM）的前提下，新增一条显式“sense 表示”路径。核心做法是用门控（gated）残差加法，把 sense 路径的输出按比例注入到原残差流里，既能影响生成又尽量不破坏原能力。与以往需要在预训练阶段就把 sense 结构“烤进模型”的方法不同，ACROS 是后置诱导（induce）接口。作者还强调同一组诱导出来的变量可复用到三类任务：零样本词义消歧、低分布偏移（低 KL）词汇转向、以及跨语言适配（SENSIA）。</dd>
+        <dt>关键数据</dt><dd>基座模型：SmolLM2-360M。零样本词义消歧：Raganato ALL 上 F1=64.95，接近/可比 WordNet 的 first-sense（首义）启发式。词汇转向（lexical steering）：在 5,161 个 CoInCo 案例上，使用“非 oracle（非真值）”的简单代理指标可找回约 90% 的正向转向（positive shifts），并强调是低 KL（对原分布改动小）。跨语种适配（SENSIA）：4 种语言平均 R@1=0.988；目标语料 FLORES 困惑度 PPL=7.94。训练/推理额外开销、参数增量、与未加 ACROS 的基线差值等未披露，但作者声称能保持 base LM 质量。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 来说，这相当于给“冻结大模型”加了一个可控、可解释的中间语义接口：更容易做消歧与精细 steering（控制用词而不大幅扰动分布）。对 RAG、多语言 agent 和跨语种检索/对齐也有直接价值，因为它提供了可复用的显式语义变量来做对齐与适配。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中给出具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中给出具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.28669v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.28655v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.28655v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.28655v1" target="_blank" rel="noopener">AutoScientists: Self-Organizing Agent Teams for Long-Running Scientific Experimentation</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">提出去中心化的“自组织”科研 Agent 团队，能在长周期实验中并行探索、随证据改方向，并把失败经验也沉淀下来减少重复试错。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>AutoScientists 不用单一研究轨迹或中央规划器，而是让多个 Agent 共同读取同一份“实验状态”（共享进展与结果）。各 Agent 会围绕看起来更有希望的假设自动结队，形成并行的探索分支。每个分支在消耗实验算力前先做同伴评审/批判（类似内部审稿），过滤掉低质量方案。实验成功与失败都会被写回共享状态，后续团队据此调整方向并避免走回头路，适合长时间、反复迭代的计算实验。</dd>
+        <dt>关键数据</dt><dd>BioML-Bench（24 个任务，含医学影像/蛋白工程/单细胞组学/药物发现）：平均榜单百分位 74.4%，比最强基线 Agent 高 +8.33 个百分点。在 GPT 训练优化：达到目标验证 bits-per-byte（越低越好）速度比 Autoresearch 快 1.9×；从同一“冠军起点”继续找到 7 个被接受的改进，而单 Agent 为 0。在 ProteinGym 适应度预测：ACE2-Spike 结合任务 Spearman 相关性比当时 SOTA 高 +12.5%；同一方法不做修改覆盖 217 个 assay，平均比 SOTA 高 +6.5%（Spearman）。实验预算为 matched（对齐）条件下对比；具体算力/成本未披露。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 multi-agent（多智能体）+ tool use（用实验算力当工具）的长程科研工作流：强调并行探索、批判式决策与“失败记忆”。对关注 LLM agent、推理型模型在真实迭代任务中的组织方式，以及如何减少重复试验/提升探索效率的读者很直接。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.28655v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
         </div>
@@ -285,7 +538,7 @@
       
         
           <details class="date-group" id="archive-2026-05-27" open>
-            <summary>2026-05-27 <span class="n">10 条</span></summary>
+            <summary>2026-05-27 <span class="n">11 条</span></summary>
             <div class="cards">
               
     <article class="card" data-url="https://arxiv.org/abs/2605.27186v1">
@@ -566,6 +819,33 @@
         
         
         <a class="cta" href="https://arxiv.org/abs/2605.27333v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/">
+      <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/" target="_blank" rel="noopener">NVIDIA Blackwell Sets STAC-AI Record for LLM Inference in Finance</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:nvidia-dev-blog">NVIDIA</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">NVIDIA 宣布 Blackwell 在金融场景的 STAC-AI 基准上刷新 LLM 推理纪录，主打“更快、更省”的线上推理能力，面向交易与风控等低延迟需求。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>文章聚焦“推理（inference）”而非训练：用 Blackwell GPU 平台在 STAC-AI（金融行业常用的 AI 性能评测）上跑 LLM 推理工作负载。核心思路是把金融文本/交易相关的非结构化数据分析，落到可复现的行业基准测试中对比。与以往只看通用 NLP 或离线吞吐不同，它强调金融业务更在意的延迟、吞吐与成本约束。具体采用了哪些模型、量化（低比特压缩）或 KV cache（注意力缓存）等推理优化手段，当前摘录未披露。</dd>
+        <dt>关键数据</dt><dd>刷新 STAC-AI 纪录（具体分数、吞吐 tokens/s、延迟 ms、功耗/成本等数字：未披露）。定性意义：STAC-AI 属于金融行业认可度较高的第三方基准，能作为“在金融推理负载上是否真更快”的对照，而不只是厂商自测。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 LLM agent / tool use / RAG 的读者，这条提供了“把模型接入真实业务前，推理侧算力与延迟怎么量化评估”的行业基准视角。若你在做多步骤推理或多工具调用，推理成本往往是瓶颈，STAC-AI 这类结果能帮助判断硬件与部署路线。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-27</span>
+        
+        
+        <a class="cta" href="https://developer.nvidia.com/blog/nvidia-blackwell-sets-stac-ai-record-for-llm-inference-in-finance/" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
             </div>
