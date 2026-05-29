@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>1</strong> 条 ·
       归档 <strong>97</strong> 条（10 天）·
-      生成于 2026-05-29 06:08 UTC
+      生成于 2026-05-29 23:59 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
           <a href="#archive-2026-05-29" onclick="openArchive('2026-05-29')">2026-05-29 <span class="n">11</span></a>
         
@@ -249,9 +249,38 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/">
+      <button class="star" aria-label="收藏" data-url="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/" target="_blank" rel="noopener">Real-time LLM Inference on Standard GPUs: 3k tokens/s per request</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-community" title="hackernews:hackernews-ai">Hacker News</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">inference</span>
+      </div>
+      
+      <p class="innovation">在“普通 GPU”上把单请求推理做到约 3000 tokens/s，主打实时交互级速度；如果属实，会直接改变 Agent 工具调用的延迟上限。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>原文未给出技术细节，但标题指向“标准 GPU 上的实时推理”优化路线：通常会从推理引擎层做算子融合、KV cache（注意力缓存）管理、批处理/流水线调度等。与过去依赖大批量吞吐（batch 越大越快）不同，这类工作更强调单请求低延迟与稳定高 token 生成速率。也可能结合低精度计算（如 FP8/INT8）与更激进的内存布局，减少显存带宽瓶颈。由于缺少正文，具体采用哪几种手段、适配哪些模型与 GPU 型号无法确认。</dd>
+        <dt>关键数据</dt><dd>披露：约 3k tokens/s per request（单请求）。未披露：使用的 GPU 型号/数量、模型规模（参数量）、上下文长度、首 token 延迟（TTFT）、是否牺牲输出质量或使用量化、与 vLLM/TensorRT-LLM 等基线对比。定性意义：若在常见单卡上可复现，这一速度足以把多数对话/Agent 步骤的“生成时间”压到毫秒级到亚秒级区间。</dd>
+        <dt>为什么值得关注</dt><dd>LLM agent / tool use 往往是“多步推理+多次调用”，单请求 tokens/s 和首 token 延迟直接决定一次任务的端到端耗时。若能在标准 GPU 上稳定实现该速度，RAG 检索后生成、MCP 工具编排、多 Agent 协作的交互体验都会更接近实时。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-29</span>
+        
+        
+        <a class="cta" href="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
