@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>1</strong> 条 ·
-      归档 <strong>86</strong> 条（9 天）·
-      生成于 2026-05-29 00:00 UTC
+      今日新增 <strong>10</strong> 条 ·
+      归档 <strong>87</strong> 条（10 天）·
+      生成于 2026-05-29 04:52 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        
+          <a href="#archive-2026-05-29" onclick="openArchive('2026-05-29')">2026-05-29 <span class="n">1</span></a>
         
           <a href="#archive-2026-05-28" onclick="openArchive('2026-05-28')">2026-05-28 <span class="n">10</span></a>
         
@@ -247,10 +249,306 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
       
         <div class="cards">
           
+    <article class="card" data-url="https://arxiv.org/abs/2605.30260v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.30260v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.30260v1" target="_blank" rel="noopener">How LoRA Remembers? A Parametric Memory Law for LLM Finetuning</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">fine-tuning</span><span class="tag">MCP</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把 LoRA（低秩微调）当作“可控记忆探针”，给出可量化的“参数记忆定律”，并发现 p>0.5 就能在贪心解码下逐字回忆的阈值规律。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者不再只看下游任务分数，而是用 LoRA 在模型隐空间里做“精确记忆”实验，系统测量模型能记住多少训练序列。提出 Parametric Memory Law：把损失下降 ΔL 与“有效参数量”和序列长度用幂律关系连接起来，用来刻画记忆容量随参数/长度如何缩放。进一步做 token 级细粒度分析，观察到确定性的相变：当某 token 的预测概率超过阈值时，贪心解码会进入可逐字复现的区域。基于这个阈值，提出 MemFT：训练时动态把预算更多分配给仍低于阈值的 token，而不是平均用力，从而提高记忆保真度与训练效率。</dd>
+        <dt>关键数据</dt><dd>文中提到“幂律关系”“p>0.5 为逐字回忆的充分条件”“MemFT 提升记忆保真度与效率”，但未在摘要披露具体提升幅度、参数规模、训练步数/算力等数字；相对意义是给 LoRA 记忆容量提供了可预测的定量刻画，并把训练策略从“统一优化”改为“按阈值定向补短板”。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 等需要“持续更新知识且不遗忘”的系统，这篇给出 LoRA 作为参数化记忆的容量规律与可操作阈值（p>0.5），有助于更可控地做知识注入与记忆可靠性评估。对做多轮推理/多智能体协作时的“记忆一致性”也提供了可量化的训练与诊断思路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/zjunlp/ParametricMemoryLaw" target="_blank" rel="noopener">https://github.com/zjunlp/ParametricMemoryLaw</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.30260v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.30258v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.30258v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.30258v1" target="_blank" rel="noopener">EASE Configuration Facilitates A Reproducible Science of LLM Social Simulations</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">把“用大模型做社会/多智能体仿真”从各自手搓的黑盒，拆成可复用、可复现实验的标准配置（EASE），并给出开源沙盒 SiliSocS 作为可直接跑研究的模板。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者提出 EASE 四块模块化架构：Environment（环境/规则）、Agent（智能体/角色）、Simulation engine（仿真引擎/调度）、Evaluation metrics（评估指标/量化口径），用配置把它们拼装起来。相比以往把提示词、记忆、工具、评估混在一个脚本里的“单体模拟器”，EASE 强制把设计选择显式化，便于替换组件做对照实验。论文还把 EASE 包进“研究问题驱动”的实验 schema：先定义明确研究问题，再生成场景、编排工作流、最后按统一指标评估。作者实现了开源的 Silicon Society Sandbox（SiliSocS），提供研究就绪的配置与流程，并用 3 个案例展示：复现/评估已有问题、对复杂问题做更深层拆解、以及对既有研究做扩展与对照。</dd>
+        <dt>关键数据</dt><dd>未披露统一的量化指标（如胜率、相关系数、成本/速度等）。主要贡献是工程与方法论层面的“可复现性/可对照性”：通过模块化与实验 schema，能更清晰地隔离不同设计选择（如环境设定、代理策略、评估口径）对结果的影响，但论文摘要未给出具体提升幅度或统计显著性数字。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM multi-agent（多智能体）与 agent tool use（工具调用）研究者来说，EASE 把“仿真=一堆提示词+脚本”的做法变成可配置、可替换、可评估的实验管线，更利于做消融与复现。对关注 reasoning models（推理模型）与 RAG（检索增强）的人，也能用同一框架把“记忆/检索/工具/评估”拆开对照，避免结论被实现细节绑架。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.30258v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.30251v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.30251v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.30251v1" target="_blank" rel="noopener">Same Evidence, Different Answers: Canonical-Context On-Policy Distillation for Multi-Turn Language Models</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">针对“同样证据分多轮给就答错”的常见问题，提出 CCOPD 训练法：用全量上下文当“标准答案”，把多轮对话中的自我偏航拉回到证据上。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把同一个基础模型分成两种角色：冻结的 teacher 只看干净的 FULL prompt（一次性给全信息），可训练的 student 只通过 RAW-SHARDED 多轮对话逐步拿到同样证据。训练时 student 按自己的多轮轨迹生成回答（on-policy，指用模型当前策略自己走出来的对话路径），然后用 teacher 在“标准全上下文”下的行为作为对齐目标做蒸馏（distillation，指用强模型输出教弱模型）。核心是“canonical-context（标准上下文）”约束：不让 student 被早期不完整信息下的猜测带偏。与常见的多轮微调不同，它显式对齐“同证据应同答案”，并把错误来源归因到 self-anchored drift（自我锚定漂移：先前瞎猜变成后续推理的锚点）。</dd>
+        <dt>关键数据</dt><dd>只用数学题多轮对话训练，但在 RAW-SHARDED 设置下，相比原始基础模型平均相对提升 32%；覆盖数学任务 + 5 个零样本（zero-shot，不额外训练）域外任务族。FULL prompt（一次性给全信息）的性能“基本保持”，具体绝对分数/基准名称/训练步数与算力成本未披露。分析结论：更“grounding（证据对齐）”，且对早期 assistant 回合污染更不敏感（未给量化幅度）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景很关键：真实交互往往是多轮逐步补信息，模型容易被自己早期回答带偏。CCOPD 提供一种可复用的训练范式，把“全上下文的正确行为”蒸馏到“多轮轨迹”上，和多轮 RAG、MCP 工具调用中的上下文累积问题直接相关。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.30251v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.30245v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.30245v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.30245v1" target="_blank" rel="noopener">Knowing What to Solve Before How: Preplan Empowered LLM Mathematical Reasoning</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">把“先想怎么解”改成“先弄清要解什么”。PPC在数学推理里显式加入“预规划”阶段，专门识别题型/可用工具/易错点，再去做计划与推导。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>以往常见范式是 question→plan→CoT（逐步推理），但计划与执行都在决定“怎么做”，而“要解决什么问题”仍隐含在模型内部。PPC提出 question→preplan→plan→CoT：preplan先做问题理解（题型判断、可用方法/工具、潜在陷阱），plan再基于preplan制定步骤，最后CoT执行。为保证preplan不被“泄题式”写成答案，作者做了三阶段数据合成流程，并用spoiler-score（剧透分）检测器过滤掉信息泄漏/剧透失败样本，得到更干净的preplan监督。训练时再用复合GRPO（类似强化学习的策略优化）奖励，约束生成的plan必须“从preplan推出来”，避免preplan与plan各说各话。</dd>
+        <dt>关键数据</dt><dd>在4个backbone、5个数学推理基准上，PPC在40项指标中拿到39项最佳。相对最强基线，maj@16（16次采样多数投票）提升+2.23，pass@16（16次采样通过率）提升+3.06。推理阶段不增加额外token开销（即不额外变慢/变贵）。其余如训练成本、参数规模未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对LLM agent/工具使用/推理模型很相关：它把“任务理解（要解什么）”从隐式变显式，可类比到agent在调用工具或走RAG流程前先做任务分解与风险检查。并且用奖励约束“计划必须遵循预规划”，对多阶段agent管控与减少幻觉/跑偏有直接借鉴价值。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中给出具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中给出具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.30245v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.30244v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.30244v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.30244v1" target="_blank" rel="noopener">Reinforcement Learning with Robust Rubric Rewards</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把 RLVR（可验证奖励的强化学习）从“整题对不对”升级到“每条评分标准对不对”，用更稳的 rubric（评分细则）奖励做多维监督，减少被模型钻空子。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>方法叫 RLR^3（Robust Rubric Rewards），核心是把每个样本的 rubric 拆成多个可单独打分的准则，并按准则级别做验证/打分。对“可确定验证”的准则走路径 A：LLM 充当 extractor（抽取器）把关键信息结构化，再交给确定性 verifier（规则/程序校验）打分；对“不可确定验证”的准则走路径 B：LLM 充当 Judge（裁判）直接给分。为避免在线 RL 时评分被诱导，提出 minimal exposure（最小暴露）：对抽取器遮住标准答案，对裁判遮住图像，降低利用信息泄露刷分的空间。最后用 hierarchical aggregation（分层汇总）让“必选准则”权重大于“加分准则”，并在同一 rollout 组内做去饱和处理，避免奖励很快顶格导致学习信号变弱。</dd>
+        <dt>关键数据</dt><dd>在 Qwen3-VL-30B-A3B 上评测 15 个基准，RLR^3 相比 RLVR 一致更好；相对 base model 总体提升 4.7 分。论文还声称该提升幅度超过“官方 instruct-to-thinking 模型”的差距（具体差距数值未披露）。受控审计显示：确定性验证 + 最小暴露能显著减少可被利用的 false positive（假阳性），但未给出具体下降比例。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景很相关：它把“奖励函数怎么写、怎么防作弊”落到可执行的准则级验证，适合多约束任务（步骤、格式、工具调用结果等）。对 reasoning models 也有启发：用 rubric 把推理过程拆成可检查的子目标，并用分层汇总控制学习重点。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.30244v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.30237v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.30237v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.30237v1" target="_blank" rel="noopener">GRASP: Plan-Guided Graph Retrieval with Adaptive Fusion and Reranking on Semi-Structured Knowledge Bases</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">RAG</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“先做检索计划再检索”引入半结构化知识库：先按图谱（实体-关系）走一遍，再与文本向量检索自适应融合并重排，显著抬高首条命中率。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>GRASP 是三阶段检索框架，面向“文本+类型化图谱”的半结构化知识库（SKB）。第 1 阶段先生成/执行检索计划（plan，类似分步路线），在实体关系图上做计划引导的图检索，而不是只拿图做查询扩展。第 2 阶段用该计划来“条件化”融合：把图检索结果与稠密检索器（dense retriever，向量相似度检索）的候选进行自适应加权，而非全局固定权重混合两路结果。第 3 阶段对融合后的候选用微调的重排器（reranker，二次打分排序）再排序，提升最终 Top-1 命中。相比依赖端到端微调的图遍历生成器或简单混合分支，GRASP 把“计划”作为贯穿检索与融合的控制信号。</dd>
+        <dt>关键数据</dt><dd>在 3 个 STaRK 基准上“所有指标”均超过此前方法；给出的量化结果是平均 Hit@1 从 62.0 提升到 73.9（+11.9 绝对点，约 +19.2% 相对提升）。其余指标、训练/推理成本、模型规模未披露；作者称消融与敏感性实验验证了各模块有效且较稳健。</dd>
+        <dt>为什么值得关注</dt><dd>对 RAG/agent 的“tool use（工具调用）”很像：先做可解释的分步计划，再调用图检索与向量检索两种“工具”并融合。也为多源检索（graph+text）在多步推理/多跳查询中的排序与融合提供了可复用的框架思路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.30237v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.30227v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.30227v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.30227v1" target="_blank" rel="noopener">Unifying Temporal and Structural Credit Assignment in LLM-Based Multi-Agent Prompt Optimization</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把多智能体（multi-agent）提示词优化里的“失败原因”拆成时间维度和结构维度两类归因，只改最薄弱的回合/角色/协议，减少盲目全局搜索带来的高成本试错。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者认为 MAS 的优化难点在于：交互轨迹是离散、不可微的“黑盒”，而监督信号又常常只在最终结果给一次，导致很难把失败归到具体哪一轮对话或哪个代理。方法上做了两种 credit assignment（贡献/责任分配）：(1) 时间归因：用“状态空间瓶颈”（把多轮对话压成关键状态）定位哪些回合最关键；(2) 结构归因：用“固定的角色策略”（stationary role policies）把不同代理的贡献隔离出来。然后用一种离散、可口头表达（verbalized）的块坐标下降（block coordinate descent，轮流优化不同模块）算法迭代改进：交替优化角色提示词与聚合协议（aggregation protocol，如何汇总各代理输出），并让 LLM 生成“代理梯度”（proxy gradients，文字形式的改进方向）只针对被定位的弱环节更新，而不是对整个系统做一次性全局改写。</dd>
+        <dt>关键数据</dt><dd>具体 benchmark 名称、分数提升幅度、查询次数（query complexity）降低比例等数字：未披露。定性结论是：在多种推理类基准上，同时做到更少的模型调用次数与更高的任务表现；相对对照为“现有黑盒优化器”在高方差探索下更低效。</dd>
+        <dt>为什么值得关注</dt><dd>这条直接对应 LLM agent / multi-agent 的“自我改进”与 prompt/协议优化问题：用可解释的时间+结构归因来指导 tool-less 的优化更新，思路也可迁移到 MCP/工具调用编排、RAG 流程中定位“哪一步/哪个角色”导致失败。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.30227v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.30219v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.30219v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.30219v1" target="_blank" rel="noopener">When Should Models Change Their Minds? Contextual Belief Management in Large Language Models</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">benchmark</span>
+      </div>
+      
+      <p class="innovation">把“模型该不该改口”做成可精确评测的问题：提出 CBM（上下文信念管理）与 BeliefTrack 基准，能逐轮判定模型是该保持、该更新还是该忽略噪声，并给出可量化的失败类型与改进幅度。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者将长对话中的信息累积抽象为 CBM：模型需要维护一个“信念状态”（对世界的当前判断），并在新证据出现时决定更新或保持，同时隔离无关干扰。为让它可测，构建 BeliefTrack 闭世界基准（有限信念空间），覆盖 Rule Discovery（规则发现）与 Circuit Diagnosis（电路诊断），并用符号验证器做逐轮“对/错”判定。基准把错误拆成三类：Failed Stay（该保持却变了）、Failed Update（该更新却没变）、Failed Isolation（被无关信息带偏）。对比方法上，普通直接推理的 LLM 与“显式信念跟踪提示词”提升有限；更有效的是用强化学习（RL，按信念状态是否正确给奖励）直接优化模型的更新/保持策略，并进一步用表示层引导（在内部表征上做定向干预）来减少错误。</dd>
+        <dt>关键数据</dt><dd>在多种 LLM 上，原生（vanilla）模型出现“严重 CBM 失败”（未给出各模型绝对分数/失败率）。显式信念跟踪提示词：仅带来有限收益（未披露具体数字）。强化学习+信念状态奖励：平均将失败率降低 70.9%。表示层引导：在两个任务上将失败率降低 46.1%。训练成本、模型规模、推理开销等未披露；但结果表明“优化目标对准信念状态”比单纯提示词更能稳定长程一致性。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 来说，长程交互里最常见的问题就是“记错、改口、被噪声带偏”；CBM 把这类问题拆成可诊断的三种失败，并提供可用于训练/对齐（RL 奖励、表示层干预）的评测与改进路径。对做 RAG 或多工具链路的读者，这个框架也能帮助区分：是检索证据没进来（Update 失败），还是进来了但被无关上下文污染（Isolation 失败）。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/zjunlp/CBM, https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://github.com/zjunlp/CBM, https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.30219v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.30208v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.30208v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.30208v1" target="_blank" rel="noopener">Automating Low-Risk Code Review at Meta: RADAR, Risk Calibration, and Review Efficiency</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">Meta 把“低风险代码评审”做成可规模化的自动化流水线 RADAR：用风险分层+LLM 评审+确定性校验，在 AI 生成代码暴增时缓解评审拥堵，同时用数据证明安全性没被牺牲。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>RADAR（Risk Aware Diff Auto Review）是多阶段漏斗：先按 diff 的作者身份与来源类型做分类，再通过一系列资格门槛与静态启发式规则筛选。核心是一个机器学习的 Diff Risk Score（变更风险分）来决定哪些改动可进入自动化通道，并可通过调阈值在“覆盖率/产出”和“安全”之间做校准。进入通道后用 LLM（大模型）做自动代码评审，再用确定性验证（可重复的规则/检查）把关，满足条件才自动落地。评估上用 53.5 万+ diff 的线上遥测，并用前后对比与双重差分（difference-in-differences）来估计对效率指标的因果影响，区别于只做离线评测的做法。</dd>
+        <dt>关键数据</dt><dd>背景：每个“人工落地 diff”的代码行数同比 +105.9%，每位开发者 diff 量 +51%，其中 80%+ 增长来自 agentic AI（会自主调用工具/产出改动的 AI）。规模：RADAR 评审 535K+ diffs，落地 331K+。风险阈值校准：将 Diff Risk Score 阈值从第 25 百分位放宽到第 50 百分位，approve rate 提升到 60.31%（更高自动通过覆盖）。安全性：RADAR diff 的 revert（回滚）率是非 RADAR 的 1/3；Production Incident（线上事故）率是非 RADAR 的 1/50。效率：median time to close（从提交到关闭的中位时长）“减少超过 330%”（原文表述如此，等价于缩短到原来的约 1/4 或更少）；median diff review wall time（评审等待/耗时）降低 35%。</dd>
+        <dt>为什么值得关注</dt><dd>这是一套“LLM agent + tool use”在真实工程流程里的落地范式：把大模型评审嵌进多门槛、可校准的风险控制链路，适合关注 agent 工作流、自动化工具调用与“安全可控”的生产级部署的人参考。对做多 agent/自动化软件工程的人也有启发：如何用风险分层把自动化覆盖率与事故率量化权衡。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.30208v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2605.30202v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2605.30202v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2605.30202v1" target="_blank" rel="noopener">A Dual-Path Architecture for Scaling Compute and Capacity in LLMs</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“循环计算省参数”和“单步大容量”放进同一层：一条路加深度（共享块重复 K 次），一条路加宽度（更大的前馈网络一次），并用按 token 的门控可解释地分配算力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>背景是 looped transformer（循环 Transformer）用同一模块重复多次来“堆计算量”，但在同等 FLOPs（计算量）下单步可用参数更少、容量更低。作者提出 dual-path block：在一个 layer 里并行两条子路径。Deep 子层：共享参数的子层对同一隐藏状态顺序重复 K 次，提升“顺序操作次数”（更像多步推理）。Wide 子层：把 FFN（前馈网络）做大但只执行一次，提升“单步容量”。最后用每个 token 独立的 gate（门控）把两路输出加权融合，从而既能按预算调 K（算力）也能调 FFN 宽度（容量），并能做逐 token 的路由分析；这比只做循环或只做加宽更灵活。</dd>
+        <dt>关键数据</dt><dd>在两个 FLOP 预算下，dual-path 在语言建模与下游评测上都超过了“同 FLOPs 对齐”的对照模型；同时在相同 FLOPs 下，参数量比标准 Transformer baseline 更少。具体提升幅度（如困惑度/准确率提升多少、参数减少多少、K 取值范围、两档 FLOPs 具体数值）未披露。门控的定性结果：功能词与实词更偏向 wide 路径；标点/符号/算术相关 token 更偏向 deep 路径，说明模型会按 token 类型分配计算深度。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / reasoning models 读者，这种“按 token 动态分配深度 vs 容量”的结构，可能更适合把算力集中到需要多步处理的符号与算术 token。对 multi-agent 与 MCP 生态，逐 token 可解释门控也有助于诊断模型在调用工具、生成结构化指令时把计算花在了哪里。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2605.30202v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-05-29" open>
+            <summary>2026-05-29 <span class="n">1 条</span></summary>
+            <div class="cards">
+              
     <article class="card" data-url="https://github.com/assafelovic/gpt-researcher">
       <button class="star" aria-label="收藏" data-url="https://github.com/assafelovic/gpt-researcher" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -278,15 +576,10 @@
         <a class="cta" href="https://github.com/assafelovic/gpt-researcher" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-        </div>
-      
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
-      
+            </div>
+          </details>
         
-          <details class="date-group" id="archive-2026-05-28" open>
+          <details class="date-group" id="archive-2026-05-28">
             <summary>2026-05-28 <span class="n">10 条</span></summary>
             <div class="cards">
               
