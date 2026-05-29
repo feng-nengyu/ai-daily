@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>1</strong> 条 ·
       归档 <strong>86</strong> 条（9 天）·
-      生成于 2026-05-28 06:07 UTC
+      生成于 2026-05-29 00:00 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
           <a href="#archive-2026-05-28" onclick="openArchive('2026-05-28')">2026-05-28 <span class="n">10</span></a>
         
@@ -247,9 +247,38 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://github.com/assafelovic/gpt-researcher">
+      <button class="star" aria-label="收藏" data-url="https://github.com/assafelovic/gpt-researcher" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://github.com/assafelovic/gpt-researcher" target="_blank" rel="noopener">assafelovic/gpt-researcher</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-github" title="github:github-trending-agent">GitHub · agent</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">LLM</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“深度调研”做成可自动跑的 LLM Agent：给一个问题就能自己搜集资料、整理引用并输出研究报告，且不绑定单一模型供应商。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它将研究流程拆成可执行的步骤：提出研究计划→检索与抓取信息→阅读与摘要→交叉验证→生成带引用的报告。核心是“工具使用（tool use）+ 多轮推理”：模型在每一步调用搜索/网页抓取等工具，并把中间结论写入可追溯的上下文。与传统 RAG（检索增强生成）只做“检索几段文本再回答”不同，它更像一个会反复迭代的研究员：会扩展查询、对比多来源、补齐缺口。项目强调“任意 LLM 提供商”可接入，意味着你可以按成本/效果替换底层模型而不改研究流程。</dd>
+        <dt>关键数据</dt><dd>未披露：没有给出标准评测分数、成功率、成本或速度数据。定性意义在于把“研究型工作流”产品化为可复用的 Agent 管线，效果更依赖所接入的模型能力、检索质量与站点可访问性。</dd>
+        <dt>为什么值得关注</dt><dd>对关注 LLM agent、tool use、RAG 的读者，这个项目提供了一个“从问答到研究工作流”的落地范式：如何把检索、阅读、验证、写作串成可自动执行的链路。也适合作为多模型/多工具编排的参考实现，便于迁移到 MCP 或更复杂的多 Agent 系统中。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-28</span>
+        
+        
+        <a class="cta" href="https://github.com/assafelovic/gpt-researcher" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
