@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>1</strong> 条 ·
-      归档 <strong>98</strong> 条（10 天）·
-      生成于 2026-05-30 04:32 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>99</strong> 条（11 天）·
+      生成于 2026-05-30 05:43 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        
+          <a href="#archive-2026-05-30" onclick="openArchive('2026-05-30')">2026-05-30 <span class="n">1</span></a>
         
           <a href="#archive-2026-05-29" onclick="openArchive('2026-05-29')">2026-05-29 <span class="n">12</span></a>
         
@@ -249,10 +251,20 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-05-30" open>
+            <summary>2026-05-30 <span class="n">1 条</span></summary>
+            <div class="cards">
+              
     <article class="card" data-url="https://www.qbitai.com/2026/05/426643.html">
       <button class="star" aria-label="收藏" data-url="https://www.qbitai.com/2026/05/426643.html" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -280,15 +292,10 @@
         <a class="cta" href="https://www.qbitai.com/2026/05/426643.html" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-        </div>
-      
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
-      
+            </div>
+          </details>
         
-          <details class="date-group" id="archive-2026-05-29" open>
+          <details class="date-group" id="archive-2026-05-29">
             <summary>2026-05-29 <span class="n">12 条</span></summary>
             <div class="cards">
               
