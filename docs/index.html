@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>2</strong> 条 ·
       归档 <strong>99</strong> 条（11 天）·
-      生成于 2026-05-30 05:43 UTC
+      生成于 2026-05-30 23:48 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">2</span></a>
         
           <a href="#archive-2026-05-30" onclick="openArchive('2026-05-30')">2026-05-30 <span class="n">1</span></a>
         
@@ -251,9 +251,67 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(2)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://www.qbitai.com/2026/05/426662.html">
+      <button class="star" aria-label="收藏" data-url="https://www.qbitai.com/2026/05/426662.html" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.qbitai.com/2026/05/426662.html" target="_blank" rel="noopener">英伟达清华团队提出Gamma-World：世界模型从「一个人玩」到「多人共处」</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-media" title="rss:qbitai">量子位</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">world model</span><span class="tag">simulation</span>
+      </div>
+      
+      <p class="innovation">Gamma-World把“世界模型”从单个智能体的环境预测，扩展到可模拟多人同时行动与相互影响的交互世界，用于多智能体协作/对抗的仿真与训练。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是把环境演化建模为“多主体条件生成”：下一步世界状态不仅依赖历史，还显式依赖多个智能体的动作与身份。为避免多人动作互相打架，设计了能处理并发决策的交互建模机制，让不同主体的行为在同一时间轴上被一致地融合到世界更新中。训练上强调从多主体轨迹中学习“谁做了什么→世界如何变”，而不是只学单人控制下的状态转移。与以往单智能体世界模型相比，它更关注主体间因果影响（例如碰撞、抢占资源、协作分工）在预测中的可组合性与可扩展性。</dd>
+        <dt>关键数据</dt><dd>未披露。当前信息只说明目标与方向：把世界模型用于多智能体交互仿真；没有给出具体benchmark分数、预测误差、可支持主体数量上限、训练/推理成本等量化对照，因此更适合作为“方法框架/系统能力”类进展来理解。</dd>
+        <dt>为什么值得关注</dt><dd>对LLM agent、multi-agent和tool use/RAG读者，这类“多人世界模型”可作为更真实的仿真沙盒：用来训练/评测多智能体协作与博弈策略，并为推理模型提供可反复试错的环境反馈。若后续开放接口，也可能成为类似MCP那样的“可调用仿真工具”，让Agent在行动前先在世界模型里演练。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-30</span>
+        
+        
+        <a class="cta" href="https://www.qbitai.com/2026/05/426662.html" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything">
+      <button class="star" aria-label="收藏" data-url="https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything" target="_blank" rel="noopener">How we contain Claude across products</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-expert" title="rss:simon-willison">Simon Willison</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">Anthropic 罕见地把 Claude 在不同产品里的“隔离/沙箱”方案讲清楚：从进程沙箱到整机虚拟机，并解释如何用网络出口控制把 Agent 的可达范围硬切断。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是“先设硬边界再谈能力”：用进程级沙箱、虚拟机（VM，隔离运行环境）、文件系统边界和网络出口（egress，外连）控制，限制 Agent 能访问的资源与目的地。关键设计是把敏感凭证等数据尽量不放进沙箱：只要凭证从未进入，理论上就无法被模型或攻击者“带出去”。不同产品按风险与部署形态选不同隔离强度：Claude.ai 用 gVisor（容器/系统调用隔离）；本地运行的 Claude Code 在 macOS 用 Seatbelt、Linux 用 Bubblewrap（进程权限与文件系统隔离）；Claude Cowork 直接跑完整 VM（macOS 用 Apple Virtualization，Windows 用 HCS）。文中也复盘了曾漏掉的风险路径，例如通过 api.anthropic.com/v1/files 形成的文件外泄向量，强调“边界设计+持续审计”而非一次性封装。</dd>
+        <dt>关键数据</dt><dd>未披露量化指标（如拦截率、性能开销、攻击面缩减比例等）。但给出了可对照的“隔离层级”落地清单（进程沙箱 vs 全 VM）与真实外泄案例复盘，便于工程团队评估各层方案的安全-成本权衡。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 来说，最大风险往往来自“工具能做什么、能连到哪里”。这篇把权限边界、文件与网络出口控制讲到可复用的工程细节，适合做 MCP/多工具 Agent、RAG 访问内网数据时参考其隔离与防外泄设计。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-30</span>
+        
+        
+        <span class="links">补充：<a href="https://www.anthropic.com/engineering/how-we-contain-claude, https://claude.ai/, https://github.com/anthropic-experimental/sandbox-runtime, https://simonwillison.net/2026/Jan/14/claude-cowork-exfiltrates-files/" target="_blank" rel="noopener">https://www.anthropic.com/engineering/how-we-contain-claude, https://claude.ai/, https://github.com/anthropic-experimental/sandbox-runtime, https://simonwillison.net/2026/Jan/14/claude-cowork-exfiltrates-files/</a></span>
+        
+        <a class="cta" href="https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
