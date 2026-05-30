@@ -203,8 +203,8 @@
     <h1>AI 日报归档</h1>
     <p class="meta">
       今日新增 <strong>1</strong> 条 ·
-      归档 <strong>97</strong> 条（10 天）·
-      生成于 2026-05-29 23:59 UTC
+      归档 <strong>98</strong> 条（10 天）·
+      生成于 2026-05-30 04:32 UTC
     </p>
   </header>
   <main>
@@ -216,7 +216,7 @@
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
         <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
-          <a href="#archive-2026-05-29" onclick="openArchive('2026-05-29')">2026-05-29 <span class="n">11</span></a>
+          <a href="#archive-2026-05-29" onclick="openArchive('2026-05-29')">2026-05-29 <span class="n">12</span></a>
         
           <a href="#archive-2026-05-28" onclick="openArchive('2026-05-28')">2026-05-28 <span class="n">10</span></a>
         
@@ -253,31 +253,31 @@
       
         <div class="cards">
           
-    <article class="card" data-url="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/">
-      <button class="star" aria-label="收藏" data-url="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://www.qbitai.com/2026/05/426643.html">
+      <button class="star" aria-label="收藏" data-url="https://www.qbitai.com/2026/05/426643.html" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/" target="_blank" rel="noopener">Real-time LLM Inference on Standard GPUs: 3k tokens/s per request</a></h2>
+        <h2><a href="https://www.qbitai.com/2026/05/426643.html" target="_blank" rel="noopener">英伟达清华团队提出Gamma-World：世界模型从「一个人玩」到「多人共处」</a></h2>
         <div class="badges">
           <span class="score high">8</span>
-          <span class="source cat-community" title="hackernews:hackernews-ai">Hacker News</span>
+          <span class="source cat-media" title="rss:qbitai">量子位</span>
         </div>
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">inference</span>
+        <span class="tag">multi-agent</span><span class="tag">world model</span><span class="tag">simulation</span>
       </div>
       
-      <p class="innovation">在“普通 GPU”上把单请求推理做到约 3000 tokens/s，主打实时交互级速度；如果属实，会直接改变 Agent 工具调用的延迟上限。</p>
+      <p class="innovation">Gamma-World把“世界模型”从单智能体的自娱自乐，扩展到可模拟多人同时行动、相互影响的环境，为多智能体协作/对抗训练提供更接近真实的交互底座。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>原文未给出技术细节，但标题指向“标准 GPU 上的实时推理”优化路线：通常会从推理引擎层做算子融合、KV cache（注意力缓存）管理、批处理/流水线调度等。与过去依赖大批量吞吐（batch 越大越快）不同，这类工作更强调单请求低延迟与稳定高 token 生成速率。也可能结合低精度计算（如 FP8/INT8）与更激进的内存布局，减少显存带宽瓶颈。由于缺少正文，具体采用哪几种手段、适配哪些模型与 GPU 型号无法确认。</dd>
-        <dt>关键数据</dt><dd>披露：约 3k tokens/s per request（单请求）。未披露：使用的 GPU 型号/数量、模型规模（参数量）、上下文长度、首 token 延迟（TTFT）、是否牺牲输出质量或使用量化、与 vLLM/TensorRT-LLM 等基线对比。定性意义：若在常见单卡上可复现，这一速度足以把多数对话/Agent 步骤的“生成时间”压到毫秒级到亚秒级区间。</dd>
-        <dt>为什么值得关注</dt><dd>LLM agent / tool use 往往是“多步推理+多次调用”，单请求 tokens/s 和首 token 延迟直接决定一次任务的端到端耗时。若能在标准 GPU 上稳定实现该速度，RAG 检索后生成、MCP 工具编排、多 Agent 协作的交互体验都会更接近实时。</dd>
+        <dt>技术方案</dt><dd>核心思路是把世界模型的生成与预测对象从“一个体的状态-动作-下一状态”扩展为“多体联合状态-联合动作-联合演化”，让模型显式处理个体间的耦合影响（例如碰撞、资源竞争、协作分工）。为避免多人行为导致的组合爆炸，通常会引入结构化表示（把每个体当作“对象/实体”建模）与分解式预测（先预测各自意图/动作，再预测共享环境变化）。同时需要在训练数据与任务设计上覆盖多种交互模式（合作、对抗、混合），否则模型容易只学到“各玩各的”的弱交互。相较以往偏单人或把多人当噪声的世界模型，Gamma-World强调“可控的多智能体交互仿真”，更适合用作Agent训练场与评测平台。</dd>
+        <dt>关键数据</dt><dd>未披露具体数字（如基准分数、样本效率、推理速度、参数规模、训练成本）。定性意义在于：若多智能体交互预测更稳定，可直接降低多智能体RL（强化学习）或LLM agent在仿真中“学不到协作/对抗策略”的风险，并提升用世界模型做规划（planning）时的可用性。</dd>
+        <dt>为什么值得关注</dt><dd>对LLM agent / multi-agent读者，这类“多人世界模型”可作为更真实的训练与评测环境，支持工具使用（tool use）与规划时考虑他人策略。也与推理模型（reasoning models）在多方博弈、协作任务中的“反事实预测/他人建模”需求直接相关。</dd>
       </dl>
       <footer class="card-foot">
-        <span class="date">2026-05-29</span>
+        <span class="date">2026-05-30</span>
         
         
-        <a class="cta" href="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://www.qbitai.com/2026/05/426643.html" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
         </div>
@@ -289,7 +289,7 @@
       
         
           <details class="date-group" id="archive-2026-05-29" open>
-            <summary>2026-05-29 <span class="n">11 条</span></summary>
+            <summary>2026-05-29 <span class="n">12 条</span></summary>
             <div class="cards">
               
     <article class="card" data-url="https://arxiv.org/abs/2605.30202v1">
@@ -574,6 +574,33 @@
         <span class="links">补充：<a href="https://github.com/zjunlp/ParametricMemoryLaw" target="_blank" rel="noopener">https://github.com/zjunlp/ParametricMemoryLaw</a></span>
         
         <a class="cta" href="https://arxiv.org/abs/2605.30260v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/">
+      <button class="star" aria-label="收藏" data-url="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/" target="_blank" rel="noopener">Real-time LLM Inference on Standard GPUs: 3k tokens/s per request</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-community" title="hackernews:hackernews-ai">Hacker News</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">inference</span>
+      </div>
+      
+      <p class="innovation">在“普通 GPU”上把单请求推理做到约 3000 tokens/s，主打实时交互级速度；如果属实，会直接改变 Agent 工具调用的延迟上限。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>原文未给出技术细节，但标题指向“标准 GPU 上的实时推理”优化路线：通常会从推理引擎层做算子融合、KV cache（注意力缓存）管理、批处理/流水线调度等。与过去依赖大批量吞吐（batch 越大越快）不同，这类工作更强调单请求低延迟与稳定高 token 生成速率。也可能结合低精度计算（如 FP8/INT8）与更激进的内存布局，减少显存带宽瓶颈。由于缺少正文，具体采用哪几种手段、适配哪些模型与 GPU 型号无法确认。</dd>
+        <dt>关键数据</dt><dd>披露：约 3k tokens/s per request（单请求）。未披露：使用的 GPU 型号/数量、模型规模（参数量）、上下文长度、首 token 延迟（TTFT）、是否牺牲输出质量或使用量化、与 vLLM/TensorRT-LLM 等基线对比。定性意义：若在常见单卡上可复现，这一速度足以把多数对话/Agent 步骤的“生成时间”压到毫秒级到亚秒级区间。</dd>
+        <dt>为什么值得关注</dt><dd>LLM agent / tool use 往往是“多步推理+多次调用”，单请求 tokens/s 和首 token 延迟直接决定一次任务的端到端耗时。若能在标准 GPU 上稳定实现该速度，RAG 检索后生成、MCP 工具编排、多 Agent 协作的交互体验都会更接近实时。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-29</span>
+        
+        
+        <a class="cta" href="https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://github.com/assafelovic/gpt-researcher">
