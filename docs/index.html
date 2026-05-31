@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>2</strong> 条 ·
-      归档 <strong>99</strong> 条（11 天）·
-      生成于 2026-05-30 23:48 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>101</strong> 条（11 天）·
+      生成于 2026-05-31 04:58 UTC
     </p>
   </header>
   <main>
@@ -214,9 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">2</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
         
-          <a href="#archive-2026-05-30" onclick="openArchive('2026-05-30')">2026-05-30 <span class="n">1</span></a>
+          <a href="#archive-2026-05-30" onclick="openArchive('2026-05-30')">2026-05-30 <span class="n">3</span></a>
         
           <a href="#archive-2026-05-29" onclick="openArchive('2026-05-29')">2026-05-29 <span class="n">12</span></a>
         
@@ -251,10 +251,47 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(2)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-05-30" open>
+            <summary>2026-05-30 <span class="n">3 条</span></summary>
+            <div class="cards">
+              
+    <article class="card" data-url="https://www.qbitai.com/2026/05/426643.html">
+      <button class="star" aria-label="收藏" data-url="https://www.qbitai.com/2026/05/426643.html" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.qbitai.com/2026/05/426643.html" target="_blank" rel="noopener">英伟达清华团队提出Gamma-World：世界模型从「一个人玩」到「多人共处」</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-media" title="rss:qbitai">量子位</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">world model</span><span class="tag">simulation</span>
+      </div>
+      
+      <p class="innovation">Gamma-World把“世界模型”从单智能体的自娱自乐，扩展到可模拟多人同时行动、相互影响的环境，为多智能体协作/对抗训练提供更接近真实的交互底座。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是把世界模型的生成与预测对象从“一个体的状态-动作-下一状态”扩展为“多体联合状态-联合动作-联合演化”，让模型显式处理个体间的耦合影响（例如碰撞、资源竞争、协作分工）。为避免多人行为导致的组合爆炸，通常会引入结构化表示（把每个体当作“对象/实体”建模）与分解式预测（先预测各自意图/动作，再预测共享环境变化）。同时需要在训练数据与任务设计上覆盖多种交互模式（合作、对抗、混合），否则模型容易只学到“各玩各的”的弱交互。相较以往偏单人或把多人当噪声的世界模型，Gamma-World强调“可控的多智能体交互仿真”，更适合用作Agent训练场与评测平台。</dd>
+        <dt>关键数据</dt><dd>未披露具体数字（如基准分数、样本效率、推理速度、参数规模、训练成本）。定性意义在于：若多智能体交互预测更稳定，可直接降低多智能体RL（强化学习）或LLM agent在仿真中“学不到协作/对抗策略”的风险，并提升用世界模型做规划（planning）时的可用性。</dd>
+        <dt>为什么值得关注</dt><dd>对LLM agent / multi-agent读者，这类“多人世界模型”可作为更真实的训练与评测环境，支持工具使用（tool use）与规划时考虑他人策略。也与推理模型（reasoning models）在多方博弈、协作任务中的“反事实预测/他人建模”需求直接相关。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-30</span>
+        
+        
+        <a class="cta" href="https://www.qbitai.com/2026/05/426643.html" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
     <article class="card" data-url="https://www.qbitai.com/2026/05/426662.html">
       <button class="star" aria-label="收藏" data-url="https://www.qbitai.com/2026/05/426662.html" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -309,45 +346,6 @@
         <span class="links">补充：<a href="https://www.anthropic.com/engineering/how-we-contain-claude, https://claude.ai/, https://github.com/anthropic-experimental/sandbox-runtime, https://simonwillison.net/2026/Jan/14/claude-cowork-exfiltrates-files/" target="_blank" rel="noopener">https://www.anthropic.com/engineering/how-we-contain-claude, https://claude.ai/, https://github.com/anthropic-experimental/sandbox-runtime, https://simonwillison.net/2026/Jan/14/claude-cowork-exfiltrates-files/</a></span>
         
         <a class="cta" href="https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-        </div>
-      
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
-      
-        
-          <details class="date-group" id="archive-2026-05-30" open>
-            <summary>2026-05-30 <span class="n">1 条</span></summary>
-            <div class="cards">
-              
-    <article class="card" data-url="https://www.qbitai.com/2026/05/426643.html">
-      <button class="star" aria-label="收藏" data-url="https://www.qbitai.com/2026/05/426643.html" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://www.qbitai.com/2026/05/426643.html" target="_blank" rel="noopener">英伟达清华团队提出Gamma-World：世界模型从「一个人玩」到「多人共处」</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-media" title="rss:qbitai">量子位</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">world model</span><span class="tag">simulation</span>
-      </div>
-      
-      <p class="innovation">Gamma-World把“世界模型”从单智能体的自娱自乐，扩展到可模拟多人同时行动、相互影响的环境，为多智能体协作/对抗训练提供更接近真实的交互底座。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>核心思路是把世界模型的生成与预测对象从“一个体的状态-动作-下一状态”扩展为“多体联合状态-联合动作-联合演化”，让模型显式处理个体间的耦合影响（例如碰撞、资源竞争、协作分工）。为避免多人行为导致的组合爆炸，通常会引入结构化表示（把每个体当作“对象/实体”建模）与分解式预测（先预测各自意图/动作，再预测共享环境变化）。同时需要在训练数据与任务设计上覆盖多种交互模式（合作、对抗、混合），否则模型容易只学到“各玩各的”的弱交互。相较以往偏单人或把多人当噪声的世界模型，Gamma-World强调“可控的多智能体交互仿真”，更适合用作Agent训练场与评测平台。</dd>
-        <dt>关键数据</dt><dd>未披露具体数字（如基准分数、样本效率、推理速度、参数规模、训练成本）。定性意义在于：若多智能体交互预测更稳定，可直接降低多智能体RL（强化学习）或LLM agent在仿真中“学不到协作/对抗策略”的风险，并提升用世界模型做规划（planning）时的可用性。</dd>
-        <dt>为什么值得关注</dt><dd>对LLM agent / multi-agent读者，这类“多人世界模型”可作为更真实的训练与评测环境，支持工具使用（tool use）与规划时考虑他人策略。也与推理模型（reasoning models）在多方博弈、协作任务中的“反事实预测/他人建模”需求直接相关。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-05-30</span>
-        
-        
-        <a class="cta" href="https://www.qbitai.com/2026/05/426643.html" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
             </div>
