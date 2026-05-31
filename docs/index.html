@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>1</strong> 条 ·
       归档 <strong>101</strong> 条（11 天）·
-      生成于 2026-05-31 06:14 UTC
+      生成于 2026-05-31 23:53 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
           <a href="#archive-2026-05-30" onclick="openArchive('2026-05-30')">2026-05-30 <span class="n">3</span></a>
         
@@ -251,9 +251,38 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://www.qbitai.com/2026/05/427005.html">
+      <button class="star" aria-label="收藏" data-url="https://www.qbitai.com/2026/05/427005.html" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.qbitai.com/2026/05/427005.html" target="_blank" rel="noopener">别光给Agent加Tool了，它根本选不明白！复旦×通义提出全新CUA训练范式</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-media" title="rss:qbitai">量子位</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">training</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">复旦×通义把问题指向“Agent不会选工具”本身，提出新的 CUA（Computer-Using Agent，电脑操作型智能体）训练范式，重点训练“何时用哪个工具/动作”的决策能力，而不是继续堆更多 Tool。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是把 CUA 的关键瓶颈从“能不能调用工具”转为“能不能做对工具选择与动作规划”。训练范式强调在多工具、多步骤任务中，让模型学习：先判断任务意图→再选工具→再生成可执行操作序列（如点击、输入、切换窗口等）。与以往常见做法（给 Agent 接一堆工具、靠提示词或少量示例让它自己摸索）不同，它把“选择”作为可训练目标，系统性地用数据/反馈去约束错误选择。整体更像是在为 tool use 加一层“决策训练”，而不是只优化单次调用的格式或接口对齐。</dd>
+        <dt>关键数据</dt><dd>未披露具体 benchmark 分数、成功率提升幅度、训练数据规模与成本。定性意义：如果训练目标真的覆盖“工具选择错误”这一高频失败模式，理论上会比单纯增加工具数量/提示词工程更能提升多步骤任务的稳定性与可控性。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use、multi-agent 读者来说，“选不明白工具”是落地最常见的失败点之一；这条提供了一个把工具选择当作训练对象的思路，可能直接影响后续 MCP 工具生态下的调用策略与评测方式。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-05-31</span>
+        
+        
+        <a class="cta" href="https://www.qbitai.com/2026/05/427005.html" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
