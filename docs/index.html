@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>115</strong> 条（14 天）·
-      生成于 2026-06-02 05:07 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>125</strong> 条（14 天）·
+      生成于 2026-06-02 06:38 UTC
     </p>
   </header>
   <main>
@@ -214,9 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
         
-          <a href="#archive-2026-06-02" onclick="openArchive('2026-06-02')">2026-06-02 <span class="n">3</span></a>
+          <a href="#archive-2026-06-02" onclick="openArchive('2026-06-02')">2026-06-02 <span class="n">13</span></a>
         
           <a href="#archive-2026-06-01" onclick="openArchive('2026-06-01')">2026-06-01 <span class="n">10</span></a>
         
@@ -257,14 +257,24 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
-    <article class="card" data-url="https://arxiv.org/abs/2606.02465v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02465v1" onclick="toggleStar(this)">☆</button>
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-06-02" open>
+            <summary>2026-06-02 <span class="n">13 条</span></summary>
+            <div class="cards">
+              
+    <article class="card" data-url="https://arxiv.org/abs/2606.02386v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02386v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.02465v1" target="_blank" rel="noopener">Learning When to Translate for Multilingual Reasoning</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.02386v1" target="_blank" rel="noopener">AgentPLM: Agentic Protein Language Models with Reasoning-Augmented Decoding for Protein Sequence Design</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -272,70 +282,14 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">MCP</span>
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span><span class="tag">MCP</span>
       </div>
       
-      <p class="innovation">让推理模型学会“该不该先翻译再推理”：只在原语言理解不稳时调用英文翻译，减少无谓翻译同时补齐低资源语言推理短板。</p>
+      <p class="innovation">把“蛋白质语言模型”从一次性生成器变成会调用外部工具自检的 Agent：边生成边用结构/能量/对接工具反馈纠错，提升设计命中率。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>提出 Luar（语言理解边界感知的强化学习）框架，把“是否调用翻译器”当成一个可学习的决策。模型每次在两条路径中选：直接用原始非英文问题推理，或先翻成英文再推理。训练目标不是让它总翻译，而是只在“翻译后预期明显更好”时才翻译，相当于学一个理解可靠性门控（gate）。对比以往做法（全量翻译或固定策略），Luar 用强化学习把翻译调用变成按样例自适应的 tool use（工具调用）。</dd>
-        <dt>关键数据</dt><dd>论文称在多语言推理基准上优于标准 GRPO（强化学习训练基线）及其他训练式方法，且在低资源语言上增益更大；但未披露具体提升幅度、各基准分数、翻译调用率/节省比例、额外推理时延与训练成本等关键数字。定性结论是：能避免“本来就能直接答”的不必要翻译，并把学到的翻译调用策略泛化到未见过的低资源语言。</dd>
-        <dt>为什么值得关注</dt><dd>这是一种典型的 Agent/tool use 思路：把“翻译器”当工具，并学习何时调用，直接对应多语言 RAG/多工具链路里的路由与门控问题。对关心 reasoning models 的读者，它提供了一个用强化学习来缩小多语言推理差距、同时控制成本（少翻译）的训练范式。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-01</span>
-        
-        
-        <span class="links">补充：<a href="https://github.com/deokhk/LUAR" target="_blank" rel="noopener">https://github.com/deokhk/LUAR</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.02465v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.02463v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02463v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.02463v1" target="_blank" rel="noopener">MASER: Modality-Adaptive Specialist Routing for Embodied 3D Spatial Intelligence</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把“选哪种输入模态更合适”做成可学习的路由：同一套 VLM 骨干配 5 个模态适配器，推理时按问题语义自动挑一个，避免单模态微调的盲区。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>MASER 先在共享的视觉-语言模型（VLM）骨干上训练 5 个“模态适配器”（小模块，分别偏向语言/RGB/点云/深度/位姿等输入）。推理时不再固定用某一模态，而是先用冻结的句子编码器（sentence transformer，把问题变成向量）表示问题语义。再用一个小型多层感知机（MLP，小神经网络）根据问题向量预测“该用哪个适配器”。路由器的监督信号来自“oracle 标签”：对每个问题，标注哪一个适配器在该题上答得最准，用它来训练路由策略。与常见做法（只微调单一模态的 VLM）相比，它把“问题语义→模态选择”显式建模，并且每题只调用一次适配器，避免多模态全跑的开销。</dd>
-        <dt>关键数据</dt><dd>基准：Open3D-VQA。结论：不存在通吃模态——点云在 51.5% 的问题上是最优模态（oracle 统计）。路由效果：MASER 的路由与 oracle 选择一致率 51.3%，高于随机森林（Random Forest）消融 43.5%，提升 7.8 个百分点。推理开销：每个问题只进行单次适配器调用（不做多路并行）。端到端 VQA 准确率、参数量、训练成本：未披露（但给出了“路由是否选对模态”的可量化对照）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 的读者，这相当于“按问题语义路由到最合适的工具/专家”的范式，只不过工具从 API 变成了不同模态的专家适配器。对 multi-agent / routing / reasoning 关注者，它提供了一个轻量可监督的路由训练方式（oracle 标签→小 MLP），且强调单次调用的成本约束。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-01</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.02463v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.02458v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02458v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.02458v1" target="_blank" rel="noopener">Beyond One-shot: AI Agents for Learning in Field Experiments</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">RAG</span>
-      </div>
-      
-      <p class="innovation">把“做完一次 A/B 就结束”变成“AI 从上一轮实验数据里学规律、自动生成下一轮干预”的闭环，并在真实医疗场景用 69.8% CTR 验证有效。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>研究做了两阶段真实世界现场实验：第一阶段由行为专家+对话式 AI 共创 13 条处方提醒文案，并收集大规模点击数据。第二阶段引入“工具增强的 Agent（会用分析工具的智能体）”，让 AI 自动从第一阶段数据中抽取可复用原则，再生成 17 条新文案进入下一轮实验。系统用 DIKW（数据-信息-知识-智慧）分层推理的多个 agent 来组织从统计结果到设计原则的推导，并提供可追溯的证据链（每条结论对应哪些数据支持）。对比点在于：不是让大模型凭通用常识/行为理论拍脑袋写文案，而是让它基于本领域实验数据做“数据驱动的干预设计”。</dd>
-        <dt>关键数据</dt><dd>场景：医疗处方消息；总样本 693,139 次患者就诊。阶段 1（人类+聊天机器人）：13 个变体，444,691 次就诊。阶段 2（工具增强 Agentic AI）：17 个变体，248,448 次就诊。效果：最佳 AI 生成文案 CTR=69.8%，比基线高 6.5 个百分点。额外发现：不喂实验数据的前沿大模型无法预测哪些干预会成功（未给出具体准确率/相关系数），说明收益主要来自领域实验数据而非“通用推理能力”。</dd>
-        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use：用分析工具和结构化推理把历史实验数据“变成可执行的设计规则”，再自动产出下一轮干预，接近“实验数据版 RAG”。对关心 multi-agent、MCP/工具调用、以及让 agent 在真实业务里持续学习的人，这篇提供了可量化的现场实验范式与边界结论（通用大模型不带数据不行）。</dd>
+        <dt>技术方案</dt><dd>提出 AgentPLM，在预训练蛋白质语言模型上加两层“代理化”能力。其一是 RAD（推理增强解码）：自回归逐步生成序列时，按需调用 ESMFold（结构预测）、FoldX（能量/稳定性评估）、AutoDock Vina（分子对接）等“生物物理 oracle（外部打分器）”，再根据反馈继续生成而不是一口气写完。其二是 CAPO（对比式代理策略优化）：把 DPO（直接偏好优化）扩展到“整段轨迹”训练，让模型学会在什么时候工具反馈有信息量、该如何利用，而不只是模仿高分序列。评测覆盖从头酶设计、抗体优化、热稳定性、蛋白-蛋白界面设计到零样本适应度预测，并用统一的 oracle API 和受控的序列同一性划分来避免数据泄漏式的高分。</dd>
+        <dt>关键数据</dt><dd>论文宣称在多项基准上达到 SOTA（具体任务分数多数未在摘要披露）。给出的定量点：抗体任务中 top-10% 命中率相比最强“被动式”基线有提升，但摘要未给出提升幅度百分比/绝对值。定性证据：无需显式回溯（backtracking）也能观察到在线纠错行为，说明工具反馈确实被用于中途修正而非事后筛选。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent/tool use 思路在科学设计（蛋白序列）上的落地：把“生成”改成“生成+调用工具+根据反馈继续”。CAPO 属于偏好优化/策略学习的变体，和多步推理、轨迹级训练、外部 oracle（类似 RAG 的外部信息源）如何真正被模型利用高度相关。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-01</span>
@@ -343,13 +297,13 @@
         
         <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
         
-        <a class="cta" href="https://arxiv.org/abs/2606.02458v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.02386v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.02449v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02449v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.02388v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02388v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.02449v1" target="_blank" rel="noopener">HLL: Can Agents Cross Humanity's Last Line of Verification?</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.02388v1" target="_blank" rel="noopener">Policy and World Modeling Co-Training for Language Agents</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -357,28 +311,26 @@
       </div>
       
       <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">benchmark</span>
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span>
       </div>
       
-      <p class="innovation">提出 HLL 基准，用“交互式 CAPTCHA”检验多模态 Agent 是否真能在受保护流程里替代人类，并把“答案对不对”升级为“操作过程是否可信”。</p>
+      <p class="innovation">把「世界模型（预测环境下一步）」监督直接塞进同一次 RL（强化学习）训练里，用现成 on-policy 轨迹当数据，不加模拟器、不加额外推理开销。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者把 CAPTCHA 视为“人类验证边界”，搭建闭环 GUI 环境，让 Agent 像人一样在网页界面中定位元素、点击/拖拽/输入完成验证，而不是只做图像识别。HLL 覆盖多种 CAPTCHA 交互类型，并加入受控的“现实压力”：网页杂乱、任务更难的变体、以及要求提交可核验的动作轨迹（trace，操作记录）来证明解题过程。评测 8 个前沿多模态 Agent，比较它们在不同验证类型、不同界面复杂度、以及是否需要轨迹一致性约束下的表现。与以往偏“静态识别/单步回答”的评测不同，HLL 强调 grounded（落地到界面状态）交互、状态跟踪与过程一致性。</dd>
-        <dt>关键数据</dt><dd>评测对象数量：8 个多模态 Agent。具体通过率/成功率等数值：未披露；但结论给出清晰相对趋势——不同 CAPTCHA 类型间表现差异很大；加入真实界面干扰后性能下降；当需要“正确答案+有效动作轨迹”双重满足时进一步下降。作者归因的主要薄弱点包括：定位（找控件）、动作校准（点/拖的幅度与精度）、状态跟踪（记住当前界面进度）、过程一致性（操作链条自洽）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / 多模态 GUI agent 来说，CAPTCHA 是典型“服务方刻意防自动化”的真实边界；HLL 把评测从“会不会识别”推进到“能不能稳定完成受约束的交互流程”。对关注 reasoning models 与 multi-agent 的读者，它也提供了一个可量化的失败剖面：问题往往出在状态机式交互与可验证轨迹，而不只是模型看不懂图。</dd>
+        <dt>技术方案</dt><dd>作者观察到：RL 的 on-policy rollout 天然包含 (动作→下一步观测) 的转移对，足够当世界模型训练信号。PaW 在训练时对同一个策略网络同时做两件事：用 RL 学“选什么动作拿高奖励”，再加一个辅助损失学“这个动作会把环境变成什么样”。为让辅助监督稳定且有信息量，PaW 加了三项设计：按动作熵（不确定性）筛选更有价值的 WM 样本、用抗噪的 WM 损失减少错误/随机观测带来的梯度污染、用随奖励自适应的损失权重平衡 RL 与 WM。与以往 WM+RL 方法相比，它不需要单独的环境模拟器、额外训练阶段或推理时的模型预测/规划步骤，推理范式保持不变。</dd>
+        <dt>关键数据</dt><dd>在 3 个 agent 任务基准上，相比强 RL baseline 在不同模型规模与不同 RL 算法下“稳定提升”，但摘要未披露具体分数/百分比、训练步数开销或推理速度变化；定性意义是：提升来自训练期的辅助监督，而非推理期加计算。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 训练很相关：它用 RL 轨迹顺手学“动作后果”，有助于更可靠的决策与长程交互。对 multi-agent、reasoning models 也有启发：不改推理流程就引入环境动态建模，可能更易落地到现有 RLHF/RLAIF（基于反馈的强化学习）式训练管线。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-01</span>
         
         
-        <span class="links">补充：<a href="https://github.com/XinhaoS0101/HLL" target="_blank" rel="noopener">https://github.com/XinhaoS0101/HLL</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.02449v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.02388v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.02438v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02438v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.02430v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02430v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.02438v1" target="_blank" rel="noopener">LLM-Evolved Pattern Generators for Optimal Classical Planning</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.02430v1" target="_blank" rel="noopener">Not All Errors Are Equal: A Systematic Study of Error Propagation in Large Language Model Inference</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -386,47 +338,20 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">MCP</span>
       </div>
       
-      <p class="innovation">用 LLM 驱动的进化式程序合成，学出“按设计可采纳”的规划启发式（不高估代价），让 A* 仍保最优，同时评估更快。</p>
+      <p class="innovation">把“软错误（硬件瞬时翻转）会怎样影响 LLM 推理”做成可复现实验：提出确定性故障注入框架 LLMFI，并在多模型多任务上系统梳理错误传播规律与脆弱点。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>传统学习启发式多直接从状态预测 h 值，往往无法保证可采纳性（可能高估），因此不适合最优规划。本文改为学习“如何构造抽象”的程序：对每个规划域合成一个生成器，输入任意任务即可产出一组 pattern（模式/抽象特征集合）。这些 pattern 诱导出可采纳启发式，并用 saturated cost partitioning（饱和成本划分：把动作成本分配给多个启发式以保持不高估）进行可采纳地组合。生成器通过 LLM 引导的进化搜索来写程序，得到的规则可解释，测试时只需运行小程序生成 pattern，额外开销很小。</dd>
-        <dt>关键数据</dt><dd>具体数值（覆盖率提升多少、每状态评估加速多少倍、训练/搜索成本）未披露。定性结果：在多个规划域上，解题覆盖率与当前最强的“域无关”基线相当；但每个搜索状态的启发式评估“显著更快”，且测试时开销可忽略；同时保持 A* 的最优性保证（关键差异点）。</dd>
-        <dt>为什么值得关注</dt><dd>这是典型的“LLM + program synthesis（程序合成）+ 搜索/规划”范式：用 LLM 做生成与引导，但把正确性约束（可采纳/最优）内置到组合规则里，适合关注 agent 的 tool use（用程序作为工具）与 reasoning models（在约束下推理/搜索）的人参考。对多 agent/RAG 不是直接相关，但对“让模型产出可验证、可组合的工具/启发式”很有借鉴意义。</dd>
+        <dt>技术方案</dt><dd>作者做了一个可配置、可重复（确定性）的故障注入工具 LLMFI，用来在 LLM 推理过程的不同位置“人为制造软错误”。他们选了 3 个开源权重 LLM，在 13 个代表性任务上跑系统实验，任务覆盖推理、多语言、数学、代码等场景。除了大规模扫面，还做了细粒度案例分析，定位哪些模块/步骤更容易把小错误放大成最终答案错误。最后把观察总结成 17 条结论，并提出 4 个“只改软件、额外开销低”的可靠性改进方向，面向未来的检测与缓解。</dd>
+        <dt>关键数据</dt><dd>覆盖范围：3 个开源权重 LLM、13 个任务；产出：17 条经验结论、4 个低开销软件改进方向。具体量化结果（如错误注入率、准确率下降幅度、不同层/算子敏感度排名、额外延迟/吞吐影响等）在摘要中未披露；但其价值在于给出可复现的实验框架与跨任务对照，便于后续复测与工程落地。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 这类“长链路推理+多次调用”的系统，软错误更可能在多步中累积放大；这篇提供了研究错误传播的实验方法与脆弱模式，有助于做更可靠的推理与执行管线。对做 reasoning models 的读者，也能用它来理解“同样的底层扰动为何会导致不同类型的推理失败”。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-01</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.02438v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.02437v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02437v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.02437v1" target="_blank" rel="noopener">On the Scaling of PEFT: Towards Million Personal Models of Trillion Parameters</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">LLM</span><span class="tag">multi-agent</span>
-      </div>
-      
-      <p class="innovation">把 PEFT（参数高效微调）的“小适配器”从省钱方案升级为“可持久的本地状态”：在共享超大基座模型上，为每个用户/Agent 维护独立偏好、工具习惯与类记忆更新，目标是支撑“百万个个人模型”。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>论文将系统拆成三条扩展轴：Scale Up（基座越强，小适配器越能承载个性化更新）、Scale Down（研究适配器能小到什么程度仍可靠）、Scale Out（大量适配器实例并存与管理）。核心观点是：基座模型提供通用能力，适配器作为“实例级状态层”存放偏好、技能、工具使用习惯与持续更新，而不是每次对话临时提示词。为支撑大规模并存，提出/介绍 MinT 作为基础设施示例，覆盖适配器身份、版本修订、来源追溯、评测与在线服务驻留（residency）等治理能力。与传统“为单个任务做一次性 PEFT”不同，这里强调适配器的长期存在、可演进、可审计与可服务化。</dd>
-        <dt>关键数据</dt><dd>未披露具体实验数字（如准确率提升、适配器参数量下限、并发服务规模、成本/延迟）。定性意义在于把评估维度从“单次微调效果”扩展到“可靠性下限 + 多实例共存的工程与治理”，更贴近个人化/Agent 长期运行场景。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者，这提供了一种把“工具偏好、操作习惯、长期记忆式更新”落到模型侧的方式，减少仅靠 RAG（检索增强生成）或提示词维持状态的脆弱性。对 multi-agent/MCP 场景，Scale Out 与 MinT 的“身份-版本-溯源-评测-服务”框架，直接对应大量 Agent 实例的配置管理与可审计部署需求。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-01</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.02437v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.02430v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2606.02433v1">
@@ -458,10 +383,10 @@
         <a class="cta" href="https://arxiv.org/abs/2606.02433v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.02430v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02430v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.02437v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02437v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.02430v1" target="_blank" rel="noopener">Not All Errors Are Equal: A Systematic Study of Error Propagation in Large Language Model Inference</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.02437v1" target="_blank" rel="noopener">On the Scaling of PEFT: Towards Million Personal Models of Trillion Parameters</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -469,26 +394,26 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+        <span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">LLM</span><span class="tag">multi-agent</span>
       </div>
       
-      <p class="innovation">把“软错误（硬件瞬时翻转）会怎样影响 LLM 推理”做成可复现实验：提出确定性故障注入框架 LLMFI，并在多模型多任务上系统梳理错误传播规律与脆弱点。</p>
+      <p class="innovation">把 PEFT（参数高效微调）的“小适配器”从省钱方案升级为“可持久的本地状态”：在共享超大基座模型上，为每个用户/Agent 维护独立偏好、工具习惯与类记忆更新，目标是支撑“百万个个人模型”。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者做了一个可配置、可重复（确定性）的故障注入工具 LLMFI，用来在 LLM 推理过程的不同位置“人为制造软错误”。他们选了 3 个开源权重 LLM，在 13 个代表性任务上跑系统实验，任务覆盖推理、多语言、数学、代码等场景。除了大规模扫面，还做了细粒度案例分析，定位哪些模块/步骤更容易把小错误放大成最终答案错误。最后把观察总结成 17 条结论，并提出 4 个“只改软件、额外开销低”的可靠性改进方向，面向未来的检测与缓解。</dd>
-        <dt>关键数据</dt><dd>覆盖范围：3 个开源权重 LLM、13 个任务；产出：17 条经验结论、4 个低开销软件改进方向。具体量化结果（如错误注入率、准确率下降幅度、不同层/算子敏感度排名、额外延迟/吞吐影响等）在摘要中未披露；但其价值在于给出可复现的实验框架与跨任务对照，便于后续复测与工程落地。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 这类“长链路推理+多次调用”的系统，软错误更可能在多步中累积放大；这篇提供了研究错误传播的实验方法与脆弱模式，有助于做更可靠的推理与执行管线。对做 reasoning models 的读者，也能用它来理解“同样的底层扰动为何会导致不同类型的推理失败”。</dd>
+        <dt>技术方案</dt><dd>论文将系统拆成三条扩展轴：Scale Up（基座越强，小适配器越能承载个性化更新）、Scale Down（研究适配器能小到什么程度仍可靠）、Scale Out（大量适配器实例并存与管理）。核心观点是：基座模型提供通用能力，适配器作为“实例级状态层”存放偏好、技能、工具使用习惯与持续更新，而不是每次对话临时提示词。为支撑大规模并存，提出/介绍 MinT 作为基础设施示例，覆盖适配器身份、版本修订、来源追溯、评测与在线服务驻留（residency）等治理能力。与传统“为单个任务做一次性 PEFT”不同，这里强调适配器的长期存在、可演进、可审计与可服务化。</dd>
+        <dt>关键数据</dt><dd>未披露具体实验数字（如准确率提升、适配器参数量下限、并发服务规模、成本/延迟）。定性意义在于把评估维度从“单次微调效果”扩展到“可靠性下限 + 多实例共存的工程与治理”，更贴近个人化/Agent 长期运行场景。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者，这提供了一种把“工具偏好、操作习惯、长期记忆式更新”落到模型侧的方式，减少仅靠 RAG（检索增强生成）或提示词维持状态的脆弱性。对 multi-agent/MCP 场景，Scale Out 与 MinT 的“身份-版本-溯源-评测-服务”框架，直接对应大量 Agent 实例的配置管理与可审计部署需求。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-01</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.02430v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.02437v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.02388v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02388v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.02438v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02438v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.02388v1" target="_blank" rel="noopener">Policy and World Modeling Co-Training for Language Agents</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.02438v1" target="_blank" rel="noopener">LLM-Evolved Pattern Generators for Optimal Classical Planning</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -496,26 +421,26 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span>
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
       </div>
       
-      <p class="innovation">把「世界模型（预测环境下一步）」监督直接塞进同一次 RL（强化学习）训练里，用现成 on-policy 轨迹当数据，不加模拟器、不加额外推理开销。</p>
+      <p class="innovation">用 LLM 驱动的进化式程序合成，学出“按设计可采纳”的规划启发式（不高估代价），让 A* 仍保最优，同时评估更快。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者观察到：RL 的 on-policy rollout 天然包含 (动作→下一步观测) 的转移对，足够当世界模型训练信号。PaW 在训练时对同一个策略网络同时做两件事：用 RL 学“选什么动作拿高奖励”，再加一个辅助损失学“这个动作会把环境变成什么样”。为让辅助监督稳定且有信息量，PaW 加了三项设计：按动作熵（不确定性）筛选更有价值的 WM 样本、用抗噪的 WM 损失减少错误/随机观测带来的梯度污染、用随奖励自适应的损失权重平衡 RL 与 WM。与以往 WM+RL 方法相比，它不需要单独的环境模拟器、额外训练阶段或推理时的模型预测/规划步骤，推理范式保持不变。</dd>
-        <dt>关键数据</dt><dd>在 3 个 agent 任务基准上，相比强 RL baseline 在不同模型规模与不同 RL 算法下“稳定提升”，但摘要未披露具体分数/百分比、训练步数开销或推理速度变化；定性意义是：提升来自训练期的辅助监督，而非推理期加计算。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 训练很相关：它用 RL 轨迹顺手学“动作后果”，有助于更可靠的决策与长程交互。对 multi-agent、reasoning models 也有启发：不改推理流程就引入环境动态建模，可能更易落地到现有 RLHF/RLAIF（基于反馈的强化学习）式训练管线。</dd>
+        <dt>技术方案</dt><dd>传统学习启发式多直接从状态预测 h 值，往往无法保证可采纳性（可能高估），因此不适合最优规划。本文改为学习“如何构造抽象”的程序：对每个规划域合成一个生成器，输入任意任务即可产出一组 pattern（模式/抽象特征集合）。这些 pattern 诱导出可采纳启发式，并用 saturated cost partitioning（饱和成本划分：把动作成本分配给多个启发式以保持不高估）进行可采纳地组合。生成器通过 LLM 引导的进化搜索来写程序，得到的规则可解释，测试时只需运行小程序生成 pattern，额外开销很小。</dd>
+        <dt>关键数据</dt><dd>具体数值（覆盖率提升多少、每状态评估加速多少倍、训练/搜索成本）未披露。定性结果：在多个规划域上，解题覆盖率与当前最强的“域无关”基线相当；但每个搜索状态的启发式评估“显著更快”，且测试时开销可忽略；同时保持 A* 的最优性保证（关键差异点）。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的“LLM + program synthesis（程序合成）+ 搜索/规划”范式：用 LLM 做生成与引导，但把正确性约束（可采纳/最优）内置到组合规则里，适合关注 agent 的 tool use（用程序作为工具）与 reasoning models（在约束下推理/搜索）的人参考。对多 agent/RAG 不是直接相关，但对“让模型产出可验证、可组合的工具/启发式”很有借鉴意义。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-01</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.02388v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.02438v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.02386v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02386v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.02449v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02449v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.02386v1" target="_blank" rel="noopener">AgentPLM: Agentic Protein Language Models with Reasoning-Augmented Decoding for Protein Sequence Design</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.02449v1" target="_blank" rel="noopener">HLL: Can Agents Cross Humanity's Last Line of Verification?</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -523,14 +448,43 @@
       </div>
       
       <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span><span class="tag">MCP</span>
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">benchmark</span>
       </div>
       
-      <p class="innovation">把“蛋白质语言模型”从一次性生成器变成会调用外部工具自检的 Agent：边生成边用结构/能量/对接工具反馈纠错，提升设计命中率。</p>
+      <p class="innovation">提出 HLL 基准，用“交互式 CAPTCHA”检验多模态 Agent 是否真能在受保护流程里替代人类，并把“答案对不对”升级为“操作过程是否可信”。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>提出 AgentPLM，在预训练蛋白质语言模型上加两层“代理化”能力。其一是 RAD（推理增强解码）：自回归逐步生成序列时，按需调用 ESMFold（结构预测）、FoldX（能量/稳定性评估）、AutoDock Vina（分子对接）等“生物物理 oracle（外部打分器）”，再根据反馈继续生成而不是一口气写完。其二是 CAPO（对比式代理策略优化）：把 DPO（直接偏好优化）扩展到“整段轨迹”训练，让模型学会在什么时候工具反馈有信息量、该如何利用，而不只是模仿高分序列。评测覆盖从头酶设计、抗体优化、热稳定性、蛋白-蛋白界面设计到零样本适应度预测，并用统一的 oracle API 和受控的序列同一性划分来避免数据泄漏式的高分。</dd>
-        <dt>关键数据</dt><dd>论文宣称在多项基准上达到 SOTA（具体任务分数多数未在摘要披露）。给出的定量点：抗体任务中 top-10% 命中率相比最强“被动式”基线有提升，但摘要未给出提升幅度百分比/绝对值。定性证据：无需显式回溯（backtracking）也能观察到在线纠错行为，说明工具反馈确实被用于中途修正而非事后筛选。</dd>
-        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent/tool use 思路在科学设计（蛋白序列）上的落地：把“生成”改成“生成+调用工具+根据反馈继续”。CAPO 属于偏好优化/策略学习的变体，和多步推理、轨迹级训练、外部 oracle（类似 RAG 的外部信息源）如何真正被模型利用高度相关。</dd>
+        <dt>技术方案</dt><dd>作者把 CAPTCHA 视为“人类验证边界”，搭建闭环 GUI 环境，让 Agent 像人一样在网页界面中定位元素、点击/拖拽/输入完成验证，而不是只做图像识别。HLL 覆盖多种 CAPTCHA 交互类型，并加入受控的“现实压力”：网页杂乱、任务更难的变体、以及要求提交可核验的动作轨迹（trace，操作记录）来证明解题过程。评测 8 个前沿多模态 Agent，比较它们在不同验证类型、不同界面复杂度、以及是否需要轨迹一致性约束下的表现。与以往偏“静态识别/单步回答”的评测不同，HLL 强调 grounded（落地到界面状态）交互、状态跟踪与过程一致性。</dd>
+        <dt>关键数据</dt><dd>评测对象数量：8 个多模态 Agent。具体通过率/成功率等数值：未披露；但结论给出清晰相对趋势——不同 CAPTCHA 类型间表现差异很大；加入真实界面干扰后性能下降；当需要“正确答案+有效动作轨迹”双重满足时进一步下降。作者归因的主要薄弱点包括：定位（找控件）、动作校准（点/拖的幅度与精度）、状态跟踪（记住当前界面进度）、过程一致性（操作链条自洽）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / 多模态 GUI agent 来说，CAPTCHA 是典型“服务方刻意防自动化”的真实边界；HLL 把评测从“会不会识别”推进到“能不能稳定完成受约束的交互流程”。对关注 reasoning models 与 multi-agent 的读者，它也提供了一个可量化的失败剖面：问题往往出在状态机式交互与可验证轨迹，而不只是模型看不懂图。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-01</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/XinhaoS0101/HLL" target="_blank" rel="noopener">https://github.com/XinhaoS0101/HLL</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.02449v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.02458v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02458v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.02458v1" target="_blank" rel="noopener">Beyond One-shot: AI Agents for Learning in Field Experiments</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">把“做完一次 A/B 就结束”变成“AI 从上一轮实验数据里学规律、自动生成下一轮干预”的闭环，并在真实医疗场景用 69.8% CTR 验证有效。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>研究做了两阶段真实世界现场实验：第一阶段由行为专家+对话式 AI 共创 13 条处方提醒文案，并收集大规模点击数据。第二阶段引入“工具增强的 Agent（会用分析工具的智能体）”，让 AI 自动从第一阶段数据中抽取可复用原则，再生成 17 条新文案进入下一轮实验。系统用 DIKW（数据-信息-知识-智慧）分层推理的多个 agent 来组织从统计结果到设计原则的推导，并提供可追溯的证据链（每条结论对应哪些数据支持）。对比点在于：不是让大模型凭通用常识/行为理论拍脑袋写文案，而是让它基于本领域实验数据做“数据驱动的干预设计”。</dd>
+        <dt>关键数据</dt><dd>场景：医疗处方消息；总样本 693,139 次患者就诊。阶段 1（人类+聊天机器人）：13 个变体，444,691 次就诊。阶段 2（工具增强 Agentic AI）：17 个变体，248,448 次就诊。效果：最佳 AI 生成文案 CTR=69.8%，比基线高 6.5 个百分点。额外发现：不喂实验数据的前沿大模型无法预测哪些干预会成功（未给出具体准确率/相关系数），说明收益主要来自领域实验数据而非“通用推理能力”。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use：用分析工具和结构化推理把历史实验数据“变成可执行的设计规则”，再自动产出下一轮干预，接近“实验数据版 RAG”。对关心 multi-agent、MCP/工具调用、以及让 agent 在真实业务里持续学习的人，这篇提供了可量化的现场实验范式与边界结论（通用大模型不带数据不行）。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-01</span>
@@ -538,21 +492,65 @@
         
         <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
         
-        <a class="cta" href="https://arxiv.org/abs/2606.02386v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.02458v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.02463v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02463v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.02463v1" target="_blank" rel="noopener">MASER: Modality-Adaptive Specialist Routing for Embodied 3D Spatial Intelligence</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
+      </div>
       
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
       
+      <p class="innovation">把“选哪种输入模态更合适”做成可学习的路由：同一套 VLM 骨干配 5 个模态适配器，推理时按问题语义自动挑一个，避免单模态微调的盲区。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>MASER 先在共享的视觉-语言模型（VLM）骨干上训练 5 个“模态适配器”（小模块，分别偏向语言/RGB/点云/深度/位姿等输入）。推理时不再固定用某一模态，而是先用冻结的句子编码器（sentence transformer，把问题变成向量）表示问题语义。再用一个小型多层感知机（MLP，小神经网络）根据问题向量预测“该用哪个适配器”。路由器的监督信号来自“oracle 标签”：对每个问题，标注哪一个适配器在该题上答得最准，用它来训练路由策略。与常见做法（只微调单一模态的 VLM）相比，它把“问题语义→模态选择”显式建模，并且每题只调用一次适配器，避免多模态全跑的开销。</dd>
+        <dt>关键数据</dt><dd>基准：Open3D-VQA。结论：不存在通吃模态——点云在 51.5% 的问题上是最优模态（oracle 统计）。路由效果：MASER 的路由与 oracle 选择一致率 51.3%，高于随机森林（Random Forest）消融 43.5%，提升 7.8 个百分点。推理开销：每个问题只进行单次适配器调用（不做多路并行）。端到端 VQA 准确率、参数量、训练成本：未披露（但给出了“路由是否选对模态”的可量化对照）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 的读者，这相当于“按问题语义路由到最合适的工具/专家”的范式，只不过工具从 API 变成了不同模态的专家适配器。对 multi-agent / routing / reasoning 关注者，它提供了一个轻量可监督的路由训练方式（oracle 标签→小 MLP），且强调单次调用的成本约束。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-01</span>
         
-          <details class="date-group" id="archive-2026-06-02" open>
-            <summary>2026-06-02 <span class="n">3 条</span></summary>
-            <div class="cards">
-              
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.02463v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.02465v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.02465v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.02465v1" target="_blank" rel="noopener">Learning When to Translate for Multilingual Reasoning</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">让推理模型学会“该不该先翻译再推理”：只在原语言理解不稳时调用英文翻译，减少无谓翻译同时补齐低资源语言推理短板。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 Luar（语言理解边界感知的强化学习）框架，把“是否调用翻译器”当成一个可学习的决策。模型每次在两条路径中选：直接用原始非英文问题推理，或先翻成英文再推理。训练目标不是让它总翻译，而是只在“翻译后预期明显更好”时才翻译，相当于学一个理解可靠性门控（gate）。对比以往做法（全量翻译或固定策略），Luar 用强化学习把翻译调用变成按样例自适应的 tool use（工具调用）。</dd>
+        <dt>关键数据</dt><dd>论文称在多语言推理基准上优于标准 GRPO（强化学习训练基线）及其他训练式方法，且在低资源语言上增益更大；但未披露具体提升幅度、各基准分数、翻译调用率/节省比例、额外推理时延与训练成本等关键数字。定性结论是：能避免“本来就能直接答”的不必要翻译，并把学到的翻译调用策略泛化到未见过的低资源语言。</dd>
+        <dt>为什么值得关注</dt><dd>这是一种典型的 Agent/tool use 思路：把“翻译器”当工具，并学习何时调用，直接对应多语言 RAG/多工具链路里的路由与门控问题。对关心 reasoning models 的读者，它提供了一个用强化学习来缩小多语言推理差距、同时控制成本（少翻译）的训练范式。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-01</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/deokhk/LUAR" target="_blank" rel="noopener">https://github.com/deokhk/LUAR</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.02465v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
     <article class="card" data-url="https://developer.nvidia.com/blog/run-local-ai-agents-with-faster-models-and-multi-node-clustering-on-nvidia-dgx-spark/">
       <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/run-local-ai-agents-with-faster-models-and-multi-node-clustering-on-nvidia-dgx-spark/" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
