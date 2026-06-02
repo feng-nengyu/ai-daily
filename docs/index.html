@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>3</strong> 条 ·
       归档 <strong>112</strong> 条（13 天）·
-      生成于 2026-06-01 06:50 UTC
+      生成于 2026-06-02 00:04 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">3</span></a>
         
           <a href="#archive-2026-06-01" onclick="openArchive('2026-06-01')">2026-06-01 <span class="n">10</span></a>
         
@@ -255,9 +255,92 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(3)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://developer.nvidia.com/blog/run-local-ai-agents-with-faster-models-and-multi-node-clustering-on-nvidia-dgx-spark/">
+      <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/run-local-ai-agents-with-faster-models-and-multi-node-clustering-on-nvidia-dgx-spark/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://developer.nvidia.com/blog/run-local-ai-agents-with-faster-models-and-multi-node-clustering-on-nvidia-dgx-spark/" target="_blank" rel="noopener">Run Local AI Agents with Faster Models and Multi-Node Clustering on NVIDIA DGX Spark</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:nvidia-dev-blog">NVIDIA</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">NVIDIA 讲清楚如何在 DGX Spark 上本地跑长上下文、多并发的 LLM Agent，并用多节点集群把单机跑不动的推理/工具调用负载拆开跑。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>文章把「长时间运行的 Agent」拆成几类典型算力压力：大上下文窗口（一次要喂很多历史）、并发子任务（同时开多个工具/子代理）、以及持续推理带来的显存与吞吐瓶颈。核心做法是用更快的推理模型/推理栈在单节点上提高 token 吞吐，并在需要时把 Agent 的并发工作负载分配到多节点集群（multi-node clustering）上，避免所有请求挤在一张卡/一台机。它强调本地部署（local）与集群化结合：既保留数据不出域，又能按 Agent 的并发特性横向扩展。与过去「单机单卡跑一个聊天模型」不同，这里把 Agent 当作持续服务来设计，重点在调度并发与跨节点扩展，而不是只看单次对话延迟。</dd>
+        <dt>关键数据</dt><dd>未披露。文章标题与导语指向“更快模型 + 多节点集群”带来的推理吞吐与并发能力提升，但未给出具体 token/s、延迟、可扩展到多少节点或对比基线；定性意义是把 Agent 的瓶颈从“单机显存/吞吐”转向“可横向扩展的集群资源”。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 LLM agent / tool use / multi-agent 的读者，这条提供了把 Agent 从“demo”落到“本地长期运行服务”的工程思路：如何应对长上下文与并发工具调用带来的算力形态变化。对 MCP、RAG 等需要频繁外部调用/检索的场景，多节点并发与本地部署的组合也更贴近真实生产约束。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-01</span>
+        
+        
+        <a class="cta" href="https://developer.nvidia.com/blog/run-local-ai-agents-with-faster-models-and-multi-node-clustering-on-nvidia-dgx-spark/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption">
+      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption" target="_blank" rel="noopener">Beyond LLMs: Why Scalable Enterprise AI Adoption Depends on Agent Logic</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">MCP</span><span class="tag">multi-agent</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">文章把“企业落地 AI 的瓶颈”从模型能力转向“Agent 逻辑”：强调可扩展的工具调用、权限与流程编排，才决定能否稳定上线与规模化复用。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心观点是：LLM（大语言模型）只是“生成器”，企业真正需要的是可控的 Agent（能规划并调用工具的系统）逻辑层。它把一次性对话拆成可审计的步骤：意图识别→计划生成→工具选择与参数校验→执行→结果验证与回滚。强调在工具使用（tool use）上加入约束：权限边界、输入输出校验、失败重试、幂等（重复执行不出错）与日志追踪。与过去“把提示词写好就上线”的做法不同，这里把可靠性与治理（合规、审计、成本）当作一等公民，建议用统一的编排层把不同模型、RAG（检索增强生成）与业务系统连接起来。</dd>
+        <dt>关键数据</dt><dd>未披露。文章偏方法论与工程治理框架，没有给出具体 benchmark、成本或成功率数据；其意义在于提供“从 PoC（概念验证）到规模化上线”常见失败点的结构化拆解与对策清单。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 LLM agent / tool use / RAG / multi-agent 的读者，这篇把“模型推理”之外的关键问题（工具编排、可靠性、权限与审计）讲清楚，适合作为搭建 Agent 平台或对接 MCP（模型上下文协议）类工具生态时的设计检查表。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-01</span>
+        
+        
+        <a class="cta" href="https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://huggingface.co/blog/JetBrains/mellum2-launch">
+      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/JetBrains/mellum2-launch" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://huggingface.co/blog/JetBrains/mellum2-launch" target="_blank" rel="noopener">Introducing Mellum2: A 12B Mixture-of-Experts Model by JetBrains</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">MCP</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">JetBrains 发布 Mellum2：标称 12B 的 MoE（混合专家）大模型，主打用“按需激活部分专家”在保持能力的同时降低推理算力，面向开发者与代码场景更友好。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>模型采用 MoE（混合专家）架构：把参数分成多个“专家”子网络，由路由器在每个 token 上选择少量专家参与计算，从而把总参数做大但把每次推理的实际计算量压低。相较传统稠密模型（每个 token 都跑全模型），MoE 的关键在于“只算一部分”，更适合在同等硬件下追求更高容量。标题给出总规模为 12B，但未说明是“总参数”还是“激活参数”（每次实际用到的参数），这会直接影响推理成本的判断。发布方为 JetBrains，通常意味着会更关注 IDE/代码相关任务与工程化落地（如部署、推理接口、许可）。</dd>
+        <dt>关键数据</dt><dd>参数规模：12B（MoE；总/激活参数口径未披露）。专家数量、每 token 激活专家数、训练数据规模、训练算力/成本、推理吞吐与延迟、以及在通用/代码基准（如 MMLU、HumanEval 等）上的分数：均未披露。定性意义：若激活参数显著小于 12B，MoE 可能在相近推理成本下提供更高容量与更好的长尾能力，但需要基准与激活口径来验证。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者：MoE 往往能在同等推理预算下提升“可用能力上限”，影响代理在多步调用工具、长上下文规划时的稳定性与成本。对 reasoning models 读者：MoE 的路由与专家分工会影响推理一致性与可控性，是评估“更大但更省算”的一条重要路线。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-01</span>
+        
+        
+        <a class="cta" href="https://huggingface.co/blog/JetBrains/mellum2-launch" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
