@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>8</strong> 条 ·
       归档 <strong>125</strong> 条（14 天）·
-      生成于 2026-06-02 06:38 UTC
+      生成于 2026-06-03 00:22 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">8</span></a>
         
           <a href="#archive-2026-06-02" onclick="openArchive('2026-06-02')">2026-06-02 <span class="n">13</span></a>
         
@@ -257,9 +257,233 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(8)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://huggingface.co/blog/Hcompany/holo31">
+      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/Hcompany/holo31" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://huggingface.co/blog/Hcompany/holo31" target="_blank" rel="noopener">Holo3.1: Fast & Local Computer Use Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">Holo3.1 主打“本地运行 + 更快响应”的电脑操作 Agent：不依赖云端也能做 GUI（图形界面）点击/输入等任务，面向日常自动化更可用。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它把“电脑使用”拆成可执行的工具调用链：先理解屏幕内容（识别界面元素），再规划下一步动作（点哪里/输什么），最后用系统级输入事件执行。重点是优化本地推理与交互回路：减少每一步的模型调用开销，让多步操作更顺滑。相较以往偏云端的大模型遥控电脑方案，它强调离线可用与低延迟。整体更像一个可嵌入应用的 computer-use 工具层，而不是只在特定演示环境里跑的脚本。</dd>
+        <dt>关键数据</dt><dd>未披露：未给出具体模型规模、端到端延迟（ms）、每步推理耗时、成功率/任务完成率或标准基准（如 OSWorld、WebArena 等）分数。定性意义是把“电脑操作 Agent”从云端重推理转向本地可部署，但缺少量化对照，读者需要点进去看是否有实测与硬件配置说明。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者：这是典型“多步工具调用 + 环境反馈”的 Agent 形态，关注点在如何把推理与执行闭环做快做稳。对 MCP、RAG、多 Agent 读者：本地 computer-use 能作为一个可标准化的“工具端”，后续更容易接入 MCP 工具协议或与检索/多代理协作组合成更完整的自动化系统。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <a class="cta" href="https://huggingface.co/blog/Hcompany/holo31" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://www.together.ai/blog/serving-minimax-m3-for-efficient-inference-unlocking-1m-token-context-and-multimodality-without-regrets">
+      <button class="star" aria-label="收藏" data-url="https://www.together.ai/blog/serving-minimax-m3-for-efficient-inference-unlocking-1m-token-context-and-multimodality-without-regrets" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.together.ai/blog/serving-minimax-m3-for-efficient-inference-unlocking-1m-token-context-and-multimodality-without-regrets" target="_blank" rel="noopener">Serving MiniMax-M3 for efficient inference: Unlocking 1M-Token Context and Multimodality Without Regrets</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:together-ai-blog">Together AI</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">Together 讲清楚如何把 MiniMax-M3 这种 1M 超长上下文+多模态模型“真正在推理端跑起来”：用稀疏注意力、分页解码和 Rust 网关把成本与延迟压到可服务水平。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心是把注意力计算从“全量密集”改成 KV-block-major sparse attention（按 KV 块组织的稀疏注意力），只在需要的块上算，避免 1M 上下文带来的平方级开销。解码阶段用 paged MSA decode（分页式多头稀疏注意力解码），把 KV cache 做成可分页/可复用的内存布局，减少显存碎片和频繁搬运。为让稀疏检索/路由更快，他们还优化了 index scoring（索引打分），降低选择哪些块参与注意力的额外开销。多模态输入侧用 Rust 写了一个 multimodal gateway（多模态网关），把图像/文本等请求的编解码、路由与模型服务解耦，减少 Python 侧开销并提升并发稳定性。整体思路与传统“直接上 FlashAttention + 全量 KV cache”不同，更偏向工程化的稀疏化与内存管理。</dd>
+        <dt>关键数据</dt><dd>未披露具体吞吐（tokens/s）、延迟（ms）或成本（$/1M tokens）数字；但明确目标是让 1M-token 上下文与多模态在推理端可持续服务，关键收益来自：稀疏注意力减少计算量、分页 KV 降低显存压力与碎片、索引打分降低稀疏选择开销、Rust 网关提升高并发下的稳定性与 CPU 侧效率。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 来说，1M 上下文意味着更大“工作记忆”（长对话、长文档、长轨迹）可直接放进上下文，但前提是推理端能扛住成本与延迟；这篇提供了可复用的服务端工程套路。对多 agent 或推理模型也相关：更长轨迹与多模态输入会放大 KV cache 与调度问题，分页解码与稀疏注意力是落地时绕不开的基础设施。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <a class="cta" href="https://www.together.ai/blog/serving-minimax-m3-for-efficient-inference-unlocking-1m-token-context-and-multimodality-without-regrets" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://simonwillison.net/2026/Jun/2/microsofts-new-models/#atom-everything">
+      <button class="star" aria-label="收藏" data-url="https://simonwillison.net/2026/Jun/2/microsofts-new-models/#atom-everything" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://simonwillison.net/2026/Jun/2/microsofts-new-models/#atom-everything" target="_blank" rel="noopener">Microsoft's new MAI models</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-expert" title="rss:simon-willison">Simon Willison</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">微软一次发布两款“小参数”新模型：35B 的推理模型 MAI‑Thinking‑1 和 5B 的代码模型 MAI‑Code‑1‑Flash，并强调全程用“干净且有授权”的训练数据。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>MAI‑Thinking‑1定位为 reasoning（推理）模型，参数量 35B，微软称从零训练（非蒸馏：不从第三方大模型压缩学习）并使用企业级、清洗过且商业授权的数据。MAI‑Code‑1‑Flash 是 5B 的代码专用模型，面向 GitHub Copilot 与 VS Code，主打高性能与低成本，同样宣称端到端由微软自建并使用“适当授权”的数据。与常见做法相比，这里重点差异是：不强调更大规模，而强调更小模型+可控数据来源+产品内落地（Copilot/VS Code）。作者本人尚未实际试用，更多细节（数据范围、训练配方、评测集）仍待披露。</dd>
+        <dt>关键数据</dt><dd>MAI‑Thinking‑1：35B 参数；微软称在盲测人类对比中“更受偏好于 Sonnet 4.6”，但未披露偏好率、样本量与评测任务。MAI‑Code‑1‑Flash：5B 参数；宣称“高性能、低成本”，但未披露具体基准分数、延迟/吞吐或成本数据。可用性：MAI‑Thinking‑1 仅对“部分早期合作伙伴”开放；MAI‑Code‑1‑Flash 将在 VS Code 的 GitHub Copilot 个人用户中逐步上线。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 来说，小参数推理模型如果真能接近更大模型的“人类偏好”表现，可能更适合本地或低成本多步推理与多代理（multi-agent）编排。对代码代理与 RAG 场景，5B 级代码模型直接进 Copilot/VS Code，意味着更低延迟、更可控的数据合规路径，值得关注其后续基准与上下文/工具调用能力披露。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <span class="links">补充：<a href="https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/, https://microsoft.ai/news/introducing-mai-thinking-1/, https://microsoft.ai/news/introducingmai-code-1-flash/" target="_blank" rel="noopener">https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/, https://microsoft.ai/news/introducing-mai-thinking-1/, https://microsoft.ai/news/introducingmai-code-1-flash/</a></span>
+        
+        <a class="cta" href="https://simonwillison.net/2026/Jun/2/microsofts-new-models/#atom-everything" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://www.langchain.com/blog/introducing-rubrics-for-deepagents">
+      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/introducing-rubrics-for-deepagents" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.langchain.com/blog/introducing-rubrics-for-deepagents" target="_blank" rel="noopener">Introducing Rubrics: Build Agents that Evaluate and Correct Their Work</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">LangChain/Deep Agents 推出 RubricMiddleware：给 Agent 加一层“按评分标准自检+纠错”的循环，让需要正确性的任务输出更可控、更一致。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心做法是在一次 Agent 运行（run）中插入自评环节：先让你用 rubric（评分量表/检查清单）明确“什么算对”。然后配置 grader（评分器，通常也是一个模型或规则）对 Agent 的中间结果/最终答案打分并给出问题点。若未达标，Agent 根据评分反馈进行修正，再次提交给 grader 复评，形成迭代闭环。与以往只靠提示词（prompt）或一次性“自我反思”不同，它把评估标准和评估执行做成可复用的中间件，便于在不同任务/工具链中统一接入。</dd>
+        <dt>关键数据</dt><dd>未披露：官方描述强调“在正确性重要的任务上更可靠”，但未给出通过率提升、迭代次数分布、延迟/成本增加等量化对照；相对意义是把“质量门禁（quality gate）”从人工抽查变成可自动化的运行时机制。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景很直接：当 Agent 调工具、查资料（RAG，检索增强生成）或做多步推理时，Rubric 相当于可编排的“验收标准”，能把评估与纠错纳入执行链路。也为多 Agent 或 reasoning models 的工作流提供了更工程化的质量控制接口（类似可插拔的评测与回路）。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <a class="cta" href="https://www.langchain.com/blog/introducing-rubrics-for-deepagents" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://microsoft.ai/news/introducingmai-code-1-flash/">
+      <button class="star" aria-label="收藏" data-url="https://microsoft.ai/news/introducingmai-code-1-flash/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://microsoft.ai/news/introducingmai-code-1-flash/" target="_blank" rel="noopener">MAI-Code-1-Flash</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-community" title="hackernews:hackernews-ai">Hacker News</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">微软发布 MAI-Code-1-Flash 等 7 个新 MAI 模型，主打“Flash”低延迟代码能力，并给出模型卡（model card）便于评估可用场景与风险边界。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>这次是以“MAI”系列为单位的模型发布，其中 MAI-Code-1-Flash 面向代码生成/补全等任务，强调更快的响应与可部署性。官方页面提供模型介绍与使用入口，模型卡补充训练/评测范围、已知限制与安全注意事项。与以往只给宣传页不同，这次把模型卡作为核心材料之一，方便团队做选型与合规审查。整体叙事是“hillclimbing machine（爬山式迭代）”：通过持续迭代与对比评测来推进模型能力，而不是一次性发布单一大模型。</dd>
+        <dt>关键数据</dt><dd>未披露关键量化指标（如参数规模、上下文长度、训练数据规模、推理吞吐/延迟、主流代码基准分数等）。目前能确定的是：这是“7 个新模型”的批量发布，并且 MAI-Code-1-Flash 明确定位为偏速度/成本的代码模型；具体强到什么程度需要读模型卡或自行跑基准验证。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use（工具调用）来说，代码模型常被用来写脚本、生成调用代码、修复工具链错误；“Flash”类模型如果延迟更低，能直接影响 agent 的交互速度与成本。模型卡信息也有助于做 RAG/多 agent 系统的模型选型与风险评估（哪些任务适合、哪些容易出错）。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <span class="links">补充：<a href="https://microsoft.ai/models/mai-code-1-flash/, https://microsoft.ai/pdf/MAI-Code-1-Flash-Model-Card.PDF, https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/" target="_blank" rel="noopener">https://microsoft.ai/models/mai-code-1-flash/, https://microsoft.ai/pdf/MAI-Code-1-Flash-Model-Card.PDF, https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/</a></span>
+        
+        <a class="cta" href="https://microsoft.ai/news/introducingmai-code-1-flash/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://microsoft.ai/news/introducing-mai-thinking-1/">
+      <button class="star" aria-label="收藏" data-url="https://microsoft.ai/news/introducing-mai-thinking-1/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://microsoft.ai/news/introducing-mai-thinking-1/" target="_blank" rel="noopener">MAI-Thinking-1</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-community" title="hackernews:hackernews-ai">Hacker News</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">微软一次发布 7 个 MAI 新模型，主打“Thinking/推理”能力与可扩展的训练配方，强调用类似“爬山搜索”的迭代机制把模型推向更强的解题与规划表现。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是把模型训练做成可循环的“自我改进”流程：先让模型生成候选解/思路，再用自动评估与筛选机制挑出更好的轨迹，反复迭代提升。文章将其类比为“hillclimbing（爬山算法：不断朝更优方向小步改进）”，重点在于用系统化的搜索与选择来强化推理路径，而不只是扩大参数或堆数据。与传统一次性监督微调（SFT：用标注答案直接学）相比，它更强调多轮生成-评估-再训练的闭环。与常见 RLHF（基于人类反馈的强化学习）相比，倾向减少对人工偏好标注的依赖，更多用自动化信号驱动迭代。整体目标是让模型在复杂任务上更会“想步骤”，为后续工具调用与 Agent 规划打底。</dd>
+        <dt>关键数据</dt><dd>未披露：在摘要信息中没有给出 7 个模型的参数规模、训练数据量、训练成本、推理速度或具体 benchmark 分数。定性意义在于：如果其“生成-筛选-迭代”的训练闭环可复用，可能比单纯扩模型更容易迁移到不同推理/规划任务，但需要看论文/报告中的对照实验与消融（去掉某组件看影响）才能判断真实增益。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / reasoning models 读者，这类“用搜索与筛选强化推理轨迹”的训练路线，直接影响 Agent 的规划、分解任务与多步决策质量。若后续披露支持工具调用（tool use）或多轮任务的评测细节，也会与多 Agent 协作、RAG 结合时的“先想清楚再行动”能力强相关。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <span class="links">补充：<a href="https://microsoft.ai/wp-content/uploads/2026/06/main_20260602_2.pdf, https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/" target="_blank" rel="noopener">https://microsoft.ai/wp-content/uploads/2026/06/main_20260602_2.pdf, https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/</a></span>
+        
+        <a class="cta" href="https://microsoft.ai/news/introducing-mai-thinking-1/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://www.langchain.com/blog/designing-efficient-verifiers-for-legal-agents">
+      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/designing-efficient-verifiers-for-legal-agents" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.langchain.com/blog/designing-efficient-verifiers-for-legal-agents" target="_blank" rel="noopener">Designing Efficient Verifiers for Legal Agents</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">把“法律 Agent 的评测/训练用裁判模型（verifier）”做成更便宜、更稳的版本：用更少的模型调用与更可控的判分规则，降低评测成本并减少误判。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>研究聚焦在法律场景里常见的“LLM 当裁判”问题：同一答案在不同提示词/温度下判分波动大、成本高。做法是把 verifier 设计成更结构化的流程：先把任务拆成可核对的检查项（例如引用是否存在、结论是否与证据一致），再让模型按清单逐项给出可追溯的判定依据。为了省钱，优先用轻量模型或更少轮次完成“粗筛”，只有在不确定或高风险样本上才升级到更强模型/更多步骤复核。与过去直接让一个大模型给整体分数不同，这种“分解+分层复核”更像可审计的评分管线，便于用于评测与后训练（post-training）。</dd>
+        <dt>关键数据</dt><dd>未披露具体数字（如成本下降比例、与人工一致性分数、误判率等）。定性意义是：把 verifier 从“黑盒打分”变成“可分解、可复核”的评测组件，理论上能同时降低 token/调用成本并提升一致性，尤其适合高合规要求的法律 Agent 评估。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / reasoning model 的读者，这条提供了“如何评测与训练 Agent”的关键一环：更便宜且更可靠的 verifier 直接决定自动化评测、回放（replay）与后训练数据的质量。对 multi-agent 或带 RAG（检索增强生成）的法律系统也有用，因为它强调把“引用/证据一致性”做成可核对的评分信号。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <a class="cta" href="https://www.langchain.com/blog/designing-efficient-verifiers-for-legal-agents" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://developer.nvidia.com/blog/deploy-self-evolving-agents-for-faster-more-secure-research-with-a-hermes-agent-and-nvidia-nemoclaw/">
+      <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/deploy-self-evolving-agents-for-faster-more-secure-research-with-a-hermes-agent-and-nvidia-nemoclaw/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://developer.nvidia.com/blog/deploy-self-evolving-agents-for-faster-more-secure-research-with-a-hermes-agent-and-nvidia-nemoclaw/" target="_blank" rel="noopener">Deploy Self-Evolving Agents for Faster, More Secure Research with a Hermes Agent and NVIDIA NemoClaw</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-lab" title="rss:nvidia-dev-blog">NVIDIA</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">把“自我进化”的研究型 Agent 落地到企业内网：用 Hermes 负责推理与编排，用 NVIDIA NeMoClaw 让工具调用更可控、更安全，面向更快的内部检索与总结。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>整体是一个可部署的 Agent 流水线：Hermes Agent 负责把研究任务拆成步骤、选择工具并汇总结果。NeMoClaw 作为“工具调用层”，把可用工具做成白名单/接口契约（相当于给 Agent 上“安全护栏”），减少随意执行高风险操作。系统强调“自我进化”：把运行中的成功/失败轨迹沉淀为可复用策略与提示模板，让后续同类任务更少试错。与传统 RAG（检索增强生成）只做“检索+回答”不同，这里更强调多步工具使用、可审计的执行记录，以及在企业环境中的权限与合规控制。</dd>
+        <dt>关键数据</dt><dd>未披露具体数字（如速度提升百分比、准确率、成本、成功率等）。定性意义在于：把 Agent 的“工具使用（tool use）”从实验性质的自由调用，收敛到可控、可审计、可在内网部署的工程形态，重点解决安全与治理而非单点模型分数。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 LLM agent / tool use / MCP 的读者，这条提供了“如何把工具调用做成可治理层”的落地思路，接近 MCP 强调的标准化工具接口与权限边界。对 RAG 与多步推理（reasoning models）方向，它展示了从“回答问题”升级到“执行研究流程+持续改进”的 Agent 形态。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <a class="cta" href="https://developer.nvidia.com/blog/deploy-self-evolving-agents-for-faster-more-secure-research-with-a-hermes-agent-and-nvidia-nemoclaw/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
