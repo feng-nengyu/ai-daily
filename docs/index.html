@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>133</strong> 条（15 天）·
-      生成于 2026-06-03 05:23 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>143</strong> 条（15 天）·
+      生成于 2026-06-03 06:48 UTC
     </p>
   </header>
   <main>
@@ -214,9 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
         
-          <a href="#archive-2026-06-03" onclick="openArchive('2026-06-03')">2026-06-03 <span class="n">8</span></a>
+          <a href="#archive-2026-06-03" onclick="openArchive('2026-06-03')">2026-06-03 <span class="n">18</span></a>
         
           <a href="#archive-2026-06-02" onclick="openArchive('2026-06-02')">2026-06-02 <span class="n">13</span></a>
         
@@ -259,10 +259,47 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-06-03" open>
+            <summary>2026-06-03 <span class="n">18 条</span></summary>
+            <div class="cards">
+              
+    <article class="card" data-url="https://arxiv.org/abs/2606.03892v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03892v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.03892v1" target="_blank" rel="noopener">Synthesize and Reward -- Reinforcement Learning for Multi-Step Tool Use in Live Environments</a></h2>
+        <div class="badges">
+          <span class="score high">9</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">把“多步工具调用”的强化学习搬到可真实执行的 MCP 服务器上，并用纯程序化奖励替代评审模型，减少无效/啰嗦调用。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 PROVE（在可验证环境上的程序化奖励）：先搭建 20 个有状态的 MCP（模型上下文协议）服务器，共 343 个工具，支持会话级状态隔离，便于在线执行训练。再用自动合成数据管线：从服务器实时采样状态，按依赖图模拟多轮对话，生成并验证可执行的工具调用轨迹，避免“问到不存在实体”导致调用失败。奖励函数不靠外部 judge 模型，而是多组件程序规则：有效性分级、依赖覆盖、按任务复杂度自适应的效率惩罚（调用预算）、工具名信号、参数值匹配加分，抑制只为拿分而堆调用的模式。用 GRPO（组相对策略优化）在约 13K 例上训练 4 个开源模型，奖励超参统一，仅对每个模型族做 3 点学习率扫参。</dd>
+        <dt>关键数据</dt><dd>环境规模：20 个有状态 MCP 服务器、343 个工具。训练数据：约 13K 例；训练模型：Qwen3-4B/8B、Qwen2.5-7B、Granite-4.1-8B；算法：GRPO；调参：仅学习率三点扫。效果：在 BFCL Multi-Turn 最高 +10.2 分、tau2-bench 最高 +6.8 分、T-Eval 最高 +6.5 分（均为点数提升，具体基线分数与方差未披露）。推理成本/训练算力/训练时长未披露，但强调无需额外评审模型，奖励计算可直接程序化执行。</dd>
+        <dt>为什么值得关注</dt><dd>面向 LLM agent 的 tool use / multi-agent 编排常卡在“环境难搭、数据不贴真实状态、奖励鼓励啰嗦调用”，这篇用 MCP 服务器+可执行合成数据+程序化奖励给出一套可复用的 RL 训练范式。对关注 MCP、工具调用、RAG/多步推理与执行一致性的读者，可直接借鉴其“状态对齐的数据合成”和“无 judge 的奖励设计”。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.03892v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
     <article class="card" data-url="https://arxiv.org/abs/2606.03895v1">
       <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03895v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -292,37 +329,10 @@
         <a class="cta" href="https://arxiv.org/abs/2606.03895v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.03892v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03892v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.03812v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03812v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.03892v1" target="_blank" rel="noopener">Synthesize and Reward -- Reinforcement Learning for Multi-Step Tool Use in Live Environments</a></h2>
-        <div class="badges">
-          <span class="score high">9</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">RAG</span>
-      </div>
-      
-      <p class="innovation">把“多步工具调用”的强化学习搬到可真实执行的 MCP 服务器上，并用纯程序化奖励替代评审模型，减少无效/啰嗦调用。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>提出 PROVE（在可验证环境上的程序化奖励）：先搭建 20 个有状态的 MCP（模型上下文协议）服务器，共 343 个工具，支持会话级状态隔离，便于在线执行训练。再用自动合成数据管线：从服务器实时采样状态，按依赖图模拟多轮对话，生成并验证可执行的工具调用轨迹，避免“问到不存在实体”导致调用失败。奖励函数不靠外部 judge 模型，而是多组件程序规则：有效性分级、依赖覆盖、按任务复杂度自适应的效率惩罚（调用预算）、工具名信号、参数值匹配加分，抑制只为拿分而堆调用的模式。用 GRPO（组相对策略优化）在约 13K 例上训练 4 个开源模型，奖励超参统一，仅对每个模型族做 3 点学习率扫参。</dd>
-        <dt>关键数据</dt><dd>环境规模：20 个有状态 MCP 服务器、343 个工具。训练数据：约 13K 例；训练模型：Qwen3-4B/8B、Qwen2.5-7B、Granite-4.1-8B；算法：GRPO；调参：仅学习率三点扫。效果：在 BFCL Multi-Turn 最高 +10.2 分、tau2-bench 最高 +6.8 分、T-Eval 最高 +6.5 分（均为点数提升，具体基线分数与方差未披露）。推理成本/训练算力/训练时长未披露，但强调无需额外评审模型，奖励计算可直接程序化执行。</dd>
-        <dt>为什么值得关注</dt><dd>面向 LLM agent 的 tool use / multi-agent 编排常卡在“环境难搭、数据不贴真实状态、奖励鼓励啰嗦调用”，这篇用 MCP 服务器+可执行合成数据+程序化奖励给出一套可复用的 RL 训练范式。对关注 MCP、工具调用、RAG/多步推理与执行一致性的读者，可直接借鉴其“状态对齐的数据合成”和“无 judge 的奖励设计”。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-02</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.03892v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.03883v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03883v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.03883v1" target="_blank" rel="noopener">Reasoning Structure of Large Language Models</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.03812v1" target="_blank" rel="noopener">Enhancing Operational Safety via Agentic Dialogue Hazard Identification Analysis</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -330,26 +340,26 @@
       </div>
       
       <div class="tags">
-        <span class="tag">reasoning</span><span class="tag">benchmark</span><span class="tag">LLM</span>
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">把“推理过程”从一串文本变成可验证的推理图（主张-依赖关系），用结构指标区分同样准确率/同样 token 下的不同推理方式。</p>
+      <p class="innovation">把“安全隐患识别”从一次性 LLM 输出，改成多智能体多轮对话（辩论/讨论）来互相纠错，并用算法优化对话过程，专门验证对话是否真的更可靠。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者先做了一个可扩展的逻辑谜题（logic puzzles）基准，用来稳定触发模型的多步推理。然后提供一条流水线，把模型输出的非结构化推理痕迹（trace）解析为由“主张（claim）”和“依赖（dependency）”组成的推理图，并对图中关系做可验证检查，从而把推理变成可度量对象。基于图的拓扑结构（例如依赖链条与分支形态）做定量分析，而不是只看最终答案对不对或输出有多长。进一步提出“推理效率”指标，用来衡量逻辑流是否集中（更少无关分支/更紧凑的依赖），用于诊断失败模式并比较难度提升时推理结构如何变化。与以往主要用准确率、token 数、或主观评审推理质量不同，这套方法强调结构化、可验证、可批量分析。</dd>
-        <dt>关键数据</dt><dd>未披露具体数值（如基准规模、模型列表、结构指标的统计结果或提升幅度）。定性结论是：结构测量能把“准确率和 token 数看起来一样”的模型行为区分开，并能随谜题难度变化观察推理结构的缩放规律；相对意义在于为评估/调参提供比“对/错+长度”更细的诊断信号。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / reasoning models 来说，很多问题不在“答对没”，而在“怎么推理、哪里走偏”；推理图能更像调试工具一样定位失败模式。对 tool use、RAG、多智能体协作也有参考价值：可用类似结构指标衡量链式调用/协作推理是否更集中、是否产生无效分支与冗余步骤。</dd>
+        <dt>技术方案</dt><dd>提出 HAZDIAL：让多个 LLM 代理围绕同一工况文本进行多轮对话式隐患识别，而不是单轮直接给结论。系统对比两种对话模式：对抗式辩论（互相挑错）与建设性讨论（协作补全）。在对话过程中引入“基于算法的交互优化”，用于调度发言顺序、轮次或策略，以提升最终分类质量与一致性。用人工整理的 golden 数据集做标准化评测，并额外设计对话质量指标来衡量“讨论是否有效”。核心差异在于：把安全工程师常用的迭代审查流程显式结构化为可评测的多轮 agent 交互。</dd>
+        <dt>关键数据</dt><dd>未披露具体数值。论文称在 curated golden dataset 上用 accuracy/precision/recall/F1 做对比，并加入“新对话指标”评估对话过程；相对意义是把“多轮多 agent 是否优于单次推理”变成可量化的实验问题，而非仅凭案例展示。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 LLM agent / multi-agent / reasoning 的读者，这篇提供了一个可复现的评测框架：用结构化对话来做高风险任务的自我纠错与审查。对 tool use、RAG、MCP 方向也有启发：即使不接工具，仅靠多轮协作与流程优化也可能提升可靠性，后续可与检索/工具调用组合。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-02</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.03883v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.03812v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.03871v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03871v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.03829v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03829v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.03871v1" target="_blank" rel="noopener">Visual Instruction Tuning Aligns Modalities through Abstraction</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.03829v1" target="_blank" rel="noopener">BigFinanceBench: A Workflow-Grounded Benchmark for Financial-Research Agents</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -357,101 +367,20 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">RAG</span>
+        <span class="tag">agent</span><span class="tag">benchmark</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">解释了「视觉指令微调」到底把图像信息塞进 LLM 的哪一层：主要对齐在中间语义层，而不是从底层一路融合；并证明只微调这些层也能保住效果、还更省训练时间。</p>
+      <p class="innovation">把金融研究从“只看最终答案”改成“逐步可审计的工作流评分”：928 道题配分步 rubric，让 agent 的选源、口径、假设、计算都能被量化检查。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者在多种视觉-语言架构上做层级分析，追踪图像特征在 LLM 各层（从低层到高层抽象）中的落点。通过 probing（探针：用小模型读出某层是否含特定信息）和 causal intervention（因果干预：人为扰动/替换某层表征看性能变化），定位中间层是多模态语义处理的“核心层”。他们进一步比较语义等价的图像与文本表征的几何结构（向量空间中的相对位置/角度），发现微调是在强化 LLM 原有的抽象阶段，让视觉表征贴近既有的文本语义表征。最后做消融：把微调限制在中间层，检验是否能复现全量微调的多模态能力，并观察训练成本变化。</dd>
-        <dt>关键数据</dt><dd>未披露具体 benchmark 分数、提升幅度或训练加速比例。定性结论是：仅微调中间层即可在“以视觉为主”的多模态基准上保持与全量微调相当的表现，同时训练时间更短；并且对中间层做因果干预会显著影响多模态任务表现，说明其对性能贡献最大。</dd>
-        <dt>为什么值得关注</dt><dd>对做 LLM agent / tool use 的多模态输入很关键：它提示多模态对齐可能是“局部层”的问题，可用更小的微调范围更快迭代。对 reasoning models 也有启发：中间语义层像是可复用的“抽象引擎”，理解其作用有助于设计更稳的多模态推理与 RAG（检索增强生成）管线。</dd>
+        <dt>技术方案</dt><dd>作者提出 BigFinanceBench：面向开放式金融研究任务的基准，每题不仅给参考答案，还给“按步骤拆解、逐点计分”的评分细则（rubric）。rubric 将推导过程拆成可独立核对的环节，例如选择数据来源、确定时间区间与会计口径、写明关键假设、完成计算并解释结果。与以往金融 benchmark 多评单一子技能或只判最终对错不同，它强调“workflow-grounded（以工作流为落点）”，直接评估推导链条本身。评分支持部分得分，从而能定位 agent 在工作流的哪一步出错，而不是只给一个总分。作者用该基准评测了 10 个前沿/开源权重 agent，展示当前系统在可审计推导上仍有明显空缺。</dd>
+        <dt>关键数据</dt><dd>数据规模：928 个专家撰写任务；rubric 总计 36,241 个计分点，支持部分得分与失败定位。模型结果：10 个 agent 中最佳系统 rubric 得分仅 58.8%，显示仍有较大提升空间。结论性发现：最终答案准确率“有用但信息损失大”，不能充分代表推导质量；不同工作流环节能力差异明显（未披露各环节的具体分项数值）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 读者，这个基准把“会用工具查数据并可复核地算出来”变成可量化指标，适合评估端到端研究型 agent。rubric 的分步计分也利于多 agent 分工与错误定位（例如检索、口径对齐、计算、写作各环节），比只看最终答案更贴近真实工作流。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-02</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.03871v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.03867v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03867v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.03867v1" target="_blank" rel="noopener">A Training-Free Mixture-of-Agents Framework for Multi-Document Summarization using LLMs and Knowledge Graphs</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把多文档摘要拆成“多代理协作”，结合知识图谱做一致性融合，全流程无需训练/微调，还能跨英语与越南语保持竞争力。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>框架是训练无关（training-free）的 Mixture-of-Agents（多代理混合）：把 MDS（多文档摘要）分解为三个专职代理：抽取式选择（先挑关键句）、知识感知抽象（借助知识图谱把信息改写成更概括的表述）、迭代润色（多轮修订减少遗漏与重复）。每个代理都直接调用通用 LLM，不做任务专用微调，降低对标注数据依赖。最后用“多视角一致性”机制做融合：让 LLM 充当裁判/协调者，对不同代理输出进行一致性检查与合并，尽量对齐跨文档关系与事实。相较传统端到端监督训练或单模型生成，这里强调模块化、可替换代理与知识图谱约束来提升泛化。</dd>
-        <dt>关键数据</dt><dd>在 4 个数据集（英语+越南语）上达到 SOTA（最好）或“有竞争力”的结果；具体指标（如 ROUGE-1/2/L、BERTScore、人工评测分）与提升幅度未披露。训练成本方面宣称无需训练/微调，但推理开销（调用次数、token 成本、延迟）未披露；相对意义是更适合低资源语言/跨域场景快速落地。</dd>
-        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent / multi-agent + tool use 思路：用多个专职代理分工，再用一致性机制做协调，适合关注“代理编排”与“推理/校验”的读者。知识图谱相当于一种外部结构化知识源，可视作 RAG（检索增强生成）的替代/补充路径，值得对比在多文档场景下的效果与成本。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-02</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.03867v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.03858v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03858v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.03858v1" target="_blank" rel="noopener">PyraMathBench: Evaluating and Improving Mathematical Capability in Large Language Models</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">benchmark</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">把“算数能力”和“数学推理”拆开评测：3.25 万题的分层基准 + 一套更稳的工具调用训练，让模型更会算也更会用工具。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者提出 PyraMathBench：从 7,404 道数学应用题派生出 32,505 个问题，按层级覆盖 4 个认知维度、14 个子类，并包含 2 种模态，目的是把失败原因定位到“数值计算不行”还是“抽象数概念不行”。实验发现很多 LLM 在数值计算和抽象数值问题上掉分明显，说明仅靠语言推理不足。为此他们提出 SOLVE 模块与 IRPO：前者强调“数值-数学协同”，通过更高效的工具调用来补足计算；后者是交互式相对策略优化（类似偏好/策略训练），让模型学会何时调用工具。工具调用侧加入模糊匹配（容错对齐）与低质量调用拒绝（过滤无效/错误调用），减少“乱调用工具”带来的噪声，这点区别于只做简单 function calling 的做法。</dd>
-        <dt>关键数据</dt><dd>基准规模：32,505 题，来源 7,404 道题；覆盖：4 个认知方面、14 个子类、2 种模态。方法效果：在对比实验中，Qwen-2.5 经过 SOLVE + IRPO 训练后，得分提升 5.0（具体是哪个总分量表/满分未披露，因此更适合解读为“同一评测体系下的绝对分提升”）。其余模型、成本（训练步数/算力/推理开销）未披露。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者：它把“工具调用质量控制”（模糊匹配、拒绝低质量调用）做成可训练方案，直接影响代理在数学/数值任务中的可靠性。对 reasoning models / RAG 读者：提供更可解释的分层评测，能更清楚区分是推理链问题还是数值计算与外部工具协同的问题。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-02</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.03858v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.03852v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03852v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.03852v1" target="_blank" rel="noopener">FLARE: Fine-Grained Diagnostic Feedback for LLM Code Refinement</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span><span class="tag">code-gen</span>
-      </div>
-      
-      <p class="innovation">用一个轻量“诊断模型”给 LLM 生成的代码做逐行“可疑度”标注，直接告诉该改哪几行；再用 top-k 候选搜索+运行结果挑最优，减少盲改。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>Flare 是一个迭代式代码修复框架：先让基础 LLM 产出代码并执行得到结果。随后引入轻量诊断模型做 bug 定位，输出行级 suspiciousness（可疑度）信号，指出最可能出错的代码区域。考虑诊断有不确定性，Flare 不只改一个位置，而是在 top-k 个最可疑区域分别生成修复候选。最后通过执行/测试结果对候选进行选择，保留表现最好的版本；相比只看测试失败信息或自我反思（更粗或更抽象），它把反馈细化到“哪一行/哪一段”。</dd>
-        <dt>关键数据</dt><dd>在 LiveCodeBench 与 BigCodeBench 上、覆盖 5 个基础 LLM：不做候选搜索（k=1）也能超过最强基线，绝对提升从 1.72% 提到 7.42%（文中表述为从 1.72% 到 7.42%）。当搜索 10 个候选（k=10）时，相比不搜索（k=1）平均再提升 8.50%。诊断模型单独评测时优于近期 fault localization（故障定位）方法，但未披露具体对比数值与模型规模/成本。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景很直接：把“执行反馈”从粗粒度的失败信息变成可操作的行级定位信号，更适合做自动化代码修复循环。top-k 搜索+执行选择也可迁移到多步推理/多代理协作中的“生成-验证-选择”策略。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-02</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.03852v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.03829v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2606.03841v1">
@@ -483,10 +412,10 @@
         <a class="cta" href="https://arxiv.org/abs/2606.03841v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.03829v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03829v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.03852v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03852v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.03829v1" target="_blank" rel="noopener">BigFinanceBench: A Workflow-Grounded Benchmark for Financial-Research Agents</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.03852v1" target="_blank" rel="noopener">FLARE: Fine-Grained Diagnostic Feedback for LLM Code Refinement</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -494,26 +423,26 @@
       </div>
       
       <div class="tags">
-        <span class="tag">agent</span><span class="tag">benchmark</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span><span class="tag">code-gen</span>
       </div>
       
-      <p class="innovation">把金融研究从“只看最终答案”改成“逐步可审计的工作流评分”：928 道题配分步 rubric，让 agent 的选源、口径、假设、计算都能被量化检查。</p>
+      <p class="innovation">用一个轻量“诊断模型”给 LLM 生成的代码做逐行“可疑度”标注，直接告诉该改哪几行；再用 top-k 候选搜索+运行结果挑最优，减少盲改。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者提出 BigFinanceBench：面向开放式金融研究任务的基准，每题不仅给参考答案，还给“按步骤拆解、逐点计分”的评分细则（rubric）。rubric 将推导过程拆成可独立核对的环节，例如选择数据来源、确定时间区间与会计口径、写明关键假设、完成计算并解释结果。与以往金融 benchmark 多评单一子技能或只判最终对错不同，它强调“workflow-grounded（以工作流为落点）”，直接评估推导链条本身。评分支持部分得分，从而能定位 agent 在工作流的哪一步出错，而不是只给一个总分。作者用该基准评测了 10 个前沿/开源权重 agent，展示当前系统在可审计推导上仍有明显空缺。</dd>
-        <dt>关键数据</dt><dd>数据规模：928 个专家撰写任务；rubric 总计 36,241 个计分点，支持部分得分与失败定位。模型结果：10 个 agent 中最佳系统 rubric 得分仅 58.8%，显示仍有较大提升空间。结论性发现：最终答案准确率“有用但信息损失大”，不能充分代表推导质量；不同工作流环节能力差异明显（未披露各环节的具体分项数值）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 读者，这个基准把“会用工具查数据并可复核地算出来”变成可量化指标，适合评估端到端研究型 agent。rubric 的分步计分也利于多 agent 分工与错误定位（例如检索、口径对齐、计算、写作各环节），比只看最终答案更贴近真实工作流。</dd>
+        <dt>技术方案</dt><dd>Flare 是一个迭代式代码修复框架：先让基础 LLM 产出代码并执行得到结果。随后引入轻量诊断模型做 bug 定位，输出行级 suspiciousness（可疑度）信号，指出最可能出错的代码区域。考虑诊断有不确定性，Flare 不只改一个位置，而是在 top-k 个最可疑区域分别生成修复候选。最后通过执行/测试结果对候选进行选择，保留表现最好的版本；相比只看测试失败信息或自我反思（更粗或更抽象），它把反馈细化到“哪一行/哪一段”。</dd>
+        <dt>关键数据</dt><dd>在 LiveCodeBench 与 BigCodeBench 上、覆盖 5 个基础 LLM：不做候选搜索（k=1）也能超过最强基线，绝对提升从 1.72% 提到 7.42%（文中表述为从 1.72% 到 7.42%）。当搜索 10 个候选（k=10）时，相比不搜索（k=1）平均再提升 8.50%。诊断模型单独评测时优于近期 fault localization（故障定位）方法，但未披露具体对比数值与模型规模/成本。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景很直接：把“执行反馈”从粗粒度的失败信息变成可操作的行级定位信号，更适合做自动化代码修复循环。top-k 搜索+执行选择也可迁移到多步推理/多代理协作中的“生成-验证-选择”策略。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-02</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.03829v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.03852v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.03812v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03812v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.03858v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03858v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.03812v1" target="_blank" rel="noopener">Enhancing Operational Safety via Agentic Dialogue Hazard Identification Analysis</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.03858v1" target="_blank" rel="noopener">PyraMathBench: Evaluating and Improving Mathematical Capability in Large Language Models</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -521,34 +450,103 @@
       </div>
       
       <div class="tags">
-        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">benchmark</span><span class="tag">tool-use</span>
       </div>
       
-      <p class="innovation">把“安全隐患识别”从一次性 LLM 输出，改成多智能体多轮对话（辩论/讨论）来互相纠错，并用算法优化对话过程，专门验证对话是否真的更可靠。</p>
+      <p class="innovation">把“算数能力”和“数学推理”拆开评测：3.25 万题的分层基准 + 一套更稳的工具调用训练，让模型更会算也更会用工具。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>提出 HAZDIAL：让多个 LLM 代理围绕同一工况文本进行多轮对话式隐患识别，而不是单轮直接给结论。系统对比两种对话模式：对抗式辩论（互相挑错）与建设性讨论（协作补全）。在对话过程中引入“基于算法的交互优化”，用于调度发言顺序、轮次或策略，以提升最终分类质量与一致性。用人工整理的 golden 数据集做标准化评测，并额外设计对话质量指标来衡量“讨论是否有效”。核心差异在于：把安全工程师常用的迭代审查流程显式结构化为可评测的多轮 agent 交互。</dd>
-        <dt>关键数据</dt><dd>未披露具体数值。论文称在 curated golden dataset 上用 accuracy/precision/recall/F1 做对比，并加入“新对话指标”评估对话过程；相对意义是把“多轮多 agent 是否优于单次推理”变成可量化的实验问题，而非仅凭案例展示。</dd>
-        <dt>为什么值得关注</dt><dd>对关心 LLM agent / multi-agent / reasoning 的读者，这篇提供了一个可复现的评测框架：用结构化对话来做高风险任务的自我纠错与审查。对 tool use、RAG、MCP 方向也有启发：即使不接工具，仅靠多轮协作与流程优化也可能提升可靠性，后续可与检索/工具调用组合。</dd>
+        <dt>技术方案</dt><dd>作者提出 PyraMathBench：从 7,404 道数学应用题派生出 32,505 个问题，按层级覆盖 4 个认知维度、14 个子类，并包含 2 种模态，目的是把失败原因定位到“数值计算不行”还是“抽象数概念不行”。实验发现很多 LLM 在数值计算和抽象数值问题上掉分明显，说明仅靠语言推理不足。为此他们提出 SOLVE 模块与 IRPO：前者强调“数值-数学协同”，通过更高效的工具调用来补足计算；后者是交互式相对策略优化（类似偏好/策略训练），让模型学会何时调用工具。工具调用侧加入模糊匹配（容错对齐）与低质量调用拒绝（过滤无效/错误调用），减少“乱调用工具”带来的噪声，这点区别于只做简单 function calling 的做法。</dd>
+        <dt>关键数据</dt><dd>基准规模：32,505 题，来源 7,404 道题；覆盖：4 个认知方面、14 个子类、2 种模态。方法效果：在对比实验中，Qwen-2.5 经过 SOLVE + IRPO 训练后，得分提升 5.0（具体是哪个总分量表/满分未披露，因此更适合解读为“同一评测体系下的绝对分提升”）。其余模型、成本（训练步数/算力/推理开销）未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者：它把“工具调用质量控制”（模糊匹配、拒绝低质量调用）做成可训练方案，直接影响代理在数学/数值任务中的可靠性。对 reasoning models / RAG 读者：提供更可解释的分层评测，能更清楚区分是推理链问题还是数值计算与外部工具协同的问题。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-02</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.03812v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.03858v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.03867v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03867v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.03867v1" target="_blank" rel="noopener">A Training-Free Mixture-of-Agents Framework for Multi-Document Summarization using LLMs and Knowledge Graphs</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
+      </div>
       
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
       
+      <p class="innovation">把多文档摘要拆成“多代理协作”，结合知识图谱做一致性融合，全流程无需训练/微调，还能跨英语与越南语保持竞争力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>框架是训练无关（training-free）的 Mixture-of-Agents（多代理混合）：把 MDS（多文档摘要）分解为三个专职代理：抽取式选择（先挑关键句）、知识感知抽象（借助知识图谱把信息改写成更概括的表述）、迭代润色（多轮修订减少遗漏与重复）。每个代理都直接调用通用 LLM，不做任务专用微调，降低对标注数据依赖。最后用“多视角一致性”机制做融合：让 LLM 充当裁判/协调者，对不同代理输出进行一致性检查与合并，尽量对齐跨文档关系与事实。相较传统端到端监督训练或单模型生成，这里强调模块化、可替换代理与知识图谱约束来提升泛化。</dd>
+        <dt>关键数据</dt><dd>在 4 个数据集（英语+越南语）上达到 SOTA（最好）或“有竞争力”的结果；具体指标（如 ROUGE-1/2/L、BERTScore、人工评测分）与提升幅度未披露。训练成本方面宣称无需训练/微调，但推理开销（调用次数、token 成本、延迟）未披露；相对意义是更适合低资源语言/跨域场景快速落地。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent / multi-agent + tool use 思路：用多个专职代理分工，再用一致性机制做协调，适合关注“代理编排”与“推理/校验”的读者。知识图谱相当于一种外部结构化知识源，可视作 RAG（检索增强生成）的替代/补充路径，值得对比在多文档场景下的效果与成本。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
         
-          <details class="date-group" id="archive-2026-06-03" open>
-            <summary>2026-06-03 <span class="n">8 条</span></summary>
-            <div class="cards">
-              
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.03867v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.03871v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03871v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.03871v1" target="_blank" rel="noopener">Visual Instruction Tuning Aligns Modalities through Abstraction</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">解释了「视觉指令微调」到底把图像信息塞进 LLM 的哪一层：主要对齐在中间语义层，而不是从底层一路融合；并证明只微调这些层也能保住效果、还更省训练时间。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者在多种视觉-语言架构上做层级分析，追踪图像特征在 LLM 各层（从低层到高层抽象）中的落点。通过 probing（探针：用小模型读出某层是否含特定信息）和 causal intervention（因果干预：人为扰动/替换某层表征看性能变化），定位中间层是多模态语义处理的“核心层”。他们进一步比较语义等价的图像与文本表征的几何结构（向量空间中的相对位置/角度），发现微调是在强化 LLM 原有的抽象阶段，让视觉表征贴近既有的文本语义表征。最后做消融：把微调限制在中间层，检验是否能复现全量微调的多模态能力，并观察训练成本变化。</dd>
+        <dt>关键数据</dt><dd>未披露具体 benchmark 分数、提升幅度或训练加速比例。定性结论是：仅微调中间层即可在“以视觉为主”的多模态基准上保持与全量微调相当的表现，同时训练时间更短；并且对中间层做因果干预会显著影响多模态任务表现，说明其对性能贡献最大。</dd>
+        <dt>为什么值得关注</dt><dd>对做 LLM agent / tool use 的多模态输入很关键：它提示多模态对齐可能是“局部层”的问题，可用更小的微调范围更快迭代。对 reasoning models 也有启发：中间语义层像是可复用的“抽象引擎”，理解其作用有助于设计更稳的多模态推理与 RAG（检索增强生成）管线。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.03871v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.03883v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.03883v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.03883v1" target="_blank" rel="noopener">Reasoning Structure of Large Language Models</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">reasoning</span><span class="tag">benchmark</span><span class="tag">LLM</span>
+      </div>
+      
+      <p class="innovation">把“推理过程”从一串文本变成可验证的推理图（主张-依赖关系），用结构指标区分同样准确率/同样 token 下的不同推理方式。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者先做了一个可扩展的逻辑谜题（logic puzzles）基准，用来稳定触发模型的多步推理。然后提供一条流水线，把模型输出的非结构化推理痕迹（trace）解析为由“主张（claim）”和“依赖（dependency）”组成的推理图，并对图中关系做可验证检查，从而把推理变成可度量对象。基于图的拓扑结构（例如依赖链条与分支形态）做定量分析，而不是只看最终答案对不对或输出有多长。进一步提出“推理效率”指标，用来衡量逻辑流是否集中（更少无关分支/更紧凑的依赖），用于诊断失败模式并比较难度提升时推理结构如何变化。与以往主要用准确率、token 数、或主观评审推理质量不同，这套方法强调结构化、可验证、可批量分析。</dd>
+        <dt>关键数据</dt><dd>未披露具体数值（如基准规模、模型列表、结构指标的统计结果或提升幅度）。定性结论是：结构测量能把“准确率和 token 数看起来一样”的模型行为区分开，并能随谜题难度变化观察推理结构的缩放规律；相对意义在于为评估/调参提供比“对/错+长度”更细的诊断信号。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / reasoning models 来说，很多问题不在“答对没”，而在“怎么推理、哪里走偏”；推理图能更像调试工具一样定位失败模式。对 tool use、RAG、多智能体协作也有参考价值：可用类似结构指标衡量链式调用/协作推理是否更集中、是否产生无效分支与冗余步骤。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-02</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.03883v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
     <article class="card" data-url="https://huggingface.co/blog/Hcompany/holo31">
       <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/Hcompany/holo31" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
