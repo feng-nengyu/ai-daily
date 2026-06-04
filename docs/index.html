@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>1</strong> 条 ·
       归档 <strong>143</strong> 条（15 天）·
-      生成于 2026-06-03 06:48 UTC
+      生成于 2026-06-04 00:23 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
           <a href="#archive-2026-06-03" onclick="openArchive('2026-06-03')">2026-06-03 <span class="n">18</span></a>
         
@@ -259,9 +259,38 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/">
+      <button class="star" aria-label="收藏" data-url="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/" target="_blank" rel="noopener">Gemma 4 12B: A unified, encoder-free multimodal model</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-community" title="hackernews:hackernews-ai">Hacker News</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">LLM</span>
+      </div>
+      
+      <p class="innovation">Gemma 4 12B 把图像与文本统一进一个“无编码器”的多模态模型：不再用单独的视觉编码器，结构更简单，便于做端到端的工具调用与 Agent 集成。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>传统多模态常见做法是“视觉编码器（把图变向量）+ 语言模型（生成文本）”两段式；这条强调 encoder-free，意味着图像信息直接以统一的 token/表示进入同一个 Transformer 主干。这样做的核心是把视觉输入的表示方式对齐到语言 token 的处理流程，减少跨模块对齐与接口胶水。统一主干通常也更利于在同一套推理/对话框架里做多轮交互、引用图像细节与文本指令。与过去相比，差异点在于：少一个独立视觉塔（tower），训练与推理路径更一致，工程集成更轻。</dd>
+        <dt>关键数据</dt><dd>参数规模：12B。其余关键指标（多模态基准分数、推理速度、上下文长度、训练数据规模/成本、与“有编码器”方案的对照提升幅度）未披露；定性意义是把多模态从“拼接两模型”推进到“单模型统一表示”，更看重架构简化与一致性而非单点跑分。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 来说，统一的多模态主干更容易把“看图—理解—调用工具—再看图验证”串成一条推理链，减少模块间信息丢失。对多 Agent、RAG 场景也有价值：同一模型可同时处理检索到的文本与截图/图表等证据，降低系统拼装复杂度。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-03</span>
+        
+        
+        <a class="cta" href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
