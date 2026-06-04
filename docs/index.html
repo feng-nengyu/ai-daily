@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>2</strong> 条 ·
       归档 <strong>154</strong> 条（16 天）·
-      生成于 2026-06-04 06:38 UTC
+      生成于 2026-06-04 23:59 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">2</span></a>
         
           <a href="#archive-2026-06-04" onclick="openArchive('2026-06-04')">2026-06-04 <span class="n">11</span></a>
         
@@ -261,9 +261,65 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(2)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents/">
+      <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents/" target="_blank" rel="noopener">NVIDIA Nemotron 3 Ultra Powers Faster, More Efficient Reasoning for Long-Running Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:nvidia-dev-blog">NVIDIA</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">Nemotron 3 Ultra 主打“长时间运行的 Agent 推理”：在多轮对话里更省算力地保持上下文、做推理并调用工具，面向真实任务的持续执行场景。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>文章将重点从“一问一答聊天”转向“多轮持续执行的智能体”，强调模型需要在很多轮里稳定推理、记住关键信息并能用工具完成任务。Nemotron 3 Ultra 的定位是为这种长链路推理做优化：在更长上下文与更多轮交互下，尽量降低每轮推理的计算与延迟。它面向 Agent 的典型工作流（规划-执行-反思/校验、工具调用、状态维护）做了工程与模型侧的适配，而不是只追求单轮指标。与过去偏“单轮聊天/短任务”的模型相比，关注点更偏向吞吐、成本与长程稳定性。</dd>
+        <dt>关键数据</dt><dd>未披露：摘要未给出具体参数规模、上下文长度上限、吞吐（tokens/s）、延迟、成本（$/1M tokens）或标准基准分数。定性意义是把优化目标从“单轮回答质量”转到“多轮 Agent 的总成本与稳定推理”，但需要等全文/基准数据才能判断提升幅度。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、reasoning models 读者，这条聚焦“长任务、多轮推理、工具使用”的真实落地瓶颈（成本/延迟/上下文维护）。如果你在做 MCP/tool use/RAG 驱动的 Agent，模型在多轮执行中的效率与稳定性往往比单轮分数更关键。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://huggingface.co/blog/ServiceNow-AI/eva-bench-data">
+      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/ServiceNow-AI/eva-bench-data" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://huggingface.co/blog/ServiceNow-AI/eva-bench-data" target="_blank" rel="noopener">EVA-Bench Data 2.0: 3 Domains, 121 Tools, 213 Scenarios</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">benchmark</span>
+      </div>
+      
+      <p class="innovation">EVA-Bench Data 2.0 把 Agent 工具使用评测数据扩到 3 个领域、121 个工具、213 个场景，更像“真实工作流”的任务集合，便于对比不同 LLM Agent 的工具调用能力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>这次更新的核心是把“会不会用工具”拆成更细的可测场景：在不同领域里给定目标、约束与可用工具，让模型通过多步调用完成任务。数据以“场景-工具链”组织，强调从选择工具、填参数到串联多工具的完整流程，而不是只测单次 API 调用。相较旧版或常见工具评测，它覆盖的工具种类更广、场景更细，减少只在少数热门工具上过拟合的风险。整体定位更偏向 Agent 评测数据集（用于训练/对齐/回归测试），而非单纯问答数据。</dd>
+        <dt>关键数据</dt><dd>覆盖范围：3 个领域、121 个工具、213 个场景。模型分数、通过率、成本/时延等评测结果：未披露；但数据规模与工具覆盖度的提升，意味着更适合做跨工具、跨领域的泛化对比与回归测试。</dd>
+        <dt>为什么值得关注</dt><dd>如果你在做 LLM agent、tool use（工具调用）或 MCP（模型上下文协议）生态适配，这类“多工具+多场景”的基准数据能更真实地暴露编排、参数填充、错误恢复等问题。对 RAG、multi-agent、reasoning models 也有用：可用来检验推理链是否能稳定落到可执行的工具链上。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://huggingface.co/blog/ServiceNow-AI/eva-bench-data" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
