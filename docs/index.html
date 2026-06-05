@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>10</strong> 条 ·
       归档 <strong>156</strong> 条（16 天）·
-      生成于 2026-06-05 06:17 UTC
+      生成于 2026-06-05 23:56 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
         
           <a href="#archive-2026-06-04" onclick="openArchive('2026-06-04')">2026-06-04 <span class="n">13</span></a>
         
@@ -261,9 +261,283 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://arxiv.org/abs/2606.06337v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.06337v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.06337v1" target="_blank" rel="noopener">TokenMizer: Graph-Structured Session Memory for Long-Horizon LLM Context Management</a></h2>
+        <div class="badges">
+          <span class="score high">9</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">把长会话记忆从“扁平文本”改成“带类型的知识图谱”，用极短的恢复块让 LLM/Agent 跨很长任务也能续上关键决策与理由。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>TokenMizer 是一个开源代理层（proxy），在对话进行中把会话历史增量抽取成“类型化知识图谱”（节点/边都有固定类别）。它定义了 14 种节点类型和 7 种边类型，用混合抽取流水线持续更新图谱。为便于恢复上下文，它用三层 checkpoint 把图谱序列化成紧凑的 resume block（可直接塞回模型上下文）。同时配套 8 层压缩流水线降低 token 开销，并用语义缓存（按语义相似度复用结果）减少重复查询延迟；相比传统做法只截断/摘要文本，它强调保留“关系与决策理由”。</dd>
+        <dt>关键数据</dt><dd>评测：21 个受控会话、覆盖 5 个领域。resume block 平均 78 tokens（42-124），相比基线 159-170 tokens 约小 2 倍。决策回忆（decision recall）比基线高 +9 到 +17 个百分点，并强调能保留“为什么这么选”的理由而不只是“提到过”。全会话平均：任务回忆 51.0%，决策回忆 46.6%，文件回忆 58.7%；不同领域方差较大（软件工程显式指令更高、研究类隐式推理更低）。消融：模糊标签匹配贡献最大，任务回忆 +33 个百分点。启发式压缩在零外部依赖下实现 47.3% token 减少。延迟具体数值未披露，仅说明语义缓存可降低重复查询延迟。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 来说，长时任务的“可恢复上下文”是刚需；这篇把会话记忆做成可查询的图结构，接近 RAG/知识库思路但面向单次工作流。若你在关注 MCP、多工具编排或多轮推理的上下文管理，它提供了用更少 token 保留决策链路与文件历史的工程化方案。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.06337v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.06462v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.06462v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.06462v1" target="_blank" rel="noopener">Benchmark Everything Everywhere All at Once</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">benchmark</span><span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“做评测基准”这件事交给全自动 Agent：从需求拆解到标注质检一条龙生成新 benchmark，缓解评测很快被刷满、区分不了新模型的问题。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者提出 Benchmark Agent，一个完全自治的 agentic 系统，用来自动化构建评测基准。流程从用户查询/评测目标分析开始，自动拆成子任务并设计题型与覆盖面，然后生成数据并完成标注（给出参考答案/判分依据）。系统内置质量控制：用一致性检查、LLM-as-a-judge（用大模型当评委）和人工抽检来过滤低质样本。与传统“人工出题+一次性发布”的基准不同，它强调可持续迭代的“持续评测”，让基准随模型能力演进而更新，避免快速饱和。</dd>
+        <dt>关键数据</dt><dd>产出规模：实现并生成了 15 个代表性 benchmark，覆盖文本理解、多模态理解、领域推理等场景。质量评估：使用人工评测、LLM 评委和一致性检查验证“高质量、最少人工参与”，但具体通过率/一致性分数/人工工时节省比例等数字未披露。结论性发现：持续评测显示当前模型在部分领域特定推理任务上仍吃力，但未披露具体任务与分数差距。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 方向：这是一个把“评测构建”当作可编排工作流的自治 Agent 案例，展示了从任务分解到质检的端到端编排。对 reasoning models / RAG / multi-agent 读者：可持续更新的 benchmark 更能暴露推理与领域知识短板，减少“新模型一发布就把旧基准刷满”的评测失真。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.06462v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.06453v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.06453v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.06453v1" target="_blank" rel="noopener">Vortex: Efficient and Programmable Sparse Attention Serving for AI Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">agent</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">Vortex把“稀疏注意力（只算部分 token 关联）”做成可编程、可上线的服务系统，让研究者和AI agent能快速试新算法，并把理论省算力真正转成吞吐提升。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它提供一个嵌入 Python 的前端DSL（领域语言），用“以页为中心”的张量抽象来描述多种稀疏注意力模式，避免每换一种稀疏规则就重写大量内核代码。后端则与现代LLM推理/Serving栈深度集成，把稀疏模式编译/映射到高效执行路径，支持在真实线上配置中部署与评测。系统目标不是提出单一新稀疏算法，而是把“表达-部署-评测”工程链路标准化、自动化，从而让AI agent也能自动生成、迭代和筛选稀疏注意力设计。与以往主要停留在论文原型或离线benchmark不同，Vortex强调可编程性与可服务化，减少把算法落到生产推理的工程摩擦。</dd>
+        <dt>关键数据</dt><dd>AI agent在Vortex上自动生成/改进的稀疏注意力方案：在保持准确率前提下，最高达到相对全注意力（full attention）3.46×吞吐。扩展到新架构/超大模型：在MLA（多头潜在注意力）架构的GLM-4.7-Flash上最高4.7×吞吐；在229B参数的MiniMax-M2.7上最高1.37×吞吐；硬件为NVIDIA B200 GPU。延迟、显存占用、不同上下文长度下的曲线等未披露，但给出的倍数表明其在真实Serving栈中能兑现部分稀疏注意力的效率收益。</dd>
+        <dt>为什么值得关注</dt><dd>对LLM agent与tool use场景，长上下文推理成本是瓶颈；Vortex提供一条把稀疏注意力快速接入Serving并量化评测的路径。对multi-agent/自动化研究也直接相关：它让agent能“写出并上线测试”注意力策略，加速迭代而不被工程实现拖慢。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.06453v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.06448v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.06448v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.06448v1" target="_blank" rel="noopener">Agent Memory: Characterization and System Implications of Stateful Long-Horizon Workloads</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">首次从“系统工程”角度把 Agent 记忆做成可量化的剖析：给出分类法+分阶段成本归因+10个系统对比，直接回答记忆方案到底贵在哪、该怎么选。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把“Agent 记忆”定义为跨会话可持续的存储/检索/更新能力，并提出面向系统的四维分类法，用来区分平铺检索、LLM 介导抽取（让模型先提炼再存）、事实库整合、以及带控制流的记忆管理等路线。随后搭建“分阶段（phase-aware）”性能剖析工具，把总成本拆成构建/写入（construction）、检索/读取（retrieval）、以及生成（generation）三段，避免只看端到端延迟而看不出瓶颈。基于两套基准（benchmark suite）评测10个代表性记忆系统，分析不同设计如何在读路径与写路径之间转移成本（例如写入时做更多抽取会降低后续检索负担，但会增加写入开销与延迟）。最后把观察总结成10条系统建议，覆盖构建调度、最低能力门槛、用查询量摊薄成本、记忆新鲜度与延迟的权衡、以及多 Agent/多实例的“车队级”管理。</dd>
+        <dt>关键数据</dt><dd>评测覆盖：10个记忆系统、2套基准；输出：10条系统级建议。具体的延迟、吞吐、token/费用拆分、准确率等量化结果在摘要中未披露；但其相对意义在于提供了可复用的成本归因框架，能把“记忆很贵/很慢”具体定位到写入、检索或生成哪一段。</dd>
+        <dt>为什么值得关注</dt><dd>对做 LLM agent / tool use / MCP 的人，记忆几乎是长任务（long-horizon）能否落地的关键成本项；这篇把记忆系统的读写路径拆开量化，能直接指导 RAG 式记忆、摘要式记忆、事实库等方案在多轮推理与多会话场景下如何选型与调参。对 multi-agent 场景，它还讨论“车队级管理”，更贴近真实部署而非单机 demo。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.06448v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.06416v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.06416v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.06416v1" target="_blank" rel="noopener">Unsupervised Skill Discovery for Agentic Data Analysis</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">提出 DataCOPE：不用标注数据、也不改模型参数，就能从探索轨迹里“挖”出可复用的数据分析技能，并在推理时注入给 agent 用。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>DataCOPE 是一个“无监督验证器引导”的技能发现框架：先让数据分析 Agent 自由探索生成多条轨迹（报告或推理过程）。再用无监督 Verifier（验证器）从这些轨迹中提取信号，用来判断轨迹之间的相对质量或一致性（agreement，一致同意）。最后由 Skill Manager 用对比学习（contrastive，对照拉近/拉远）把高质量模式蒸馏成可复用的程序化技能，并迭代循环。针对报告型分析，它用“自适应清单验证器”自动生成/更新检查项，并按可验证覆盖度给报告打分；针对推理型分析，它用“答案一致性验证器”按答案分组，用自洽性（self-consistency，多次推理结果一致）作为辅助信号。与以往依赖人工标注或固定评分规则的技能学习不同，它把监督来源改成了轨迹内部可计算的验证信号。</dd>
+        <dt>关键数据</dt><dd>在两类任务上评测：报告型来自 Deep Data Research，推理型来自 DABStep。跨 4 种模型设置的平均结果：报告型任务均分提升 9.71%，推理型任务均分提升 32.30%，且在留出集（held-out）上相对基线更好。具体基线方法名称、绝对分数、推理开销与技能数量等未披露。</dd>
+        <dt>为什么值得关注</dt><dd>这篇直接对应 LLM agent 的 tool use/数据分析场景：用“推理时技能增强”把可复用流程注入 agent，而技能来源不靠标注。对多 agent/自我改进、以及用一致性/验证器信号做无监督训练（类似 RAG/工具链中的自动评估）也有参考价值。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.06416v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.06399v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.06399v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.06399v1" target="_blank" rel="noopener">CollabSim: A CSCW-Grounded Methodology for Investigating Collaborative Competence of LLM Agents through Controlled Multi-Agent Experiments</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">LLM</span><span class="tag">collaboration</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“多智能体协作能力”从只看任务结果，拆成可控条件下可测的协作指标，并能探查每步交互中的内部状态与失配修复过程。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者提出 CollabSim，一个可配置的多智能体仿真框架，借鉴 CSCW（计算机支持协同工作）里对人类团队协作的理论定义协作能力：建立共同语境、维持共享理解、权衡个体/集体激励、以及在对话中修复分歧。框架允许在实验中“受控操纵”交互条件（如沟通受限、信息不对称、激励冲突等），而不是只跑固定任务看成败。与常见 MAS 评测只看最终任务完成率或单体推理/规划/工具使用不同，CollabSim强调过程级别的诊断：在每个行动/发言步骤对智能体进行探针式提问，记录其对任务与队友状态的理解。作者在四个不同 LLM 上做对比实验，展示该框架能区分模型与不同 agent 设计在不同任务下的协作模式差异。</dd>
+        <dt>关键数据</dt><dd>未披露具体数值（如成功率、协作指标分数、显著性检验结果等）。定性结论是：CollabSim 能检测到“条件变化带来的效果差异”、区分四个模型的表现模式，并揭示 agent 设计的效果具有任务依赖性（同一设计在不同任务下可能利弊不同）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / multi-agent 读者，这篇把“协作失败”从模型能力不足转向“协作机制不足”的可测问题，适合用来诊断多智能体在沟通、对齐与激励冲突下为何崩。对 tool use、reasoning models、RAG 等系统，也提供了更接近真实团队协作的评测思路：不仅看结果，还看交互过程中的共享理解与失配修复。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.06399v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.06388v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.06388v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.06388v1" target="_blank" rel="noopener">Humans' ALMANAC: A Human Collaboration Dataset of Action-Level Mental Model Annotations for Agent Collaboration</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“人类协作时脑子里在想什么”做成可训练/可评测的数据集：每一步对话动作都标注自我推理、对伙伴意图和团队目标的判断，用来检验/提升 LLM agent 的协作心智模型能力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者基于社会科学经典的 Map Task（两人协作导航任务）构建 ALMANAC，把协作过程切成“动作级”（每次发言/行动）样本。每个动作都配套理论驱动的心智模型标注：参与者当下的自我推理、对对方意图的推断、以及对共同目标的理解。与以往只看“任务是否完成”的数据不同，它强调过程层面的对齐与误解修正，适合训练/评测 agent 在协作中持续更新内部状态。作者还用该数据集对 6 个 LLM 做基准测试，任务包括预测人类下一轮行为以及推断其心智模型。</dd>
+        <dt>关键数据</dt><dd>数据规模：2,987 条协作动作（action-level）及对应心智模型标注。基准：评测 6 个 LLM 在“预测下一轮行为/心智模型”上的表现；具体准确率/分数未披露，但定性表明可用于区分模型在“模拟人类协作行为”和“推断隐含意图/目标”上的能力差异。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / multi-agent 来说，协作不只是 tool use（工具调用）和规划，还需要持续推断对方意图与共享目标；这套动作级心智模型标注数据可直接用来做“协作推理”评测与训练。也可作为构建更强的 reasoning models（推理模型）或协作型 RAG/工具代理的监督信号，补齐“过程对齐”数据缺口。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.06388v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.06380v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.06380v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.06380v1" target="_blank" rel="noopener">Emergent Language as an Approach to Conscious AI</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">emergent language</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">用“多智能体强化学习里自发形成的语言”来研究类意识结构，尽量剥离人类文本先验，观察自指交流如何在任务压力下自然出现。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者认为现有两路：按理论清单打分（判别式）或直接造“意识模块”（架构式），都可能被人类语言/概念先验污染。于是提出生成式方法：在多智能体强化学习（通过奖励学策略）中，让智能体从“无语言、无自我概念、几乎不接触人类文本”的初始条件出发，只靠任务压力发展通信。核心设计是把可归因性（因果上能说清楚为何出现）指向环境与任务，而不是训练语料或预置结构。论文还讨论环境复杂度如何影响涌现语言（EL）以及如何解释这些通信信号。概念验证在一个极简环境中实现，观察到自指交流与一种“回声-不匹配检测”电路，作者称其来自特定环境可供性而非任务/架构直接要求。</dd>
+        <dt>关键数据</dt><dd>未披露：未给出参数规模、训练步数、样本效率、成功率等量化指标；主要贡献是方法论与现象展示（在最小环境中出现自指通信与回声-不匹配检测机制），更偏“可归因的涌现结构”而非跑分对比。</dd>
+        <dt>为什么值得关注</dt><dd>对 multi-agent、reasoning models、LLM agent 读者有启发：它提供一种“从零开始的通信/工具式信号”生成框架，强调把行为与内部结构的出现归因到环境与任务。也可作为理解 agent 里“自我表征/自指信号”如何在交互中涌现的思路参考，间接影响 tool use 与多智能体协作设计。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.06380v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.06324v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.06324v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.06324v1" target="_blank" rel="noopener">From Failed Trajectories to Reliable LLM Agents: Diagnosing and Repairing Harness Flaws</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">HarnessFix把“Agent 失败轨迹”拆成可追责的步骤与“harness（执行/工具/编排层）”问题点，再按层做小范围补丁修复，避免只看最终结果导致的大改乱改。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它针对LLM agent常见的harness（提供工具接口、执行环境、上下文、生命周期编排、观测与验证等）不可靠问题，提出“trace-guided（用执行轨迹引导）”的诊断与修复流程。先把原始执行trace和harness代码编译成HTIR（中间表示：把零散证据标准化），显式记录每一步的来源(provenance)与控制流关系。然后把失败归因到具体轨迹步骤与具体harness层，汇总成可复用的“缺陷记录”，并映射到范围受控的repair operators（修复算子）。最后在“缺陷专用修复规格”约束下生成补丁并验证，目标是减少指定缺陷同时避免不可接受的回归；区别于以往主要靠最终得分做prompt/流程搜索或粗粒度改harness。</dd>
+        <dt>关键数据</dt><dd>在SWE-Bench Verified、Terminal-Bench 2.0 Verified、GAIA、AppWorld上，针对未见过的测试集（held-out）相对初始harness的性能提升为15.2%–50.0%。论文称优于人工设计与自演化（self-evolution）基线，但未在摘要中给出各基线的具体分数/差值与统计显著性细节；定性意义是把“提升”从改prompt/工作流转向“定位到哪一层坏了再修”。</dd>
+        <dt>为什么值得关注</dt><dd>对LLM agent、tool use（工具调用）与multi-agent编排来说，harness往往是稳定性瓶颈；这篇提供了“按轨迹证据定位→按层修复→回归验证”的工程化路径。也与MCP/工具协议生态相关：当工具接口与执行环境复杂时，如何用可追溯的中间表示把失败原因从“模型不行”拆到“系统层缺陷”会直接影响可维护性与迭代效率。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.06324v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.06315v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.06315v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.06315v1" target="_blank" rel="noopener">LLM Self-Recognition: Steering and Retrieving Activation Signatures</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“水印”从外部嵌入改成在生成时轻推模型内部激活，形成可恢复的指纹；用另一台 LLM 读激活就能给文本溯源，准确率可到 98%+。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者先验证：LLM 在输出文本里会隐含可用于“自我识别”的信号，即使在低熵（更确定、重复性更强）的生成场景也稳定存在。随后在生成过程中，对残差流（residual stream，层间信息通道）做定向干预：加入一个随机稀疏向量，作为轻量“指纹”。生成后的文本不需要额外标记；检测时让一个 LLM 作为探测器，从其内部激活中检索该指纹并做归因。与传统文本检测器/外部水印不同，这里主要利用激活空间的结构来编码与读取信号，目标是多模型归属识别且不影响语义。</dd>
+        <dt>关键数据</dt><dd>多种检测设置下归因准确率超过 98%。作者声称生成文本质量“无退化”，但未披露具体自动指标（如困惑度/人评/偏好胜率）与干预强度-质量权衡曲线；对比基线检测器的数字也未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 生态里“内容归因、审计、责任追踪”很关键：这类方法可作为比纯文本检测更稳的溯源手段。对多模型系统（multi-agent）尤其有用，可在不改文本表面内容的情况下区分不同 LLM 的输出来源。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-04</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.06315v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
