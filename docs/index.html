@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>1</strong> 条 ·
       归档 <strong>166</strong> 条（17 天）·
-      生成于 2026-06-06 04:33 UTC
+      生成于 2026-06-06 05:50 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
           <a href="#archive-2026-06-05" onclick="openArchive('2026-06-05')">2026-06-05 <span class="n">10</span></a>
         
@@ -263,9 +263,38 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim">
+      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim" target="_blank" rel="noopener">Thousand Token Wood: shipping a multi-agent economy on a 3B model</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">LLM</span>
+      </div>
+      
+      <p class="innovation">用仅 3B 参数的小模型，跑起“多智能体经济”式协作：多个角色分工、互相交易信息与行动，把复杂任务拆成可执行的工具链流程。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是把一个大任务拆成多个“专职 agent（代理）”，每个 agent 只负责一类能力（如检索、规划、执行、评审），通过消息与“预算/代币”约束来协调协作。系统强调“千 token 级”的交互：尽量用短上下文完成多轮协作，避免传统多智能体把对话越滚越长导致成本飙升。为了让 3B 模型也能稳定执行，设计上更依赖明确的工具调用（tool use，调用外部函数/服务）与结构化输出，而不是纯靠长链推理。与过去常见做法（单一大模型长上下文硬推、或多智能体无约束闲聊）相比，它把协作机制做成更像“可控的流程编排”。</dd>
+        <dt>关键数据</dt><dd>模型规模：3B。上下文/交互目标：千 token 级（具体上限与平均 token 消耗未披露）。任务成功率、成本（每任务 token/时间）、与单体/大模型对照等关键量化结果：未披露；但定性上指向“用更小模型+更短上下文”实现可用的多智能体协作，重点在工程可落地与成本可控。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、多智能体（multi-agent）读者，这条提供了“在小模型上做协作系统”的设计范式：用工具调用与预算约束替代堆上下文。对 MCP/tool use/RAG 方向也有启发：把能力外包给工具与检索，让 3B 也能完成更复杂的端到端流程。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-05</span>
+        
+        
+        <a class="cta" href="https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
