@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>1</strong> 条 ·
-      归档 <strong>166</strong> 条（17 天）·
-      生成于 2026-06-06 05:50 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>167</strong> 条（18 天）·
+      生成于 2026-06-06 23:53 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        
+          <a href="#archive-2026-06-06" onclick="openArchive('2026-06-06')">2026-06-06 <span class="n">1</span></a>
         
           <a href="#archive-2026-06-05" onclick="openArchive('2026-06-05')">2026-06-05 <span class="n">10</span></a>
         
@@ -263,10 +265,20 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-06-06" open>
+            <summary>2026-06-06 <span class="n">1 条</span></summary>
+            <div class="cards">
+              
     <article class="card" data-url="https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim">
       <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -294,15 +306,10 @@
         <a class="cta" href="https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-        </div>
-      
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
-      
+            </div>
+          </details>
         
-          <details class="date-group" id="archive-2026-06-05" open>
+          <details class="date-group" id="archive-2026-06-05">
             <summary>2026-06-05 <span class="n">10 条</span></summary>
             <div class="cards">
               
