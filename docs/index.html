@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>1</strong> 条 ·
       归档 <strong>177</strong> 条（19 天）·
-      生成于 2026-06-08 06:38 UTC
+      生成于 2026-06-08 23:56 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
           <a href="#archive-2026-06-08" onclick="openArchive('2026-06-08')">2026-06-08 <span class="n">10</span></a>
         
@@ -267,9 +267,38 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://huggingface.co/blog/openenv-agentic-rl">
+      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/openenv-agentic-rl" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://huggingface.co/blog/openenv-agentic-rl" target="_blank" rel="noopener">The Open Source Community is backing OpenEnv for Agentic RL</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">OpenEnv 正在成为“训练会用工具的智能体”的开源环境标准：社区开始围绕它统一接口与任务集，方便做 Agentic RL（面向智能体的强化学习）对比与复现。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>文章核心是“社区背书 + 生态对齐”：OpenEnv 提供一套面向智能体的环境抽象，把任务、观测、动作（含工具调用）用统一 API 表达。它强调可组合的任务与可插拔的后端，让同一套训练代码能在不同环境/任务上跑。与过去各家自建环境、接口不兼容相比，它更像为 Agent 训练准备的“通用适配层”。同时它面向 RL 训练流程设计（采样、回放、评测），降低把 LLM agent 接到强化学习管线里的工程成本。</dd>
+        <dt>关键数据</dt><dd>未披露。文章更偏生态与标准化信号：如果 OpenEnv 被更多项目采用，价值主要体现在“可复现、可横向对比、减少重复造轮子”，而不是单点跑分提升。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use（工具调用）和 multi-agent 读者来说，OpenEnv 这类统一环境接口能直接影响你能否用同一套训练/评测框架快速迭代。对 reasoning models 与 RAG 方向，它提供把“检索/工具链”纳入强化学习训练与评测的更标准入口。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-08</span>
+        
+        
+        <a class="cta" href="https://huggingface.co/blog/openenv-agentic-rl" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
