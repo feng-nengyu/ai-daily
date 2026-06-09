@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>178</strong> 条（19 天）·
-      生成于 2026-06-09 04:43 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>188</strong> 条（20 天）·
+      生成于 2026-06-09 06:04 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        
+          <a href="#archive-2026-06-09" onclick="openArchive('2026-06-09')">2026-06-09 <span class="n">10</span></a>
         
           <a href="#archive-2026-06-08" onclick="openArchive('2026-06-08')">2026-06-08 <span class="n">11</span></a>
         
@@ -267,14 +269,24 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
-    <article class="card" data-url="https://arxiv.org/abs/2606.09748v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09748v1" onclick="toggleStar(this)">☆</button>
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-06-09" open>
+            <summary>2026-06-09 <span class="n">10 条</span></summary>
+            <div class="cards">
+              
+    <article class="card" data-url="https://arxiv.org/abs/2606.09632v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09632v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.09748v1" target="_blank" rel="noopener">Multi-Turn Evaluation of Deep Research Agents Under Process-Level Feedback</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.09632v1" target="_blank" rel="noopener">Civil Court Simulation with Large Language Models</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -282,215 +294,22 @@
       </div>
       
       <div class="tags">
-        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">RAG</span>
       </div>
       
-      <p class="innovation">把“深度研究型 Agent”从一次性出报告，改成多轮改稿评测：量化证明自我反思几乎不涨分，而给到“过程级反馈”能一次性拉升 8–15 分，但后续难以持续累积。</p>
+      <p class="innovation">把“民事庭审”做成可扩展的多智能体（multi-agent）模拟：按真实五阶段流程组织角色互动，并用记忆+法条检索支撑长流程裁判。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者指出现有 DRA（深度研究代理）基准只看单轮最终答案，忽略“收到反馈后能否变好”。他们设计两种反馈设置：自我反思（无外部诊断信号，自己改）与过程级反馈（针对研究策略缺口给指导）。为生成过程级反馈，提出 RGI（Research Gap Inference，研究缺口推断）：根据评分量表 rubric 中“已满足/未满足”条目的组合模式，反推出研究流程哪里缺（如证据覆盖、来源多样性、论证结构等）。评测按多轮迭代进行，观察每轮对 rubric 条目的“纳入（incorporate）”与“回退（regress）”比例，从而区分“改得更全”还是“改着改着丢了原本做对的点”。与过去只比较最终分数不同，这里把改稿过程拆成可诊断的过程指标。</dd>
-        <dt>关键数据</dt><dd>自我反思：对 rubric 条目的“纳入”和“回退”几乎等比例发生，净提升可忽略（未给出具体分数增量）。过程级反馈：仅 1 轮就把 normalized score 提升约 8–15 分；rubric 条目纳入率约 35%–40%。多轮不叠加：后续改写整篇报告时，最多会回退（丢失）约 24% 之前已满足的条目，导致收益难以继续累积。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这篇把“能否在反馈下持续变好”变成可量化的多轮评测问题，并给出过程级反馈（类似更细粒度的 agent 训练/对齐信号）为何只在第一轮有效的证据。对做 RAG/研究型 Agent 的人，它提示瓶颈不在“发现缺口”，而在“全量重写时保持已满足约束”的稳定性。</dd>
+        <dt>技术方案</dt><dd>作者面向中文民事案件搭建多角色智能体框架，让法官、原告、被告等按“起诉-答辩-举证质证-法庭辩论-宣判”等五阶段程序推进。为解决民事案件主张与救济更灵活、链条更长的问题，系统加入记忆模块（保存关键事实与过程）和法条检索（statute retrieval，按需找相关条文）来做“有依据的”裁判。实验重点看裁判是否稳定可靠，尤其关注责任划分与多项诉请（multi-item）同时裁判的能力。作者还用“五层因素框架”分析可靠性来源：法律依据、信息条件、司法能力与角色取向、组织压力、社会语境等对行为的影响，并单独验证记忆质量对整体表现的影响。</dd>
+        <dt>关键数据</dt><dd>未披露具体量化指标（如准确率/一致性分数/人工评审通过率等）。论文给出的定性结论是：在责任分配与多项裁判上表现更强；并指出“记忆质量”会显著影响下游模拟质量，但未给出幅度数字。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use（记忆、法条检索/RAG）+ multi-agent 协作的长流程任务，贴近真实“多轮推理+证据约束”的应用场景。对关注 MCP/工具编排、长程记忆可靠性、以及多智能体在复杂流程中如何保持一致性的读者，有直接参考价值。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-08</span>
         
         
-        <span class="links">补充：<a href="https://github.com/sabharwalrishabh/Multi-Turn-Evaluation-of-DRAs" target="_blank" rel="noopener">https://github.com/sabharwalrishabh/Multi-Turn-Evaluation-of-DRAs</a></span>
+        <span class="links">补充：<a href="https://github.com/foggpoy/Civil-Court" target="_blank" rel="noopener">https://github.com/foggpoy/Civil-Court</a></span>
         
-        <a class="cta" href="https://arxiv.org/abs/2606.09748v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.09730v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09730v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.09730v1" target="_blank" rel="noopener">SearchSwarm: Towards Delegation Intelligence in Agentic LLMs for Long-Horizon Deep Research</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">把“主 Agent 该何时把任务拆出去、怎么收回结果”做成可训练能力：用一个流程约束（harness）自动生成高质量委派轨迹，再用监督微调把委派策略写进模型权重。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者关注长周期深度研究场景：主 Agent 需要不断检索、分解问题并整合信息，但上下文窗口有限。方法上先设计一个 harness（流程脚手架/约束器），引导模型做任务分解与委派，并强制子 Agent 只返回对主流程有用的“摘要化结果”，避免上下文爆炸。这样跑出来的交互轨迹天然包含“何时委派、委派什么、如何整合”的正确决策。再把这些轨迹当作监督微调（SFT，直接用标注样本训练）数据，训练出内化委派智能的 SearchSwarm-30B-A3B。与以往只在推理时做多 Agent 编排不同，这里强调把委派策略通过数据合成+SFT固化到模型参数里，减少对外部手工策略的依赖。</dd>
-        <dt>关键数据</dt><dd>模型：SearchSwarm-30B-A3B（30B 级别，A3B 具体含义文中未解释/此处未披露）。基准：BrowseComp 68.1 分、BrowseComp-ZH 73.3 分；作者称为“同等规模模型中最好”。训练数据规模、训练算力/成本、与第二名差距等未披露，但给出了明确的榜单分数用于横向对比。</dd>
-        <dt>为什么值得关注</dt><dd>这条直接命中 LLM agent / multi-agent / tool use：核心是“委派智能”——决定何时把子任务交给子 Agent 并只带回摘要，解决长任务的上下文预算问题。对做 RAG 或研究型 Agent 的人也有参考价值：它提供了一种用流程约束自动合成训练数据、把编排策略训练进模型的路线。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-08</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.09730v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.09709v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09709v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.09709v1" target="_blank" rel="noopener">IS-CoT: Breaking the Long-form Generation Collapse via Interleaved Structural Thinking</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
-      </div>
-      
-      <p class="innovation">提出 IS-CoT，把“计划-写作-反思”交错嵌入生成过程，专门解决推理型模型在 2000+ 字开放写作中常见的“长度崩溃”。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者发现很多带推理能力的模型在长篇开放写作里会随目标长度增加而快速失控，根因是静态分层大纲（一次性规划）无法在长上下文中持续提供动态指导。IS-CoT 用交错的结构化思考轨迹，把 Plan（规划）-Write（写作）-Reflect（反思校对）循环内置到同一次生成里，边写边调整策略，保持全局一致性与可控性。它强调“模型内部自我调度”，而不是依赖外部 agent 工作流（如多轮工具调用/多代理协作）来分解任务。为训练落地，作者用 multi-teacher（多教师）流水线构建高质量的交错推理数据集，并训练出 IS-Writer-8B（8B 参数）。</dd>
-        <dt>关键数据</dt><dd>长度崩溃现象：当目标长度超过 2,000 词时，推理增强模型在开放写作任务上性能“急剧下降”（未给出具体下降曲线数值）。模型规模：IS-Writer-8B 为 8B 参数。效果：在 LongBench-Write 上相对 DeepSeek-V3.2 提升 +3.08（具体计分单位未在摘要中披露，但表明在该长文写作基准上领先）。作者称其长度遵从性与连贯性可与更大闭源模型竞争（未披露对比模型列表与绝对分数）。训练成本、推理速度、数据集规模：未披露。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / reasoning models 读者，这篇把“动态规划+自我反思”做成模型内生机制，提供了不依赖外部工具/多代理的长文控制思路。对 RAG、tool use、MCP 关注者也有参考价值：它说明很多长文失败不一定靠外部编排解决，模型内部的持续策略更新同样关键。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-08</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.09709v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.09701v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09701v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.09701v1" target="_blank" rel="noopener">Learning to Attack and Defend: Adaptive Red Teaming of Language Models via GRPO</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
-      </div>
-      
-      <p class="innovation">把被认为在攻防共训里“不稳定”的 GRPO（组相对策略优化）改造成可用的 AdvGRPO，用更细的奖励信号和归一化技巧稳定训练，能同时学出更强攻击与更稳防守。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>提出 AdvGRPO 作为攻防共训框架：攻击者模型负责生成越狱/诱导等攻击，防守者模型负责拒答与安全对齐，二者交替更新。为解决 GRPO 在共训中易发散的问题，引入“密集多通道奖励”（把安全、成功率、对话质量等拆成多路反馈，而不是只给一个总分）以及“解耦优势归一化”（分别规范化不同奖励/通道的优势值，减少梯度互相干扰）。训练采用课程学习：先做单轮攻击，再过渡到闭环多轮（攻击根据防守者回复继续调整），最后再启动攻防共训的自举阶段。对比以往多用 PPO（近端策略优化）或 DPO（直接偏好优化）的共训路线，这篇主打让 GRPO 在该场景下稳定可训练，并强调攻击的可迁移性与防守的基准提升。</dd>
-        <dt>关键数据</dt><dd>未披露具体数值（如攻击成功率提升幅度、各安全基准分数、训练步数/成本）。定性结论：生成的攻击“更有效且可迁移”（对不同模型也管用），共训得到的防守者在安全基准上优于 PPO/DPO 等基线；但缺少量化细节，读者需点开看实验表格与对照设置。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景，闭环多轮攻击更贴近真实“代理被诱导一步步做危险事”的风险；同时这类攻防共训方法可作为安全评测与加固管线的一部分，帮助构建更稳的对齐与防护策略。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-08</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.09701v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.09692v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09692v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.09692v1" target="_blank" rel="noopener">Observability for Delegated Execution in Agentic AI Systems</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">指出仅靠审计日志/调用链路无法还原“谁在什么委托权限下做了哪些动作”，并给出在执行时绑定委托语义的可观测性方案，便于跨工具取证与追责。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>论文先论证“委托范围（delegation-scoped）”在现有可观测信号里不可辨识：同一组日志与执行轨迹可能对应多种互相矛盾的委托分配。问题在 LLM agent 更突出，因为会动态选工具、同指令多次运行顺序不同、还会派生协作子代理，导致轨迹碎片化与交错，单靠因果结构重建在结构上欠定（信息不足）。作者不做意图/推理过程还原，而聚焦委托归因与访问/共享足迹重建。方案是一个“agent-aware”可观测性底座：用轻量网关在每次工具执行时把委托上下文（谁委托给谁、范围/权限等语义）绑定到事件上，并用统一信息模型在异构系统间对齐字段。这样可直接做取证查询，不再依赖按时间窗/会话去做启发式关联。</dd>
-        <dt>关键数据</dt><dd>未披露。相对意义在于把“事后猜测式关联”变成“执行时强绑定语义”，理论上可消除同日志多解释的歧义，提升跨工具委托归因的确定性与可审计性。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 很关键：当代理会并发调用多工具、派生子代理时，传统 tracing 很难回答“这次调用属于哪个委托链”。该工作提供一种更接近 MCP/工具网关形态的通用语义层，利于做权限边界、审计与事后取证。 </dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-08</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.09692v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.09674v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09674v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.09674v1" target="_blank" rel="noopener">(Auto)formalization is supposed to be easy: Trellis process semantics for spelling out rigorous proofs</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">Trellis 用“流程语义”把 LLM agent 的自动形式化变成可控的逐步推进：每一步都必须能在 Lean 里继续细化，降低跑偏与返工。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>系统把自然语言证明拆成一串可验证的增量任务，由多个通用 LLM agent 在确定性约束的工作流里迭代改写与补细节。核心约束来自作者对“严谨证明”的操作性定义：证明的任意部分都应当能被例行地展开得更细。流程语义（process semantics，可理解为“对交互流程的形式化规则”）用来强制每轮输出满足可继续细化/可对齐到 Lean 的要求，而不是让模型自由生成整段形式化。与常见做法（直接让模型从文本到 Lean、或靠专门训练的形式化模型）不同，它强调用工作流约束来获得可靠性，而非依赖任务专训。</dd>
-        <dt>关键数据</dt><dd>未披露：未给出成功率、成本（token/美元）、用时、与基线系统对比等量化指标。定性结果是给出了一个端到端的 Lean 形式化案例：对“近期 Ramsey 理论突破”的证明进行完整形式化，说明该流程能支撑长证明的持续推进。</dd>
-        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use（Lean 证明助手）场景：用确定性工作流约束 agent 行为，减少推理/生成漂移。对关注 reasoning models、multi-agent 协作与“过程监督式”可靠性的人，它提供了一个用流程设计替代专训的思路。 </dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-08</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.09674v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.09669v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09669v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.09669v1" target="_blank" rel="noopener">SpatialWorld: Benchmarking Interactive Spatial Reasoning of Multimodal Agents in Real-World Tasks</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">benchmark</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">把“空间推理”从静态看图问答拉到可交互任务：统一协议接入 8 个仿真后端，专门测多模态 Agent 在真实风格长任务里的主动探索与规划能力。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者提出 SpatialWorld：一个面向多模态智能体（能看图+用语言决策）的交互式空间理解基准。它用“仿真器无关”的统一协议整合 8 个异构仿真后端，避免以往每个模拟器一套评测管线导致的不可比。任务在“仅视觉、部分可观测”条件下进行，Agent 需要主动移动/查看来收集第一视角证据，并通过统一的纯文本动作接口（更贴近 LLM tool use 的调用方式）执行决策。为保证可复现评测，每个任务提供人工验证的初始状态、参考轨迹，以及用于判定是否完成的终止状态验证器。</dd>
-        <dt>关键数据</dt><dd>任务规模：760 个人工标注任务；后端数量：8 个仿真环境；评测模型：15 个先进 Agent。结果：最强闭源 GPT-5 平均任务成功率（TSR）17.4%；最强开源 Qwen-3.5 为 14.1%。作者还指出“成功率与执行效率不一致”（能完成但步骤/探索成本高）以及不同领域差异明显，但未给出各领域细分数值与效率指标的具体数字。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这个基准把评测重点放在“主动探索+长程规划”的真实任务闭环，而不是静态 VQA。它也提供了更接近 Agent 调工具的统一文本动作接口，适合用来检验推理模型在交互式空间任务中的泛化与规划瓶颈。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-08</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.09669v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.09663v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09663v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.09663v1" target="_blank" rel="noopener">From 0-to-1 to 1-to-N: Reproducible Engineering Evidence for MetaAI Recursive Self-Design</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把“递归自我设计”（AI 参与改造 AI 的开发/评测/改进机制）从概念讨论拉到“可复现证据”层面：给出4条可操作判据，并用公开系统对照，外加一个可复现实验协议。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者把 MetaAI 视为“人类播种、AI 扩展”的工程模式：不仅改模型参数，还把“设计空间”（怎么写代码、怎么评测、怎么选方案）当作可被修改的对象。为避免只停留在口号，提出证据框架4要素：可检查的目标系统、元层修改器（改造构建/评测流程的组件）、反馈驱动选择（用指标筛选）、递归延续（多轮自我改造）。随后将 DGM、STOP、Goedel Agent、ShinkaEvolve 等公开系统逐项映射到这4条，说明哪些满足、哪些证据不足。最后提供 MetaAI-Mini：基于 HumanEval 的可复现协议与代码库，用于让他人按同一流程跑“递归改造”实验，但当前版本不包含完整跑出来的模型结果。</dd>
-        <dt>关键数据</dt><dd>DGM（Darwin Goedel Machine）给出最直接的公开量化证据：SWE-bench Verified 从 20% 提升到 50%，full Polyglot 从 14.2% 提升到 30.7%，共 80 次迭代。消融实验结论为定性：开放式探索与自我改进两部分都对提升有贡献（未给出各自精确贡献比例）。MetaAI-Mini 仅提供协议与代码，未披露端到端跑分结果。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者，这篇把“让 agent 改造自己的开发与评测流程”拆成可验证的工程要件，便于判断哪些工作真的在做递归自改。对 multi-agent / reasoning models 方向，它提供了用迭代与反馈选择来组织自我改进实验的通用框架与可复现协议，适合作为后续对比基线。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-08</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.09663v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.09632v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2606.09635v1">
@@ -522,10 +341,10 @@
         <a class="cta" href="https://arxiv.org/abs/2606.09635v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.09632v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09632v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.09663v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09663v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.09632v1" target="_blank" rel="noopener">Civil Court Simulation with Large Language Models</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.09663v1" target="_blank" rel="noopener">From 0-to-1 to 1-to-N: Reproducible Engineering Evidence for MetaAI Recursive Self-Design</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -533,33 +352,221 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">RAG</span>
+        <span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">把“民事庭审”做成可扩展的多智能体（multi-agent）模拟：按真实五阶段流程组织角色互动，并用记忆+法条检索支撑长流程裁判。</p>
+      <p class="innovation">把“递归自我设计”（AI 参与改造 AI 的开发/评测/改进机制）从概念讨论拉到“可复现证据”层面：给出4条可操作判据，并用公开系统对照，外加一个可复现实验协议。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者面向中文民事案件搭建多角色智能体框架，让法官、原告、被告等按“起诉-答辩-举证质证-法庭辩论-宣判”等五阶段程序推进。为解决民事案件主张与救济更灵活、链条更长的问题，系统加入记忆模块（保存关键事实与过程）和法条检索（statute retrieval，按需找相关条文）来做“有依据的”裁判。实验重点看裁判是否稳定可靠，尤其关注责任划分与多项诉请（multi-item）同时裁判的能力。作者还用“五层因素框架”分析可靠性来源：法律依据、信息条件、司法能力与角色取向、组织压力、社会语境等对行为的影响，并单独验证记忆质量对整体表现的影响。</dd>
-        <dt>关键数据</dt><dd>未披露具体量化指标（如准确率/一致性分数/人工评审通过率等）。论文给出的定性结论是：在责任分配与多项裁判上表现更强；并指出“记忆质量”会显著影响下游模拟质量，但未给出幅度数字。</dd>
-        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use（记忆、法条检索/RAG）+ multi-agent 协作的长流程任务，贴近真实“多轮推理+证据约束”的应用场景。对关注 MCP/工具编排、长程记忆可靠性、以及多智能体在复杂流程中如何保持一致性的读者，有直接参考价值。</dd>
+        <dt>技术方案</dt><dd>作者把 MetaAI 视为“人类播种、AI 扩展”的工程模式：不仅改模型参数，还把“设计空间”（怎么写代码、怎么评测、怎么选方案）当作可被修改的对象。为避免只停留在口号，提出证据框架4要素：可检查的目标系统、元层修改器（改造构建/评测流程的组件）、反馈驱动选择（用指标筛选）、递归延续（多轮自我改造）。随后将 DGM、STOP、Goedel Agent、ShinkaEvolve 等公开系统逐项映射到这4条，说明哪些满足、哪些证据不足。最后提供 MetaAI-Mini：基于 HumanEval 的可复现协议与代码库，用于让他人按同一流程跑“递归改造”实验，但当前版本不包含完整跑出来的模型结果。</dd>
+        <dt>关键数据</dt><dd>DGM（Darwin Goedel Machine）给出最直接的公开量化证据：SWE-bench Verified 从 20% 提升到 50%，full Polyglot 从 14.2% 提升到 30.7%，共 80 次迭代。消融实验结论为定性：开放式探索与自我改进两部分都对提升有贡献（未给出各自精确贡献比例）。MetaAI-Mini 仅提供协议与代码，未披露端到端跑分结果。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者，这篇把“让 agent 改造自己的开发与评测流程”拆成可验证的工程要件，便于判断哪些工作真的在做递归自改。对 multi-agent / reasoning models 方向，它提供了用迭代与反馈选择来组织自我改进实验的通用框架与可复现协议，适合作为后续对比基线。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-08</span>
         
         
-        <span class="links">补充：<a href="https://github.com/foggpoy/Civil-Court" target="_blank" rel="noopener">https://github.com/foggpoy/Civil-Court</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.09632v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.09663v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.09669v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09669v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.09669v1" target="_blank" rel="noopener">SpatialWorld: Benchmarking Interactive Spatial Reasoning of Multimodal Agents in Real-World Tasks</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
+      </div>
       
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">benchmark</span><span class="tag">tool-use</span>
+      </div>
       
+      <p class="innovation">把“空间推理”从静态看图问答拉到可交互任务：统一协议接入 8 个仿真后端，专门测多模态 Agent 在真实风格长任务里的主动探索与规划能力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者提出 SpatialWorld：一个面向多模态智能体（能看图+用语言决策）的交互式空间理解基准。它用“仿真器无关”的统一协议整合 8 个异构仿真后端，避免以往每个模拟器一套评测管线导致的不可比。任务在“仅视觉、部分可观测”条件下进行，Agent 需要主动移动/查看来收集第一视角证据，并通过统一的纯文本动作接口（更贴近 LLM tool use 的调用方式）执行决策。为保证可复现评测，每个任务提供人工验证的初始状态、参考轨迹，以及用于判定是否完成的终止状态验证器。</dd>
+        <dt>关键数据</dt><dd>任务规模：760 个人工标注任务；后端数量：8 个仿真环境；评测模型：15 个先进 Agent。结果：最强闭源 GPT-5 平均任务成功率（TSR）17.4%；最强开源 Qwen-3.5 为 14.1%。作者还指出“成功率与执行效率不一致”（能完成但步骤/探索成本高）以及不同领域差异明显，但未给出各领域细分数值与效率指标的具体数字。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这个基准把评测重点放在“主动探索+长程规划”的真实任务闭环，而不是静态 VQA。它也提供了更接近 Agent 调工具的统一文本动作接口，适合用来检验推理模型在交互式空间任务中的泛化与规划瓶颈。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-08</span>
         
-          <details class="date-group" id="archive-2026-06-08" open>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.09669v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.09674v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09674v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.09674v1" target="_blank" rel="noopener">(Auto)formalization is supposed to be easy: Trellis process semantics for spelling out rigorous proofs</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">Trellis 用“流程语义”把 LLM agent 的自动形式化变成可控的逐步推进：每一步都必须能在 Lean 里继续细化，降低跑偏与返工。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>系统把自然语言证明拆成一串可验证的增量任务，由多个通用 LLM agent 在确定性约束的工作流里迭代改写与补细节。核心约束来自作者对“严谨证明”的操作性定义：证明的任意部分都应当能被例行地展开得更细。流程语义（process semantics，可理解为“对交互流程的形式化规则”）用来强制每轮输出满足可继续细化/可对齐到 Lean 的要求，而不是让模型自由生成整段形式化。与常见做法（直接让模型从文本到 Lean、或靠专门训练的形式化模型）不同，它强调用工作流约束来获得可靠性，而非依赖任务专训。</dd>
+        <dt>关键数据</dt><dd>未披露：未给出成功率、成本（token/美元）、用时、与基线系统对比等量化指标。定性结果是给出了一个端到端的 Lean 形式化案例：对“近期 Ramsey 理论突破”的证明进行完整形式化，说明该流程能支撑长证明的持续推进。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent + tool use（Lean 证明助手）场景：用确定性工作流约束 agent 行为，减少推理/生成漂移。对关注 reasoning models、multi-agent 协作与“过程监督式”可靠性的人，它提供了一个用流程设计替代专训的思路。 </dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-08</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.09674v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.09692v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09692v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.09692v1" target="_blank" rel="noopener">Observability for Delegated Execution in Agentic AI Systems</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">指出仅靠审计日志/调用链路无法还原“谁在什么委托权限下做了哪些动作”，并给出在执行时绑定委托语义的可观测性方案，便于跨工具取证与追责。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>论文先论证“委托范围（delegation-scoped）”在现有可观测信号里不可辨识：同一组日志与执行轨迹可能对应多种互相矛盾的委托分配。问题在 LLM agent 更突出，因为会动态选工具、同指令多次运行顺序不同、还会派生协作子代理，导致轨迹碎片化与交错，单靠因果结构重建在结构上欠定（信息不足）。作者不做意图/推理过程还原，而聚焦委托归因与访问/共享足迹重建。方案是一个“agent-aware”可观测性底座：用轻量网关在每次工具执行时把委托上下文（谁委托给谁、范围/权限等语义）绑定到事件上，并用统一信息模型在异构系统间对齐字段。这样可直接做取证查询，不再依赖按时间窗/会话去做启发式关联。</dd>
+        <dt>关键数据</dt><dd>未披露。相对意义在于把“事后猜测式关联”变成“执行时强绑定语义”，理论上可消除同日志多解释的歧义，提升跨工具委托归因的确定性与可审计性。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 很关键：当代理会并发调用多工具、派生子代理时，传统 tracing 很难回答“这次调用属于哪个委托链”。该工作提供一种更接近 MCP/工具网关形态的通用语义层，利于做权限边界、审计与事后取证。 </dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-08</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.09692v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.09701v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09701v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.09701v1" target="_blank" rel="noopener">Learning to Attack and Defend: Adaptive Red Teaming of Language Models via GRPO</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">把被认为在攻防共训里“不稳定”的 GRPO（组相对策略优化）改造成可用的 AdvGRPO，用更细的奖励信号和归一化技巧稳定训练，能同时学出更强攻击与更稳防守。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 AdvGRPO 作为攻防共训框架：攻击者模型负责生成越狱/诱导等攻击，防守者模型负责拒答与安全对齐，二者交替更新。为解决 GRPO 在共训中易发散的问题，引入“密集多通道奖励”（把安全、成功率、对话质量等拆成多路反馈，而不是只给一个总分）以及“解耦优势归一化”（分别规范化不同奖励/通道的优势值，减少梯度互相干扰）。训练采用课程学习：先做单轮攻击，再过渡到闭环多轮（攻击根据防守者回复继续调整），最后再启动攻防共训的自举阶段。对比以往多用 PPO（近端策略优化）或 DPO（直接偏好优化）的共训路线，这篇主打让 GRPO 在该场景下稳定可训练，并强调攻击的可迁移性与防守的基准提升。</dd>
+        <dt>关键数据</dt><dd>未披露具体数值（如攻击成功率提升幅度、各安全基准分数、训练步数/成本）。定性结论：生成的攻击“更有效且可迁移”（对不同模型也管用），共训得到的防守者在安全基准上优于 PPO/DPO 等基线；但缺少量化细节，读者需点开看实验表格与对照设置。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景，闭环多轮攻击更贴近真实“代理被诱导一步步做危险事”的风险；同时这类攻防共训方法可作为安全评测与加固管线的一部分，帮助构建更稳的对齐与防护策略。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-08</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.09701v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.09709v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09709v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.09709v1" target="_blank" rel="noopener">IS-CoT: Breaking the Long-form Generation Collapse via Interleaved Structural Thinking</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">提出 IS-CoT，把“计划-写作-反思”交错嵌入生成过程，专门解决推理型模型在 2000+ 字开放写作中常见的“长度崩溃”。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者发现很多带推理能力的模型在长篇开放写作里会随目标长度增加而快速失控，根因是静态分层大纲（一次性规划）无法在长上下文中持续提供动态指导。IS-CoT 用交错的结构化思考轨迹，把 Plan（规划）-Write（写作）-Reflect（反思校对）循环内置到同一次生成里，边写边调整策略，保持全局一致性与可控性。它强调“模型内部自我调度”，而不是依赖外部 agent 工作流（如多轮工具调用/多代理协作）来分解任务。为训练落地，作者用 multi-teacher（多教师）流水线构建高质量的交错推理数据集，并训练出 IS-Writer-8B（8B 参数）。</dd>
+        <dt>关键数据</dt><dd>长度崩溃现象：当目标长度超过 2,000 词时，推理增强模型在开放写作任务上性能“急剧下降”（未给出具体下降曲线数值）。模型规模：IS-Writer-8B 为 8B 参数。效果：在 LongBench-Write 上相对 DeepSeek-V3.2 提升 +3.08（具体计分单位未在摘要中披露，但表明在该长文写作基准上领先）。作者称其长度遵从性与连贯性可与更大闭源模型竞争（未披露对比模型列表与绝对分数）。训练成本、推理速度、数据集规模：未披露。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / reasoning models 读者，这篇把“动态规划+自我反思”做成模型内生机制，提供了不依赖外部工具/多代理的长文控制思路。对 RAG、tool use、MCP 关注者也有参考价值：它说明很多长文失败不一定靠外部编排解决，模型内部的持续策略更新同样关键。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-08</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.09709v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.09730v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09730v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.09730v1" target="_blank" rel="noopener">SearchSwarm: Towards Delegation Intelligence in Agentic LLMs for Long-Horizon Deep Research</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“主 Agent 该何时把任务拆出去、怎么收回结果”做成可训练能力：用一个流程约束（harness）自动生成高质量委派轨迹，再用监督微调把委派策略写进模型权重。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者关注长周期深度研究场景：主 Agent 需要不断检索、分解问题并整合信息，但上下文窗口有限。方法上先设计一个 harness（流程脚手架/约束器），引导模型做任务分解与委派，并强制子 Agent 只返回对主流程有用的“摘要化结果”，避免上下文爆炸。这样跑出来的交互轨迹天然包含“何时委派、委派什么、如何整合”的正确决策。再把这些轨迹当作监督微调（SFT，直接用标注样本训练）数据，训练出内化委派智能的 SearchSwarm-30B-A3B。与以往只在推理时做多 Agent 编排不同，这里强调把委派策略通过数据合成+SFT固化到模型参数里，减少对外部手工策略的依赖。</dd>
+        <dt>关键数据</dt><dd>模型：SearchSwarm-30B-A3B（30B 级别，A3B 具体含义文中未解释/此处未披露）。基准：BrowseComp 68.1 分、BrowseComp-ZH 73.3 分；作者称为“同等规模模型中最好”。训练数据规模、训练算力/成本、与第二名差距等未披露，但给出了明确的榜单分数用于横向对比。</dd>
+        <dt>为什么值得关注</dt><dd>这条直接命中 LLM agent / multi-agent / tool use：核心是“委派智能”——决定何时把子任务交给子 Agent 并只带回摘要，解决长任务的上下文预算问题。对做 RAG 或研究型 Agent 的人也有参考价值：它提供了一种用流程约束自动合成训练数据、把编排策略训练进模型的路线。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-08</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.09730v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.09748v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.09748v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.09748v1" target="_blank" rel="noopener">Multi-Turn Evaluation of Deep Research Agents Under Process-Level Feedback</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“深度研究型 Agent”从一次性出报告，改成多轮改稿评测：量化证明自我反思几乎不涨分，而给到“过程级反馈”能一次性拉升 8–15 分，但后续难以持续累积。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者指出现有 DRA（深度研究代理）基准只看单轮最终答案，忽略“收到反馈后能否变好”。他们设计两种反馈设置：自我反思（无外部诊断信号，自己改）与过程级反馈（针对研究策略缺口给指导）。为生成过程级反馈，提出 RGI（Research Gap Inference，研究缺口推断）：根据评分量表 rubric 中“已满足/未满足”条目的组合模式，反推出研究流程哪里缺（如证据覆盖、来源多样性、论证结构等）。评测按多轮迭代进行，观察每轮对 rubric 条目的“纳入（incorporate）”与“回退（regress）”比例，从而区分“改得更全”还是“改着改着丢了原本做对的点”。与过去只比较最终分数不同，这里把改稿过程拆成可诊断的过程指标。</dd>
+        <dt>关键数据</dt><dd>自我反思：对 rubric 条目的“纳入”和“回退”几乎等比例发生，净提升可忽略（未给出具体分数增量）。过程级反馈：仅 1 轮就把 normalized score 提升约 8–15 分；rubric 条目纳入率约 35%–40%。多轮不叠加：后续改写整篇报告时，最多会回退（丢失）约 24% 之前已满足的条目，导致收益难以继续累积。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这篇把“能否在反馈下持续变好”变成可量化的多轮评测问题，并给出过程级反馈（类似更细粒度的 agent 训练/对齐信号）为何只在第一轮有效的证据。对做 RAG/研究型 Agent 的人，它提示瓶颈不在“发现缺口”，而在“全量重写时保持已满足约束”的稳定性。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-08</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/sabharwalrishabh/Multi-Turn-Evaluation-of-DRAs" target="_blank" rel="noopener">https://github.com/sabharwalrishabh/Multi-Turn-Evaluation-of-DRAs</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.09748v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+            </div>
+          </details>
+        
+          <details class="date-group" id="archive-2026-06-08">
             <summary>2026-06-08 <span class="n">11 条</span></summary>
             <div class="cards">
               
