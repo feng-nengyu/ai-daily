@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>3</strong> 条 ·
       归档 <strong>188</strong> 条（20 天）·
-      生成于 2026-06-09 06:04 UTC
+      生成于 2026-06-10 00:03 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">3</span></a>
         
           <a href="#archive-2026-06-09" onclick="openArchive('2026-06-09')">2026-06-09 <span class="n">10</span></a>
         
@@ -269,9 +269,92 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(3)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://github.com/chopratejas/headroom">
+      <button class="star" aria-label="收藏" data-url="https://github.com/chopratejas/headroom" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://github.com/chopratejas/headroom" target="_blank" rel="noopener">chopratejas/headroom</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-github" title="github:github-trending-agent">GitHub · agent</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">RAG</span><span class="tag">LLM</span>
+      </div>
+      
+      <p class="innovation">在工具调用、日志、文件和 RAG（检索增强生成）片段进入大模型前先做“压缩”，据称可减少 60–95% token 但答案不变，直接降低 Agent 成本与上下文压力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它把“上下文瘦身”放在 LLM 之前做：对工具输出/日志/文件/RAG chunk 进行结构化压缩与去冗余，再把更短的内容喂给模型。提供三种落地形态：可嵌入的库、可放在调用链路中的代理（proxy）、以及 MCP（模型上下文协议）服务器，方便接入现有 Agent/工具生态。核心思路不是改模型或改提示词，而是把高噪声、重复、与任务无关的片段在边缘侧先过滤/摘要/重排。与常见“让 LLM 自己总结再继续推理”不同，它试图在不消耗额外模型 token 的前提下完成压缩，从源头减少上下文占用。</dd>
+        <dt>关键数据</dt><dd>官方描述：token 减少 60–95%，并宣称“same answers（答案一致）”。未披露评测集、任务类型、以及“答案一致”的判定方法（如人工/自动指标），因此更适合作为工程侧降本组件看待，效果需在自家工具输出与 RAG 数据上复测。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / MCP 用户来说，这是直接插在“工具→模型”链路上的通用降 token 方案，可能显著降低多轮工具调用与长日志带来的上下文成本。对 RAG 来说，它提供在 chunk 进入模型前的压缩层，可能缓解“检索到太多但模型读不完”的常见问题。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-09</span>
+        
+        
+        <a class="cta" href="https://github.com/chopratejas/headroom" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://huggingface.co/blog/mishig/spaces-agents-md">
+      <button class="star" aria-label="收藏" data-url="https://huggingface.co/blog/mishig/spaces-agents-md" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://huggingface.co/blog/mishig/spaces-agents-md" target="_blank" rel="noopener">How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:huggingface-blog">Hugging Face</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">展示了一个 LLM agent（会规划并调用工具的模型）如何把两个 Hugging Face Spaces 串起来，自动生成并上线一个“3D 巴黎画廊”式应用，重点在可复用的跨 Space 工具链编排。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心做法是把每个 Hugging Face Space 当成一个可调用的“工具端点”（类似 API），由 agent 负责把用户目标拆成步骤并按顺序调用。第一个 Space 负责生成/整理画廊所需的内容与素材（如图片、描述或布局数据），第二个 Space 负责把这些输入渲染成可交互的 3D 场景并发布。agent 在中间做参数对齐、格式转换与错误重试，让两个原本独立的应用形成一条端到端流水线。与传统做法（手写 glue code 把两个服务粘起来）相比，这里把“编排逻辑”交给了可解释的工具调用流程，更接近可扩展的 agent 工作流。</dd>
+        <dt>关键数据</dt><dd>未披露：没有给出调用次数、延迟、成本、成功率或对比基线。定性意义在于证明“跨 Space 串联”可落地为完整产品原型，但工程稳定性与规模化效果仍需更多数据支撑。</dd>
+        <dt>为什么值得关注</dt><dd>这条直接对应 tool use（工具调用）与 agent 编排：把多个现成能力（两个 Spaces）组合成一个更复杂的应用。对关注 MCP（模型上下文协议）/多工具链路的读者，它提供了“把外部能力当工具串起来”的具体范式与产品化思路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-09</span>
+        
+        
+        <a class="cta" href="https://huggingface.co/blog/mishig/spaces-agents-md" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/">
+      <button class="star" aria-label="收藏" data-url="https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/" target="_blank" rel="noopener">Introducing Gemma 4 12B: a unified, encoder-free multimodal model</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-lab" title="rss:deepmind-blog">DeepMind</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">Gemma 4 12B 把图像与文本统一进同一个“纯解码器”模型里，不再依赖单独的视觉编码器，主打更简单的多模态架构与更一致的工具/推理接口。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>模型采用统一的自回归解码器（按序生成）来同时处理文字与图像信息，而不是常见的“视觉编码器+语言模型”两段式。图像被转换为一串可被同一 Transformer 处理的视觉 token（可理解为“图像的离散片段表示”），与文本 token 走同一条注意力（attention，关注机制）路径。训练上强调同一套目标函数覆盖文本与多模态任务，避免两套模块各自对齐带来的接口不一致。与以往做法相比，关键差异是去掉独立 encoder（编码器）后，跨模态对齐更多依赖单模型内部的表示学习，而不是靠外部视觉塔先“翻译”图像。</dd>
+        <dt>关键数据</dt><dd>参数规模：12B（约 120 亿）。其余关键指标（多模态基准分数、推理速度、上下文长度、训练数据规模/成本、与 Gemma 3 或同级模型对比提升幅度）：未披露；定性意义是把多模态能力收敛到单一模型路径，可能降低部署与工具调用时的系统复杂度，但效果强弱需等基准与复现。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 来说，统一的多模态输入路径意味着“看图—思考—调用工具—输出”的链路更容易做成一个一致的推理与调用接口。对多 agent、RAG（检索增强生成）场景，也更利于把图像证据与文本证据放进同一上下文里做联合推理与引用。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-09</span>
+        
+        
+        <a class="cta" href="https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
