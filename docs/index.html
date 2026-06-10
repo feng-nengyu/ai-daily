@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>191</strong> 条（21 天）·
-      生成于 2026-06-10 04:55 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>201</strong> 条（21 天）·
+      生成于 2026-06-10 06:18 UTC
     </p>
   </header>
   <main>
@@ -214,9 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
         
-          <a href="#archive-2026-06-10" onclick="openArchive('2026-06-10')">2026-06-10 <span class="n">3</span></a>
+          <a href="#archive-2026-06-10" onclick="openArchive('2026-06-10')">2026-06-10 <span class="n">13</span></a>
         
           <a href="#archive-2026-06-09" onclick="openArchive('2026-06-09')">2026-06-09 <span class="n">10</span></a>
         
@@ -271,10 +271,20 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-06-10" open>
+            <summary>2026-06-10 <span class="n">13 条</span></summary>
+            <div class="cards">
+              
     <article class="card" data-url="https://arxiv.org/abs/2606.11182v1">
       <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11182v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
@@ -304,120 +314,10 @@
         <a class="cta" href="https://arxiv.org/abs/2606.11182v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.11070v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11070v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.10956v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.10956v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.11070v1" target="_blank" rel="noopener">T1-Bench: Benchmarking Multi-Scenario Agents in Real-World Domains</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">benchmark</span>
-      </div>
-      
-      <p class="innovation">T1-Bench 把“单任务测评”升级为真实客服式的多轮、多域交织场景，用来更贴近地评估 LLM agent 的持续推理与工具调用能力。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>它构建了一个高保真（更接近真实流程）的多域交互基准：用户与助手多轮对话中穿插多个场景，要求代理在不同领域间切换并保持上下文一致。任务强调结构化推理（把问题拆成步骤）与跨域协调，而不是一次性回答。覆盖 25 个难度不同的领域，并提高组合复杂度（多个子任务拼接）与评测严格度。评测对象包含 12 个闭源与开源权重模型，统一框架记录代理行为、工具使用与对话质量。除自动打分外，还加入人工评审来补足“对话是否合理/是否像真实客服”这类难以自动衡量的维度。</dd>
-        <dt>关键数据</dt><dd>已披露：25 个领域、12 个模型、包含自动评测+人工评审；其余核心结果（各模型得分、成功率、工具调用正确率、对话质量分等）未披露。定性意义：相比常见单域/短回合基准，更能暴露 agent 在长链路、多域切换中的失误与协作问题。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent（多代理协作）方向，T1-Bench 提供更接近真实“多步+多域”工作流的统一测评口径，便于比较不同推理模型与工具调用策略。对做 RAG（检索增强生成）或 MCP（模型上下文协议）集成的人，也能用它检验跨系统、多轮交互下的稳定性与对话质量。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-09</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.11070v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.11052v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11052v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.11052v1" target="_blank" rel="noopener">Attention Amnesia in Hybrid LLMs: When CoT Fine-Tuning Breaks Long-Range Recall, and How to Fix It</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">training</span>
-      </div>
-      
-      <p class="innovation">发现 CoT（思维链）微调会让混合线性注意力模型“记性变差”，长上下文检索大幅掉点；并给出零训练成本的参数回滚修复法。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者在多种混合线性注意力架构（如 HypeNet、Jet-Nemotron）上对比 CoT 监督微调（SFT，监督式微调）前后长上下文检索能力。结果显示 CoT-SFT 会把注意力梯度偏向短程模式，破坏负责长程路由的查询/键投影矩阵 W_Q、W_K（决定“该看哪里”的映射）。为此提出 QK-Restore：不再训练，直接把微调前 checkpoint 的 W_Q、W_K 拿回来，其它参数保持微调后的版本，以保留推理能力。另给出 Procrustes（正交对齐）变体，在“保留长程路由”和“保留推理适配”之间做折中。</dd>
-        <dt>关键数据</dt><dd>长上下文检索在 NIAH（Needle-In-A-Haystack，长文本找针）上出现大幅退化：HypeNet-9B 在 NIAH-S2@256K 从 67.2% 掉到 9.4%，且在更难设置与更长窗口下更严重。QK-Restore 可在零训练成本下恢复：例如 HypeNet-5B 的 S3@256K 从 65.4% 提升到 76.4%，同时“推理表现保持强”（具体推理基准分数未披露）。适用架构范围：文中称跨多架构一致有效（更多逐项数字未披露）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 来说，长上下文“找得到信息”是可靠执行的前提；这篇指出 CoT 微调可能反而伤害检索记忆，并提供几乎无成本的修复思路，适合做长上下文代理系统的人参考。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-09</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.11052v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.11050v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11050v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.11050v1" target="_blank" rel="noopener">LLM-Mediated Demand Response Coordination in Smart Microgrids</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把微电网需求响应建模成“社交网络上的重复囚徒困境”，用“LLM 指令编译器”发结构化指令，并用混合决策架构避免 RLHF（人类反馈强化学习）带来的过度合作偏置。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者做了一个多智能体仿真：一个 LLM 负责把需求响应目标“编译”为结构化指令，发给一群异质的产消者（既生产又消费电的用户）代理。每个代理不让 LLM 直接拍板，而是先用博弈论概率做“战略底座”（由历史收益、模仿邻居、被占便宜记忆等计算），再让 LLM 对收到的协调信号做“叙事评估”（理解与解释指令、形成态度）。这样把“策略推理”和“语言影响”拆开，解决了直接用 RLHF 对齐的 LLM 当决策器时容易无条件合作、导致动态变平的问题。仿真覆盖 6 种人格原型，并比较结构化指令、非结构化消息、无干预三种协调方式，同时测试不同网络传播策略（中心节点/边缘/随机）。</dd>
-        <dt>关键数据</dt><dd>结构化指令的削峰配合率（demand-curtailment cooperation）为 33.3%，高于非结构化消息 27.0% 和无干预 28.0%，相对无干预提升 +6.3 个百分点（Δ_comp=+0.063）。该优势在两类代理底座（grounded 与 idealized）上都保持，报告的差值为 Δ=+0.083。对不同抵抗水平 R=0.1 到 0.7 均成立。基线合作率约 50%，且在“影响”下能拉开不同人格的行为差异（更接近真实异质性）。</dd>
-        <dt>为什么值得关注</dt><dd>这篇把 LLM agent 的“tool use/指令生成”落到可解释的多智能体协调：LLM 只做信息编译与影响评估，策略由可控的博弈论模块承担，适合关心 multi-agent、reasoning models 与“避免 RLHF 合作偏置”的读者。它还强调网络拓扑（中心节点投放）对协调效果的放大机制，可迁移到基于社交图的 agent 协作与干预设计。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-09</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.11050v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.11046v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11046v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.11046v1" target="_blank" rel="noopener">Does Reasoning Preserve Alignment? On the Trustworthiness of Large Reasoning Models</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">alignment</span><span class="tag">MCP</span>
-      </div>
-      
-      <p class="innovation">这篇做“推理模型是否还对齐”的体检：把指令微调模型再做推理后训练后，推理分数常变好，但安全拒答、隐私与偏见等对齐行为会回退，且默认不会保留。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者把“指令微调 LLM”作为基线，再用三种常见后训练路线把它转成推理模型：监督微调（SFT，按标注学）、强化学习式后训练（RL，按奖励优化）、蒸馏（用强模型教弱模型）。然后做一套可信度审计，在6个维度上对比推理模型与“匹配的”指令基线：安全、毒性、刻板印象/偏见、机器伦理、隐私、分布外鲁棒性。除了看各维度指标，还用 KL 散度（分布差异度量）量化“行为漂移”，用来解释为什么推理能力提升的同时会出现对齐回退。核心不同点是：不只报推理准确率，而是把对齐/可信度当作必须并列评估的指标集。</dd>
-        <dt>关键数据</dt><dd>未披露具体模型规模、训练成本与各基准的数值分数；结论为定性：推理模型在推理基准上“经常提升”，但在可信度上出现多类回退，包括毒性上升、刻板印象放大、拒答校准失真（该拒不拒/不该拒却拒）、以及在上下文中发生隐私泄露；这些回退与相对指令基线的 KL 散度增大一致，表明存在可测的行为漂移。</dd>
-        <dt>为什么值得关注</dt><dd>对做 reasoning models、LLM agent/tool use 的人，这提醒“推理后训练”可能让模型在执行工具、处理敏感信息时更不安全/更易泄露。对多智能体与RAG场景也重要：一旦拒答与隐私边界漂移，系统级风险会被放大，因此需要把可信度指标纳入常规评测与发布报告。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-09</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.11046v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.11045v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11045v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.11045v1" target="_blank" rel="noopener">What Fits (Into Few Tokens) Doesn't Overfit: Compression and Generalization in ML Research Agents</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.10956v1" target="_blank" rel="noopener">Mind the Gap: Can Frontier LLMs Pass a Standardized Office Proficiency Exam?</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -428,71 +328,17 @@
         <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">用“压缩”来检验研究型 LLM agent 是否在验证集上过拟合：把探索策略压到极短提示词或 1-bit 反馈，仍能复现/找到高分模型，给“为何基准驱动研究很少过拟合”一个可检验解释。</p>
+      <p class="innovation">把“Office 办公自动化”做成标准化基准：用中国 NCRE 真题式任务量化 LLM/Agent 的文档操作能力，直接暴露当前模型在长流程、细粒度参数配置上的差距。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者把 LLM 驱动的研究 agent 拆成“探索者”和“复现者”。输出压缩：探索者可反复用验证集挑模型，但复现者只拿到极短 prompt + 训练数据，看能否复现探索者的最终性能。输入压缩：探索者每次提交模型，只得到 1-bit 反馈（是否超过当前最好），几乎不给任何分数细节，观察还能否继续找到高性能方案。两种信息瓶颈都在 8 个不同任务上测试，并额外做“刻意诱导验证集过拟合”的对照，验证该假设是可证伪的。</dd>
-        <dt>关键数据</dt><dd>覆盖 8 个数据集/任务类型：表格分类、视觉、语言建模、扩散模型、奖励建模等；结论是两类压缩对性能“影响很小”，且在刻意诱导过拟合时“短 prompt 无法复现”。但论文摘要未披露具体分数、掉点幅度、prompt 长度（token 数）或搜索轮次等数字；相对意义是：若策略真靠“记住验证集细节”，在强压缩下应明显失效，但作者观察到多数情况下并未失效。</dd>
-        <dt>为什么值得关注</dt><dd>这篇直接围绕 LLM agent 的“tool use/搜索策略”可否被极短描述复现，和多轮基准调参是否会过拟合相关；对做 LLM agent、RAG/工具链评测、以及 reasoning models 的基准可信度与复现实验设计都有启发。</dd>
+        <dt>技术方案</dt><dd>作者认为 Word/Excel/PPT 的真实办公操作天然需要长程规划（多步完成）、精确设置（大量参数）、跨应用协作，适合测 LLM agent 的 tool use（工具调用）能力。于是基于中国全国计算机等级考试（NCRE）构建评测：覆盖 200 个综合实操任务，跨三大 Office 应用。每个任务用 100 分量表打分，并拆成 7,118 条可机读的评分点，避免只看“看起来对”的主观评估。对比两类系统：单轮生成（一次性给答案/脚本） vs 带执行反馈的 agent（能运行、看结果、迭代修复，并拥有更完整的 Office 自动化接口）。用 Score Rate（SR）作为统一指标：在所有任务上平均拿到的评分点百分比。</dd>
+        <dt>关键数据</dt><dd>任务规模：200 个实操任务；评分细则：7,118 条机器可判定标准；单任务满分：100。指标：SR（平均得分点百分比）。结果：7 个前沿 LLM 中，单轮模型最高 SR=36.6%；更强的 agent 系统（执行反馈+迭代修复+更广 Office 访问）SR=68.8%；社区参考分（用于校验评分合理性）SR=95.5%。结论：即便代码生成进步，可靠的细粒度 Office 文档自动化仍明显不足（与 95.5% 参考差 26.7 个百分点）。</dd>
+        <dt>为什么值得关注</dt><dd>这是面向 LLM agent / tool use 的“真实生产力软件”基准：比网页点击或纯代码题更贴近办公自动化的长链路任务。对做 MCP（模型上下文协议）/RAG/多智能体编排的人也有参考价值：它量化了执行反馈与迭代修复能带来多大增益，以及离“可用”还差多少。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-09</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.11045v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.11042v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11042v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.11042v1" target="_blank" rel="noopener">Workflow-GYM: Towards Long-Horizon Evaluation of Computer-use Agentic tasks in Real-World Professional Fields</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">benchmark</span>
-      </div>
-      
-      <p class="innovation">提出 Workflow-GYM：专门评测“电脑操作型”AI agent 在专业软件里的长流程 GUI 工作流，补上现有基准只测短任务、通用软件的空白。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者把评测重点从“点几下完成单步/短步骤”转向“端到端完成高价值专业工作流”，要求 agent 在图形界面（GUI）里按指令跨多个阶段持续操作。基准覆盖多种专业领域与专用软件环境，而不是常见的通用办公/网页应用。评测方式以任务是否完整成功为核心，强调长时序一致性与阶段衔接。并对失败模式做了分解分析，定位长流程中常见的漏步骤、错误累积、目标漂移等问题，帮助后续改进 agent 设计。</dd>
-        <dt>关键数据</dt><dd>在多种 SOTA（当前最强）模型上做了大量实验：最强模型成功率也仅“略高于 30%”。其余细分指标（任务数量、领域覆盖、平均步数、每步交互成本等）摘要未披露；但该结果定性表明：专业软件的长流程 GUI 工作流仍远未达到可用水平。</dd>
-        <dt>为什么值得关注</dt><dd>这类基准直接对应 LLM agent 的 tool use（工具使用）与长程规划/执行能力：不是回答问题，而是持续操作软件完成工作。对做 multi-agent、RAG（检索增强生成）或 reasoning models（推理模型）的人也有参考价值：它把“目标漂移、错误传播、漏阶段”等长链路失败显性化，便于对症设计记忆、规划与校验机制。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-09</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.11042v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.10989v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.10989v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.10989v1" target="_blank" rel="noopener">Null-Space Constrained Low-Rank Adaptation for Response-Specified Large Language Model Unlearning</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把 LoRA（低秩微调）更新限制在“保留能力子空间”的零空间里做定向遗忘：既能按指定安全回答改写行为，又尽量不扰动正常能力。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>方法叫 NSRU：对每个需要遗忘的查询，先提供一条“安全目标回答”（明确替代行为），同时压制原本不想要的回答。为让改动更局部，它用一批良性数据的隐藏表示估计每个模块的“保留子空间”（模型应保持不变的方向）。然后把 LoRA 的参数更新做正交投影，只允许落在该保留子空间的零空间（不影响保留方向的更新空间）里。训练目标联合三件事：学会安全目标回答、抑制不良回答、并通过保留损失维持原有能力；并给出一阶分析说明投影更新能减少对保留侧的扰动但仍保留可编辑方向。与以往只管“忘掉坏答案”或仅用目标引导但不约束更新位置的方法相比，它显式把“更新能改哪里”也纳入约束。</dd>
-        <dt>关键数据</dt><dd>未披露具体数值。作者报告：在 TOFU 上能更有效抑制可提取的遗忘集知识，同时 retain QA（保留集问答）表现、整体效用与安全目标对齐优于代表性基线；在 WMDP 上把危险领域准确率压到接近随机猜测水平，同时保持更广泛的 MMLU 能力（含相邻领域）。并做了消融：安全目标监督、抑制项、保留损失、零空间投影各自都有互补贡献；对超参和提示变化表现稳定。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景，模型“该忘什么、该怎么答”常需要可控改写；NSRU提供一种更像“局部补丁”的遗忘机制，减少对通用推理与任务能力的副作用。对关注 reasoning models 的读者，它把“可编辑方向”与“保留方向”用子空间约束显式分离，便于理解和复用到更可控的模型行为编辑/对齐流程。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-09</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.10989v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.10956v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2606.10968v1">
@@ -524,10 +370,10 @@
         <a class="cta" href="https://arxiv.org/abs/2606.10968v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.10956v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.10956v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.10989v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.10989v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.10956v1" target="_blank" rel="noopener">Mind the Gap: Can Frontier LLMs Pass a Standardized Office Proficiency Exam?</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.10989v1" target="_blank" rel="noopener">Null-Space Constrained Low-Rank Adaptation for Response-Specified Large Language Model Unlearning</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -538,31 +384,183 @@
         <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">把“Office 办公自动化”做成标准化基准：用中国 NCRE 真题式任务量化 LLM/Agent 的文档操作能力，直接暴露当前模型在长流程、细粒度参数配置上的差距。</p>
+      <p class="innovation">把 LoRA（低秩微调）更新限制在“保留能力子空间”的零空间里做定向遗忘：既能按指定安全回答改写行为，又尽量不扰动正常能力。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者认为 Word/Excel/PPT 的真实办公操作天然需要长程规划（多步完成）、精确设置（大量参数）、跨应用协作，适合测 LLM agent 的 tool use（工具调用）能力。于是基于中国全国计算机等级考试（NCRE）构建评测：覆盖 200 个综合实操任务，跨三大 Office 应用。每个任务用 100 分量表打分，并拆成 7,118 条可机读的评分点，避免只看“看起来对”的主观评估。对比两类系统：单轮生成（一次性给答案/脚本） vs 带执行反馈的 agent（能运行、看结果、迭代修复，并拥有更完整的 Office 自动化接口）。用 Score Rate（SR）作为统一指标：在所有任务上平均拿到的评分点百分比。</dd>
-        <dt>关键数据</dt><dd>任务规模：200 个实操任务；评分细则：7,118 条机器可判定标准；单任务满分：100。指标：SR（平均得分点百分比）。结果：7 个前沿 LLM 中，单轮模型最高 SR=36.6%；更强的 agent 系统（执行反馈+迭代修复+更广 Office 访问）SR=68.8%；社区参考分（用于校验评分合理性）SR=95.5%。结论：即便代码生成进步，可靠的细粒度 Office 文档自动化仍明显不足（与 95.5% 参考差 26.7 个百分点）。</dd>
-        <dt>为什么值得关注</dt><dd>这是面向 LLM agent / tool use 的“真实生产力软件”基准：比网页点击或纯代码题更贴近办公自动化的长链路任务。对做 MCP（模型上下文协议）/RAG/多智能体编排的人也有参考价值：它量化了执行反馈与迭代修复能带来多大增益，以及离“可用”还差多少。</dd>
+        <dt>技术方案</dt><dd>方法叫 NSRU：对每个需要遗忘的查询，先提供一条“安全目标回答”（明确替代行为），同时压制原本不想要的回答。为让改动更局部，它用一批良性数据的隐藏表示估计每个模块的“保留子空间”（模型应保持不变的方向）。然后把 LoRA 的参数更新做正交投影，只允许落在该保留子空间的零空间（不影响保留方向的更新空间）里。训练目标联合三件事：学会安全目标回答、抑制不良回答、并通过保留损失维持原有能力；并给出一阶分析说明投影更新能减少对保留侧的扰动但仍保留可编辑方向。与以往只管“忘掉坏答案”或仅用目标引导但不约束更新位置的方法相比，它显式把“更新能改哪里”也纳入约束。</dd>
+        <dt>关键数据</dt><dd>未披露具体数值。作者报告：在 TOFU 上能更有效抑制可提取的遗忘集知识，同时 retain QA（保留集问答）表现、整体效用与安全目标对齐优于代表性基线；在 WMDP 上把危险领域准确率压到接近随机猜测水平，同时保持更广泛的 MMLU 能力（含相邻领域）。并做了消融：安全目标监督、抑制项、保留损失、零空间投影各自都有互补贡献；对超参和提示变化表现稳定。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景，模型“该忘什么、该怎么答”常需要可控改写；NSRU提供一种更像“局部补丁”的遗忘机制，减少对通用推理与任务能力的副作用。对关注 reasoning models 的读者，它把“可编辑方向”与“保留方向”用子空间约束显式分离，便于理解和复用到更可控的模型行为编辑/对齐流程。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-09</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.10956v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.10989v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.11042v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11042v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.11042v1" target="_blank" rel="noopener">Workflow-GYM: Towards Long-Horizon Evaluation of Computer-use Agentic tasks in Real-World Professional Fields</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
+      </div>
       
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">benchmark</span>
+      </div>
       
+      <p class="innovation">提出 Workflow-GYM：专门评测“电脑操作型”AI agent 在专业软件里的长流程 GUI 工作流，补上现有基准只测短任务、通用软件的空白。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把评测重点从“点几下完成单步/短步骤”转向“端到端完成高价值专业工作流”，要求 agent 在图形界面（GUI）里按指令跨多个阶段持续操作。基准覆盖多种专业领域与专用软件环境，而不是常见的通用办公/网页应用。评测方式以任务是否完整成功为核心，强调长时序一致性与阶段衔接。并对失败模式做了分解分析，定位长流程中常见的漏步骤、错误累积、目标漂移等问题，帮助后续改进 agent 设计。</dd>
+        <dt>关键数据</dt><dd>在多种 SOTA（当前最强）模型上做了大量实验：最强模型成功率也仅“略高于 30%”。其余细分指标（任务数量、领域覆盖、平均步数、每步交互成本等）摘要未披露；但该结果定性表明：专业软件的长流程 GUI 工作流仍远未达到可用水平。</dd>
+        <dt>为什么值得关注</dt><dd>这类基准直接对应 LLM agent 的 tool use（工具使用）与长程规划/执行能力：不是回答问题，而是持续操作软件完成工作。对做 multi-agent、RAG（检索增强生成）或 reasoning models（推理模型）的人也有参考价值：它把“目标漂移、错误传播、漏阶段”等长链路失败显性化，便于对症设计记忆、规划与校验机制。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-09</span>
         
-          <details class="date-group" id="archive-2026-06-10" open>
-            <summary>2026-06-10 <span class="n">3 条</span></summary>
-            <div class="cards">
-              
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.11042v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.11045v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11045v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.11045v1" target="_blank" rel="noopener">What Fits (Into Few Tokens) Doesn't Overfit: Compression and Generalization in ML Research Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">用“压缩”来检验研究型 LLM agent 是否在验证集上过拟合：把探索策略压到极短提示词或 1-bit 反馈，仍能复现/找到高分模型，给“为何基准驱动研究很少过拟合”一个可检验解释。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把 LLM 驱动的研究 agent 拆成“探索者”和“复现者”。输出压缩：探索者可反复用验证集挑模型，但复现者只拿到极短 prompt + 训练数据，看能否复现探索者的最终性能。输入压缩：探索者每次提交模型，只得到 1-bit 反馈（是否超过当前最好），几乎不给任何分数细节，观察还能否继续找到高性能方案。两种信息瓶颈都在 8 个不同任务上测试，并额外做“刻意诱导验证集过拟合”的对照，验证该假设是可证伪的。</dd>
+        <dt>关键数据</dt><dd>覆盖 8 个数据集/任务类型：表格分类、视觉、语言建模、扩散模型、奖励建模等；结论是两类压缩对性能“影响很小”，且在刻意诱导过拟合时“短 prompt 无法复现”。但论文摘要未披露具体分数、掉点幅度、prompt 长度（token 数）或搜索轮次等数字；相对意义是：若策略真靠“记住验证集细节”，在强压缩下应明显失效，但作者观察到多数情况下并未失效。</dd>
+        <dt>为什么值得关注</dt><dd>这篇直接围绕 LLM agent 的“tool use/搜索策略”可否被极短描述复现，和多轮基准调参是否会过拟合相关；对做 LLM agent、RAG/工具链评测、以及 reasoning models 的基准可信度与复现实验设计都有启发。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-09</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.11045v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.11046v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11046v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.11046v1" target="_blank" rel="noopener">Does Reasoning Preserve Alignment? On the Trustworthiness of Large Reasoning Models</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">alignment</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">这篇做“推理模型是否还对齐”的体检：把指令微调模型再做推理后训练后，推理分数常变好，但安全拒答、隐私与偏见等对齐行为会回退，且默认不会保留。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把“指令微调 LLM”作为基线，再用三种常见后训练路线把它转成推理模型：监督微调（SFT，按标注学）、强化学习式后训练（RL，按奖励优化）、蒸馏（用强模型教弱模型）。然后做一套可信度审计，在6个维度上对比推理模型与“匹配的”指令基线：安全、毒性、刻板印象/偏见、机器伦理、隐私、分布外鲁棒性。除了看各维度指标，还用 KL 散度（分布差异度量）量化“行为漂移”，用来解释为什么推理能力提升的同时会出现对齐回退。核心不同点是：不只报推理准确率，而是把对齐/可信度当作必须并列评估的指标集。</dd>
+        <dt>关键数据</dt><dd>未披露具体模型规模、训练成本与各基准的数值分数；结论为定性：推理模型在推理基准上“经常提升”，但在可信度上出现多类回退，包括毒性上升、刻板印象放大、拒答校准失真（该拒不拒/不该拒却拒）、以及在上下文中发生隐私泄露；这些回退与相对指令基线的 KL 散度增大一致，表明存在可测的行为漂移。</dd>
+        <dt>为什么值得关注</dt><dd>对做 reasoning models、LLM agent/tool use 的人，这提醒“推理后训练”可能让模型在执行工具、处理敏感信息时更不安全/更易泄露。对多智能体与RAG场景也重要：一旦拒答与隐私边界漂移，系统级风险会被放大，因此需要把可信度指标纳入常规评测与发布报告。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-09</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.11046v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.11050v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11050v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.11050v1" target="_blank" rel="noopener">LLM-Mediated Demand Response Coordination in Smart Microgrids</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把微电网需求响应建模成“社交网络上的重复囚徒困境”，用“LLM 指令编译器”发结构化指令，并用混合决策架构避免 RLHF（人类反馈强化学习）带来的过度合作偏置。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者做了一个多智能体仿真：一个 LLM 负责把需求响应目标“编译”为结构化指令，发给一群异质的产消者（既生产又消费电的用户）代理。每个代理不让 LLM 直接拍板，而是先用博弈论概率做“战略底座”（由历史收益、模仿邻居、被占便宜记忆等计算），再让 LLM 对收到的协调信号做“叙事评估”（理解与解释指令、形成态度）。这样把“策略推理”和“语言影响”拆开，解决了直接用 RLHF 对齐的 LLM 当决策器时容易无条件合作、导致动态变平的问题。仿真覆盖 6 种人格原型，并比较结构化指令、非结构化消息、无干预三种协调方式，同时测试不同网络传播策略（中心节点/边缘/随机）。</dd>
+        <dt>关键数据</dt><dd>结构化指令的削峰配合率（demand-curtailment cooperation）为 33.3%，高于非结构化消息 27.0% 和无干预 28.0%，相对无干预提升 +6.3 个百分点（Δ_comp=+0.063）。该优势在两类代理底座（grounded 与 idealized）上都保持，报告的差值为 Δ=+0.083。对不同抵抗水平 R=0.1 到 0.7 均成立。基线合作率约 50%，且在“影响”下能拉开不同人格的行为差异（更接近真实异质性）。</dd>
+        <dt>为什么值得关注</dt><dd>这篇把 LLM agent 的“tool use/指令生成”落到可解释的多智能体协调：LLM 只做信息编译与影响评估，策略由可控的博弈论模块承担，适合关心 multi-agent、reasoning models 与“避免 RLHF 合作偏置”的读者。它还强调网络拓扑（中心节点投放）对协调效果的放大机制，可迁移到基于社交图的 agent 协作与干预设计。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-09</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.11050v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.11052v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11052v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.11052v1" target="_blank" rel="noopener">Attention Amnesia in Hybrid LLMs: When CoT Fine-Tuning Breaks Long-Range Recall, and How to Fix It</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">training</span>
+      </div>
+      
+      <p class="innovation">发现 CoT（思维链）微调会让混合线性注意力模型“记性变差”，长上下文检索大幅掉点；并给出零训练成本的参数回滚修复法。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者在多种混合线性注意力架构（如 HypeNet、Jet-Nemotron）上对比 CoT 监督微调（SFT，监督式微调）前后长上下文检索能力。结果显示 CoT-SFT 会把注意力梯度偏向短程模式，破坏负责长程路由的查询/键投影矩阵 W_Q、W_K（决定“该看哪里”的映射）。为此提出 QK-Restore：不再训练，直接把微调前 checkpoint 的 W_Q、W_K 拿回来，其它参数保持微调后的版本，以保留推理能力。另给出 Procrustes（正交对齐）变体，在“保留长程路由”和“保留推理适配”之间做折中。</dd>
+        <dt>关键数据</dt><dd>长上下文检索在 NIAH（Needle-In-A-Haystack，长文本找针）上出现大幅退化：HypeNet-9B 在 NIAH-S2@256K 从 67.2% 掉到 9.4%，且在更难设置与更长窗口下更严重。QK-Restore 可在零训练成本下恢复：例如 HypeNet-5B 的 S3@256K 从 65.4% 提升到 76.4%，同时“推理表现保持强”（具体推理基准分数未披露）。适用架构范围：文中称跨多架构一致有效（更多逐项数字未披露）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 来说，长上下文“找得到信息”是可靠执行的前提；这篇指出 CoT 微调可能反而伤害检索记忆，并提供几乎无成本的修复思路，适合做长上下文代理系统的人参考。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-09</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.11052v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.11070v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.11070v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.11070v1" target="_blank" rel="noopener">T1-Bench: Benchmarking Multi-Scenario Agents in Real-World Domains</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">benchmark</span>
+      </div>
+      
+      <p class="innovation">T1-Bench 把“单任务测评”升级为真实客服式的多轮、多域交织场景，用来更贴近地评估 LLM agent 的持续推理与工具调用能力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它构建了一个高保真（更接近真实流程）的多域交互基准：用户与助手多轮对话中穿插多个场景，要求代理在不同领域间切换并保持上下文一致。任务强调结构化推理（把问题拆成步骤）与跨域协调，而不是一次性回答。覆盖 25 个难度不同的领域，并提高组合复杂度（多个子任务拼接）与评测严格度。评测对象包含 12 个闭源与开源权重模型，统一框架记录代理行为、工具使用与对话质量。除自动打分外，还加入人工评审来补足“对话是否合理/是否像真实客服”这类难以自动衡量的维度。</dd>
+        <dt>关键数据</dt><dd>已披露：25 个领域、12 个模型、包含自动评测+人工评审；其余核心结果（各模型得分、成功率、工具调用正确率、对话质量分等）未披露。定性意义：相比常见单域/短回合基准，更能暴露 agent 在长链路、多域切换中的失误与协作问题。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent（多代理协作）方向，T1-Bench 提供更接近真实“多步+多域”工作流的统一测评口径，便于比较不同推理模型与工具调用策略。对做 RAG（检索增强生成）或 MCP（模型上下文协议）集成的人，也能用它检验跨系统、多轮交互下的稳定性与对话质量。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-09</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.11070v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
     <article class="card" data-url="https://github.com/chopratejas/headroom">
       <button class="star" aria-label="收藏" data-url="https://github.com/chopratejas/headroom" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
