@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>202</strong> 条（22 天）·
-      生成于 2026-06-11 05:06 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>212</strong> 条（22 天）·
+      生成于 2026-06-11 06:44 UTC
     </p>
   </header>
   <main>
@@ -214,9 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
         
-          <a href="#archive-2026-06-11" onclick="openArchive('2026-06-11')">2026-06-11 <span class="n">1</span></a>
+          <a href="#archive-2026-06-11" onclick="openArchive('2026-06-11')">2026-06-11 <span class="n">11</span></a>
         
           <a href="#archive-2026-06-10" onclick="openArchive('2026-06-10')">2026-06-10 <span class="n">13</span></a>
         
@@ -273,14 +273,24 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
-    <article class="card" data-url="https://arxiv.org/abs/2606.12373v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12373v1" onclick="toggleStar(this)">☆</button>
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-06-11" open>
+            <summary>2026-06-11 <span class="n">11 条</span></summary>
+            <div class="cards">
+              
+    <article class="card" data-url="https://arxiv.org/abs/2606.12203v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12203v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.12373v1" target="_blank" rel="noopener">Verifiable Environments Are LEGO Bricks: Recursive Composition for Reasoning Generalization</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.12203v1" target="_blank" rel="noopener">Adaptive Multi-Resolution Procedural Knowledge Compression for Large Language Models</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -288,221 +298,22 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span>
       </div>
       
-      <p class="innovation">把“可验证环境”当成乐高积木：只要输入/输出类型能对上，就能自动拼成新环境，用更少手工环境规模化训练推理能力。</p>
+      <p class="innovation">把可复用“技能”（工作流+工具调用协议）压缩成可变数量的软 token，在不明显掉任务效果的前提下，减少每次调用技能时的上下文长度与预填充开销。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>论文提出 RACES（递归自动组合环境扩展）：将每个可验证环境视为一个带“输入类型→输出类型”的模块。核心规则是：若环境A的输出类型匹配环境B的输入类型，就自动融合成一个新的、仍可自动判对错的复合环境，并可递归继续拼装。作者实现了 300 个基础环境，并提供 4 类组合算子：SEQUENTIAL（串联）、PARALLEL（并联）、SORT（排序）、SELECT（选择），用来诱导不同推理模式。相比以往主要靠人工逐个造环境、数量线性扩展，RACES用“类型匹配+算子”自动生成更多训练任务，提升环境供给效率。</dd>
-        <dt>关键数据</dt><dd>在 6 个“训练环境构建时未见过”的基准上：DeepSeek-R1-Distill-Qwen-14B 平均 +3.1 分（48.2→51.3）；Qwen3-14B +2.3 分（58.8→61.1）。效率：只用 50 个基础环境，通过组合训练即可达到“直接用 300 个独立环境训练”的相近效果（具体相近到多少分未披露，但结论是环境利用率更高）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / reasoning models 来说，“可验证环境”相当于可自动打分的训练任务来源；RACES提供一种可扩展的任务生成机制，能更低成本地做RL式推理泛化训练。对多任务/多环境组合（类似多工具链路）也有启发：用类型对齐把任务模块化并自动拼装。</dd>
+        <dt>技术方案</dt><dd>提出 SKIM：面向“程序性知识”（步骤、依赖关系、工具协议）的多分辨率压缩框架，而不是传统面向“事实文档”的摘要/压缩。核心做法是把一段技能文本离线压缩成一组软 token（可学习的连续向量，不是可读文字），推理时用这些软 token 代替原始长文本注入上下文。SKIM会根据技能复杂度自适应决定生成多少软 token：简单技能更短、复杂技能保留更多表示容量。设计目标强调保留工作流的逻辑依赖与工具协议约束，并支持社区技能频繁更新时的轻量离线压缩。</dd>
+        <dt>关键数据</dt><dd>技能长度压缩到原始 token 的 30%~60%。作者称在相同压缩率下，任务性能保持优于现有压缩方法；但具体基准名称、分数差值、推理延迟/吞吐提升幅度未披露（主要可确定的收益是减少上下文 token 带来的 prefill 成本与延迟）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景，技能说明往往反复塞进 prompt，SKIM提供一种“把技能变短但仍可执行”的路径，直接对应降低上下文成本与延迟。对 multi-agent、MCP/工具协议类工作流也有参考价值：它强调压缩时保留工具调用约束与步骤依赖，而不是只做文本摘要。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-10</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.12373v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.12370v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12370v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.12370v1" target="_blank" rel="noopener">Breaking Entropy Bounds: Accelerating RL Training via MTP with Rejection Sampling</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">把 RL（强化学习）训练里最慢的 rollout（采样生成）用 MTP（多 token 预测）真正跑起来：解释“为啥越训越不加速”，并用拒绝采样+新损失把接受率拉回高位。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者做了一个系统研究 Bebop，先指出 MTP 的接受率受“模型熵（不确定性）波动”存在理论上限：RL 阶段熵升高会线性拉低接受率。为减轻熵带来的扰动，他们用概率式拒绝采样替代常见的贪心 draft 采样，让草稿模型更稳地被主模型接受。进一步发现传统 MTP 训练目标（交叉熵或 KL）在 RL 场景不对齐，于是提出端到端 TV loss（总变差损失）直接优化“多步拒绝采样的接受率”。最后比较多种 RL 期间在线更新 MTP 的策略，结论是：RL 前用 e2e TV loss 预训练好 MTP，再配合拒绝采样即可在整个 RL 过程中保持稳定加速，避免昂贵的在线更新。</dd>
-        <dt>关键数据</dt><dd>新 TV loss 带来约 10% 的接受率提升；最高可到 95% 接受率。在数学推理、代码生成、agent 任务上，额外推理吞吐最高 +25%。在 Qwen3.5/3.6/3.7 的异步 RL 训练中，端到端加速最高 1.8x。其余训练成本、硬件配置等细节未披露（但给出了端到端 RL pipeline 的加速倍数而非仅解码速度）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / reasoning 模型来说，RL 后训练常被 rollout 吞掉算力；这篇把“投机解码(MTP)在 RL 中失效”的根因（熵）讲清，并给出可落地的拒绝采样+目标函数改造，直接影响大规模 agent/RL pipeline 的训练吞吐。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-10</span>
+        <span class="links">补充：<a href="https://github.com/bebr2/SKIM" target="_blank" rel="noopener">https://github.com/bebr2/SKIM</a></span>
         
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.12370v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.12352v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12352v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.12352v1" target="_blank" rel="noopener">CHORUS: Decentralized Multi-Embodiment Collaboration with One VLA Policy</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">用“一个预训练 VLA（视觉-语言-动作）策略”让多机器人在不通信、只看各自局部视角的情况下协作，还能超过集中式控制基线。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>CHORUS 把预训练的 VLA 模型当作共享“通用动作先验”，不再为每个机器人单独训练一套策略。推理时，每台机器人各自运行一份相同的 CHORUS，只输入自己的传感器观测，并加一个“机器人身份提示词”来区分角色与位置。这样避免了集中式方法需要拼接全队观测导致的规模问题，也避免了去中心化多策略常见的对齐训练或推理时信息共享。作者强调依赖 VLA 的视觉-动作先验来做反应式协作：看到队友动作变化就能调整自身行为，而不是靠显式通信协议。</dd>
-        <dt>关键数据</dt><dd>真实世界任务（移动测量胶带、图书馆递书、抬起洗衣篮）上：相对“从零训练的去中心化模型”成功率提升 64 个百分点；对队友行为变化的反应能力提升 40 个百分点；并且整体表现超过集中式基线。模型规模、训练数据量、训练/推理成本与延迟：未披露（但结果表明在不增加推理期通信与不做每机器人策略的前提下仍能拿到更高成功率）。</dd>
-        <dt>为什么值得关注</dt><dd>这篇把“共享大模型策略”用于 multi-agent/多机器人协作：类似 LLM agent 的“同一底座+不同身份提示词”范式，且不依赖推理期通信，和 tool use/多智能体协作的去中心化设计思路高度相关。对关注 reasoning models 的读者也有启发：用预训练先验替代显式对齐与信息共享，提升在部分可观测环境下的反应式协作。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-10</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.12352v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.12344v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12344v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.12344v1" target="_blank" rel="noopener">Claw-SWE-Bench: A Benchmark for Evaluating OpenClaw-style Agent Harnesses on Coding Tasks</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">benchmark</span><span class="tag">evaluation</span>
-      </div>
-      
-      <p class="innovation">把“会写代码的 Agent”评测从只看模型，扩展到同时评测 harness（工具编排外壳）与成本：同一模型仅换适配器，Pass@1 可从 19.1% 拉到 73.4%。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者指出 SWE-bench 的打分需要干净 Docker 工作区、补丁（patch）提取与预测格式契约，而通用 Agent（如 OpenClaw）默认不满足，导致“能不能跑通”与“会不会修 bug”混在一起。为此提出 Claw-SWE-Bench：在 SWE-bench 风格任务上加一套 adapter protocol（适配协议），把不同 agent harness（作者称 claw）统一到同一工作区契约、固定提示词、运行时预算、补丁抽取流程与评测器下比较。基准集从 SWE-bench-Multilingual 与 SWE-bench-Verified-Mini 清理 future-commit（未来提交泄漏）后构建，覆盖多语言与多仓库。另提供 Lite 子集，用“成本感知+排名感知”的方法在 17 个校准列上选出 80 题，便于低成本回归测试与复现对比。</dd>
-        <dt>关键数据</dt><dd>全量基准：350 个 GitHub issue 修复实例，覆盖 8 种语言、43 个仓库。Lite：80 实例子集（基于 17 个校准列的成本/排名感知选择）。效果：同一 GLM 5.1 作为 backbone（底座模型），OpenClaw 仅用最小 direct-diff 适配器 Pass@1=19.1%，换成完整适配器 Pass@1=73.4%（+54.3 个百分点）。消融/扫参：OpenClaw×9 模型中，模型选择可带来 Pass@1 变化 29.4 个百分点；5 种 claw×2 模型中，在固定模型下 harness 选择带来 Pass@1 变化 27.4 个百分点。成本：指出“准确率相近但总 API 成本差很多”，但未给出具体美元/Token 数。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这篇把“工具编排外壳（harness）”作为与模型同等重要的变量，给出可复现的统一评测协议。对做 coding agent、MCP/工具链集成与 RAG/推理模型落地的人，它提醒：适配层与成本核算会直接决定 SWE-bench 类指标与真实可用性。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-10</span>
-        
-        
-        <span class="links">补充：<a href="https://github.com/opensquilla/claw-swe-bench, https://huggingface.co/datasets/TokenRhythm/Claw-SWE-Bench" target="_blank" rel="noopener">https://github.com/opensquilla/claw-swe-bench, https://huggingface.co/datasets/TokenRhythm/Claw-SWE-Bench</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.12344v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.12342v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12342v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.12342v1" target="_blank" rel="noopener">ALIGNBEAM : Inference-Time Alignment Transfer via Cross-Vocabulary Logit Mixing</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">safety</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把“安全锚点模型”的对齐能力在推理时迁移到另一家族/词表不同的专用模型上：无需训练、无需改权重，也能提升拒答有害请求。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>ALIGNBEAM 针对“领域微调会削弱安全性”的问题，采用推理时的 logit mixing（把两个模型的下一词概率分布混合）做防护。不同于以往方法要求两模型共享同一词表（vocabulary），它在每个解码步把安全锚点模型的 logits 逐 token 翻译到目标模型词表，再进行混合，从而支持跨模型家族。随后用一个小型 LLM judge（评审模型）在 K 个候选续写中选出最安全的输出。全程不更新任何模型参数，部署时可通过混合强度与 K 值调节“安全-可用性”权衡。</dd>
-        <dt>关键数据</dt><dd>论文摘要未披露具体数值（如拒答率提升幅度、任务准确率变化、K 值与延迟开销）。定性结论是：在“跨词表”和“同词表”两类模型配对上，都能提高对抗性安全基准上的拒答，同时保持任务准确率，并将推理额外开销控制在“可实用”范围内；但需要读原文确认具体基准、提升幅度与延迟/成本。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景很关键：专用模型（如代码、医疗、金融）常被微调后更容易被“领域话术”诱导输出危险内容，而该方法提供一种不重训的推理时安全护栏。也与 reasoning models 的部署相关：可在不改模型权重的前提下，通过推理策略（logit 混合 + judge 选优）动态调节安全与能力。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-10</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.12342v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.12329v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12329v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.12329v1" target="_blank" rel="noopener">PROJECTMEM: A Local-First, Event-Sourced Memory and Judgment Layer for AI Coding Agents</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">RAG</span>
-      </div>
-      
-      <p class="innovation">把“项目记忆”做成可审计的本地事件日志，并在 Agent 行动前做确定性拦截，避免重复踩坑与无效调试，直接省上下文 token。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>projectmem 以“追加写入”的纯文本事件日志记录开发过程，把 issue、尝试、修复、决策、笔记等按类型结构化存档。系统再用确定性规则把日志投影成紧凑、AI 可读的摘要，通过 MCP（模型上下文协议）以工具形式提供给编码 Agent。与常见的 RAG（检索增强生成）只“回答问题”不同，它增加了一个行动前的确定性 gate：在 Agent 准备改动前检查历史，若要重复已失败的修复或触碰已标记脆弱文件就发出警告。整体 local-first（本地优先）离线运行、无遥测，日志不可变同时充当溯源记录，便于复现与审计 AI 辅助开发过程。</dd>
-        <dt>关键数据</dt><dd>作者估计每次新会话为重建上下文要消耗约 5,000–20,000 tokens（主要瓶颈是缺少项目记忆而非模型能力）。实现形态：Python 包仅 3 个依赖，提供 14 个 MCP 工具、19 条 CLI 命令、37 个自动化测试。评估为两个月自用研究：10 个项目、共记录 207 条事件；未披露标准化基准上的成功率/节省 token 的实测对照，但定性展示了“防重复失败”的治理式记忆思路。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / MCP 读者，这是一套把“记忆”产品化为 MCP 工具层的实现范式。对 multi-agent 与 reasoning models 也有启发：用确定性规则做行动前约束，把记忆从检索（RAG）升级为对下一步行为的治理与审计。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-10</span>
-        
-        
-        <span class="links">补充：<a href="https://github.com/riponcm/projectmem" target="_blank" rel="noopener">https://github.com/riponcm/projectmem</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.12329v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.12273v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12273v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.12273v1" target="_blank" rel="noopener">Beyond Fully Random Masking: Attention-Guided Denoising and Optimization for Diffusion Language Models</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">fine-tuning</span>
-      </div>
-      
-      <p class="innovation">把扩散式语言模型的“随机遮盖”后训练改成“看注意力来决定先修哪些词”，并在微调/RL时重点优化关键 token，用更贴近依赖结构的方式提升推理稳定性与表现。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者先做实证分析：在扩散式语言模型（并行解码的 dLLM）里，越“强注意力”指向未遮盖上下文的 token，生成越稳定，也更影响推理链条。基于此提出 AGDO：用注意力（attention，模型对上下文的关注权重）结构来决定去噪/填词顺序，而不是完全随机的 masking（遮盖）。训练侧在监督微调（SFT）与强化学习（RL）阶段，对注意力关键 token 赋予更高权重，促使模型优先学会“关键依赖”。整体思路是把“模型内部学到的依赖关系”显式对齐到后训练与优化流程中，区别于以往不看依赖、只随机遮盖的做法。</dd>
-        <dt>关键数据</dt><dd>论文摘要未披露具体数值（如 GSM8K、MATH、HumanEval/MBPP 等分数提升幅度、训练步数/算力开销）。定性结论是：在数学与代码基准上“持续提升推理表现”，并超过当时 dLLM 的主流后训练方法；但缺少百分比/绝对分数，需点开看表格确认提升大小与成本变化。</dd>
-        <dt>为什么值得关注</dt><dd>对关心 reasoning models / tool use / agent 的读者，这篇提供了一个“用注意力找关键 token 并优先优化”的通用思路，可迁移到 RAG 或多步推理链的训练与对齐。对 LLM agent 生态也有启发：并行生成（扩散式）若能更稳定地产生关键步骤，可能降低多轮规划/执行时的错误传播。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-10</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.12273v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.12250v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12250v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.12250v1" target="_blank" rel="noopener">Reassessing High-Performing LLMs on Polish Medical Exams: True Competence or Bias-Driven Performance?</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">evaluation</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把“医学 MCQ 高分=真会看病”这件事重新拉回现实：通过更难、更少投机空间的波兰医考基准，量化展示评测设计能让顶级模型分数直接掉 28–31 个百分点。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者认为传统多选题问答（MCQA）容易被“猜题技巧”和“选项偏置”抬分，不能代表真实临床推理能力。为此他们基于波兰医学考试扩展出更具挑战的基准：新增 1.5 万+题目、补充 2 个新领域，并做了 4 项结构性改造来减少 MCQA 特有的漏洞（例如靠选项模式/排除法投机）。随后用同一套新旧设置对 21 个大模型做对比评测，观察分数随评测设计变化的敏感性。论文还检查了数据污染（训练集泄漏到测试集）迹象，发现证据较弱，但分数仍会因题型设计而大幅波动。</dd>
-        <dt>关键数据</dt><dd>题库规模：新增 15,000+ 道题；新增领域：2 个；结构改造：4 项；参评模型：21 个。在更难的新设置下，最佳模型 Qwen3.5-122B 在英文与波兰语考试上分别下降 28.4 和 31 个百分点（pp，百分点）。数据污染：作者称“证据较低/不明显”（未给出具体比例或检测统计）。</dd>
-        <dt>为什么值得关注</dt><dd>对做 LLM agent / tool use / RAG 的人来说，很多系统能力最终要靠“评测”来判断是否可靠；这篇直接证明 MCQA 这种常用评测会系统性高估能力。它也提醒在构建推理型基准或多代理评测时，要主动消除题型伪线索，否则很难判断模型是否真的在“reasoning（推理）”。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-10</span>
-        
-        
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.12250v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.12203v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2606.12243v1">
@@ -534,10 +345,10 @@
         <a class="cta" href="https://arxiv.org/abs/2606.12243v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.12203v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12203v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.12250v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12250v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.12203v1" target="_blank" rel="noopener">Adaptive Multi-Resolution Procedural Knowledge Compression for Large Language Models</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.12250v1" target="_blank" rel="noopener">Reassessing High-Performing LLMs on Polish Medical Exams: True Competence or Bias-Driven Performance?</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -545,36 +356,223 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+        <span class="tag">LLM</span><span class="tag">evaluation</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">把可复用“技能”（工作流+工具调用协议）压缩成可变数量的软 token，在不明显掉任务效果的前提下，减少每次调用技能时的上下文长度与预填充开销。</p>
+      <p class="innovation">把“医学 MCQ 高分=真会看病”这件事重新拉回现实：通过更难、更少投机空间的波兰医考基准，量化展示评测设计能让顶级模型分数直接掉 28–31 个百分点。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>提出 SKIM：面向“程序性知识”（步骤、依赖关系、工具协议）的多分辨率压缩框架，而不是传统面向“事实文档”的摘要/压缩。核心做法是把一段技能文本离线压缩成一组软 token（可学习的连续向量，不是可读文字），推理时用这些软 token 代替原始长文本注入上下文。SKIM会根据技能复杂度自适应决定生成多少软 token：简单技能更短、复杂技能保留更多表示容量。设计目标强调保留工作流的逻辑依赖与工具协议约束，并支持社区技能频繁更新时的轻量离线压缩。</dd>
-        <dt>关键数据</dt><dd>技能长度压缩到原始 token 的 30%~60%。作者称在相同压缩率下，任务性能保持优于现有压缩方法；但具体基准名称、分数差值、推理延迟/吞吐提升幅度未披露（主要可确定的收益是减少上下文 token 带来的 prefill 成本与延迟）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景，技能说明往往反复塞进 prompt，SKIM提供一种“把技能变短但仍可执行”的路径，直接对应降低上下文成本与延迟。对 multi-agent、MCP/工具协议类工作流也有参考价值：它强调压缩时保留工具调用约束与步骤依赖，而不是只做文本摘要。</dd>
+        <dt>技术方案</dt><dd>作者认为传统多选题问答（MCQA）容易被“猜题技巧”和“选项偏置”抬分，不能代表真实临床推理能力。为此他们基于波兰医学考试扩展出更具挑战的基准：新增 1.5 万+题目、补充 2 个新领域，并做了 4 项结构性改造来减少 MCQA 特有的漏洞（例如靠选项模式/排除法投机）。随后用同一套新旧设置对 21 个大模型做对比评测，观察分数随评测设计变化的敏感性。论文还检查了数据污染（训练集泄漏到测试集）迹象，发现证据较弱，但分数仍会因题型设计而大幅波动。</dd>
+        <dt>关键数据</dt><dd>题库规模：新增 15,000+ 道题；新增领域：2 个；结构改造：4 项；参评模型：21 个。在更难的新设置下，最佳模型 Qwen3.5-122B 在英文与波兰语考试上分别下降 28.4 和 31 个百分点（pp，百分点）。数据污染：作者称“证据较低/不明显”（未给出具体比例或检测统计）。</dd>
+        <dt>为什么值得关注</dt><dd>对做 LLM agent / tool use / RAG 的人来说，很多系统能力最终要靠“评测”来判断是否可靠；这篇直接证明 MCQA 这种常用评测会系统性高估能力。它也提醒在构建推理型基准或多代理评测时，要主动消除题型伪线索，否则很难判断模型是否真的在“reasoning（推理）”。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-10</span>
         
         
-        <span class="links">补充：<a href="https://github.com/bebr2/SKIM" target="_blank" rel="noopener">https://github.com/bebr2/SKIM</a></span>
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
         
-        <a class="cta" href="https://arxiv.org/abs/2606.12203v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.12250v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.12273v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12273v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.12273v1" target="_blank" rel="noopener">Beyond Fully Random Masking: Attention-Guided Denoising and Optimization for Diffusion Language Models</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
+      </div>
       
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">fine-tuning</span>
+      </div>
       
+      <p class="innovation">把扩散式语言模型的“随机遮盖”后训练改成“看注意力来决定先修哪些词”，并在微调/RL时重点优化关键 token，用更贴近依赖结构的方式提升推理稳定性与表现。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者先做实证分析：在扩散式语言模型（并行解码的 dLLM）里，越“强注意力”指向未遮盖上下文的 token，生成越稳定，也更影响推理链条。基于此提出 AGDO：用注意力（attention，模型对上下文的关注权重）结构来决定去噪/填词顺序，而不是完全随机的 masking（遮盖）。训练侧在监督微调（SFT）与强化学习（RL）阶段，对注意力关键 token 赋予更高权重，促使模型优先学会“关键依赖”。整体思路是把“模型内部学到的依赖关系”显式对齐到后训练与优化流程中，区别于以往不看依赖、只随机遮盖的做法。</dd>
+        <dt>关键数据</dt><dd>论文摘要未披露具体数值（如 GSM8K、MATH、HumanEval/MBPP 等分数提升幅度、训练步数/算力开销）。定性结论是：在数学与代码基准上“持续提升推理表现”，并超过当时 dLLM 的主流后训练方法；但缺少百分比/绝对分数，需点开看表格确认提升大小与成本变化。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 reasoning models / tool use / agent 的读者，这篇提供了一个“用注意力找关键 token 并优先优化”的通用思路，可迁移到 RAG 或多步推理链的训练与对齐。对 LLM agent 生态也有启发：并行生成（扩散式）若能更稳定地产生关键步骤，可能降低多轮规划/执行时的错误传播。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-10</span>
         
-          <details class="date-group" id="archive-2026-06-11" open>
-            <summary>2026-06-11 <span class="n">1 条</span></summary>
-            <div class="cards">
-              
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.12273v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.12329v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12329v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.12329v1" target="_blank" rel="noopener">PROJECTMEM: A Local-First, Event-Sourced Memory and Judgment Layer for AI Coding Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">RAG</span>
+      </div>
+      
+      <p class="innovation">把“项目记忆”做成可审计的本地事件日志，并在 Agent 行动前做确定性拦截，避免重复踩坑与无效调试，直接省上下文 token。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>projectmem 以“追加写入”的纯文本事件日志记录开发过程，把 issue、尝试、修复、决策、笔记等按类型结构化存档。系统再用确定性规则把日志投影成紧凑、AI 可读的摘要，通过 MCP（模型上下文协议）以工具形式提供给编码 Agent。与常见的 RAG（检索增强生成）只“回答问题”不同，它增加了一个行动前的确定性 gate：在 Agent 准备改动前检查历史，若要重复已失败的修复或触碰已标记脆弱文件就发出警告。整体 local-first（本地优先）离线运行、无遥测，日志不可变同时充当溯源记录，便于复现与审计 AI 辅助开发过程。</dd>
+        <dt>关键数据</dt><dd>作者估计每次新会话为重建上下文要消耗约 5,000–20,000 tokens（主要瓶颈是缺少项目记忆而非模型能力）。实现形态：Python 包仅 3 个依赖，提供 14 个 MCP 工具、19 条 CLI 命令、37 个自动化测试。评估为两个月自用研究：10 个项目、共记录 207 条事件；未披露标准化基准上的成功率/节省 token 的实测对照，但定性展示了“防重复失败”的治理式记忆思路。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / MCP 读者，这是一套把“记忆”产品化为 MCP 工具层的实现范式。对 multi-agent 与 reasoning models 也有启发：用确定性规则做行动前约束，把记忆从检索（RAG）升级为对下一步行为的治理与审计。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-10</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/riponcm/projectmem" target="_blank" rel="noopener">https://github.com/riponcm/projectmem</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.12329v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.12342v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12342v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.12342v1" target="_blank" rel="noopener">ALIGNBEAM : Inference-Time Alignment Transfer via Cross-Vocabulary Logit Mixing</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">safety</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“安全锚点模型”的对齐能力在推理时迁移到另一家族/词表不同的专用模型上：无需训练、无需改权重，也能提升拒答有害请求。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>ALIGNBEAM 针对“领域微调会削弱安全性”的问题，采用推理时的 logit mixing（把两个模型的下一词概率分布混合）做防护。不同于以往方法要求两模型共享同一词表（vocabulary），它在每个解码步把安全锚点模型的 logits 逐 token 翻译到目标模型词表，再进行混合，从而支持跨模型家族。随后用一个小型 LLM judge（评审模型）在 K 个候选续写中选出最安全的输出。全程不更新任何模型参数，部署时可通过混合强度与 K 值调节“安全-可用性”权衡。</dd>
+        <dt>关键数据</dt><dd>论文摘要未披露具体数值（如拒答率提升幅度、任务准确率变化、K 值与延迟开销）。定性结论是：在“跨词表”和“同词表”两类模型配对上，都能提高对抗性安全基准上的拒答，同时保持任务准确率，并将推理额外开销控制在“可实用”范围内；但需要读原文确认具体基准、提升幅度与延迟/成本。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景很关键：专用模型（如代码、医疗、金融）常被微调后更容易被“领域话术”诱导输出危险内容，而该方法提供一种不重训的推理时安全护栏。也与 reasoning models 的部署相关：可在不改模型权重的前提下，通过推理策略（logit 混合 + judge 选优）动态调节安全与能力。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-10</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.12342v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.12344v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12344v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.12344v1" target="_blank" rel="noopener">Claw-SWE-Bench: A Benchmark for Evaluating OpenClaw-style Agent Harnesses on Coding Tasks</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">benchmark</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">把“会写代码的 Agent”评测从只看模型，扩展到同时评测 harness（工具编排外壳）与成本：同一模型仅换适配器，Pass@1 可从 19.1% 拉到 73.4%。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者指出 SWE-bench 的打分需要干净 Docker 工作区、补丁（patch）提取与预测格式契约，而通用 Agent（如 OpenClaw）默认不满足，导致“能不能跑通”与“会不会修 bug”混在一起。为此提出 Claw-SWE-Bench：在 SWE-bench 风格任务上加一套 adapter protocol（适配协议），把不同 agent harness（作者称 claw）统一到同一工作区契约、固定提示词、运行时预算、补丁抽取流程与评测器下比较。基准集从 SWE-bench-Multilingual 与 SWE-bench-Verified-Mini 清理 future-commit（未来提交泄漏）后构建，覆盖多语言与多仓库。另提供 Lite 子集，用“成本感知+排名感知”的方法在 17 个校准列上选出 80 题，便于低成本回归测试与复现对比。</dd>
+        <dt>关键数据</dt><dd>全量基准：350 个 GitHub issue 修复实例，覆盖 8 种语言、43 个仓库。Lite：80 实例子集（基于 17 个校准列的成本/排名感知选择）。效果：同一 GLM 5.1 作为 backbone（底座模型），OpenClaw 仅用最小 direct-diff 适配器 Pass@1=19.1%，换成完整适配器 Pass@1=73.4%（+54.3 个百分点）。消融/扫参：OpenClaw×9 模型中，模型选择可带来 Pass@1 变化 29.4 个百分点；5 种 claw×2 模型中，在固定模型下 harness 选择带来 Pass@1 变化 27.4 个百分点。成本：指出“准确率相近但总 API 成本差很多”，但未给出具体美元/Token 数。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这篇把“工具编排外壳（harness）”作为与模型同等重要的变量，给出可复现的统一评测协议。对做 coding agent、MCP/工具链集成与 RAG/推理模型落地的人，它提醒：适配层与成本核算会直接决定 SWE-bench 类指标与真实可用性。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-10</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/opensquilla/claw-swe-bench, https://huggingface.co/datasets/TokenRhythm/Claw-SWE-Bench" target="_blank" rel="noopener">https://github.com/opensquilla/claw-swe-bench, https://huggingface.co/datasets/TokenRhythm/Claw-SWE-Bench</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.12344v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.12352v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12352v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.12352v1" target="_blank" rel="noopener">CHORUS: Decentralized Multi-Embodiment Collaboration with One VLA Policy</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">用“一个预训练 VLA（视觉-语言-动作）策略”让多机器人在不通信、只看各自局部视角的情况下协作，还能超过集中式控制基线。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>CHORUS 把预训练的 VLA 模型当作共享“通用动作先验”，不再为每个机器人单独训练一套策略。推理时，每台机器人各自运行一份相同的 CHORUS，只输入自己的传感器观测，并加一个“机器人身份提示词”来区分角色与位置。这样避免了集中式方法需要拼接全队观测导致的规模问题，也避免了去中心化多策略常见的对齐训练或推理时信息共享。作者强调依赖 VLA 的视觉-动作先验来做反应式协作：看到队友动作变化就能调整自身行为，而不是靠显式通信协议。</dd>
+        <dt>关键数据</dt><dd>真实世界任务（移动测量胶带、图书馆递书、抬起洗衣篮）上：相对“从零训练的去中心化模型”成功率提升 64 个百分点；对队友行为变化的反应能力提升 40 个百分点；并且整体表现超过集中式基线。模型规模、训练数据量、训练/推理成本与延迟：未披露（但结果表明在不增加推理期通信与不做每机器人策略的前提下仍能拿到更高成功率）。</dd>
+        <dt>为什么值得关注</dt><dd>这篇把“共享大模型策略”用于 multi-agent/多机器人协作：类似 LLM agent 的“同一底座+不同身份提示词”范式，且不依赖推理期通信，和 tool use/多智能体协作的去中心化设计思路高度相关。对关注 reasoning models 的读者也有启发：用预训练先验替代显式对齐与信息共享，提升在部分可观测环境下的反应式协作。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-10</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.12352v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.12370v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12370v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.12370v1" target="_blank" rel="noopener">Breaking Entropy Bounds: Accelerating RL Training via MTP with Rejection Sampling</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把 RL（强化学习）训练里最慢的 rollout（采样生成）用 MTP（多 token 预测）真正跑起来：解释“为啥越训越不加速”，并用拒绝采样+新损失把接受率拉回高位。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者做了一个系统研究 Bebop，先指出 MTP 的接受率受“模型熵（不确定性）波动”存在理论上限：RL 阶段熵升高会线性拉低接受率。为减轻熵带来的扰动，他们用概率式拒绝采样替代常见的贪心 draft 采样，让草稿模型更稳地被主模型接受。进一步发现传统 MTP 训练目标（交叉熵或 KL）在 RL 场景不对齐，于是提出端到端 TV loss（总变差损失）直接优化“多步拒绝采样的接受率”。最后比较多种 RL 期间在线更新 MTP 的策略，结论是：RL 前用 e2e TV loss 预训练好 MTP，再配合拒绝采样即可在整个 RL 过程中保持稳定加速，避免昂贵的在线更新。</dd>
+        <dt>关键数据</dt><dd>新 TV loss 带来约 10% 的接受率提升；最高可到 95% 接受率。在数学推理、代码生成、agent 任务上，额外推理吞吐最高 +25%。在 Qwen3.5/3.6/3.7 的异步 RL 训练中，端到端加速最高 1.8x。其余训练成本、硬件配置等细节未披露（但给出了端到端 RL pipeline 的加速倍数而非仅解码速度）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / reasoning 模型来说，RL 后训练常被 rollout 吞掉算力；这篇把“投机解码(MTP)在 RL 中失效”的根因（熵）讲清，并给出可落地的拒绝采样+目标函数改造，直接影响大规模 agent/RL pipeline 的训练吞吐。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-10</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.12370v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.12373v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.12373v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.12373v1" target="_blank" rel="noopener">Verifiable Environments Are LEGO Bricks: Recursive Composition for Reasoning Generalization</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“可验证环境”当成乐高积木：只要输入/输出类型能对上，就能自动拼成新环境，用更少手工环境规模化训练推理能力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>论文提出 RACES（递归自动组合环境扩展）：将每个可验证环境视为一个带“输入类型→输出类型”的模块。核心规则是：若环境A的输出类型匹配环境B的输入类型，就自动融合成一个新的、仍可自动判对错的复合环境，并可递归继续拼装。作者实现了 300 个基础环境，并提供 4 类组合算子：SEQUENTIAL（串联）、PARALLEL（并联）、SORT（排序）、SELECT（选择），用来诱导不同推理模式。相比以往主要靠人工逐个造环境、数量线性扩展，RACES用“类型匹配+算子”自动生成更多训练任务，提升环境供给效率。</dd>
+        <dt>关键数据</dt><dd>在 6 个“训练环境构建时未见过”的基准上：DeepSeek-R1-Distill-Qwen-14B 平均 +3.1 分（48.2→51.3）；Qwen3-14B +2.3 分（58.8→61.1）。效率：只用 50 个基础环境，通过组合训练即可达到“直接用 300 个独立环境训练”的相近效果（具体相近到多少分未披露，但结论是环境利用率更高）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / reasoning models 来说，“可验证环境”相当于可自动打分的训练任务来源；RACES提供一种可扩展的任务生成机制，能更低成本地做RL式推理泛化训练。对多任务/多环境组合（类似多工具链路）也有启发：用类型对齐把任务模块化并自动拼装。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-10</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.12373v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
     <article class="card" data-url="https://simonwillison.net/2026/Jun/10/diffusiongemma/#atom-everything">
       <button class="star" aria-label="收藏" data-url="https://simonwillison.net/2026/Jun/10/diffusiongemma/#atom-everything" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
