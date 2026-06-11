@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>1</strong> 条 ·
       归档 <strong>201</strong> 条（21 天）·
-      生成于 2026-06-10 06:18 UTC
+      生成于 2026-06-11 00:06 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
           <a href="#archive-2026-06-10" onclick="openArchive('2026-06-10')">2026-06-10 <span class="n">13</span></a>
         
@@ -271,9 +271,40 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://simonwillison.net/2026/Jun/10/diffusiongemma/#atom-everything">
+      <button class="star" aria-label="收藏" data-url="https://simonwillison.net/2026/Jun/10/diffusiongemma/#atom-everything" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://simonwillison.net/2026/Jun/10/diffusiongemma/#atom-everything" target="_blank" rel="noopener">DiffusionGemma</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-expert" title="rss:simon-willison">Simon Willison</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">Google 把“扩散式文本生成”做成开源权重 Gemma：DiffusionGemma 26B（Apache 2.0），实测输出速度可达 500+ tokens/s，适合追求低延迟生成的应用。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它不是传统 LLM 那种“自回归”（一个 token 接一个 token）生成，而是用扩散（diffusion，逐步去噪）思路来生成文本。核心差异在于生成过程更偏并行/批量式推断，从而把吞吐拉高。此次以 Gemma 家族形式发布为 open weight，并提供指令微调版本（it）。同时 NVIDIA 用 NIM 云 API 免费托管，降低了试用门槛，方便直接对比自回归模型的延迟与成本。</dd>
+        <dt>关键数据</dt><dd>模型：diffusiongemma-26B-A4B-it（26B 规模；A4B 具体含义文中未解释）。速度：作者 2025 年预览版 Gemini Diffusion 记录到 857 tokens/s；本次用 NVIDIA NIM API 生成 2,409 tokens 用时 4.4s，约 547 tokens/s（文中称“至少 500 tokens/s”）。质量/基准测试：未披露；但从定位看主要卖点是推理吞吐与延迟，而非榜单分数。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景，推理速度直接影响“多轮调用工具+反思”的端到端延迟；500+ tokens/s 可能显著缩短一次任务的等待时间。对 multi-agent 系统也有意义：更高吞吐意味着同样算力下可并发更多 agent 或更频繁地做规划/校验。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-10</span>
+        
+        
+        <span class="links">补充：<a href="https://blog.google/innovation-and-ai/technology/developers-tools/diffusion-gemma-faster-text-generation/, https://huggingface.co/google/diffusiongemma-26B-A4B-it, https://build.nvidia.com/google/diffusiongemma-26b-a4b-it" target="_blank" rel="noopener">https://blog.google/innovation-and-ai/technology/developers-tools/diffusion-gemma-faster-text-generation/, https://huggingface.co/google/diffusiongemma-26B-A4B-it, https://build.nvidia.com/google/diffusiongemma-26b-a4b-it</a></span>
+        
+        <a class="cta" href="https://simonwillison.net/2026/Jun/10/diffusiongemma/#atom-everything" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
