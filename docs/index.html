@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>1</strong> 条 ·
       归档 <strong>212</strong> 条（22 天）·
-      生成于 2026-06-11 06:44 UTC
+      生成于 2026-06-12 00:12 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">1</span></a>
         
           <a href="#archive-2026-06-11" onclick="openArchive('2026-06-11')">2026-06-11 <span class="n">11</span></a>
         
@@ -273,9 +273,38 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(1)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://www.langchain.com/blog/benchling-max-agency-podcast">
+      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/benchling-max-agency-podcast" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.langchain.com/blog/benchling-max-agency-podcast" target="_blank" rel="noopener">How Benchling builds agents when the smartest AI isn't smart enough</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">Benchling 讲清了“最强模型也不够用”时，生命科学场景如何靠可验证的 Agent 流程落地：多模型协作 + 生产级 trace（执行轨迹）复盘，把科研任务做成可审计的工作流。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>他们把生命科学任务拆成可核对的子步骤，而不是让单个大模型一次性“写答案”。架构上采用多模型（不同模型分工）来分别处理检索、推理、结构化输出与校验，降低单模型幻觉风险。上线后用生产 trace（每次调用的输入/输出/工具使用记录）做系统化复盘，定位失败模式并迭代提示词、工具接口和路由策略。针对“必须可证伪”的科研任务，强调把结论绑定到可追溯证据（数据来源、计算过程、引用）与可重复的工具执行，而不是只输出自然语言结论。整体思路从“更聪明的模型”转向“更可靠的系统设计与审计机制”。</dd>
+        <dt>关键数据</dt><dd>未披露具体数字（如准确率、节省时间比例、成本/延迟）。定性意义在于：在高风险、强合规的生命科学研发场景，用可审计 trace + 多模型分工来提升可验证性与可维护性，比单模型堆能力更可控。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这是一套“多模型路由 + 工具执行 + trace 复盘”的生产方法论，回答了 Agent 怎么从 demo 走到可运营系统。对 RAG 与 reasoning models 方向，它强调把推理结果与可追溯证据绑定，并用生产轨迹持续评估与纠错，适合做可验证任务的落地参考。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-11</span>
+        
+        
+        <a class="cta" href="https://www.langchain.com/blog/benchling-max-agency-podcast" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
