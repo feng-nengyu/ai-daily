@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>213</strong> 条（23 天）·
-      生成于 2026-06-12 05:12 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>223</strong> 条（23 天）·
+      生成于 2026-06-12 06:29 UTC
     </p>
   </header>
   <main>
@@ -214,9 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
         
-          <a href="#archive-2026-06-12" onclick="openArchive('2026-06-12')">2026-06-12 <span class="n">1</span></a>
+          <a href="#archive-2026-06-12" onclick="openArchive('2026-06-12')">2026-06-12 <span class="n">11</span></a>
         
           <a href="#archive-2026-06-11" onclick="openArchive('2026-06-11')">2026-06-11 <span class="n">11</span></a>
         
@@ -275,14 +275,24 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
-    <article class="card" data-url="https://arxiv.org/abs/2606.13634v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13634v1" onclick="toggleStar(this)">☆</button>
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-06-12" open>
+            <summary>2026-06-12 <span class="n">11 条</span></summary>
+            <div class="cards">
+              
+    <article class="card" data-url="https://arxiv.org/abs/2606.13473v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13473v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.13634v1" target="_blank" rel="noopener">Operads for compositional reasoning in LLMs</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.13473v1" target="_blank" rel="noopener">MaxProof: Scaling Mathematical Proof with Generative-Verifier RL and Population-Level Test-Time Scaling</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -290,28 +300,28 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+        <span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">MCP</span>
       </div>
       
-      <p class="innovation">把“问题拆解→子问题回答→再合成”的常用推理套路，用 operad（可组合的多输入→单输出运算结构）给出一套可检验的数学框架，并提出可量化的“operadic consistency（一致性）”指标来评估多步推理可靠性。</p>
+      <p class="innovation">把“证明生成+低误报验证+批判式修复”合成一个模型，并在测试时用“群体搜索+锦标赛”挑出最强证明，直接把竞赛级证明做成可扩展流程。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>论文把“问题模板”视为一种运算：输入是若干子答案，输出是合成后的答案；多个运算可以像搭积木一样组合成一棵拆解树。作者定义了“问题的 operad Q”，其中组合规则对应把子答案代入上层问题（替换/代入）。在这个视角下，一个 QA/LLM 模型相当于 Q 的代数（algebra：给每个模板一个具体的求值方式），从而把工程上的分解-合成流程形式化。基于此提出“operadic consistency”：同一拆解树做不同程度的“部分折叠/合并”（partial collapse）后，模型给出的答案是否彼此一致，用来捕捉多步推理中常见的自相矛盾问题。与以往主要靠温度采样的 self-consistency（多次采样投票）不同，这里强调跨分解结构的约束一致性，而不是仅靠多样化采样。</dd>
-        <dt>关键数据</dt><dd>本文本身未披露具体数值；但引用的配套实证论文（Bottman, Liu, and Richardson, 2026）报告：在 12 个 LLM、4 个 multi-hop（多跳）QA 数据集上，operadic consistency 与准确率“强相关”，且在预测/提升可靠性方面优于标准的 temperature-based self-consistency 基线。相关系数、提升幅度等具体数字需查配套论文。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use、multi-agent 常见的“分解任务→逐步执行→合成结果”流程，这提供了一个更可解释、可度量的理论底座。提出的一致性指标也可作为 RAG/多步推理链路的质量信号，用于选择分解策略、做验证或做自动纠错。</dd>
+        <dt>技术方案</dt><dd>先训练三种面向证明的能力：生成证明、验证证明、在批评（critique，指出问题的文字反馈）条件下修复证明。验证器采用“防御纵深”的生成式验证器设计，重点压低误报率（把错证明判成对）。随后把三种能力合并到一个发布的 M3 模型里。测试时用 MaxProof 把同一个模型同时当作生成器、验证器、改写器和排序器，在一组候选证明的“种群”里反复生成-筛选-修复，并用锦标赛选择（tournament selection，逐轮淘汰）输出最终证明。与只做单次采样或简单 self-consistency（多样本投票）不同，它显式把验证与修复纳入搜索闭环，并强调群体级的 test-time scaling（推理时加算力换更好结果）。</dd>
+        <dt>关键数据</dt><dd>IMO 2025：35/42；USAMO 2026：36/42。作者称两项都超过人类金牌阈值（具体阈值未披露）。模型参数规模、推理时采样/候选数量、计算开销、训练数据与训练成本均未披露；但从描述看，提升主要来自测试时的群体搜索与验证-修复循环，而非仅靠更大模型。</dd>
+        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent / tool use 思路在“数学证明”上的落地：同一模型扮演生成-验证-反思修复-排序的多角色闭环。对关注 reasoning models、multi-agent（种群式搜索）和 test-time scaling 的读者，它提供了可复用的“验证器驱动搜索”框架与低误报验证器设计取舍。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-11</span>
         
         
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）；配套论文：Bottman, Liu, and Richardson, 2026（同样未给出链接）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）；配套论文：Bottman, Liu, and Richardson, 2026（同样未给出链接）</a></span>
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
         
-        <a class="cta" href="https://arxiv.org/abs/2606.13634v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.13473v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.13608v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13608v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.13544v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13544v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.13608v1" target="_blank" rel="noopener">AgentBeats: Agentifying Agent Assessment for Openness, Standardization, and Reproducibility</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.13544v1" target="_blank" rel="noopener">Adaptive Turn-Taking for Real-time Multi-Party Voice Agents</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -319,26 +329,26 @@
       </div>
       
       <div class="tags">
-        <span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">evaluation</span>
+        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">把“评测 agent”也做成 agent：用统一协议让参评 agent 与评测方同一套接口交互，减少集成成本并提升可复现与可对比性。</p>
+      <p class="innovation">把“该不该插话/让谁说”变成可控的角色策略：ModeratorLM 通过显式角色条件化，让多方语音 Agent 的轮次切换更稳，减少误打断。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者提出 AAA（Agentified Agent Assessment）：评测不再依赖固定的、以 LLM 为中心的测试框架，而是由“裁判 agent”执行评测逻辑。所有参与方通过标准化协议交互：A2A（agent-to-agent，用于任务管理）和 MCP（模型上下文协议，用于工具调用）。与传统基准把“benchmark 接口”和“agent 接口”分成两套不同规范不同，AAA 只需要一套统一接口，从而把评测逻辑与被测 agent 的实现解耦。论文给出 AgentBeats 作为落地实现，并提出 5 种运行模式，用来在开放性、隐私与可复现之间做现实约束下的折中。</dd>
-        <dt>关键数据</dt><dd>开放竞赛持续 5 个月：共 298 个裁判 agent（12 个类别）与 467 个被测 agent（来自独立参与者），证明该接口可覆盖异构评测与多样 agent 设计。另有编码 agent 案例研究：作者称能在保持与公开记录一致（fidelity）的同时补齐此前缺失的“正面对比”结果；但未披露具体分数提升、胜率或一致性量化指标，因此效果主要是“评测覆盖面/可比性/可复现流程”的定性增强。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent、multi-agent、tool use 读者，这篇把 A2A + MCP 作为统一评测协议栈，直接对应“如何标准化工具调用与任务编排的评测”。对关心 reasoning models/RAG 的人，它提供一种更可复现的评测组织方式，便于在不同 agent 架构间做更公平的横向对比。</dd>
+        <dt>技术方案</dt><dd>提出 ModeratorLM：在多方语音场景中先给助手分配明确角色（如主持人/记录员/协作者），再让模型按角色来决定何时接话、何时保持沉默。底座是语音大模型，采用分块流式（chunk-wise streaming）处理，面向实时对话而非离线转写。进一步给出“推理增强”版本：在对话上下文+角色上做链式思考（chain-of-thought，逐步推理）来判断发言时机与优先级。数据上构建 RolePlayConv：大规模合成的多方口语对话数据，覆盖多种助手角色，用来训练/评测角色驱动的轮次策略。对比基线是“不使用角色条件”的方法，主要差异在于把 turn-taking 从纯信号/上下文预测变成“角色+上下文”的策略决策。</dd>
+        <dt>关键数据</dt><dd>在真实会议数据与 RolePlayConv 上：turn-taking 精确率（precision）提升超过 40%，召回率（recall）提升超过 70%；同时“误报式打断”（false-positive interruptions）显著减少（具体下降幅度未披露）。模型规模、延迟（ms）、实时因子（RTF）与训练成本未披露，但结果指向：在动态抢话/多人竞争话轮时更少抢话、更少漏接话。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / multi-agent 来说，多人语音协作的关键瓶颈是“何时说、说给谁”，这篇把它做成可控的角色策略，适合做会议主持/协作型语音 Agent。推理增强版把“工具式决策”（何时介入）与 reasoning models 的思路结合，给后续接入 tool use 或 MCP 编排多角色行为提供了可借鉴的接口（角色条件）。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-11</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.13608v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.13544v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.13603v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13603v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.13550v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13550v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.13603v1" target="_blank" rel="noopener">Beyond the Commitment Boundary: Probing Epiphenomenal Chain-of-Thought in Large Reasoning Models</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.13550v1" target="_blank" rel="noopener">Uncertainty-Aware Hybrid Retrieval for Long-Document RAG</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -346,103 +356,20 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">multi-agent</span>
+        <span class="tag">RAG</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
       </div>
       
-      <p class="innovation">提出“承诺边界”：模型在推理链中常在某一步突然锁定最终答案，后续不少 CoT（思维链）步骤对答案概率几乎没影响，可据此安全早停省算力。</p>
+      <p class="innovation">把“该用大段还是小段检索”变成按查询动态判断：用分数分布的熵（不确定性）来加权融合多粒度检索，且无需训练即可提升长文档 RAG 取证质量。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者先用 early exit（中途退出）逐步截断推理链，估计每一步对最终答案的因果重要性，从而观察答案是何时“定型”的。结果发现推理常从临时猜测跃迁到稳定高置信答案，这个跃迁被定义为 commitment boundary（承诺边界），且往往只发生在单一步。边界之后的 CoT 被称为 epiphenomenal（伴随现象式）步骤：看起来在“继续推理”，但对最终答案分布几乎不再产生变化。进一步用 attention probes（注意力探针）从中间步骤线性解码“答案形成阶段”，并验证该信号能跨任务泛化，用它来在边界处触发早停，而不是固定生成到预设长度。</dd>
-        <dt>关键数据</dt><dd>在多类任务与多个模型家族上：平均可将 CoT 长度减少最高约 55%，且对模型性能影响“可忽略”（未披露具体基准分数/下降幅度）。承诺边界常在推理块结束前就出现，且经常只需 1 步完成从不稳定到稳定答案的转变（未披露具体比例分布）。线性探针可高准确率解码答案形成阶段并能泛化到未见任务（未披露准确率数值）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 来说，CoT 往往是主要推理成本来源；识别“何时已决定答案”可直接用于动态早停、降低延迟与 token 成本。对 reasoning models 与多步推理/RAG 流程也有启发：并非越长越好，后半段可能只是“叙述性推理”，可用探针信号做推理预算控制。</dd>
+        <dt>技术方案</dt><dd>提出 UMG-RAG：在同一语料上切成多种 chunk 粒度（长段/短段等），并同时用稠密检索（向量语义匹配）与稀疏检索（关键词匹配）作为“专家”。对每个查询，把每个“专家-粒度”的候选分数列表转成证据概率分布，用分布熵估计该列表的可靠性（熵低=更确定）。再按查询的语义置信、词法置信与粒度置信做不确定性感知融合，决定最终返回哪些证据。另有 UMGP-RAG（parent promotion）：先用细粒度命中定位证据，再返回更大但去冗余的父级段落以保证局部连贯，避免只给碎片导致生成断裂。</dd>
+        <dt>关键数据</dt><dd>文中仅描述“在问答基准上提升生成质量、保持轻量可插拔”，未披露具体 benchmark 名称、提升幅度（如 EM/F1）、检索/生成延迟或 token 成本。定性意义：在不改 retriever/LLM、无训练成本的前提下，针对长上下文“噪声稀释”和“短块难检索”两类常见问题给出可直接落地的融合策略。</dd>
+        <dt>为什么值得关注</dt><dd>这是一条典型的 RAG/long-context 检索改造思路：用“不确定性”做多检索器+多粒度的动态路由与融合，适合做 LLM agent 的 tool use（检索工具）组件升级。对关注 RAG、tool use、reasoning models 的读者，它提供了无需训练的可插拔检索策略与“细粒度定位+父块返回”的工程化折中。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-11</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.13603v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.13598v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13598v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.13598v1" target="_blank" rel="noopener">Reward Modeling for Multi-Agent Orchestration</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">提出 OrchRM：不用人工标注、也不靠昂贵子代理反复 rollout，就能给多智能体“编排/调度”打分并训练编排器，显著降低训练与测试时扩展成本。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>核心是“编排级”奖励建模：不直接评估每个子代理的长轨迹，而是利用一次多智能体执行过程中产生的中间产物（如计划、工具调用结果、子任务产出）来构造可比较的 win-lose（胜负）样本对。然后用 Bradley-Terry（成对偏好排序）训练奖励模型，让模型学会判断哪种编排更好。与以往需要为每个候选编排做大量子代理 rollout 的训练/测试时扩展方法不同，OrchRM 直接在编排决策层面打分与优化，从而更省 token。训练好的奖励模型既可用于奖励引导的编排器训练，也可用于 MAS 的 test-time scaling（测试时多候选编排选择）。</dd>
-        <dt>关键数据</dt><dd>训练效率：token 使用量最高节省 10x（同等训练目标下）。测试时扩展：准确率最高提升 8%。覆盖任务：数学推理、网页问答、多跳推理等多领域均可迁移；具体基准名称与绝对分数未披露。</dd>
-        <dt>为什么值得关注</dt><dd>面向 LLM agent / multi-agent 的“编排器”训练一直卡在监督稀缺与 rollout 成本高，OrchRM 给出一种更像 RAG/工具链系统可落地的自监督奖励信号。对关注 tool use、multi-agent、reasoning models 的读者，它提供了更便宜的 test-time scaling 与编排优化路径。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-11</span>
-        
-        
-        <span class="links">补充：<a href="https://github.com/Wang-ML-Lab/OrchRM" target="_blank" rel="noopener">https://github.com/Wang-ML-Lab/OrchRM</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.13598v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.13594v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13594v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.13594v1" target="_blank" rel="noopener">See What I See, Know What I Think: Dense Latent Communication Across Heterogeneous Agents</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">让不同规模的异构大模型直接“传脑回路”：用KV-cache（注意力缓存）做密集对齐，既能传“看到了什么”，也能传“怎么想的”，比纯文本沟通更省算力。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者指出多智能体用文本交流要经历“解码再编码”，信息有损且计算贵；改用KV-cache传递更高效，但异构模型的潜空间（内部表示）不对齐是核心难点。论文先做信息结构分析：有输入的“上下文感知”传递主要靠稀疏的推理信号；无输入的“上下文无关”传递则需要密集保留上下文知识。基于此提出轻量的跨模型cache变换器，把发送方KV-cache映射到接收方可用的空间。训练分两阶段：先做重建（让接收方复原发送方的内部信息），再做生成（让接收方用对齐后的cache完成任务），区别于以往只在同构模型或仅用cache做“引导/steering”的做法。</dd>
-        <dt>关键数据</dt><dd>模型与方向：在{Qwen3-4B, 8B, 14B}之间做6个双向传递方向；评测覆盖6个域内+域外基准（具体基准名与分数未披露）。效果：在“上下文感知”设置下，性能可达到或超过文本通信，同时计算量约降低2到3倍；在“上下文无关”（接收方无输入）设置下仍保持有效，而先前异构方法会崩溃（未给出崩溃阈值/具体降幅）。与既有异构基线相比整体更好，但未披露具体提升百分比或绝对分数。</dd>
-        <dt>为什么值得关注</dt><dd>这条直接对应LLM agent的tool use/多智能体通信瓶颈：用MCP式“传消息”之外的另一条路——传KV-cache来省算力、降延迟。对关注multi-agent、reasoning models的人尤其有用，因为它讨论了“推理信号稀疏 vs 上下文知识密集”的传递机制，并给出可训练的跨模型对齐方案。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-11</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.13594v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.13591v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13591v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.13591v1" target="_blank" rel="noopener">Multiagent Protocols with Aggregated Confidence Signals</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">MCP</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把多智能体系统的“各说各的置信度”统一成一个可用的系统级置信度，并证明它比单个 agent 或常见辩论基线更能区分对错。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者指出多智能体辩论（MAD，多模型互辩）里虽然会用置信度来加权消息或触发辩论，但从不输出“系统整体置信度”。他们提出 3 种协议：先把不同模型的原始置信信号做变换与校准，让它们可比；再用两类聚合方式合成一个最终置信度：软投票（按权重平均）或“贝叶斯融合”（把各 agent 的概率证据做概率层面的合并）。置信信号来源比较了两种估计器：序列概率（模型对输出序列的概率）与自我报告（模型口头给分）。同时对比参数化/非参数化校准器，分析校准对准确率与置信度判别力的影响。</dd>
-        <dt>关键数据</dt><dd>核心指标是 AUARC（基于风险-覆盖率曲线的面积，用来衡量置信度把“高把握样本”挑出来的能力）与 F1-score（准确性）。论文结论：聚合后的系统置信度在 AUARC 上优于“最佳单 agent”与“标准辩论基线”，且 F1 基本保持稳定，并在更模糊任务上弥补 MAD 带来的 F1 损失；但具体提升幅度（百分比/绝对值）在摘要中未披露。实验覆盖 5 个基准、4 类任务；每个基准评估 6 组同构/异构的辩论 pair（不同模型组合），跨不同能力与规模的模型。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / multi-agent 系统来说，“是否可信、何时该交给人审”比单次答对更关键；这篇给出可落地的系统级置信度聚合与评估框架。对 tool use、RAG 等需要做路由/拒答/升级审核的 agent 流程，聚合置信度可直接用作决策信号。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-11</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.13591v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.13550v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2606.13572v1">
@@ -474,10 +401,10 @@
         <a class="cta" href="https://arxiv.org/abs/2606.13572v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.13550v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13550v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.13591v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13591v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.13550v1" target="_blank" rel="noopener">Uncertainty-Aware Hybrid Retrieval for Long-Document RAG</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.13591v1" target="_blank" rel="noopener">Multiagent Protocols with Aggregated Confidence Signals</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -485,26 +412,26 @@
       </div>
       
       <div class="tags">
-        <span class="tag">RAG</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+        <span class="tag">multi-agent</span><span class="tag">MCP</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">把“该用大段还是小段检索”变成按查询动态判断：用分数分布的熵（不确定性）来加权融合多粒度检索，且无需训练即可提升长文档 RAG 取证质量。</p>
+      <p class="innovation">把多智能体系统的“各说各的置信度”统一成一个可用的系统级置信度，并证明它比单个 agent 或常见辩论基线更能区分对错。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>提出 UMG-RAG：在同一语料上切成多种 chunk 粒度（长段/短段等），并同时用稠密检索（向量语义匹配）与稀疏检索（关键词匹配）作为“专家”。对每个查询，把每个“专家-粒度”的候选分数列表转成证据概率分布，用分布熵估计该列表的可靠性（熵低=更确定）。再按查询的语义置信、词法置信与粒度置信做不确定性感知融合，决定最终返回哪些证据。另有 UMGP-RAG（parent promotion）：先用细粒度命中定位证据，再返回更大但去冗余的父级段落以保证局部连贯，避免只给碎片导致生成断裂。</dd>
-        <dt>关键数据</dt><dd>文中仅描述“在问答基准上提升生成质量、保持轻量可插拔”，未披露具体 benchmark 名称、提升幅度（如 EM/F1）、检索/生成延迟或 token 成本。定性意义：在不改 retriever/LLM、无训练成本的前提下，针对长上下文“噪声稀释”和“短块难检索”两类常见问题给出可直接落地的融合策略。</dd>
-        <dt>为什么值得关注</dt><dd>这是一条典型的 RAG/long-context 检索改造思路：用“不确定性”做多检索器+多粒度的动态路由与融合，适合做 LLM agent 的 tool use（检索工具）组件升级。对关注 RAG、tool use、reasoning models 的读者，它提供了无需训练的可插拔检索策略与“细粒度定位+父块返回”的工程化折中。</dd>
+        <dt>技术方案</dt><dd>作者指出多智能体辩论（MAD，多模型互辩）里虽然会用置信度来加权消息或触发辩论，但从不输出“系统整体置信度”。他们提出 3 种协议：先把不同模型的原始置信信号做变换与校准，让它们可比；再用两类聚合方式合成一个最终置信度：软投票（按权重平均）或“贝叶斯融合”（把各 agent 的概率证据做概率层面的合并）。置信信号来源比较了两种估计器：序列概率（模型对输出序列的概率）与自我报告（模型口头给分）。同时对比参数化/非参数化校准器，分析校准对准确率与置信度判别力的影响。</dd>
+        <dt>关键数据</dt><dd>核心指标是 AUARC（基于风险-覆盖率曲线的面积，用来衡量置信度把“高把握样本”挑出来的能力）与 F1-score（准确性）。论文结论：聚合后的系统置信度在 AUARC 上优于“最佳单 agent”与“标准辩论基线”，且 F1 基本保持稳定，并在更模糊任务上弥补 MAD 带来的 F1 损失；但具体提升幅度（百分比/绝对值）在摘要中未披露。实验覆盖 5 个基准、4 类任务；每个基准评估 6 组同构/异构的辩论 pair（不同模型组合），跨不同能力与规模的模型。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / multi-agent 系统来说，“是否可信、何时该交给人审”比单次答对更关键；这篇给出可落地的系统级置信度聚合与评估框架。对 tool use、RAG 等需要做路由/拒答/升级审核的 agent 流程，聚合置信度可直接用作决策信号。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-11</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.13550v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.13591v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.13544v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13544v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.13594v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13594v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.13544v1" target="_blank" rel="noopener">Adaptive Turn-Taking for Real-time Multi-Party Voice Agents</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.13594v1" target="_blank" rel="noopener">See What I See, Know What I Think: Dense Latent Communication Across Heterogeneous Agents</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -512,26 +439,26 @@
       </div>
       
       <div class="tags">
-        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+        <span class="tag">multi-agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
       </div>
       
-      <p class="innovation">把“该不该插话/让谁说”变成可控的角色策略：ModeratorLM 通过显式角色条件化，让多方语音 Agent 的轮次切换更稳，减少误打断。</p>
+      <p class="innovation">让不同规模的异构大模型直接“传脑回路”：用KV-cache（注意力缓存）做密集对齐，既能传“看到了什么”，也能传“怎么想的”，比纯文本沟通更省算力。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>提出 ModeratorLM：在多方语音场景中先给助手分配明确角色（如主持人/记录员/协作者），再让模型按角色来决定何时接话、何时保持沉默。底座是语音大模型，采用分块流式（chunk-wise streaming）处理，面向实时对话而非离线转写。进一步给出“推理增强”版本：在对话上下文+角色上做链式思考（chain-of-thought，逐步推理）来判断发言时机与优先级。数据上构建 RolePlayConv：大规模合成的多方口语对话数据，覆盖多种助手角色，用来训练/评测角色驱动的轮次策略。对比基线是“不使用角色条件”的方法，主要差异在于把 turn-taking 从纯信号/上下文预测变成“角色+上下文”的策略决策。</dd>
-        <dt>关键数据</dt><dd>在真实会议数据与 RolePlayConv 上：turn-taking 精确率（precision）提升超过 40%，召回率（recall）提升超过 70%；同时“误报式打断”（false-positive interruptions）显著减少（具体下降幅度未披露）。模型规模、延迟（ms）、实时因子（RTF）与训练成本未披露，但结果指向：在动态抢话/多人竞争话轮时更少抢话、更少漏接话。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / multi-agent 来说，多人语音协作的关键瓶颈是“何时说、说给谁”，这篇把它做成可控的角色策略，适合做会议主持/协作型语音 Agent。推理增强版把“工具式决策”（何时介入）与 reasoning models 的思路结合，给后续接入 tool use 或 MCP 编排多角色行为提供了可借鉴的接口（角色条件）。</dd>
+        <dt>技术方案</dt><dd>作者指出多智能体用文本交流要经历“解码再编码”，信息有损且计算贵；改用KV-cache传递更高效，但异构模型的潜空间（内部表示）不对齐是核心难点。论文先做信息结构分析：有输入的“上下文感知”传递主要靠稀疏的推理信号；无输入的“上下文无关”传递则需要密集保留上下文知识。基于此提出轻量的跨模型cache变换器，把发送方KV-cache映射到接收方可用的空间。训练分两阶段：先做重建（让接收方复原发送方的内部信息），再做生成（让接收方用对齐后的cache完成任务），区别于以往只在同构模型或仅用cache做“引导/steering”的做法。</dd>
+        <dt>关键数据</dt><dd>模型与方向：在{Qwen3-4B, 8B, 14B}之间做6个双向传递方向；评测覆盖6个域内+域外基准（具体基准名与分数未披露）。效果：在“上下文感知”设置下，性能可达到或超过文本通信，同时计算量约降低2到3倍；在“上下文无关”（接收方无输入）设置下仍保持有效，而先前异构方法会崩溃（未给出崩溃阈值/具体降幅）。与既有异构基线相比整体更好，但未披露具体提升百分比或绝对分数。</dd>
+        <dt>为什么值得关注</dt><dd>这条直接对应LLM agent的tool use/多智能体通信瓶颈：用MCP式“传消息”之外的另一条路——传KV-cache来省算力、降延迟。对关注multi-agent、reasoning models的人尤其有用，因为它讨论了“推理信号稀疏 vs 上下文知识密集”的传递机制，并给出可训练的跨模型对齐方案。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-11</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.13544v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.13594v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.13473v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13473v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.13598v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13598v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.13473v1" target="_blank" rel="noopener">MaxProof: Scaling Mathematical Proof with Generative-Verifier RL and Population-Level Test-Time Scaling</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.13598v1" target="_blank" rel="noopener">Reward Modeling for Multi-Agent Orchestration</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -539,36 +466,107 @@
       </div>
       
       <div class="tags">
-        <span class="tag">reasoning</span><span class="tag">tool-use</span><span class="tag">MCP</span>
+        <span class="tag">multi-agent</span><span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">把“证明生成+低误报验证+批判式修复”合成一个模型，并在测试时用“群体搜索+锦标赛”挑出最强证明，直接把竞赛级证明做成可扩展流程。</p>
+      <p class="innovation">提出 OrchRM：不用人工标注、也不靠昂贵子代理反复 rollout，就能给多智能体“编排/调度”打分并训练编排器，显著降低训练与测试时扩展成本。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>先训练三种面向证明的能力：生成证明、验证证明、在批评（critique，指出问题的文字反馈）条件下修复证明。验证器采用“防御纵深”的生成式验证器设计，重点压低误报率（把错证明判成对）。随后把三种能力合并到一个发布的 M3 模型里。测试时用 MaxProof 把同一个模型同时当作生成器、验证器、改写器和排序器，在一组候选证明的“种群”里反复生成-筛选-修复，并用锦标赛选择（tournament selection，逐轮淘汰）输出最终证明。与只做单次采样或简单 self-consistency（多样本投票）不同，它显式把验证与修复纳入搜索闭环，并强调群体级的 test-time scaling（推理时加算力换更好结果）。</dd>
-        <dt>关键数据</dt><dd>IMO 2025：35/42；USAMO 2026：36/42。作者称两项都超过人类金牌阈值（具体阈值未披露）。模型参数规模、推理时采样/候选数量、计算开销、训练数据与训练成本均未披露；但从描述看，提升主要来自测试时的群体搜索与验证-修复循环，而非仅靠更大模型。</dd>
-        <dt>为什么值得关注</dt><dd>这是典型的 LLM agent / tool use 思路在“数学证明”上的落地：同一模型扮演生成-验证-反思修复-排序的多角色闭环。对关注 reasoning models、multi-agent（种群式搜索）和 test-time scaling 的读者，它提供了可复用的“验证器驱动搜索”框架与低误报验证器设计取舍。</dd>
+        <dt>技术方案</dt><dd>核心是“编排级”奖励建模：不直接评估每个子代理的长轨迹，而是利用一次多智能体执行过程中产生的中间产物（如计划、工具调用结果、子任务产出）来构造可比较的 win-lose（胜负）样本对。然后用 Bradley-Terry（成对偏好排序）训练奖励模型，让模型学会判断哪种编排更好。与以往需要为每个候选编排做大量子代理 rollout 的训练/测试时扩展方法不同，OrchRM 直接在编排决策层面打分与优化，从而更省 token。训练好的奖励模型既可用于奖励引导的编排器训练，也可用于 MAS 的 test-time scaling（测试时多候选编排选择）。</dd>
+        <dt>关键数据</dt><dd>训练效率：token 使用量最高节省 10x（同等训练目标下）。测试时扩展：准确率最高提升 8%。覆盖任务：数学推理、网页问答、多跳推理等多领域均可迁移；具体基准名称与绝对分数未披露。</dd>
+        <dt>为什么值得关注</dt><dd>面向 LLM agent / multi-agent 的“编排器”训练一直卡在监督稀缺与 rollout 成本高，OrchRM 给出一种更像 RAG/工具链系统可落地的自监督奖励信号。对关注 tool use、multi-agent、reasoning models 的读者，它提供了更便宜的 test-time scaling 与编排优化路径。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-11</span>
         
         
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        <span class="links">补充：<a href="https://github.com/Wang-ML-Lab/OrchRM" target="_blank" rel="noopener">https://github.com/Wang-ML-Lab/OrchRM</a></span>
         
-        <a class="cta" href="https://arxiv.org/abs/2606.13473v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.13598v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.13603v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13603v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.13603v1" target="_blank" rel="noopener">Beyond the Commitment Boundary: Probing Epiphenomenal Chain-of-Thought in Large Reasoning Models</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
+      </div>
       
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">multi-agent</span>
+      </div>
       
+      <p class="innovation">提出“承诺边界”：模型在推理链中常在某一步突然锁定最终答案，后续不少 CoT（思维链）步骤对答案概率几乎没影响，可据此安全早停省算力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者先用 early exit（中途退出）逐步截断推理链，估计每一步对最终答案的因果重要性，从而观察答案是何时“定型”的。结果发现推理常从临时猜测跃迁到稳定高置信答案，这个跃迁被定义为 commitment boundary（承诺边界），且往往只发生在单一步。边界之后的 CoT 被称为 epiphenomenal（伴随现象式）步骤：看起来在“继续推理”，但对最终答案分布几乎不再产生变化。进一步用 attention probes（注意力探针）从中间步骤线性解码“答案形成阶段”，并验证该信号能跨任务泛化，用它来在边界处触发早停，而不是固定生成到预设长度。</dd>
+        <dt>关键数据</dt><dd>在多类任务与多个模型家族上：平均可将 CoT 长度减少最高约 55%，且对模型性能影响“可忽略”（未披露具体基准分数/下降幅度）。承诺边界常在推理块结束前就出现，且经常只需 1 步完成从不稳定到稳定答案的转变（未披露具体比例分布）。线性探针可高准确率解码答案形成阶段并能泛化到未见任务（未披露准确率数值）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 来说，CoT 往往是主要推理成本来源；识别“何时已决定答案”可直接用于动态早停、降低延迟与 token 成本。对 reasoning models 与多步推理/RAG 流程也有启发：并非越长越好，后半段可能只是“叙述性推理”，可用探针信号做推理预算控制。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-11</span>
         
-          <details class="date-group" id="archive-2026-06-12" open>
-            <summary>2026-06-12 <span class="n">1 条</span></summary>
-            <div class="cards">
-              
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.13603v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.13608v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13608v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.13608v1" target="_blank" rel="noopener">AgentBeats: Agentifying Agent Assessment for Openness, Standardization, and Reproducibility</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">把“评测 agent”也做成 agent：用统一协议让参评 agent 与评测方同一套接口交互，减少集成成本并提升可复现与可对比性。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者提出 AAA（Agentified Agent Assessment）：评测不再依赖固定的、以 LLM 为中心的测试框架，而是由“裁判 agent”执行评测逻辑。所有参与方通过标准化协议交互：A2A（agent-to-agent，用于任务管理）和 MCP（模型上下文协议，用于工具调用）。与传统基准把“benchmark 接口”和“agent 接口”分成两套不同规范不同，AAA 只需要一套统一接口，从而把评测逻辑与被测 agent 的实现解耦。论文给出 AgentBeats 作为落地实现，并提出 5 种运行模式，用来在开放性、隐私与可复现之间做现实约束下的折中。</dd>
+        <dt>关键数据</dt><dd>开放竞赛持续 5 个月：共 298 个裁判 agent（12 个类别）与 467 个被测 agent（来自独立参与者），证明该接口可覆盖异构评测与多样 agent 设计。另有编码 agent 案例研究：作者称能在保持与公开记录一致（fidelity）的同时补齐此前缺失的“正面对比”结果；但未披露具体分数提升、胜率或一致性量化指标，因此效果主要是“评测覆盖面/可比性/可复现流程”的定性增强。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、multi-agent、tool use 读者，这篇把 A2A + MCP 作为统一评测协议栈，直接对应“如何标准化工具调用与任务编排的评测”。对关心 reasoning models/RAG 的人，它提供一种更可复现的评测组织方式，便于在不同 agent 架构间做更公平的横向对比。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-11</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.13608v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.13634v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.13634v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.13634v1" target="_blank" rel="noopener">Operads for compositional reasoning in LLMs</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“问题拆解→子问题回答→再合成”的常用推理套路，用 operad（可组合的多输入→单输出运算结构）给出一套可检验的数学框架，并提出可量化的“operadic consistency（一致性）”指标来评估多步推理可靠性。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>论文把“问题模板”视为一种运算：输入是若干子答案，输出是合成后的答案；多个运算可以像搭积木一样组合成一棵拆解树。作者定义了“问题的 operad Q”，其中组合规则对应把子答案代入上层问题（替换/代入）。在这个视角下，一个 QA/LLM 模型相当于 Q 的代数（algebra：给每个模板一个具体的求值方式），从而把工程上的分解-合成流程形式化。基于此提出“operadic consistency”：同一拆解树做不同程度的“部分折叠/合并”（partial collapse）后，模型给出的答案是否彼此一致，用来捕捉多步推理中常见的自相矛盾问题。与以往主要靠温度采样的 self-consistency（多次采样投票）不同，这里强调跨分解结构的约束一致性，而不是仅靠多样化采样。</dd>
+        <dt>关键数据</dt><dd>本文本身未披露具体数值；但引用的配套实证论文（Bottman, Liu, and Richardson, 2026）报告：在 12 个 LLM、4 个 multi-hop（多跳）QA 数据集上，operadic consistency 与准确率“强相关”，且在预测/提升可靠性方面优于标准的 temperature-based self-consistency 基线。相关系数、提升幅度等具体数字需查配套论文。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use、multi-agent 常见的“分解任务→逐步执行→合成结果”流程，这提供了一个更可解释、可度量的理论底座。提出的一致性指标也可作为 RAG/多步推理链路的质量信号，用于选择分解策略、做验证或做自动纠错。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-11</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）；配套论文：Bottman, Liu, and Richardson, 2026（同样未给出链接）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）；配套论文：Bottman, Liu, and Richardson, 2026（同样未给出链接）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.13634v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
     <article class="card" data-url="https://www.langchain.com/blog/benchling-max-agency-podcast">
       <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/benchling-max-agency-podcast" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
