@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>2</strong> 条 ·
       归档 <strong>223</strong> 条（23 天）·
-      生成于 2026-06-12 06:29 UTC
+      生成于 2026-06-13 00:10 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">2</span></a>
         
           <a href="#archive-2026-06-12" onclick="openArchive('2026-06-12')">2026-06-12 <span class="n">11</span></a>
         
@@ -275,9 +275,65 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(2)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://developer.nvidia.com/blog/nvidia-achieves-leading-agentic-coding-performance-on-first-agentic-ai-benchmark/">
+      <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/nvidia-achieves-leading-agentic-coding-performance-on-first-agentic-ai-benchmark/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://developer.nvidia.com/blog/nvidia-achieves-leading-agentic-coding-performance-on-first-agentic-ai-benchmark/" target="_blank" rel="noopener">NVIDIA Achieves Leading Agentic Coding Performance on First Agentic AI Benchmark</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:nvidia-dev-blog">NVIDIA</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">benchmark</span>
+      </div>
+      
+      <p class="innovation">NVIDIA 宣布在首个“Agentic Coding（代理式编程）”基准上拿到领先成绩，并借此推动行业有统一方法衡量“会用工具写代码的 AI 代理”能力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>文章核心在于把“写代码”从单次生成，升级为“代理式”流程：模型会分步规划、调用工具、迭代修正，直到任务完成。它强调推理侧（inference）复杂度变化：不再是一次前向计算，而是多轮对话+多次工具调用的长链路。为了解决过去缺少统一评测的问题，NVIDIA 以“首个代理式编程基准”为抓手，主张用标准化任务与评分来比较不同 agent 系统。与传统代码生成评测（只看一次输出对不对）相比，这类基准更关注：能否正确选工具、能否在失败后自我纠错、以及完成端到端任务的稳定性。</dd>
+        <dt>关键数据</dt><dd>具体榜单分数、领先幅度、参赛模型/系统配置、推理成本（token、时延、工具调用次数）等关键数字：未披露。定性意义在于：如果该基准被行业采纳，未来 agentic coding 的对比会从“模型写得像不像”转向“代理能不能把活干完、成本多高”。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use（工具调用）/ reasoning models（推理模型）读者，这条的价值在于：它把“代理式编程”从概念拉到可评测的基准框架，直接影响你如何选型与优化 agent（规划、工具选择、纠错、成本）。如果你在做多代理或带 RAG（检索增强生成）的编码助手，这类基准也更接近真实工作流的端到端评估。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <a class="cta" href="https://developer.nvidia.com/blog/nvidia-achieves-leading-agentic-coding-performance-on-first-agentic-ai-benchmark/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://developer.nvidia.com/blog/deploy-long-context-reasoning-and-agentic-workflows-with-minimax-m3-on-nvidia-accelerated-infrastructure/">
+      <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/deploy-long-context-reasoning-and-agentic-workflows-with-minimax-m3-on-nvidia-accelerated-infrastructure/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://developer.nvidia.com/blog/deploy-long-context-reasoning-and-agentic-workflows-with-minimax-m3-on-nvidia-accelerated-infrastructure/" target="_blank" rel="noopener">Deploy Long-Context Reasoning and Agentic Workflows with MiniMax M3 on NVIDIA Accelerated Infrastructure</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-lab" title="rss:nvidia-dev-blog">NVIDIA</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">long-context</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">讲清如何在 NVIDIA 加速硬件上部署 MiniMax M3，把“长上下文推理”和“可调用工具的 Agent 工作流”落到同一套企业级推理管线里，减少多模型拼接成本。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>文章以企业落地为主线，指出常见做法需要分别用文本/视觉/工具调用等不同组件拼管线，导致工程碎片化。核心思路是用 MiniMax M3 作为统一的长上下文推理模型底座，并围绕“agentic workflow（代理式工作流：模型会分解任务并调用工具）”组织推理流程。部署侧强调利用 NVIDIA 加速基础设施（GPU 推理、并行与内存优化等）来承载长上下文带来的算力与显存压力。与过去“多个专用模型+胶水代码”的方式相比，它更偏向用一个可推理、可工具调用的模型来统一编排，再在基础设施层做性能与吞吐的工程化优化。</dd>
+        <dt>关键数据</dt><dd>未披露：摘要内容未给出 MiniMax M3 的参数规模、上下文长度上限、吞吐（tokens/s）、延迟、成本或对比基准分数。定性意义是：长上下文与 Agent 工具调用通常会放大推理开销，这篇更关注在 NVIDIA 推理栈上如何把这类工作负载稳定跑起来，而非公布模型训练/评测成绩。</dd>
+        <dt>为什么值得关注</dt><dd>对关注 reasoning models（推理模型）与 LLM agent（大模型代理）的人，这篇把“长上下文+工具调用”的典型生产形态放到同一部署视角下讨论。也与 tool use（工具使用）/multi-agent（多代理编排）/RAG（检索增强生成）常见落地问题相关：如何把复杂工作流从“拼组件”转向“统一模型+可扩展推理基础设施”。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <a class="cta" href="https://developer.nvidia.com/blog/deploy-long-context-reasoning-and-agentic-workflows-with-minimax-m3-on-nvidia-accelerated-infrastructure/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
