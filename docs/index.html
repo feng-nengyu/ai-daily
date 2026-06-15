@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>10</strong> 条 ·
       归档 <strong>225</strong> 条（24 天）·
-      生成于 2026-06-14 23:57 UTC
+      生成于 2026-06-15 05:34 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
         
           <a href="#archive-2026-06-13" onclick="openArchive('2026-06-13')">2026-06-13 <span class="n">2</span></a>
         
@@ -277,9 +277,293 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://arxiv.org/abs/2606.14470v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.14470v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.14470v1" target="_blank" rel="noopener">GitOfThoughts: Version-Controlled Reasoning and Agent Memory You Can Replay, Diff, and Merge</a></h2>
+        <div class="badges">
+          <span class="score high">9</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把 Agent 的“推理过程/记忆”做成可回放、可 diff、可合并的 git 仓库；同时用系统实验指出：除非检索到近乎重复题，记忆对新题准确率基本没帮助。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 GitOfThoughts：将一次推理视为一棵推理树，每个被打分的“想法”都写成一次 git commit；分数用 git notes 记录，最终结果用 tag 标注。检索不再是黑盒向量召回，而是对自身历史做“git log”式追溯，能回放每一步并审计分支被剪枝的原因。它还支持把多个 Agent 的推理历史像代码一样 merge，保留来源与冲突。作者进一步比较 5 种记忆载体（无、markdown、向量、图、git），在 2 个基准、2 个模型规模上做预注册复现实验，专门检验“记忆是否真的提升解题准确率”。</dd>
+        <dt>关键数据</dt><dd>核心结论以定性为主：对“新问题”，5 种记忆格式都没有稳定、可复现的准确率提升；一个早期看似有效的结果在预注册复现中失败（作者明确记录了被推翻/撤回的发现）。作者提出“可复制阈值”：当检索到的历史案例与当前问题相似度约 >0.8（近乎重复题）时，准确率会出现“陡增”；低于该阈值基本无收益。4.5× 更大的模型能把“近重复题”带来的收益放大到约 2×，但仍无法从范例中抽取可迁移的方法（更像是直接找答案而非学方法）。除测试时采样（test-time sampling，多次采样选优）外，未发现对新题普适有效的杠杆；git 作为载体在准确率上与其他记忆“持平”，价值主要在可审计/可追溯/可合并。具体 benchmark 名称与绝对分数未在摘要中披露。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 来说，记忆与推理轨迹常是不可审计的黑盒；这篇把“推理”纳入版本控制，直接对齐工程里的可追溯与协作需求。对 RAG/记忆增强的读者，它给出一个很实用的边界条件：只有“近重复检索”才稳定增益，新题上别指望记忆格式本身带来准确率提升。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.14470v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.14654v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.14654v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.14654v1" target="_blank" rel="noopener">Abstracting Cross-Domain Action Sequences into Interpretable Workflows</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">用大模型把“点击/键盘/时间戳”这类噪声很大的低层操作日志，抽象成可读的高层工作流，且能跨应用泛化，不再依赖易受噪声影响的深度聚类。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 WorkflowView：把顺序/时间序列的交互日志先整理成动作序列，再让 LLM（大语言模型）做“抽象总结”，输出高层活动/步骤（可解释的 workflow）。与以往用深度学习把动作聚类成活动不同，它更像用语言理解把零散动作“归纳成任务描述”，对噪声更不敏感。框架在不同域上用零样本（不提供示例）和少样本（只给少量示例）两种设置验证泛化。还讨论了在日志基础设施里落地时的计算开销与隐私处理（如匿名化、隐私保护推断）。</dd>
+        <dt>关键数据</dt><dd>浏览器日志零样本任务描述重建：语义相似度均值 μ_sim=0.91；MOOC 交互日志少样本退课预测：仅 5 个示例达到加权 F1=0.90；Microsoft Word 文档工作流中 AI 工具集成分析：强调匿名化/隐私保护，但未披露量化指标与对照基线。</dd>
+        <dt>为什么值得关注</dt><dd>这类“从行为序列到可执行/可解释工作流”的抽象，本质上是 LLM agent 的规划/工具使用前置步骤：先把低层事件变成高层意图与步骤，便于后续 tool use、RAG（检索增强生成）或多智能体协作。对关注 MCP/agent 生态的人，也提供了把真实产品日志接入推理模型、同时兼顾隐私与成本的落地思路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.14654v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.14589v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.14589v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.14589v1" target="_blank" rel="noopener">When Errors Become Narratives: A Longitudinal Taxonomy of Silent Failures in a Production LLM Agent Runtime</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“LLM Agent 沉默失败”做成可复用的五类机制分类，并提出“fail-plausible（失败却讲得像真的）”这一类 LLM 特有高风险故障，给生产级 Agent 的可观测性与治理提供实证数据。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者对一个自 2026 年 3 月起持续线上运行的个人助理型 Agent runtime 做纵向研究：它会定时调度任务、调用工具、维护记忆并把结果推送给人。系统包含约 40 个定时作业、8 家 LLM 供应商、一个工具治理代理（类似网关/策略层）和知识库记忆层，并由 4,286 个单元测试与 827 条治理检查防护。8 周内记录 22 起事故并做完整根因复盘，抽象出“错误信号没以可行动形式到达人”的元模式，并据此提出五类机制分类：环境/平台怪癖、设计假设不匹配、错误被吞/被稀释、链式幻觉与编造、运维遗漏与取证盲区。与传统软件不同之处在于 D 类：LLM 会把失败转写成流畅可信的叙事输出给用户，导致观察者不仅看不见错误，还会被“说服”。</dd>
+        <dt>关键数据</dt><dd>运行背景：约 40 个作业、8 个 LLM 提供方、4,286 单测、827 治理检查。8 周：22 起事故（均有根因复盘）；“沉默失败”元模式至少出现 28 次。约 70% 的沉默失败是靠用户视角观察发现，而非测试/审计发现。回溯审计 15 起事故：事前预防率 0%，但对已知问题的回归阻断率 87%（审计更像回归引擎而非预测引擎）。事故潜伏期 13 小时到 60 天，主要由故障机制决定，最长寿的失败多发生在组件缝隙处（无测试覆盖）。</dd>
+        <dt>为什么值得关注</dt><dd>对做 LLM agent / tool use（工具调用）/ MCP 类运行时与治理的人，这篇给了生产事故的真实分布与“为什么测试抓不住”的机制解释。尤其是 D 类“编造式失败”直接影响多代理、RAG（检索增强生成）与长链路推理系统的可靠性与可观测性设计。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.14589v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.14574v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.14574v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.14574v1" target="_blank" rel="noopener">SIMMER: Benchmarking Latent Failures in LLM Executable Planning with a World Model</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">benchmark</span>
+      </div>
+      
+      <p class="innovation">提出 SIMMER 基准，专门测 LLM 规划里“潜伏失败”（执行不报错但悄悄毁目标/埋隐患），补上只看能否执行成功的评测盲区。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者在厨房场景构建了人工整理的符号化世界模型（可理解为“规则+状态”的环境），让计划不仅要能走通，还要符合真实语义约束。用状态机执行器逐步跑 LLM 生成的可执行计划，检查三类问题：即时前置条件违规、潜伏危险、不可逆失败（造成无法挽回的后果）。世界模型来自真实烹饪脚本抽取的交互语义，避免纯合成规则过于理想化。并引入“反事实前瞻模拟”（counterfactual foresight，先在脑内/模型里试跑不同后果的状态推演）来做显式状态推理，从而减少潜伏类错误。</dd>
+        <dt>关键数据</dt><dd>世界模型规模：77 个动作、262 个对象、约 46,800 种可能交互。覆盖 6 个 LLM 的实验中，最强模型“完全无错误计划”最高仅 17%。计划中潜伏失败占比最高可达 56%，且多数会走向不可逆后果。加入显式状态推理后：潜伏失败最多下降 72%，不可逆案例最多下降 75%。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 的“可执行规划”来说，潜伏失败比当场报错更危险，直接影响长期任务与安全性。SIMMER 用世界模型+状态机把这类问题量化出来，也提示 RAG/多智能体协作之外，“状态推理/前瞻模拟”可能是提升规划鲁棒性的关键路径。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未在摘要中给出具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在摘要中给出具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.14574v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.14571v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.14571v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.14571v1" target="_blank" rel="noopener">StreamMemBench: Streaming Evaluation of Agent Memory for Future-Oriented Assistance</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">evaluation</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">提出 StreamMemBench，把“流式观察→存储→下次任务复用”的整条记忆链路拉通评测，专门检验个人助理是否真能把线索和反馈转成未来可用的帮助。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>基于 EgoLife 的第一视角（类似可穿戴视角）连续流数据，围绕每个“证据锚点”构造两步任务序列。第一步让代理在当前任务中使用刚观察到的证据；第二步在后续相似任务中，检查它是否复用之前的交互经验与用户反馈。与以往只测“对话回忆”或“单次任务提升”的基准不同，它强调从流式观察到未来辅助的因果链。评测覆盖 8 种记忆系统、2 个不同的底座模型（backbone），用统一流程对比“存了但没用”“当下用了但下次不复用”等失败模式。</dd>
+        <dt>关键数据</dt><dd>提供 4 个诊断指标：证据回忆（是否能找回线索）、初次证据使用（是否在第一步用对）、反馈吸收（是否在交互中学到）、后续复用（第二步是否稳定复现正确行为）。具体分数/提升幅度未披露；但论文结论指出：不少系统即使把证据写入记忆，仍常在任务中不用；即使局部吸收了反馈，也难转化为可靠的后续行为，暴露“记忆可写不可用/可学不可迁移”的问题。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 里常见的“长期记忆”“用户偏好学习”很关键：它把记忆评测从静态回忆推进到流式场景，能更真实地衡量 RAG/记忆模块是否支持跨任务复用与持续改进。也适合做 MCP 工具链中的记忆组件回归测试：不仅看存储是否成功，更看下次是否真的用得上。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/landian60/StreamMemBench" target="_blank" rel="noopener">https://github.com/landian60/StreamMemBench</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.14571v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.14517v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.14517v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.14517v1" target="_blank" rel="noopener">From Shield to Target: Denial-of-Service Attacks on LLM-Based Agent Guardrails</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把“LLM 守护栏（用模型做安全过滤）”从防护手段变成攻击目标：用自然语言让守护栏陷入超长推理循环，造成对 Agent 的系统性拒绝服务（DoS）。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者发现守护栏往往会“按模板/流程（schema）”逐步解释与判定，攻击者可投喂特制文本诱导其不断展开推理。为系统化生成这种载荷，他们用 beam search（束搜索）做优化：让一个 LLM 作为 proposer 生成候选提示，并用“策略库”引导搜索，目标函数是最大化守护栏输出/推理长度。另一路方法利用“机制感知”的结构变异（按守护栏的模板结构做改写/插入/重排），计算开销更低。与以往主要绕过安全策略（jailbreak）不同，这里不追求越狱成功，而是让守护栏本身变成资源消耗点，拖垮可用性。</dd>
+        <dt>关键数据</dt><dd>可迁移性：在单一开源替身模型上优化出的 payload，可迁移到 8 个主流模型骨干（含 Claude、GPT、Gemini、DeepSeek、Qwen 等）。资源放大：实现 13–63× 的 token 放大（守护栏生成/处理的 token 数暴涨）。端到端部署：在真实 Agent 场景（Web、桌面、代码、多 Agent）中最高达到 148× 的延迟放大。系统影响：单个“投毒文档”即可占满共享守护栏基础设施，导致同机/同集群其他 Agent 被饿死、整体瘫痪（定性结论，未给出更细的吞吐/成本曲线）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 来说，守护栏常作为统一入口的安全与合规层；这篇指出其“推理能力”会带来可用性攻击面。对做 MCP、RAG（检索增强生成）的人尤其相关：外部文档/工具返回内容可能成为投毒载体，触发守护栏 DoS，影响整条链路的延迟与成本。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未在输入中提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未在输入中提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.14517v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.14502v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.14502v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.14502v1" target="_blank" rel="noopener">From Chatbot to Digital Colleague: The Paradigm Shift Toward Persistent Autonomous AI</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">把 LLM 从“聊天回答”重新定义为“长期在岗的数字同事”：同时强调更强推理内核与带持久工作区的工具执行体系，指向可审计、可自我改进的自治 AI。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>文章用两条耦合主线梳理范式迁移：一是“认知内核”从只靠下一个词预测的快思考，走向 Thinking LLM，通过推理时计算、Chain-of-Thought（思维链）、反思、过程监督（监督推理步骤）与强化学习来提升可靠性。二是“任务执行”从临时的 tool-calling（调用外部工具）Agent，走向类似 OpenClaw 的工作站系统：引入持久 Workspace（工作区/状态）、可复用 Skill（技能/流程）、验证闭环与治理机制。核心设计是“Workspace + Skill”：让工具使用不再是一次性调用，而是能保存状态、复用步骤、完成闭环、沉淀经验。配套地，训练数据从指令-回答对转向 State-Action-Observation（状态-动作-观察）轨迹，评测从静态榜单转向沙盒化、可审计、可演化的生态评估。</dd>
+        <dt>关键数据</dt><dd>未披露具体实验数字、模型规模或成本。定性贡献在于给出从“聊天模型→自治同事系统”的分层框架与数据/评测迁移路径，可作为构建与评估 Agent 系统的对照清单。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use、multi-agent 读者，这篇把“临时工具调用”升级为“持久工作区+技能库+验证闭环”的系统化路线，贴近真实工作流。对 reasoning models 与 RAG/MCP 方向，它强调推理时计算与可审计轨迹数据/沙盒评测，直接影响后续如何接工具、留状态、做可靠性验证。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.14502v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.14476v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.14476v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.14476v1" target="_blank" rel="noopener">When the Tool Decides: LLM Agents Defer Blindly to Graph Neural Network Tools, and Stronger Backbones Defer More</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">实测「LLM agent + GNN 工具」并不会自主判断何时用工具，而是几乎盲从工具输出；更强的 LLM 反而更爱“听工具的”，导致可用替代方案出现时性能损失更大。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>作者把一个冻结（不训练）的图神经网络 GNN（处理图结构的模型）作为显式可调用工具，接到 ReAct（边推理边行动）风格的 LLM agent 上。任务是带文本属性的图上的节点分类（ogbn-arxiv，并在 WikiCS 复现），观察 agent 是“参考工具”还是“照抄工具”。他们系统扫不同 LLM 骨干能力（Qwen2.5 0.5B-7B），只统计那些能成功调用工具的模型。为量化“盲从的代价”，他们还构造了一个逐节点 oracle（理想选择器：每个节点都选当下最优动作）作为上界，并测试一个简单的选择性调用 gate（门控：决定是否调用工具）。</dd>
+        <dt>关键数据</dt><dd>盲从程度：agent 预测与原始 GNN 输出一致率达 97.6%-99.2%（5 个随机种子），基本变成“GNN 复读机”。随骨干变强盲从更严重：在可调用工具的模型中，一致率从 1.5B 的 0.60 上升到 7B 的 0.98。盲从带来的机会成本：逐节点 oracle 比“复读机”高 0.09-0.18（3B）和 0.12-0.22（7B），在高同质性（homophily，邻居更可能同类）时差距约翻倍。替代工具反超但 agent 仍盲从：7B 时一个简单的邻居标签工具在高同质性下优于 GNN（0.81 vs 0.71），但 agent 仍主要跟随 GNN。门控效果：简单 gate 在高同质性下可把 0.71 提到 0.83（约追回一半差距），但整体测试集无净增益；用常见测试时特征做 held-out 估计，最佳 gate 也最多吃到 oracle 余量的约 1/3，暗示瓶颈在“可观测信息不足”而不只是路由器设计。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 读者，这是一个直接的“工具依赖测量”：别默认 agent 会在工具之上做判断。对 MCP/工具编排、RAG/外部模块调用等系统设计也有警示：选择性调用需要显式机制与可用信号，否则规模变大可能更盲从而非更会用工具。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.14476v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.14445v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.14445v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.14445v1" target="_blank" rel="noopener">tap: A File-Based Protocol for Heterogeneous LLM Agent Collaboration</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">LLM</span><span class="tag">collaboration</span>
+      </div>
+      
+      <p class="innovation">提出 tap：用“文件当消息”的协议，让不同厂商的 LLM 代理在各自环境里协作同一代码库，不依赖统一运行时或中心聊天服务器。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>tap 采用 file-first（先落盘）设计：每条消息保存为带元数据的 Markdown 文件，文件本身就是可追溯的“原始对话”。通信分两层：Tier 1 用仓库内文件检查/读取完成可靠传递；Tier 2 再叠加给 Claude/Codex 的实时通知做加速。为避免互相污染工作区，用独立 git worktree 隔离不同代理的开发与评审。即使实时通知失败或接收方重启，消息文件仍在，可重复检视并继续协作，这点区别于依赖中心会话或共享内存的多代理框架。</dd>
+        <dt>关键数据</dt><dd>在真实仓库自举运行 27 天、37 次 generation（生成周期），产生 209 个与 tap 相关的 PR、717 个运行产物。对 375 份评审产物分析：异构模型对（不同厂商/环境）评审中“至少记录 1 个缺陷或提出修改”的占比 69.8%，同构模型对为 53.1%，高 16.7 个百分点。其他如吞吐/延迟/成本未披露，但数据表明异构代理更容易提出不同视角的改动点。</dd>
+        <dt>为什么值得关注</dt><dd>它直接面向 multi-agent 与 tool use：把“代理间通信”从 API/会话服务器转成可审计的文件协议，更适合跨供应商、跨运行时协作。对关注 MCP/代理互操作的人，这提供了一种更接近“最小共同接口”的落地方案，并用真实 PR 数据展示异构模型协作的评审收益。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <span class="links">补充：<a href="论文：https://arxiv.org/abs/（未提供具体编号）, 代码：https://www.npmjs.com/package/@hua-labs/tap" target="_blank" rel="noopener">论文：https://arxiv.org/abs/（未提供具体编号）, 代码：https://www.npmjs.com/package/@hua-labs/tap</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.14445v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.14418v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.14418v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.14418v1" target="_blank" rel="noopener">Causal Object-Centric Models for Planning with Monte Carlo Tree Search</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">MCP</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把 MuZero 式“潜空间规划”改成“按物体分槽（slot）”来做 MCTS（蒙特卡洛树搜索），让动作与具体物体绑定，早期训练更快学会关注关键实体。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>COMET 是一种模型式强化学习：先用冻结的无监督物体中心编码器把画面拆成多个 slot（可理解为“物体 token”），再用 Transformer 世界模型在 slot 空间里预测状态转移。它提出 action-slot fusion，把动作信息与对应物体 slot 融合，用于预测每个 slot 的下一步变化，而不是把动作丢进一个整体潜变量里。决策端的 policy/value 头使用 object-causal attention：为每个 slot 学一个相关性分数，用它调制 token 之间的注意力，让规划与价值评估更聚焦任务相关物体。整体是在 MuZero 风格的潜空间 MCTS 上加入显式“物体级因果归因/归责”的归纳偏置，减少无关背景对搜索的干扰。</dd>
+        <dt>关键数据</dt><dd>在 8 个视觉与动力学差异较大的任务（来自 Object-Centric Visual RL benchmark、ManiSkill、Robosuite、VizDoom）上，作者报告“训练早期阶段”的平均归一化分数高于物体中心与整体（monolithic）基线；具体提升幅度、方差/置信区间、训练步数与算力成本未披露。定性意义：更偏向解决“样本效率/冷启动更快”的问题，而非只看最终收敛上限。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者：这篇把“规划（MCTS）+ 世界模型”做成“对象级可归因”的结构，和 agent 里常见的“把任务拆成可操作实体并绑定动作”思路一致。对 multi-agent / reasoning 关注者：object-causal attention 相当于显式学习“哪些实体对决策有因果贡献”，可类比为在推理时做可控的注意力路由。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-12</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.14418v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
