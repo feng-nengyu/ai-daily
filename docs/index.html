@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>10</strong> 条 ·
-      归档 <strong>242</strong> 条（26 天）·
-      生成于 2026-06-16 05:42 UTC
+      今日新增 <strong>0</strong> 条 ·
+      归档 <strong>252</strong> 条（26 天）·
+      生成于 2026-06-16 07:21 UTC
     </p>
   </header>
   <main>
@@ -214,9 +214,9 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">10</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
         
-          <a href="#archive-2026-06-16" onclick="openArchive('2026-06-16')">2026-06-16 <span class="n">7</span></a>
+          <a href="#archive-2026-06-16" onclick="openArchive('2026-06-16')">2026-06-16 <span class="n">17</span></a>
         
           <a href="#archive-2026-06-15" onclick="openArchive('2026-06-15')">2026-06-15 <span class="n">10</span></a>
         
@@ -281,14 +281,24 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(10)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
       
-        <div class="cards">
-          
-    <article class="card" data-url="https://arxiv.org/abs/2606.17034v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.17034v1" onclick="toggleStar(this)">☆</button>
+        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+      
+    </section>
+
+    <section class="band archive">
+      <h2 class="band-title">归档（最近 30 天）</h2>
+      
+        
+          <details class="date-group" id="archive-2026-06-16" open>
+            <summary>2026-06-16 <span class="n">17 条</span></summary>
+            <div class="cards">
+              
+    <article class="card" data-url="https://arxiv.org/abs/2606.16871v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16871v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.17034v1" target="_blank" rel="noopener">KVEraser: Learning to Steer KV Cache for Efficient Localized Context Erasing</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.16871v1" target="_blank" rel="noopener">Human-on-the-Bridge: Scalable Evaluation for AI Agents</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -296,26 +306,26 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">long-context</span><span class="tag">reasoning</span>
+        <span class="tag">agent</span><span class="tag">evaluation</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
       </div>
       
-      <p class="innovation">提出 KVEraser：不重算整段后缀，只“编辑”KV cache（注意力缓存）就能把已读上下文中的某一段影响局部抹掉，适合长上下文里事后发现的错误检索/工具观测/提示注入清理。</p>
+      <p class="innovation">把“评测”从每次人工盯跑，改成专家先把规则与陷阱写成可复用资产，再批量对 Agent 做多轮对抗评测并给出可追溯证据。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>问题在于 KV cache 一旦写入，某段文本的影响会传播到后续所有 token 的缓存状态，传统“删除一段”往往要把删除点之后全部重算。KVEraser 的做法是：给定已处理的上下文和要移除的 span，只替换被删区间对应的 KV 状态为一组学习到的“steering states（引导状态）”，其余位置的 KV 直接复用不动。训练上用两阶段：先做通用的“span-邻域”预训练，让模型学会压制被删 span 对邻近与后续的影响；再对具体下游任务微调，把这种抹除能力对齐到实际场景（如检索事实更新、工具输出撤回）。与以往近似方法相比，它不是改 prompt 或重跑解码，而是对缓存做 post-hoc（事后）可控编辑，目标是把计算成本从“后缀长度”转向“被删片段长度”。</dd>
-        <dt>关键数据</dt><dd>在 1K–32K 上下文长度、in-domain 任务中，抹除后的效果“几乎接近”全量重算（具体分数未披露）。延迟方面：KVEraser 相对原推理仅 +24%，而全量重算相对原推理为 17.6× 增长。对未见过的长文档 QA（含有害事实干扰）也能泛化：在近似基线中表现最好，并且相对全量重算有 3–4× 加速（绝对准确率/EM/F1 未披露）。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景很直接：工具观测或检索到的事实常在 prefill 后才被判定为错误或需撤回，KVEraser提供一种不重算整段上下文的“缓存级撤销”。对长上下文 RAG 与多步推理模型也有价值：能更低成本地清理提示注入/过期记忆，减少“错误信息继续影响后续推理”的连锁效应。</dd>
+        <dt>技术方案</dt><dd>提出 Human-on-the-Bridge（HOB）：把人类专家放在评测前置环节，先整理可复用的“评测情报”，包括领域上下文、红队陷阱、陪审人格（不同评委视角）、打分细则、审计规则与兜底策略。随后用 ProofAgent Harness 反复执行这些情报，对被测 Agent 进行多轮交互式对抗测试，完整记录轨迹（每步工具调用与上下文）。评分采用多评委（多 juror）而非单一裁判，并要求结论与证据片段绑定，便于审计与复现。与传统静态 benchmark、单次红队或 LLM-as-judge 不同，它强调“行为系统”评测：跨回合推理、工具使用、策略遵循与不确定性下的行动。</dd>
+        <dt>关键数据</dt><dd>覆盖 23,500 次 agent turns；领域包含金融、医疗、代码生成。作者称在“对称/非对称（更省成本）”设置下，小型 Harness 评审模型也能有效挑战基于前沿大模型的 Agent，但未披露具体胜率/一致性分数/成本下降比例。定性发现包括：虚构工具调用、漏掉强制工具调用、策略漂移、被操纵路径、以及“安全但不解决问题”的拒答，这些常被静态 benchmark 或单评委打分漏检。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use、multi-agent/多评委裁判、以及需要可审计评测的 RAG/工具链系统很直接：它提供一套可规模化、可复用、带证据链的评测流程，帮助定位跨回合与工具调用层面的真实失败模式。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-15</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.17034v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.16871v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.17029v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.17029v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.16890v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16890v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.17029v1" target="_blank" rel="noopener">DEEPRUBRIC: Evidence-Tree Rubric Supervision for Efficient Reinforcement Learning of Deep Research Agents</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.16890v1" target="_blank" rel="noopener">Compositional Reasoning Depth Predicts Clinical AI Failure: Empirical Evidence Consistent with Transformer Compositionality Limits in Electronic Health Record Question Answering</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -323,161 +333,20 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">evaluation</span><span class="tag">MCP</span>
       </div>
       
-      <p class="innovation">把“先有问题再让模型编评分细则”的流程倒过来：先用证据树定义可核查的评价目标，再合成问题与rubric，让强化学习奖励更对题、训练更省算力。</p>
+      <p class="innovation">把临床 EHR 问答的失败模式从“总体准确率”拆开：用 hop-count（需要几步推理）预测模型出错，且在 Claude、GPT-4o、GPT-5 上都呈单调下降。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>传统做法是给定查询（query）让LLM生成rubric（评分细则），但模型常猜不全真实信息需求，导致奖励信号缺项、RL效率低。DeepRubric从一个种子主题出发，递归扩展“有证据支撑的子问题”，构建证据树（evidence tree）。证据树的叶子节点被当作原子级、可验证的评价目标（相当于一条条可检查的事实/要点）。再用这棵树反向合成与之对齐的query与rubric，确保奖励函数评的就是问题真正要求的证据与覆盖范围。最后用rubric-based GRPO（一种强化学习优化法）训练8B模型做深度研究型长报告生成。</dd>
-        <dt>关键数据</dt><dd>数据规模：构建9K条query–rubric监督样本。模型：DeepRubric-8B（8B参数）。效果：在3个benchmark上达到与此前开源SOTA深度研究模型“可比”的表现（具体分数未披露）。效率：RL训练GPU小时数约减少13倍（≈13x fewer RL GPU-hours）。</dd>
-        <dt>为什么值得关注</dt><dd>对LLM agent/深度研究型agent来说，tool use/RAG检索后的“长文报告质量”很难稳定量化；这篇把奖励设计变成“证据树驱动的可核查rubric”，直接影响agent的RL训练效率与对齐质量。也为多agent或推理模型在研究任务中如何构造可靠监督信号提供了可复用的数据构建思路。</dd>
+        <dt>技术方案</dt><dd>作者先提出预先定义的 hop-count 分类：按回答一个临床问题需要串联多少个不同推理步骤（可理解为“几跳推理”）分为 4 档。然后对 313 条临床医生生成的 MedAlign EHR 问答进行标注，并在 301 条上做评测。实验包含同一模型内的消融：Claude Sonnet 4.6 在 zero-shot（不额外引导）与 extended thinking（更长思考）下对比；以及跨架构复现：GPT-4o 与 gpt-5.4-2026-03-05 均用 zero-shot。为排除“上下文截断导致高 hop 更难”的混淆因素，作者做了 context-sufficiency（上下文足够性）审计，验证高 hop 并未更缺信息，从而把下降归因到组合式推理（把多步事实拼起来）难度。</dd>
+        <dt>关键数据</dt><dd>三模型均随 hop 增加准确率单调下降：Claude Sonnet zero-shot 从 30.6%(hop=1) 降到 17.6%(hop=4)，每增加 1 hop 的胜算比 OR=0.72（95%CI 0.56-0.92，p=0.008；趋势检验 z=-2.30，p=0.011）。GPT-4o 从 37.8% 降到 14.7%，OR=0.58（0.45-0.75，p<0.001）。gpt-5.4-2026-03-05 从 37.8% 降到 23.5%，OR=0.80（0.66-0.98，p=0.027）。上下文足够性：hop 2-4 的可回答性 93-95%，反而高于 hop=1 的 79%，说明不是截断更伤高 hop。extended thinking 未显著“压平”准确率-深度曲线；思考 token 随 hop 增加而增加（r=0.31，p<0.0001），提示计算量随步数近似线性增长但不必然带来更高正确率。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / reasoning models 来说，hop-count 相当于可操作的“推理深度”指标，可用于把任务按风险分层，而不是只看平均分。对 RAG / tool use 场景也有启发：即使检索到的信息足够，多步组合推理仍是主要失败源，可能需要更强的分解-验证式流程而非单纯加长思考。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-15</span>
         
         
-        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.17029v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.17016v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.17016v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.17016v1" target="_blank" rel="noopener">TokenPilot: Cache-Efficient Context Management for LLM Agents</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
-      </div>
-      
-      <p class="innovation">TokenPilot 把“省 token”和“保住前缀缓存”一起解决：通过稳定提示词前缀、减少缓存失效，让长会话 LLM agent 推理成本大幅下降。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>它指出现有剪枝/逐段丢弃会频繁改写上下文序列，导致前缀不匹配、prompt cache（提示词缓存）失效，从而抵消省 token 的收益。TokenPilot 用“双粒度”管理：全局做 Ingestion-Aware Compaction（按输入入口压缩），在写入记忆前先过滤开放环境噪声并固定前缀布局。局部做 Lifecycle-Aware Eviction（按生命周期驱逐），持续评估上下文片段的剩余效用，只在“任务相关性到期”时按保守的批量/回合节奏下线内容。与过去随时剪、随时改不同，它优先保证前缀连续性来复用缓存，再在不破坏布局的前提下减少内容。</dd>
-        <dt>关键数据</dt><dd>在 PinchBench 与 Claw-Eval 上：隔离模式（isolated）成本下降 61% 与 56%；连续模式（continuous）成本下降 61% 与 87%。论文称在上述降本下仍保持与既有系统“竞争性”性能，但未给出具体任务成功率/得分差值与显著性检验细节。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 的长时任务，推理成本常被上下文膨胀和 KV cache（键值缓存）失效拖累；这篇把“记忆管理”直接对齐到缓存复用，适合做 RAG/多智能体编排时参考其上下文生命周期与前缀稳定策略。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-15</span>
-        
-        
-        <span class="links">补充：<a href="https://github.com/zjunlp/LightMem2" target="_blank" rel="noopener">https://github.com/zjunlp/LightMem2</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.17016v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.16995v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16995v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.16995v1" target="_blank" rel="noopener">When in Doubt, Plan It Out: Committed Small Language Model Deliberation for Reactive Reinforcement Learning</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span><span class="tag">reinforcement learning</span>
-      </div>
-      
-      <p class="innovation">把“反应快但不善思考”的强化学习策略，和“慢但会规划”的小语言模型结合：先用 SLM 规划并仿真验计划，验证后直接接管执行，无需重训 RL。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>提出 PACT（Plan/Align/Commit/Think）混合架构：RL 策略负责快速反应，SLM（小语言模型）负责慢速推理与规划。系统异步调用 SLM 生成多个候选动作计划，并对计划做对齐与自检（例如是否覆盖目标、是否可执行）。随后用环境仿真验证计划的安全性、可行性与完整性；一旦通过验证就“Commit”并直接按计划执行，执行阶段绕过原 RL 策略。与常见做法（重训/微调 RL、或让大模型每步都决策）不同，它把“规划”和“执行”解耦，且不修改既有 RL policy。</dd>
-        <dt>关键数据</dt><dd>使用 2B 参数规模的 SLM 作为规划器；在 3 个难度递增的 FrozenLake 配置上优于所有基线。具体提升幅度（成功率/回报/步数等）论文摘要未披露；定性意义是：在陌生环境下，通过“先规划再承诺执行”能减少 RL 退化，而不需要额外训练成本。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者：这是“异步规划器 + 反应式执行器”的典型 agent 架构，且用仿真作为外部工具做计划验证。对 reasoning models / multi-agent 读者：展示了用小模型做可验证的 deliberation（审慎推理）也能带来收益，不必每步都用大模型推理。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-15</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.16995v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.16987v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16987v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.16987v1" target="_blank" rel="noopener">Consensus-based Agentic Large Language Model Framework for Harmonized Tariff Schedule Code Classification</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">reasoning</span>
-      </div>
-      
-      <p class="innovation">把 HTS（海关税则）10 位编码当成“可追溯证据+多代理共识”的任务：不追求一步到位，而是用检索、投票、置信度和人工升级来做合规分类。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>框架用多代理（multi-agent）分工：先对官方税则文件做语义检索（按含义找相关条文），再让模型基于检索到的证据进行“有依据推理”（把结论绑定到条文/注释）。随后引入共识校验：对编码的层级组件逐段（element-wise）投票，而不是一次性输出完整 10 位码。系统还会估计置信度，低置信度样本触发 human-in-the-loop（人工介入）升级流程。与传统单模型单步分类相比，它强调可解释、可审计与不确定性管理，更贴近真实报关合规场景。</dd>
-        <dt>关键数据</dt><dd>数据集：3,300 条由领域专家标注的加拿大 10 位 HTS 产品记录（私有数据）。论文结论：即使先进 LLM，精确 10 位分类仍然困难，且从粗粒度章节到细粒度税目/统计后缀性能逐级下降；但未披露具体准确率/召回率等数值，因此无法量化提升幅度。相对意义：强调“全自动一步预测”在细粒度合规任务上风险高，需要证据与人工兜底流程。</dd>
-        <dt>为什么值得关注</dt><dd>这是一个典型的 LLM agent + RAG（检索增强生成）+ 多代理共识/投票的落地范式：把工具化检索、证据约束推理、置信度与人工升级串成工作流。对关注 tool use、multi-agent、reasoning models 的读者，它提供了“如何在高风险分类任务里做可审计决策”的具体设计思路。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-15</span>
-        
-        
-        <span class="links">补充：<a href="https://github.com/Analytics-Everywhere-Lab/hts" target="_blank" rel="noopener">https://github.com/Analytics-Everywhere-Lab/hts</a></span>
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.16987v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.16939v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16939v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.16939v1" target="_blank" rel="noopener">Scalable Circuit Learning for Interpreting Large Language Models</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">把“学出 LLM 的稀疏电路（哪些组件共同导致某行为）”从昂贵的干预实验，改成可扩展的稀疏回归求解，在保持结构准确度的同时大幅降算力。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者关注机制可解释性里的“电路学习”：找出一小组关键组件（层/头/特征）如何串联影响输出。传统用神经元做电路会遇到多义性（同一神经元混多种语义），于是改用 SAE（稀疏自编码器）提取的语义特征，但 SAE 维度高导致基于干预（对组件做开关/替换实验）的电路学习成本爆炸。CircuitLasso 用稀疏线性回归（类似 Lasso：用 L1 正则逼出少量关键连接）直接从激活/特征关系中恢复电路结构，避免大量逐点干预。它还能在 SAE 特征之间挖出“语义如何传播”的关系链，解释哪些可读语义特征如何影响最终预测，并把这些洞见用于更便宜的域泛化设置。</dd>
-        <dt>关键数据</dt><dd>在基准数据上，恢复出的电路“结构准确度”与当前最强的干预式方法匹配（具体分数/指标未披露）；计算成本为其“一小部分/显著更低”（未披露倍数）。在域泛化任务上，用电路洞见实现“性能相当但成本大幅更低”（未披露具体性能差距与成本降幅），定性意义是把电路学习从研究型重计算流程推向更可常规使用的分析工具。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 等系统，调试常依赖“模型为什么这么想/这么选工具”的可解释线索；这类可扩展电路学习能更便宜地定位关键语义特征与因果链。对 reasoning models 与 multi-agent 的行为分析，也提供一种不靠大量干预实验的机制级诊断手段。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-15</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.16939v1" target="_blank" rel="noopener">阅读原文 →</a>
-      </footer>
-    </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.16934v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16934v1" onclick="toggleStar(this)">☆</button>
-      <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.16934v1" target="_blank" rel="noopener">Exploring Extrinsic and Intrinsic Properties for Effective Reasoning with Code Interpreter</a></h2>
-        <div class="badges">
-          <span class="score high">8</span>
-          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
-        </div>
-      </div>
-      
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
-      </div>
-      
-      <p class="innovation">把“用代码解释器推理”拆成两类可观察特征：关键 token（外在信号）与代码推理行为（内在策略），并验证它们能在推理与训练阶段带来可复用的改进。</p>
-      <dl class="details">
-        <dt>技术方案</dt><dd>作者借鉴自然语言推理分析框架，从两条线研究 CI（代码解释器）推理：外在的“关键 token”（对解题至关重要的提示词/标记）与内在的“代码认知行为”（如验证、回溯、逆向链式推理）。在多种 LLM 上对比发现：CI 推理更强的模型，这两类特征出现频率更高，尤其是验证（跑代码检查）、回溯（走错重来）、逆向链（从目标倒推）。随后分别在两阶段利用这些特征：推理时通过追加“代码特定关键 token”引导模型更常做可执行验证；训练时在现有 SFT（监督微调）与 RL（强化学习）框架中注入/强化这些代码推理行为。额外分析其副作用与边界：这些行为能减少错误答案里的“过度思考”（写很多但不收敛）并提升 token 使用效率，但在某个模型上收益受限并被定位到具体限制因素。</dd>
-        <dt>关键数据</dt><dd>未披露具体 benchmark 名称与分数/提升幅度，仅给出定性结论：推理阶段对数学、排序、优化类任务有提升，对其他能力提升有限；训练阶段在 3 个模型中有 2 个在 SFT 与 RL 上变好，另 1 个受限。作者还报告“减少错误回答的过度思考、提升 token 效率”，但未给出节省比例或平均 token 数。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use（工具调用）读者，这篇把“会用代码解释器推理”具体化为可度量的 token 信号与行为策略，便于做提示词、轨迹约束与训练数据设计。对 reasoning models 与 multi-agent/RAG 系统也有启发：如何用“验证/回溯/逆向链”这类可执行行为降低幻觉与无效长推理。</dd>
-      </dl>
-      <footer class="card-foot">
-        <span class="date">2026-06-15</span>
-        
-        
-        <a class="cta" href="https://arxiv.org/abs/2606.16934v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.16890v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
     <article class="card" data-url="https://arxiv.org/abs/2606.16897v1">
@@ -509,10 +378,10 @@
         <a class="cta" href="https://arxiv.org/abs/2606.16897v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.16890v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16890v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.16934v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16934v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.16890v1" target="_blank" rel="noopener">Compositional Reasoning Depth Predicts Clinical AI Failure: Empirical Evidence Consistent with Transformer Compositionality Limits in Electronic Health Record Question Answering</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.16934v1" target="_blank" rel="noopener">Exploring Extrinsic and Intrinsic Properties for Effective Reasoning with Code Interpreter</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -520,26 +389,26 @@
       </div>
       
       <div class="tags">
-        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">evaluation</span><span class="tag">MCP</span>
+        <span class="tag">LLM</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
       </div>
       
-      <p class="innovation">把临床 EHR 问答的失败模式从“总体准确率”拆开：用 hop-count（需要几步推理）预测模型出错，且在 Claude、GPT-4o、GPT-5 上都呈单调下降。</p>
+      <p class="innovation">把“用代码解释器推理”拆成两类可观察特征：关键 token（外在信号）与代码推理行为（内在策略），并验证它们能在推理与训练阶段带来可复用的改进。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>作者先提出预先定义的 hop-count 分类：按回答一个临床问题需要串联多少个不同推理步骤（可理解为“几跳推理”）分为 4 档。然后对 313 条临床医生生成的 MedAlign EHR 问答进行标注，并在 301 条上做评测。实验包含同一模型内的消融：Claude Sonnet 4.6 在 zero-shot（不额外引导）与 extended thinking（更长思考）下对比；以及跨架构复现：GPT-4o 与 gpt-5.4-2026-03-05 均用 zero-shot。为排除“上下文截断导致高 hop 更难”的混淆因素，作者做了 context-sufficiency（上下文足够性）审计，验证高 hop 并未更缺信息，从而把下降归因到组合式推理（把多步事实拼起来）难度。</dd>
-        <dt>关键数据</dt><dd>三模型均随 hop 增加准确率单调下降：Claude Sonnet zero-shot 从 30.6%(hop=1) 降到 17.6%(hop=4)，每增加 1 hop 的胜算比 OR=0.72（95%CI 0.56-0.92，p=0.008；趋势检验 z=-2.30，p=0.011）。GPT-4o 从 37.8% 降到 14.7%，OR=0.58（0.45-0.75，p<0.001）。gpt-5.4-2026-03-05 从 37.8% 降到 23.5%，OR=0.80（0.66-0.98，p=0.027）。上下文足够性：hop 2-4 的可回答性 93-95%，反而高于 hop=1 的 79%，说明不是截断更伤高 hop。extended thinking 未显著“压平”准确率-深度曲线；思考 token 随 hop 增加而增加（r=0.31，p<0.0001），提示计算量随步数近似线性增长但不必然带来更高正确率。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent / reasoning models 来说，hop-count 相当于可操作的“推理深度”指标，可用于把任务按风险分层，而不是只看平均分。对 RAG / tool use 场景也有启发：即使检索到的信息足够，多步组合推理仍是主要失败源，可能需要更强的分解-验证式流程而非单纯加长思考。</dd>
+        <dt>技术方案</dt><dd>作者借鉴自然语言推理分析框架，从两条线研究 CI（代码解释器）推理：外在的“关键 token”（对解题至关重要的提示词/标记）与内在的“代码认知行为”（如验证、回溯、逆向链式推理）。在多种 LLM 上对比发现：CI 推理更强的模型，这两类特征出现频率更高，尤其是验证（跑代码检查）、回溯（走错重来）、逆向链（从目标倒推）。随后分别在两阶段利用这些特征：推理时通过追加“代码特定关键 token”引导模型更常做可执行验证；训练时在现有 SFT（监督微调）与 RL（强化学习）框架中注入/强化这些代码推理行为。额外分析其副作用与边界：这些行为能减少错误答案里的“过度思考”（写很多但不收敛）并提升 token 使用效率，但在某个模型上收益受限并被定位到具体限制因素。</dd>
+        <dt>关键数据</dt><dd>未披露具体 benchmark 名称与分数/提升幅度，仅给出定性结论：推理阶段对数学、排序、优化类任务有提升，对其他能力提升有限；训练阶段在 3 个模型中有 2 个在 SFT 与 RL 上变好，另 1 个受限。作者还报告“减少错误回答的过度思考、提升 token 效率”，但未给出节省比例或平均 token 数。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use（工具调用）读者，这篇把“会用代码解释器推理”具体化为可度量的 token 信号与行为策略，便于做提示词、轨迹约束与训练数据设计。对 reasoning models 与 multi-agent/RAG 系统也有启发：如何用“验证/回溯/逆向链”这类可执行行为降低幻觉与无效长推理。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-15</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.16890v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.16934v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
-    <article class="card" data-url="https://arxiv.org/abs/2606.16871v1">
-      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16871v1" onclick="toggleStar(this)">☆</button>
+    <article class="card" data-url="https://arxiv.org/abs/2606.16939v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16939v1" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
-        <h2><a href="https://arxiv.org/abs/2606.16871v1" target="_blank" rel="noopener">Human-on-the-Bridge: Scalable Evaluation for AI Agents</a></h2>
+        <h2><a href="https://arxiv.org/abs/2606.16939v1" target="_blank" rel="noopener">Scalable Circuit Learning for Interpreting Large Language Models</a></h2>
         <div class="badges">
           <span class="score high">8</span>
           <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
@@ -547,34 +416,163 @@
       </div>
       
       <div class="tags">
-        <span class="tag">agent</span><span class="tag">evaluation</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">tool-use</span>
       </div>
       
-      <p class="innovation">把“评测”从每次人工盯跑，改成专家先把规则与陷阱写成可复用资产，再批量对 Agent 做多轮对抗评测并给出可追溯证据。</p>
+      <p class="innovation">把“学出 LLM 的稀疏电路（哪些组件共同导致某行为）”从昂贵的干预实验，改成可扩展的稀疏回归求解，在保持结构准确度的同时大幅降算力。</p>
       <dl class="details">
-        <dt>技术方案</dt><dd>提出 Human-on-the-Bridge（HOB）：把人类专家放在评测前置环节，先整理可复用的“评测情报”，包括领域上下文、红队陷阱、陪审人格（不同评委视角）、打分细则、审计规则与兜底策略。随后用 ProofAgent Harness 反复执行这些情报，对被测 Agent 进行多轮交互式对抗测试，完整记录轨迹（每步工具调用与上下文）。评分采用多评委（多 juror）而非单一裁判，并要求结论与证据片段绑定，便于审计与复现。与传统静态 benchmark、单次红队或 LLM-as-judge 不同，它强调“行为系统”评测：跨回合推理、工具使用、策略遵循与不确定性下的行动。</dd>
-        <dt>关键数据</dt><dd>覆盖 23,500 次 agent turns；领域包含金融、医疗、代码生成。作者称在“对称/非对称（更省成本）”设置下，小型 Harness 评审模型也能有效挑战基于前沿大模型的 Agent，但未披露具体胜率/一致性分数/成本下降比例。定性发现包括：虚构工具调用、漏掉强制工具调用、策略漂移、被操纵路径、以及“安全但不解决问题”的拒答，这些常被静态 benchmark 或单评委打分漏检。</dd>
-        <dt>为什么值得关注</dt><dd>对 LLM agent、tool use、multi-agent/多评委裁判、以及需要可审计评测的 RAG/工具链系统很直接：它提供一套可规模化、可复用、带证据链的评测流程，帮助定位跨回合与工具调用层面的真实失败模式。</dd>
+        <dt>技术方案</dt><dd>作者关注机制可解释性里的“电路学习”：找出一小组关键组件（层/头/特征）如何串联影响输出。传统用神经元做电路会遇到多义性（同一神经元混多种语义），于是改用 SAE（稀疏自编码器）提取的语义特征，但 SAE 维度高导致基于干预（对组件做开关/替换实验）的电路学习成本爆炸。CircuitLasso 用稀疏线性回归（类似 Lasso：用 L1 正则逼出少量关键连接）直接从激活/特征关系中恢复电路结构，避免大量逐点干预。它还能在 SAE 特征之间挖出“语义如何传播”的关系链，解释哪些可读语义特征如何影响最终预测，并把这些洞见用于更便宜的域泛化设置。</dd>
+        <dt>关键数据</dt><dd>在基准数据上，恢复出的电路“结构准确度”与当前最强的干预式方法匹配（具体分数/指标未披露）；计算成本为其“一小部分/显著更低”（未披露倍数）。在域泛化任务上，用电路洞见实现“性能相当但成本大幅更低”（未披露具体性能差距与成本降幅），定性意义是把电路学习从研究型重计算流程推向更可常规使用的分析工具。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / RAG 等系统，调试常依赖“模型为什么这么想/这么选工具”的可解释线索；这类可扩展电路学习能更便宜地定位关键语义特征与因果链。对 reasoning models 与 multi-agent 的行为分析，也提供一种不靠大量干预实验的机制级诊断手段。</dd>
       </dl>
       <footer class="card-foot">
         <span class="date">2026-06-15</span>
         
         
-        <a class="cta" href="https://arxiv.org/abs/2606.16871v1" target="_blank" rel="noopener">阅读原文 →</a>
+        <a class="cta" href="https://arxiv.org/abs/2606.16939v1" target="_blank" rel="noopener">阅读原文 →</a>
       </footer>
     </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.16987v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16987v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.16987v1" target="_blank" rel="noopener">Consensus-based Agentic Large Language Model Framework for Harmonized Tariff Schedule Code Classification</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
         </div>
+      </div>
       
-    </section>
-
-    <section class="band archive">
-      <h2 class="band-title">归档（最近 30 天）</h2>
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">multi-agent</span><span class="tag">reasoning</span>
+      </div>
       
+      <p class="innovation">把 HTS（海关税则）10 位编码当成“可追溯证据+多代理共识”的任务：不追求一步到位，而是用检索、投票、置信度和人工升级来做合规分类。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>框架用多代理（multi-agent）分工：先对官方税则文件做语义检索（按含义找相关条文），再让模型基于检索到的证据进行“有依据推理”（把结论绑定到条文/注释）。随后引入共识校验：对编码的层级组件逐段（element-wise）投票，而不是一次性输出完整 10 位码。系统还会估计置信度，低置信度样本触发 human-in-the-loop（人工介入）升级流程。与传统单模型单步分类相比，它强调可解释、可审计与不确定性管理，更贴近真实报关合规场景。</dd>
+        <dt>关键数据</dt><dd>数据集：3,300 条由领域专家标注的加拿大 10 位 HTS 产品记录（私有数据）。论文结论：即使先进 LLM，精确 10 位分类仍然困难，且从粗粒度章节到细粒度税目/统计后缀性能逐级下降；但未披露具体准确率/召回率等数值，因此无法量化提升幅度。相对意义：强调“全自动一步预测”在细粒度合规任务上风险高，需要证据与人工兜底流程。</dd>
+        <dt>为什么值得关注</dt><dd>这是一个典型的 LLM agent + RAG（检索增强生成）+ 多代理共识/投票的落地范式：把工具化检索、证据约束推理、置信度与人工升级串成工作流。对关注 tool use、multi-agent、reasoning models 的读者，它提供了“如何在高风险分类任务里做可审计决策”的具体设计思路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
         
-          <details class="date-group" id="archive-2026-06-16" open>
-            <summary>2026-06-16 <span class="n">7 条</span></summary>
-            <div class="cards">
-              
+        
+        <span class="links">补充：<a href="https://github.com/Analytics-Everywhere-Lab/hts" target="_blank" rel="noopener">https://github.com/Analytics-Everywhere-Lab/hts</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.16987v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.16995v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.16995v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.16995v1" target="_blank" rel="noopener">When in Doubt, Plan It Out: Committed Small Language Model Deliberation for Reactive Reinforcement Learning</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span><span class="tag">reinforcement learning</span>
+      </div>
+      
+      <p class="innovation">把“反应快但不善思考”的强化学习策略，和“慢但会规划”的小语言模型结合：先用 SLM 规划并仿真验计划，验证后直接接管执行，无需重训 RL。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>提出 PACT（Plan/Align/Commit/Think）混合架构：RL 策略负责快速反应，SLM（小语言模型）负责慢速推理与规划。系统异步调用 SLM 生成多个候选动作计划，并对计划做对齐与自检（例如是否覆盖目标、是否可执行）。随后用环境仿真验证计划的安全性、可行性与完整性；一旦通过验证就“Commit”并直接按计划执行，执行阶段绕过原 RL 策略。与常见做法（重训/微调 RL、或让大模型每步都决策）不同，它把“规划”和“执行”解耦，且不修改既有 RL policy。</dd>
+        <dt>关键数据</dt><dd>使用 2B 参数规模的 SLM 作为规划器；在 3 个难度递增的 FrozenLake 配置上优于所有基线。具体提升幅度（成功率/回报/步数等）论文摘要未披露；定性意义是：在陌生环境下，通过“先规划再承诺执行”能减少 RL 退化，而不需要额外训练成本。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 读者：这是“异步规划器 + 反应式执行器”的典型 agent 架构，且用仿真作为外部工具做计划验证。对 reasoning models / multi-agent 读者：展示了用小模型做可验证的 deliberation（审慎推理）也能带来收益，不必每步都用大模型推理。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.16995v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.17016v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.17016v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.17016v1" target="_blank" rel="noopener">TokenPilot: Cache-Efficient Context Management for LLM Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">multi-agent</span>
+      </div>
+      
+      <p class="innovation">TokenPilot 把“省 token”和“保住前缀缓存”一起解决：通过稳定提示词前缀、减少缓存失效，让长会话 LLM agent 推理成本大幅下降。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>它指出现有剪枝/逐段丢弃会频繁改写上下文序列，导致前缀不匹配、prompt cache（提示词缓存）失效，从而抵消省 token 的收益。TokenPilot 用“双粒度”管理：全局做 Ingestion-Aware Compaction（按输入入口压缩），在写入记忆前先过滤开放环境噪声并固定前缀布局。局部做 Lifecycle-Aware Eviction（按生命周期驱逐），持续评估上下文片段的剩余效用，只在“任务相关性到期”时按保守的批量/回合节奏下线内容。与过去随时剪、随时改不同，它优先保证前缀连续性来复用缓存，再在不破坏布局的前提下减少内容。</dd>
+        <dt>关键数据</dt><dd>在 PinchBench 与 Claw-Eval 上：隔离模式（isolated）成本下降 61% 与 56%；连续模式（continuous）成本下降 61% 与 87%。论文称在上述降本下仍保持与既有系统“竞争性”性能，但未给出具体任务成功率/得分差值与显著性检验细节。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 的长时任务，推理成本常被上下文膨胀和 KV cache（键值缓存）失效拖累；这篇把“记忆管理”直接对齐到缓存复用，适合做 RAG/多智能体编排时参考其上下文生命周期与前缀稳定策略。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/zjunlp/LightMem2" target="_blank" rel="noopener">https://github.com/zjunlp/LightMem2</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.17016v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.17029v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.17029v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.17029v1" target="_blank" rel="noopener">DEEPRUBRIC: Evidence-Tree Rubric Supervision for Efficient Reinforcement Learning of Deep Research Agents</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">把“先有问题再让模型编评分细则”的流程倒过来：先用证据树定义可核查的评价目标，再合成问题与rubric，让强化学习奖励更对题、训练更省算力。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>传统做法是给定查询（query）让LLM生成rubric（评分细则），但模型常猜不全真实信息需求，导致奖励信号缺项、RL效率低。DeepRubric从一个种子主题出发，递归扩展“有证据支撑的子问题”，构建证据树（evidence tree）。证据树的叶子节点被当作原子级、可验证的评价目标（相当于一条条可检查的事实/要点）。再用这棵树反向合成与之对齐的query与rubric，确保奖励函数评的就是问题真正要求的证据与覆盖范围。最后用rubric-based GRPO（一种强化学习优化法）训练8B模型做深度研究型长报告生成。</dd>
+        <dt>关键数据</dt><dd>数据规模：构建9K条query–rubric监督样本。模型：DeepRubric-8B（8B参数）。效果：在3个benchmark上达到与此前开源SOTA深度研究模型“可比”的表现（具体分数未披露）。效率：RL训练GPU小时数约减少13倍（≈13x fewer RL GPU-hours）。</dd>
+        <dt>为什么值得关注</dt><dd>对LLM agent/深度研究型agent来说，tool use/RAG检索后的“长文报告质量”很难稳定量化；这篇把奖励设计变成“证据树驱动的可核查rubric”，直接影响agent的RL训练效率与对齐质量。也为多agent或推理模型在研究任务中如何构造可靠监督信号提供了可复用的数据构建思路。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <span class="links">补充：<a href="https://arxiv.org/abs/（未提供具体编号）" target="_blank" rel="noopener">https://arxiv.org/abs/（未提供具体编号）</a></span>
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.17029v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://arxiv.org/abs/2606.17034v1">
+      <button class="star" aria-label="收藏" data-url="https://arxiv.org/abs/2606.17034v1" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://arxiv.org/abs/2606.17034v1" target="_blank" rel="noopener">KVEraser: Learning to Steer KV Cache for Efficient Localized Context Erasing</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-paper" title="arxiv:arxiv-cs-ai">arXiv</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">long-context</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">提出 KVEraser：不重算整段后缀，只“编辑”KV cache（注意力缓存）就能把已读上下文中的某一段影响局部抹掉，适合长上下文里事后发现的错误检索/工具观测/提示注入清理。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>问题在于 KV cache 一旦写入，某段文本的影响会传播到后续所有 token 的缓存状态，传统“删除一段”往往要把删除点之后全部重算。KVEraser 的做法是：给定已处理的上下文和要移除的 span，只替换被删区间对应的 KV 状态为一组学习到的“steering states（引导状态）”，其余位置的 KV 直接复用不动。训练上用两阶段：先做通用的“span-邻域”预训练，让模型学会压制被删 span 对邻近与后续的影响；再对具体下游任务微调，把这种抹除能力对齐到实际场景（如检索事实更新、工具输出撤回）。与以往近似方法相比，它不是改 prompt 或重跑解码，而是对缓存做 post-hoc（事后）可控编辑，目标是把计算成本从“后缀长度”转向“被删片段长度”。</dd>
+        <dt>关键数据</dt><dd>在 1K–32K 上下文长度、in-domain 任务中，抹除后的效果“几乎接近”全量重算（具体分数未披露）。延迟方面：KVEraser 相对原推理仅 +24%，而全量重算相对原推理为 17.6× 增长。对未见过的长文档 QA（含有害事实干扰）也能泛化：在近似基线中表现最好，并且相对全量重算有 3–4× 加速（绝对准确率/EM/F1 未披露）。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use 场景很直接：工具观测或检索到的事实常在 prefill 后才被判定为错误或需撤回，KVEraser提供一种不重算整段上下文的“缓存级撤销”。对长上下文 RAG 与多步推理模型也有价值：能更低成本地清理提示注入/过期记忆，减少“错误信息继续影响后续推理”的连锁效应。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <a class="cta" href="https://arxiv.org/abs/2606.17034v1" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
     <article class="card" data-url="https://www.langchain.com/blog/agentic-engineering-redefining-software-engineering">
       <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/agentic-engineering-redefining-software-engineering" onclick="toggleStar(this)">☆</button>
       <div class="card-head">
