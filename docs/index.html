@@ -202,9 +202,9 @@
   <header class="page">
     <h1>AI 日报归档</h1>
     <p class="meta">
-      今日新增 <strong>0</strong> 条 ·
+      今日新增 <strong>7</strong> 条 ·
       归档 <strong>235</strong> 条（25 天）·
-      生成于 2026-06-15 07:13 UTC
+      生成于 2026-06-16 00:20 UTC
     </p>
   </header>
   <main>
@@ -214,7 +214,7 @@
       <h2>目录</h2>
       <div class="chips">
         <a class="fav-chip" href="#favorites">⭐ 我的收藏 <span class="n" id="toc-fav-count">0</span></a>
-        <a class="today-chip" href="#today">今日新增 <span class="n">0</span></a>
+        <a class="today-chip" href="#today">今日新增 <span class="n">7</span></a>
         
           <a href="#archive-2026-06-15" onclick="openArchive('2026-06-15')">2026-06-15 <span class="n">10</span></a>
         
@@ -279,9 +279,202 @@
     </section>
 
     <section class="band today" id="today">
-      <h2 class="band-title">今日新增 <span class="n">(0)</span></h2>
+      <h2 class="band-title">今日新增 <span class="n">(7)</span></h2>
       
-        <p class="empty">本批次无新条目。可能是同一天已经 render 过、或者新条目尚未通过 score ≥ 阈值。</p>
+        <div class="cards">
+          
+    <article class="card" data-url="https://www.langchain.com/blog/building-a-100x-cheaper-trace-judge-with-fireworks">
+      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/building-a-100x-cheaper-trace-judge-with-fireworks" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.langchain.com/blog/building-a-100x-cheaper-trace-judge-with-fireworks" target="_blank" rel="noopener">Building a 100x Cheaper Trace Judge with Fireworks</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">evaluation</span>
+      </div>
+      
+      <p class="innovation">把“生产环境的 Agent/链路 trace”变成自动打分器：用微调开源模型做 Trace Judge，据称在接近前沿大模型判错能力下，把评审成本降到约 1/100。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>他们从线上真实运行的 LangChain traces（一次次工具调用、模型输出、错误与重试等记录）里挖掘“用户感知的错误信号”，把这些信号转成可学习的监督数据。然后在 Fireworks 上对一个开源模型做微调，让它学会对一条 trace 进行质量/错误判断（相当于自动评审）。与过去直接用前沿闭源大模型当裁判不同，这里用“生产 traces + 微调小/开源模型”来复刻评审能力。核心是把评审从“每次都付高价调用大模型”改成“一次训练、之后低价批量判分”。</dd>
+        <dt>关键数据</dt><dd>成本：约 100x 更便宜（具体按 token 单价、模型规格、吞吐等未披露）。效果：称“匹配前沿模型表现”，但未披露具体基准、准确率/一致性分数或人类对齐指标；定性意义是可把 trace 评审从抽样变成更大规模的持续监控与回归测试。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / multi-agent 来说，trace 是最关键的可观测数据；有了低成本 Trace Judge，就能更频繁地做自动回归、错误归因与策略迭代。对 RAG、MCP 等需要多步调用的系统，这类“按 trace 判错/判质”的评审方式更贴近真实线上失败模式。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <a class="cta" href="https://www.langchain.com/blog/building-a-100x-cheaper-trace-judge-with-fireworks" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://www.langchain.com/blog/agentic-engineering-redefining-software-engineering">
+      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/agentic-engineering-redefining-software-engineering" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.langchain.com/blog/agentic-engineering-redefining-software-engineering" target="_blank" rel="noopener">Agentic Engineering: How Swarms of AI Agents Are Redefining Software Engineering</a></h2>
+        <div class="badges">
+          <span class="score high">8</span>
+          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">LLM</span>
+      </div>
+      
+      <p class="innovation">把多智能体做成“像真实工程团队”的分工协作流程（而不只是写代码），宣称可将调试时间缩短 93%，并加速跨团队交付；给出基于 LangGraph 的落地架构。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是用一组角色化的 AI agent（智能体）模拟工程组织：有人负责需求拆解与计划、有人写代码、有人做测试/评审、有人专门定位与修复 bug。它通过 LangGraph 把这些角色的状态、任务队列和交接规则编排成可控的工作流（类似“有向图”流程），让 agent 之间按步骤协作而不是单轮对话。关键设计选择是把“调试/验证”作为一等公民：每次改动都要经过自动化测试与审查节点，失败就回流到定位与修复节点形成闭环。与过去常见的单一 coding agent 或松散的多 agent 聊天不同，这里强调工程化的职责边界、可追踪的中间产物和可重复的流程编排。</dd>
+        <dt>关键数据</dt><dd>文中给出的量化结果：调试时间减少 93%；“压缩跨团队交付周期”有定性描述但未披露具体天数/百分比。未说明评测任务集、样本规模、基线（如单 agent/人工团队）与统计方法，因此更适合作为工程实践参考而非严格 benchmark 结论。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 LLM agent / multi-agent / tool use 的读者，这篇把“多智能体如何像团队一样协作”落到 LangGraph 的可编排架构与闭环调试流程上，可直接借鉴到真实软件工程流水线。对做 reasoning models 或 RAG 的团队也有启发：把推理与检索能力嵌入到明确的角色与验证节点里，往往比单模型长链思考更可控。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <a class="cta" href="https://www.langchain.com/blog/agentic-engineering-redefining-software-engineering" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://www.langchain.com/blog/evaluating-llms-with-openevals">
+      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/evaluating-llms-with-openevals" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.langchain.com/blog/evaluating-llms-with-openevals" target="_blank" rel="noopener">Quickly Start Evaluating LLMs With OpenEvals</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">evaluation</span><span class="tag">tool-use</span>
+      </div>
+      
+      <p class="innovation">OpenEvals/AgentEvals 提供一套“开箱即用”的评测器，把 LLM-as-judge（用模型当裁判）、结构化输出检查和 Agent 轨迹评测做成可直接上生产的框架，降低自建评测成本。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心做法是把常见评测模式封装成预置 evaluator：一类用 LLM-as-judge 对回答质量打分/对比，另一类对结构化数据（如 JSON）做格式与字段校验。针对 Agent 场景，AgentEvals 还能读取“轨迹”（一次任务中多步思考/工具调用的记录），按步骤检查是否遵循工具使用规范、是否在关键节点做对了决策。与过去“每个团队手写脚本+零散 prompt”不同，它把评测逻辑标准化成可复用组件，便于在 CI/回归测试里持续跑。定位是 production-ready：强调可组合、可扩展、可落地到真实应用的评测流水线。</dd>
+        <dt>关键数据</dt><dd>未披露具体数字（如覆盖多少任务、与人工一致性、评测耗时/成本）。定性意义在于：把 LLM 评测从一次性实验脚本，变成可持续的工程化回归评测，尤其适合频繁迭代 prompt、工具链和 agent 策略的团队。</dd>
+        <dt>为什么值得关注</dt><dd>对关心 LLM agent、tool use（工具调用）、multi-agent 的读者，这类“轨迹级评测”能直接衡量 agent 在多步执行中的稳定性与合规性。对 RAG/MCP 场景也有用：结构化校验与裁判式评测可用于检查检索结果引用、输出格式与工具调用是否按协议执行。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <a class="cta" href="https://www.langchain.com/blog/evaluating-llms-with-openevals" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://www.langchain.com/blog/aligning-llm-as-a-judge-with-human-preferences">
+      <button class="star" aria-label="收藏" data-url="https://www.langchain.com/blog/aligning-llm-as-a-judge-with-human-preferences" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.langchain.com/blog/aligning-llm-as-a-judge-with-human-preferences" target="_blank" rel="noopener">Aligning LLM-as-a-Judge with Human Preferences</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-framework" title="rss:langchain-blog">LangChain</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">LLM</span><span class="tag">agent</span><span class="tag">reasoning</span><span class="tag">alignment</span>
+      </div>
+      
+      <p class="innovation">讲清楚如何把“LLM 当裁判（自动评测器）”校准到更像人类打分，并在 LangSmith 里做成可自我改进的评测流程，减少评测漂移与主观偏差。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是把评测器当成一个需要“对齐（让偏好更像人类）”的模型：先用少量人工标注的偏好/评分样例做 few-shot（少样本提示）校准，再用持续收集到的人类反馈迭代更新评测提示或评测配置。文章强调评测器不是一次性写死的 prompt，而是一个可版本化、可回放、可对比的“评测资产”，在 LangSmith 里通过数据集与实验记录来追踪每次改动带来的打分变化。为降低“裁判自己胡编理由”的风险，通常会把评分标准拆成更明确的维度（如正确性、引用依据、遵循指令等）并固定输出格式，便于审计与回归测试。与过去只靠人工抽检或单次写一个 judge prompt 不同，这里更像把评测做成持续集成：用少量人类偏好做锚点，反复对齐与验证。</dd>
+        <dt>关键数据</dt><dd>未披露具体数字（如与人工一致性提升多少、相关系数/胜率变化、标注量与成本）。定性意义在于：给出一套可操作的“让自动评测更贴近人类偏好”的流程，并强调用版本化与回归测试来控制评测器漂移，适合在产品迭代中长期使用。</dd>
+        <dt>为什么值得关注</dt><dd>对做 LLM agent、tool use（工具调用）和 RAG（检索增强生成）的人来说，自动评测往往决定迭代速度；这篇聚焦“LLM-as-a-Judge 怎么对齐人类偏好”，能直接用于搭建更可信的 agent 评测与回归体系。也与多代理/推理模型的评测相关：当任务更复杂时，裁判的稳定性与可审计性会成为瓶颈。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <a class="cta" href="https://www.langchain.com/blog/aligning-llm-as-a-judge-with-human-preferences" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://simonwillison.net/2026/Jun/15/datasette-agent/#atom-everything">
+      <button class="star" aria-label="收藏" data-url="https://simonwillison.net/2026/Jun/15/datasette-agent/#atom-everything" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://simonwillison.net/2026/Jun/15/datasette-agent/#atom-everything" target="_blank" rel="noopener">datasette-agent 0.3a0</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-expert" title="rss:simon-willison">Simon Willison</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">tool-use</span><span class="tag">agent</span><span class="tag">MCP</span>
+      </div>
+      
+      <p class="innovation">datasette-agent 0.3a0 新增可“写库”的工具 execute_write_sql：让 LLM 代理在修改数据库前必须弹窗征得用户批准，并按权限控制可执行的写操作。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心是把“写 SQL”封装成一个需要审批的 tool（工具调用），在执行前展示将要运行的 SQL 语句、参数和目标库/表。系统会根据当前用户权限判断允许的操作类型（如 insert/update/delete），把需要的权限清单一并呈现给用户确认。写入支持批量语句按顺序执行，并采用“前面失败则后续不执行”的策略，降低半成功导致的数据不一致风险。相比 0.2a0 只提供通用的“请求用户批准”机制，0.3a0 把它落到具体的数据库写入场景，并补齐了终端 chat 模式对审批流程的支持。</dd>
+        <dt>关键数据</dt><dd>未披露性能/准确率等量化指标；但功能层面新增 1 个写入工具 execute_write_sql，并为 CLI 增加 3 个开关（--root/--yes/--unsafe）。相对意义是把“只读查询型 agent”扩展为“可在人工把关下执行写操作”的可控工具链。</dd>
+        <dt>为什么值得关注</dt><dd>这是一条典型的 LLM agent tool use（工具调用）安全落地案例：用“人类审批 + 权限约束”把高风险写操作纳入可控流程。对关注 MCP/多工具编排/RAG 读写闭环的读者，它展示了如何把代理从“查数据”推进到“改数据”而不失控。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <span class="links">补充：<a href="https://github.com/datasette/datasette-agent/releases/tag/0.3a0, https://github.com/datasette/datasette-agent/issues/27, https://github.com/datasette/datasette-agent/issues/30, https://github.com/datasette/datasette-agent/issues/31" target="_blank" rel="noopener">https://github.com/datasette/datasette-agent/releases/tag/0.3a0, https://github.com/datasette/datasette-agent/issues/27, https://github.com/datasette/datasette-agent/issues/30, https://github.com/datasette/datasette-agent/issues/31</a></span>
+        
+        <a class="cta" href="https://simonwillison.net/2026/Jun/15/datasette-agent/#atom-everything" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://developer.nvidia.com/blog/pretrained-to-imagine-fine-tuned-to-act-the-rise-of-world-action-models/">
+      <button class="star" aria-label="收藏" data-url="https://developer.nvidia.com/blog/pretrained-to-imagine-fine-tuned-to-act-the-rise-of-world-action-models/" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://developer.nvidia.com/blog/pretrained-to-imagine-fine-tuned-to-act-the-rise-of-world-action-models/" target="_blank" rel="noopener">Pretrained to Imagine, Fine-Tuned to Act: The Rise of World-Action Models</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-lab" title="rss:nvidia-dev-blog">NVIDIA</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">agent</span><span class="tag">tool-use</span><span class="tag">MCP</span><span class="tag">reasoning</span>
+      </div>
+      
+      <p class="innovation">NVIDIA 解释「世界-动作模型（WAM）」：先用大规模数据学会“想象/预测世界”，再小数据微调成可执行动作策略，把机器人控制从“端到端模仿”转向“可规划的模型+行动”。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>文章先给出术语框架：VLA（视觉-语言-动作）是从 VLM（视觉语言模型）骨干出发，适配成机器人策略；WAM 更进一步，把“世界模型（能预测环境变化）”与“动作模型（输出控制）”结合。核心思路是两阶段：预训练阶段用视频/多模态数据学习环境动态与因果（相当于学会在脑中模拟未来），微调阶段再用机器人数据把模拟能力对齐到可执行动作。与传统 VLA 主要依赖示范数据直接学动作不同，WAM 强调先学可泛化的世界表征，再用少量任务数据做行为对齐，从而更适合做规划与长时序任务。文中还强调这类模型天然适配“工具/技能库”式的动作接口，便于把高层意图拆成可调用的低层技能。</dd>
+        <dt>关键数据</dt><dd>未披露具体 benchmark 分数、成功率提升幅度、参数规模或训练成本。定性意义是：把机器人策略学习从“直接映射输入到动作”改为“先预测再决策”，理论上更利于长程推理、任务迁移与数据效率，但本文未给出可核对的量化对照。</dd>
+        <dt>为什么值得关注</dt><dd>对 LLM agent / tool use / reasoning models 读者，这篇把“先建世界模型再行动”的范式讲清楚，可类比到 Agent 先做环境建模（状态/后果预测）再调用工具执行。对 multi-agent 与 RAG 方向，它也提示了把外部环境与记忆检索当作“可预测的世界状态”，从而支持更长时序的规划与执行。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <a class="cta" href="https://developer.nvidia.com/blog/pretrained-to-imagine-fine-tuned-to-act-the-rise-of-world-action-models/" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+    <article class="card" data-url="https://www.qbitai.com/2026/06/435558.html">
+      <button class="star" aria-label="收藏" data-url="https://www.qbitai.com/2026/06/435558.html" onclick="toggleStar(this)">☆</button>
+      <div class="card-head">
+        <h2><a href="https://www.qbitai.com/2026/06/435558.html" target="_blank" rel="noopener">低成本复刻Fable 5的路子找到了：OrcaRouter多模型组队，性能反超</a></h2>
+        <div class="badges">
+          <span class="score mid">7</span>
+          <span class="source cat-media" title="rss:qbitai">量子位</span>
+        </div>
+      </div>
+      
+      <div class="tags">
+        <span class="tag">multi-agent</span><span class="tag">tool-use</span><span class="tag">LLM</span>
+      </div>
+      
+      <p class="innovation">OrcaRouter用“路由器”把多种模型临时组队：按任务把请求分发给最合适的模型，号称用更低成本复刻并超越单一强模型（如Fable 5）的效果。</p>
+      <dl class="details">
+        <dt>技术方案</dt><dd>核心思路是“多模型协作”而不是押注一个超大模型：先用一个轻量路由模块判断当前问题需要哪类能力（推理、写作、检索等），再把请求转给对应的专家模型。路由可按输入特征、历史表现或预算约束做选择，必要时还能串联多个模型完成一条任务链。与传统MoE（混合专家）主要在同一模型内部选专家不同，OrcaRouter更像在模型层面做“外部编排”，可直接复用现成开源/商用模型。整体目标是在接近或超过强模型质量的同时，把平均推理成本压到更低。</dd>
+        <dt>关键数据</dt><dd>未披露具体benchmark分数、成本下降比例、路由开销（额外延迟）等硬指标。定性意义是：如果路由准确率足够高，多模型按需调用可在“平均成本”上明显优于全程调用最强模型，并在长任务/多步骤问题上更容易通过组合能力拿到更好结果。</dd>
+        <dt>为什么值得关注</dt><dd>这属于典型的LLM agent / tool use范式：用“路由+编排”把不同模型当作工具来调用，接近MCP（模型上下文协议）生态里“统一接入、多后端选择”的思路。对关注multi-agent、RAG与推理模型的人来说，它提供了一个更工程化的方向：用调度策略而不是单模型升级来换取质量/成本比。</dd>
+      </dl>
+      <footer class="card-foot">
+        <span class="date">2026-06-15</span>
+        
+        
+        <a class="cta" href="https://www.qbitai.com/2026/06/435558.html" target="_blank" rel="noopener">阅读原文 →</a>
+      </footer>
+    </article>
+        </div>
       
     </section>
 
